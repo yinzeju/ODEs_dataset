@@ -1,0 +1,10 @@
+{
+  "benchmark_version": "hskl_baseline_ode_v1",
+  "difficulty_levels": [
+    "medium"
+  ],
+  "generate_split_i_arrays": true,
+  "noise_level": "clean",
+  "observation_mode": "full_state",
+  "register_split_p_metadata": true
+}

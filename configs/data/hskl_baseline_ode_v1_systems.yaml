@@ -1,0 +1,78 @@
+systems:
+- system_id: "linear_diagonal"
+  layer: "unit_internal"
+  state_dim: 4
+  dt: 0.05
+  burn_in_time: 0
+  solver_profile: "fixed_step_rk4"
+  parameter_regimes: ["stable", "mixed_decay", "near_boundary"]
+- system_id: "linear_rotation_contraction"
+  layer: "unit_internal"
+  state_dim: 4
+  dt: 0.05
+  burn_in_time: 0
+  solver_profile: "fixed_step_rk4"
+  parameter_regimes: ["low_frequency", "medium_frequency", "weakly_damped"]
+- system_id: "linear_jordan_nonnormal"
+  layer: "unit_internal"
+  state_dim: 2
+  dt: 0.05
+  burn_in_time: 0
+  solver_profile: "fixed_step_rk4"
+  parameter_regimes: ["weak_nonnormal", "strong_nonnormal", "jordan_stress"]
+- system_id: "damped_linear_oscillator"
+  layer: "core"
+  state_dim: 2
+  dt: 0.02
+  burn_in_time: 0
+  solver_profile: "fixed_step_rk4"
+  parameter_regimes: ["undamped", "weak_damping", "moderate_damping"]
+- system_id: "van_der_pol"
+  layer: "core"
+  state_dim: 2
+  dt: 0.02
+  burn_in_time: 10
+  solver_profile: "fixed_step_rk4"
+  parameter_regimes: ["near_linear", "limit_cycle", "relaxation"]
+- system_id: "duffing"
+  layer: "core"
+  state_dim: 2
+  dt: 0.02
+  burn_in_time: 0
+  solver_profile: "fixed_step_rk4"
+  parameter_regimes: ["single_well", "double_well", "transition"]
+- system_id: "lotka_volterra"
+  layer: "core"
+  state_dim: 2
+  dt: 0.01
+  burn_in_time: 0
+  solver_profile: "fixed_step_rk4"
+  parameter_regimes: ["standard", "mild_interaction", "strong_interaction"]
+- system_id: "fitzhugh_nagumo"
+  layer: "core"
+  state_dim: 2
+  dt: 0.02
+  burn_in_time: 20
+  solver_profile: "fixed_step_rk4"
+  parameter_regimes: ["excitable", "oscillatory"]
+- system_id: "lorenz63"
+  layer: "stress"
+  state_dim: 3
+  dt: 0.01
+  burn_in_time: 10
+  solver_profile: "fixed_step_rk4"
+  parameter_regimes: ["standard"]
+- system_id: "rossler"
+  layer: "stress"
+  state_dim: 3
+  dt: 0.02
+  burn_in_time: 50
+  solver_profile: "fixed_step_rk4"
+  parameter_regimes: ["standard"]
+- system_id: "lorenz96"
+  layer: "stress"
+  state_dim: 40
+  dt: 0.01
+  burn_in_time: 10
+  solver_profile: "fixed_step_rk4"
+  parameter_regimes: ["forcing_low", "forcing_standard", "forcing_high"]
