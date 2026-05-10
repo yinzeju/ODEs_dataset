@@ -1,0 +1,24 @@
+task_collection_id = "kdsm_duffing_diagnostic_v1_tasks"
+notes = "ODEs_dataset task declarations only; no KDSM loss, training, learned spectrum, or intervention rule is defined here."
+
+[[tasks]]
+task_id = "kdsm_duffing_one_step_forecast"
+task_type = "one_step_prediction"
+default_input = "recommended_downstream_input"
+default_target = "default_target"
+
+[[tasks]]
+task_id = "kdsm_duffing_rollout_ready"
+task_type = "rollout_sequence"
+default_input = "recommended_downstream_input"
+default_target = "target_phys"
+
+[[tasks]]
+task_id = "kdsm_duffing_reconstruction_target"
+task_type = "target_readout"
+target_modes = ["target_phys", "target_aug", "target_poly9", "target_energy5"]
+
+[[tasks]]
+task_id = "kdsm_duffing_noise_robustness"
+task_type = "noise_scan"
+noise_levels = ["noise_clean", "noise_1em4", "noise_1em3", "noise_1em2", "noise_1em1"]

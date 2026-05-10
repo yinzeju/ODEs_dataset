@@ -1,0 +1,14 @@
+split_id = "split_trajectory_I"
+split_type = "trajectory_level"
+role_order = ["train", "val", "test"]
+seed = 20260511
+
+[default_counts]
+train = 48
+val = 8
+test = 8
+
+[bounded_counts]
+train = 6
+val = 2
+test = 2
