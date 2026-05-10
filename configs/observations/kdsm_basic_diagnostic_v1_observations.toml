@@ -1,0 +1,24 @@
+observation_spec_id = "kdsm_basic_diagnostic_v1_observations"
+release_id = "kdsm_basic_diagnostic_v1"
+forcing_type = "force_none"
+noise_level = 0.0
+observation_modes = ["obs_phys", "obs_aug_full"]
+target_modes = ["target_phys"]
+default_observation = "obs_aug_full"
+default_target = "target_phys"
+array_layout = "trajectory_by_time_by_channel"
+
+[obs_phys]
+description = "Physical state identity observation."
+source = "state"
+dimension = 2
+
+[obs_aug_full]
+description = "No-forcing augmented observation alias; identical to obs_phys for every object."
+source = "state"
+dimension = 2
+
+[target_phys]
+description = "Physical state identity target."
+source = "state"
+dimension = 2
