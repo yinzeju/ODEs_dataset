@@ -60,8 +60,8 @@ The two linear base objects are:
 
 | Object | Method | Purpose |
 | --- | --- | --- |
-| `dynsys_nlmat__L0_discrete_damped_rotation` | Exact discrete rotation-contraction with `r=0.995`, `omega=0.08` | Isolate discrete linear data plumbing |
-| `dynsys_nlmat__L1_continuous_linear_oscillator` | Adaptive continuous integration of the linear oscillator plus true matrix/spectrum metadata | Isolate continuous ODE sampling |
+| `L0_discrete_damped_rotation` | Exact discrete rotation-contraction with `r=0.995`, `omega=0.08` | Isolate discrete linear data plumbing |
+| `L1_continuous_linear_oscillator` | Adaptive continuous integration of the linear oscillator plus true matrix/spectrum metadata | Isolate continuous ODE sampling |
 
 For the base objects, the generator uses the same shell-sampling policy at `Q=1.0` so their tensors match the formal release scale. The Duffing matrix itself uses the exact five `Q` levels from the mathematical note.
 
@@ -94,7 +94,7 @@ $$
 \chi_{\mathrm{nl}}\in[0,40].
 $$
 
-The strongest generated cell is `duffing_nlmat__D_beta_10000__Q_200`, with `beta=10.0`, `Q=2.0`, and `chi_nl=40.0`.
+The strongest generated cell is `D_beta_10000__Q_200`, with `beta=10.0`, `Q=2.0`, and `chi_nl=40.0`.
 
 ## Data Provenance And Split Protocol
 
@@ -155,10 +155,10 @@ Representative Duffing cells:
 
 | Object | beta | Q | chi_nl | state_abs_max | mean_energy_drop | passed |
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| `duffing_nlmat__D_beta_0000__Q_100` | 0.0 | 1.0 | 0.0 | 0.9986423193821249 | 0.21871132202527832 | true |
-| `duffing_nlmat__D_beta_1000__Q_200` | 1.0 | 2.0 | 4.0 | 3.2672215103927207 | 1.5133868960721972 | true |
-| `duffing_nlmat__D_beta_5000__Q_200` | 5.0 | 2.0 | 20.0 | 6.348931317643773 | 3.94806062500673 | true |
-| `duffing_nlmat__D_beta_10000__Q_200` | 10.0 | 2.0 | 40.0 | 8.813831435913675 | 6.9645380400398516 | true |
+| `D_beta_0000__Q_100` | 0.0 | 1.0 | 0.0 | 0.9986423193821249 | 0.21871132202527832 | true |
+| `D_beta_1000__Q_200` | 1.0 | 2.0 | 4.0 | 3.2672215103927207 | 1.5133868960721972 | true |
+| `D_beta_5000__Q_200` | 5.0 | 2.0 | 20.0 | 6.348931317643773 | 3.94806062500673 | true |
+| `D_beta_10000__Q_200` | 10.0 | 2.0 | 40.0 | 8.813831435913675 | 6.9645380400398516 | true |
 
 The generated local outputs are:
 

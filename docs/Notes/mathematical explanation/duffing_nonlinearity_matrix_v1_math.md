@@ -199,7 +199,7 @@ $$
 $$
 
 \boxed{
-\texttt{dynsys\_nlmat\_\_L0\_discrete\_damped\_rotation}.
+\texttt{L0\_discrete\_damped\_rotation}.
 }
 
 $$
@@ -249,7 +249,7 @@ $$
 $$
 
 \boxed{
-\texttt{dynsys\_nlmat\_\_L1\_continuous\_linear\_oscillator}.
+\texttt{L1\_continuous\_linear\_oscillator}.
 }
 
 $$
@@ -427,7 +427,7 @@ $$
 $$
 
 \boxed{
-\texttt{duffing\_nlmat\_\_D\_beta\_<beta>\_\_Q\_<Q>}.
+\texttt{D\_beta\_<beta>\_\_Q\_<Q>}.
 }
 
 $$
@@ -438,7 +438,7 @@ $$
 
 \beta=0.2,\ Q=1.0
 \quad\Rightarrow\quad
-\texttt{duffing\_nlmat\_\_D\_beta\_0200\_\_Q\_100}.
+\texttt{D\_beta\_0200\_\_Q\_100}.
 
 $$
 
@@ -446,7 +446,7 @@ $$
 
 \beta=10.0,\ Q=2.0
 \quad\Rightarrow\quad
-\texttt{duffing\_nlmat\_\_D\_beta\_10000\_\_Q\_200}.
+\texttt{D\_beta\_10000\_\_Q\_200}.
 
 $$
 
@@ -1248,9 +1248,9 @@ $$
 
 | object_id | 类型 | 作用 |
 |---|---|---|
-| `dynsys_nlmat__L0_discrete_damped_rotation` | 精确离散线性系统 | 排查算法闭环 |
-| `dynsys_nlmat__L1_continuous_linear_oscillator` | 连续线性阻尼振子 | 排查 ODE 管线 |
-| `duffing_nlmat__D_beta_0000__Q_<Q>` | Duffing 管线下的线性系统 | 对齐 Duffing 数据格式 |
+| `L0_discrete_damped_rotation` | 精确离散线性系统 | 排查算法闭环 |
+| `L1_continuous_linear_oscillator` | 连续线性阻尼振子 | 排查 ODE 管线 |
+| `D_beta_0000__Q_<Q>` | Duffing 管线下的线性系统 | 对齐 Duffing 数据格式 |
 
 Duffing matrix：
 

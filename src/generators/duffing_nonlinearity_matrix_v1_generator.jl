@@ -129,7 +129,7 @@ function dnlmat_build_generation_plan(system_config::AbstractDict; difficulty::A
         specs,
         dnlmat_make_spec(
             system_config,
-            "dynsys_nlmat__L0_discrete_damped_rotation",
+            "L0_discrete_damped_rotation",
             "L0",
             0.0,
             base_Q,
@@ -140,7 +140,7 @@ function dnlmat_build_generation_plan(system_config::AbstractDict; difficulty::A
         specs,
         dnlmat_make_spec(
             system_config,
-            "dynsys_nlmat__L1_continuous_linear_oscillator",
+            "L1_continuous_linear_oscillator",
             "L1",
             0.0,
             base_Q,

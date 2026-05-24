@@ -39,7 +39,7 @@ function dnlmat_Q_code(Q::Real)
 end
 
 function dnlmat_duffing_object_id(beta::Real, Q::Real)
-    return string("duffing_nlmat__D_beta_", dnlmat_beta_code(beta), "__Q_", dnlmat_Q_code(Q))
+    return string("D_beta_", dnlmat_beta_code(beta), "__Q_", dnlmat_Q_code(Q))
 end
 
 function dnlmat_discrete_rotation_matrix(spec::DuffingNLMatrixSpec)
