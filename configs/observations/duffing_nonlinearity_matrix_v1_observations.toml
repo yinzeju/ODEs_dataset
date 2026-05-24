@@ -1,0 +1,20 @@
+dataset_id = "duffing_nonlinearity_matrix_v1"
+observation_spec_id = "duffing_nonlinearity_matrix_v1_full_state_clean"
+observation_keys = ["obs_phys", "obs_full"]
+target_keys = ["target_phys"]
+default_observation_key = "obs_phys"
+default_target_key = "target_phys"
+noise_level = 0.0
+array_layout = "trajectory_by_time_by_channel"
+
+[obs_phys]
+description = "Full physical-state observation, identical to state."
+dimension = 2
+
+[obs_full]
+description = "No-forcing full-state alias, identical to obs_phys."
+dimension = 2
+
+[target_phys]
+description = "Physical-state target, identical to state."
+dimension = 2
