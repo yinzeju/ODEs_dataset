@@ -93,6 +93,18 @@ function dnlmat_make_spec(
     rotation_config = system_config["discrete_rotation"]
     solver_name = object_kind == "L0" ? String(solver_config["discrete_solver_name"]) : String(solver_config["continuous_solver_name"])
     chi = object_kind == "duffing" ? Float64(beta) * Float64(Q)^2 : 0.0
+    reltol = Float64(solver_config["reltol"])
+    abstol = Float64(solver_config["abstol"])
+    max_internal_step = Float64(solver_config["max_internal_step"])
+    if object_kind == "duffing" && haskey(solver_config, "extreme")
+        extreme_config = solver_config["extreme"]
+        chi_threshold = Float64(get(extreme_config, "chi_threshold", Inf))
+        if chi >= chi_threshold
+            reltol = Float64(get(extreme_config, "reltol", reltol))
+            abstol = Float64(get(extreme_config, "abstol", abstol))
+            max_internal_step = Float64(get(extreme_config, "max_internal_step", max_internal_step))
+        end
+    end
     return DuffingNLMatrixSpec(
         String(system_config["dataset_id"]),
         String(object_id),
@@ -114,9 +126,9 @@ function dnlmat_make_spec(
         Int(profile["R_test"]),
         Int(system_config["initial_condition_seed"]),
         solver_name,
-        Float64(solver_config["reltol"]),
-        Float64(solver_config["abstol"]),
-        Float64(solver_config["max_internal_step"]),
+        reltol,
+        abstol,
+        max_internal_step,
         Float64(solver_config["energy_tolerance"]),
     )
 end
@@ -677,6 +689,7 @@ end
 
 function dnlmat_release_manifest(
     release_id::AbstractString,
+    release_version::AbstractString,
     object_manifests::AbstractVector{<:AbstractDict},
     output_paths::AbstractDict,
     config_hashes::AbstractDict,
@@ -685,7 +698,7 @@ function dnlmat_release_manifest(
     return Dict{String,Any}(
         "release_id" => String(release_id),
         "dataset_id" => String(release_id),
-        "release_version" => "1.0.0",
+        "release_version" => String(release_version),
         "created_at" => string(now()),
         "scope" => "v1_core",
         "object_count" => length(object_manifests),
@@ -799,6 +812,7 @@ function dnlmat_run_release_generation(project_root::AbstractString; difficulty:
     all_ic_passed || error("initial condition reuse check failed")
 
     release_id = dnlmat_release_id()
+    release_version = String(get(configs["release"], "release_version", "1.0.0"))
     report_tables = dnlmat_write_report_tables(project_root, release_id, objects)
     release_root = dnlmat_release_root(project_root, release_id)
     release_manifest_path = joinpath(release_root, "$(release_id)_manifest.toml")
@@ -815,6 +829,7 @@ function dnlmat_run_release_generation(project_root::AbstractString; difficulty:
     )
     release_manifest = dnlmat_release_manifest(
         release_id,
+        release_version,
         object_manifests,
         output_paths,
         dnlmat_config_hashes(project_root),
@@ -823,6 +838,7 @@ function dnlmat_run_release_generation(project_root::AbstractString; difficulty:
     dnlmat_write_toml(release_manifest_path, release_manifest)
     release_index = Dict{String,Any}(
         "release_id" => release_id,
+        "release_version" => release_version,
         "difficulty" => difficulty,
         "object_count" => length(objects),
         "duffing_cell_count" => count(obj -> obj.spec.object_kind == "duffing", objects),

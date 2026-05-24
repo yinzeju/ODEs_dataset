@@ -324,7 +324,8 @@ $$
 
 ## 4.1 $\beta$ 等级
 
-本数据集使用宽覆盖但不冗余的 $\beta$ 等级：
+The extended release uses the following $\beta$ levels. The original v1.0 grid
+ended at $\beta=10$; v1.1 adds the extreme row $\beta=20$.
 
 $$
 
@@ -339,7 +340,8 @@ $$
 1.0,\,
 2.0,\,
 5.0,\,
-10.0
+10.0,\,
+20.0
 \}.
 }
 
@@ -352,10 +354,12 @@ $$
 - $\beta=0.2,0.5$：中等非线性区；
 - $\beta=1.0,2.0$：显著 hardening 非线性区；
 - $\beta=5.0,10.0$：强非线性 stress-test 区。
+- $\beta=20.0$: extreme hardening stress-test row for the expanded v1.1 release.
 
 ## 4.2 初值幅值等级
 
-初值幅值等级缩减为
+The amplitude levels are extended by one extreme initial-condition shell. The
+original v1.0 grid ended at $Q=2.0$; v1.1 adds $Q=4.0$.
 
 $$
 
@@ -367,7 +371,8 @@ $$
 0.5,\,
 1.0,\,
 1.5,\,
-2.0
+2.0,\,
+4.0
 \}.
 }
 
@@ -379,9 +384,9 @@ $$
 
 |\mathcal B|\times|\mathcal Q|
 =
-8\times5
+9\times6
 =
-\boxed{40}
+\boxed{54}
 
 $$
 
@@ -394,7 +399,7 @@ $$
 \chi_{\mathrm{nl}}
 =
 \beta Q^2
-\in[0,40].
+\in[0,320].
 
 $$
 
@@ -402,11 +407,17 @@ $$
 
 $$
 
-\beta=10,
+\beta=20,
 \qquad
-Q=2,
+Q=4,
 \qquad
-\chi_{\mathrm{nl}}=40.
+\chi_{\mathrm{nl}}=320.
+
+The v1.1 expansion adds a new $\beta=20$ row and a new $Q=4$ column. Relative
+to the original $8\times5=40$ Duffing grid, this creates 14 additional cells:
+6 cells in the new $\beta=20$ row and 8 cells in the new $Q=4$ column for the
+previous beta values. This reconciles the final requested Duffing count
+$40+14=54$.
 
 $$
 
@@ -581,7 +592,7 @@ Duffing 主矩阵总轨线数为
 
 $$
 
-40\times512=20480.
+54\times512=27648.
 
 $$
 
@@ -649,7 +660,7 @@ $$
 
 $$
 
-容差设为
+Default tolerances are
 
 $$
 
@@ -657,6 +668,28 @@ $$
 \mathrm{reltol}=10^{-10},
 \qquad
 \mathrm{abstol}=10^{-12}.
+}
+
+$$
+
+For extreme cells with
+
+$$
+
+\boxed{
+\chi_{\mathrm{nl}}\ge80
+}
+
+$$
+
+the v1.1 generation contract uses stricter tolerances:
+
+$$
+
+\boxed{
+\mathrm{reltol}=10^{-11},
+\qquad
+\mathrm{abstol}=10^{-13}.
 }
 
 $$
@@ -678,6 +711,17 @@ $$
 $$
 
 \Delta t_{\max}\le0.002.
+
+$$
+
+For the same extreme cells, the actual v1.1 implementation lowers the maximum
+internal step to
+
+$$
+
+\boxed{
+\Delta t_{\max}=0.0005.
+}
 
 $$
 
@@ -1259,7 +1303,7 @@ $$
 \boxed{
 \beta\in
 \{
-0,0.05,0.2,0.5,1,2,5,10
+0,0.05,0.2,0.5,1,2,5,10,20
 \},
 }
 
@@ -1270,7 +1314,7 @@ $$
 \boxed{
 Q\in
 \{
-0.25,0.5,1.0,1.5,2.0
+0.25,0.5,1.0,1.5,2.0,4.0
 \}.
 }
 
@@ -1281,7 +1325,7 @@ $$
 $$
 
 \boxed{
-40
+54
 }
 
 $$

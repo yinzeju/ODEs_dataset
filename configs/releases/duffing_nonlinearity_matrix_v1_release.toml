@@ -1,6 +1,6 @@
 dataset_id = "duffing_nonlinearity_matrix_v1"
 release_id = "duffing_nonlinearity_matrix_v1"
-release_version = "1.0.0"
+release_version = "1.1.0"
 scope = "v1_core"
 system_config = "configs/systems/duffing_nonlinearity_matrix_v1_systems.toml"
 observation_config = "configs/observations/duffing_nonlinearity_matrix_v1_observations.toml"
