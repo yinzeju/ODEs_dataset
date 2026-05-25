@@ -1,0 +1,75 @@
+dataset_id = "duffing_nonlinearity_basic_v1"
+release_id = "duffing_nonlinearity_basic_v1"
+scope = "v1_core"
+system_family = "duffing_hardening_nonlinearity_basic"
+generation_seed = 26052501
+initial_condition_seed = 24052402
+split_seed = 26052503
+
+alpha = 1.0
+delta = 0.08
+gamma = 0.0
+forcing_type = "force_none"
+linear_base_Q = 1.0
+
+[[duffing_objects]]
+object_id = "D_beta_0050__Q_100"
+beta = 0.05
+Q = 1.0
+selection_role = "weak_nonlinearity"
+
+[[duffing_objects]]
+object_id = "D_beta_1000__Q_100"
+beta = 1.0
+Q = 1.0
+selection_role = "moderate_nonlinearity"
+
+[[duffing_objects]]
+object_id = "D_beta_5000__Q_100"
+beta = 5.0
+Q = 1.0
+selection_role = "strong_nonlinearity"
+
+[[duffing_objects]]
+object_id = "D_beta_10000__Q_200"
+beta = 10.0
+Q = 2.0
+selection_role = "very_strong_nonlinearity"
+
+[[duffing_objects]]
+object_id = "D_beta_20000__Q_400"
+beta = 20.0
+Q = 4.0
+selection_role = "extreme_nonlinearity"
+
+[profile.smoke]
+R_train = 6
+R_val = 1
+R_test = 1
+M = 128
+tau = 0.01
+
+[profile.formal]
+R_train = 48
+R_val = 8
+R_test = 8
+M = 512
+tau = 0.01
+
+[solver]
+continuous_solver_name = "adaptive_dopri5_embedded"
+discrete_solver_name = "exact_discrete_rotation"
+reltol = 1.0e-10
+abstol = 1.0e-12
+max_internal_step = 0.002
+energy_tolerance = 1.0e-8
+
+[solver.extreme]
+chi_threshold = 80.0
+reltol = 1.0e-11
+abstol = 1.0e-13
+max_internal_step = 0.0005
+
+[discrete_rotation]
+damping_radius = 0.995
+omega = 0.08
