@@ -2,10 +2,10 @@
 
 ## Objective
 
-`duffing_nonlinearity_basic_v1` is a compact representative subset of the
-larger `duffing_nonlinearity_matrix_v1` Duffing hardening matrix. It keeps two
-linear health-check objects and five nonlinear Duffing objects ordered by the
-nonlinearity index
+`duffing_nonlinearity_basic_v1` is a compact representative object subset of
+the larger `duffing_nonlinearity_matrix_v1` Duffing hardening matrix. It keeps
+two linear health-check objects and five nonlinear Duffing objects ordered by
+the nonlinearity index
 
 $$
 \chi_{\mathrm{nl}} = \beta Q^2 .
@@ -13,6 +13,12 @@ $$
 
 The dataset is generated independently from the defining equations and
 configuration. It is not copied or sliced from the existing matrix release.
+For formal comparison, its shared generation settings are aligned with the
+matrix release: the same initial-condition seed, split seed, formal trajectory
+count, trajectory length, time step, solver tolerances, and high-precision
+switching rule are used. Apart from `dataset_id`, release paths, and the smaller
+object list, the formal Basic objects are intended to match the corresponding
+Matrix objects exactly.
 
 ## State And Dynamics
 
@@ -117,17 +123,22 @@ The stored arrays use the `trajectory_by_time_by_channel` layout with shape
 
 ## Formal Profile
 
-The formal profile is intentionally smaller than the large matrix release.
+The formal profile is intentionally identical to the Matrix release profile, so
+Basic can be used as a strict same-configuration object subset rather than as a
+smaller-data quick test.
 
 | Quantity | Value |
 | --- | ---: |
-| Trajectories per object \(R\) | 64 |
-| Train / validation / test split | 48 / 8 / 8 |
-| Time steps \(M\) | 512 |
+| Trajectories per object \(R\) | 512 |
+| Train / validation / test split | 384 / 64 / 64 |
+| Time steps \(M\) | 1024 |
 | Snapshot interval \(\tau\) | 0.01 |
-| Array shape per object | `(64, 513, 2)` |
+| Array shape per object | `(512, 1025, 2)` |
 | Rollout horizons | `1, 2, 4, 8, 16, 32, 64` |
 
-The extreme object uses the stricter integration settings inherited from the
-matrix convention when \(\chi_{\mathrm{nl}}\ge 80\):
-`reltol=1.0e-11`, `abstol=1.0e-13`, and `max_internal_step=0.0005`.
+The high-nonlinearity objects use the stricter integration settings inherited
+from the matrix convention when \(\chi_{\mathrm{nl}}>40\):
+`reltol=1.0e-11`, `abstol=1.0e-13`, and `max_internal_step=0.0005`. The
+`D_beta_10000__Q_200` object has \(\chi_{\mathrm{nl}}=40\), so it remains on
+the default tolerance branch; `D_beta_20000__Q_400` has
+\(\chi_{\mathrm{nl}}=320\), so it uses the stricter branch.

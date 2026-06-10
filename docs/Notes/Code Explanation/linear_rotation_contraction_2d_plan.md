@@ -89,8 +89,7 @@ $$
    $$
 
    \lambda_\pm=e^{(-\gamma\pm i\omega)\tau}.
-   
-$$
+   $$
 
 该系统属于内部单元测试层。项目系统对象规划中也建议长期保留“线性对角、旋转–收缩、Jordan / 非正规”三类内部系统，用于暴露谱结构 bug，而不是作为公开 leaderboard 主系统。fileciteturn7file1
 

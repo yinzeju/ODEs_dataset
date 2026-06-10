@@ -31,7 +31,7 @@ max_internal_step = 0.002
 energy_tolerance = 1.0e-8
 
 [solver.extreme]
-chi_threshold = 80.0
+chi_threshold = 40.0
 reltol = 1.0e-11
 abstol = 1.0e-13
 max_internal_step = 0.0005

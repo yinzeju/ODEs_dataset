@@ -1,10 +1,10 @@
 dataset_id = "duffing_nonlinearity_basic_v1"
 release_id = "duffing_nonlinearity_basic_v1"
 scope = "v1_core"
-system_family = "duffing_hardening_nonlinearity_basic"
-generation_seed = 26052501
+system_family = "duffing_hardening_nonlinearity_matrix"
+generation_seed = 24052401
 initial_condition_seed = 24052402
-split_seed = 26052503
+split_seed = 24052403
 
 alpha = 1.0
 delta = 0.08
@@ -50,10 +50,10 @@ M = 128
 tau = 0.01
 
 [profile.formal]
-R_train = 48
-R_val = 8
-R_test = 8
-M = 512
+R_train = 384
+R_val = 64
+R_test = 64
+M = 1024
 tau = 0.01
 
 [solver]
@@ -65,7 +65,7 @@ max_internal_step = 0.002
 energy_tolerance = 1.0e-8
 
 [solver.extreme]
-chi_threshold = 80.0
+chi_threshold = 40.0
 reltol = 1.0e-11
 abstol = 1.0e-13
 max_internal_step = 0.0005

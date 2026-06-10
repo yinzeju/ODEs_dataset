@@ -412,6 +412,7 @@ $$
 Q=4,
 \qquad
 \chi_{\mathrm{nl}}=320.
+$$
 
 The v1.1 expansion adds a new $\beta=20$ row and a new $Q=4$ column. Relative
 to the original $8\times5=40$ Duffing grid, this creates 14 additional cells:
@@ -419,7 +420,7 @@ to the original $8\times5=40$ Duffing grid, this creates 14 additional cells:
 previous beta values. This reconciles the final requested Duffing count
 $40+14=54$.
 
-$$
+
 
 ---
 

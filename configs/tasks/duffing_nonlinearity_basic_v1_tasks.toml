@@ -1,24 +1,17 @@
 dataset_id = "duffing_nonlinearity_basic_v1"
-task_collection_id = "duffing_nonlinearity_basic_v1_tasks"
+task_group_id = "duffing_nonlinearity_basic_v1_tasks"
 
 [[tasks]]
-task_id = "duffing_basic_one_step_lag1"
+task_id = "duffing_nonlinearity_basic_v1_one_step"
 task_type = "one_step_forecast"
-window_id = "duffing_nonlinearity_basic_v1_windows"
-observation_key = "obs_phys"
-target_key = "target_phys"
-lag = 1
+window_id = "duffing_nonlinearity_basic_v1_one_step_lag1"
+input_object_type = "obs_phys"
+target_object_type = "target_phys"
 
 [[tasks]]
-task_id = "duffing_basic_rollout_multihorizon"
-task_type = "rollout_forecast"
-window_id = "duffing_nonlinearity_basic_v1_windows"
-observation_key = "obs_phys"
-target_key = "target_phys"
-horizons = [1, 2, 4, 8, 16, 32, 64]
-
-[[tasks]]
-task_id = "duffing_basic_nonlinearity_ordering"
-task_type = "parameter_ordered_comparison"
-ordering_key = "nonlinearity_index_chi"
-object_kind = "duffing"
+task_id = "duffing_nonlinearity_basic_v1_rollout"
+task_type = "multi_step_rollout"
+window_id = "duffing_nonlinearity_basic_v1_rollout_horizons"
+input_object_type = "obs_phys"
+target_object_type = "target_phys"
+metric_ids = ["h1", "h2", "h4", "h8", "h16", "h32", "h64"]

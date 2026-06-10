@@ -99,7 +99,7 @@ function dnlmat_make_spec(
     if object_kind == "duffing" && haskey(solver_config, "extreme")
         extreme_config = solver_config["extreme"]
         chi_threshold = Float64(get(extreme_config, "chi_threshold", Inf))
-        if chi >= chi_threshold
+        if chi > chi_threshold
             reltol = Float64(get(extreme_config, "reltol", reltol))
             abstol = Float64(get(extreme_config, "abstol", abstol))
             max_internal_step = Float64(get(extreme_config, "max_internal_step", max_internal_step))
