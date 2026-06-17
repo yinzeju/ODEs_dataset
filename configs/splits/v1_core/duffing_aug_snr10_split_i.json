@@ -1,0 +1,17 @@
+{
+  "split_id": "duffing_aug_snr10_split_i",
+  "system_id": "duffing_aug_snr10",
+  "split_type": "initial_condition",
+  "grouping_unit": "trajectory",
+  "train_count": 512,
+  "val_count": 128,
+  "test_count": 128,
+  "total_trajectories": 768,
+  "assignment_policy": "fixed_order_after_seeded_initial_condition_sampling",
+  "split_id_encoding": {
+    "1": "train",
+    "2": "val",
+    "3": "test"
+  },
+  "seed": 2026061702
+}

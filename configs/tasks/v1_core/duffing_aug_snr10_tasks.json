@@ -1,0 +1,12 @@
+{
+  "task_id": "duffing_aug_snr10_kdsm_mp_multihorizon",
+  "system_id": "duffing_aug_snr10",
+  "observation_id": "duffing_aug_snr10_kdsm_mp",
+  "window_id": "duffing_aug_snr10_rollout_horizons",
+  "task_type": "multi_step_rollout",
+  "input_object_type": "kdsm_mp_augmented_input",
+  "target_object_type": "clean_physical_state",
+  "clean_mapping": "(x, v, u, cos_theta, sin_theta) -> (x, v)",
+  "noise10_mapping": "(x_noisy, v_noisy, u, cos_theta, sin_theta) -> (x, v)",
+  "metric_ids": ["horizon_mse", "horizon_rmse", "empirical_snr_train_db"]
+}

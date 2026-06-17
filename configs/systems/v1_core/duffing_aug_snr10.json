@@ -1,0 +1,45 @@
+{
+  "system_id": "duffing_aug_snr10",
+  "family": "Duffing",
+  "scope": "v1_core",
+  "state_dim_physical": 2,
+  "state_dim_augmented": 4,
+  "input_dim_kdsm_mp": 5,
+  "target_dim": 2,
+  "parameters": {
+    "mass": 1.0,
+    "damping": 40.0,
+    "linear_stiffness": 3000.0,
+    "cubic_stiffness": 500000000.0
+  },
+  "forcing": {
+    "type": "fixed_sparse_multisine",
+    "amplitude": 20.0,
+    "base_frequency_hz": 0.5,
+    "frequencies_hz": [5.0, 7.5, 9.0, 12.0, 16.0, 20.0, 25.0, 30.0, 35.0, 40.0, 50.0, 60.0, 65.0, 70.0, 75.0, 80.0],
+    "phase_seed": 2026061701
+  },
+  "initial_condition_domain": {
+    "x": [-0.005, 0.005],
+    "v": [-0.3, 0.3],
+    "theta": [0.0, 6.283185307179586]
+  },
+  "sampling": {
+    "fs_sim_hz": 2000.0,
+    "fs_model_hz": 500.0,
+    "trajectory_duration_s": 4.0,
+    "num_sim_snapshots": 8000,
+    "num_model_snapshots": 2000,
+    "drop_transient_s": 0.0
+  },
+  "solver": {
+    "name": "local_adaptive_dopri5",
+    "reltol": 1.0e-10,
+    "abstol": 1.0e-12,
+    "max_internal_step": 0.0005
+  },
+  "seeds": {
+    "trajectory_seed": 2026061702,
+    "noise_seed": 2026061703
+  }
+}

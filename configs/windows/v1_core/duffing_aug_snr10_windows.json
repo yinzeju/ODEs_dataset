@@ -1,0 +1,11 @@
+{
+  "window_id": "duffing_aug_snr10_rollout_horizons",
+  "system_id": "duffing_aug_snr10",
+  "window_type": "rollout",
+  "horizons": [1, 2, 4, 8, 16, 32, 64, 128],
+  "model_dt": 0.002,
+  "max_horizon": 128,
+  "snapshots_per_trajectory": 2000,
+  "anchors_per_trajectory_at_max_horizon": 1872,
+  "cross_trajectory_windows_allowed": false
+}

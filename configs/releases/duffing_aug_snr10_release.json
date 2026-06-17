@@ -1,0 +1,20 @@
+{
+  "release_id": "duffing_aug_snr10",
+  "dataset_version": "0.1.0",
+  "scope": "v1_core",
+  "system_id": "duffing_aug_snr10",
+  "observation_id": "duffing_aug_snr10_kdsm_mp",
+  "split_id": "duffing_aug_snr10_split_i",
+  "window_id": "duffing_aug_snr10_rollout_horizons",
+  "task_id": "duffing_aug_snr10_kdsm_mp_multihorizon",
+  "expected_files": {
+    "clean_jld2": "data/processed/duffing_aug_snr10/kdsm_data_0dot1_duffing_aug_clean.jld2",
+    "noise10_jld2": "data/processed/duffing_aug_snr10/kdsm_data_0dot1_duffing_aug_snr10.jld2",
+    "metadata_json": "data/manifests/duffing_aug_snr10/kdsm_data_0dot1_duffing_aug_metadata.json"
+  },
+  "recommended_mat_interface_names": {
+    "clean": "kdsm_data_0dot1_duffing_aug_clean.mat",
+    "noise10": "kdsm_data_0dot1_duffing_aug_snr10.mat",
+    "metadata": "kdsm_data_0dot1_duffing_aug_metadata.json"
+  }
+}

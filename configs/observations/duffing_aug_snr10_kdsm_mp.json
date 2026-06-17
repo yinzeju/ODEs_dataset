@@ -1,0 +1,20 @@
+{
+  "observation_id": "duffing_aug_snr10_kdsm_mp",
+  "system_id": "duffing_aug_snr10",
+  "mode": "kdsm_mp_forced_augmented",
+  "clean_input_channels": ["x", "v", "u", "cos_theta", "sin_theta"],
+  "noise10_input_channels": ["x_noisy", "v_noisy", "u", "cos_theta", "sin_theta"],
+  "target_channels": ["x", "v"],
+  "noise_model": {
+    "snr_db": 10.0,
+    "noisy_channels": ["x", "v"],
+    "clean_channels": ["u", "cos_theta", "sin_theta"],
+    "power_source_split": "train_clean_only",
+    "noise_added_after_downsampling": true
+  },
+  "normalization_policy": {
+    "raw_physical_units_saved": true,
+    "statistics_source": "clean_train_only",
+    "eps_std": 1.0e-8
+  }
+}
