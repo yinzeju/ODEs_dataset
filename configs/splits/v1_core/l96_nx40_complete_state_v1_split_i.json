@@ -1,0 +1,9 @@
+{
+  "split_id": "l96_nx40_complete_state_v1_split_i",
+  "split_type": "initial_condition",
+  "grouping_unit": "trajectory",
+  "assignment_policy": "deterministic_ordered_trajectory_blocks",
+  "train_count": 24,
+  "val_count": 8,
+  "test_count": 8
+}

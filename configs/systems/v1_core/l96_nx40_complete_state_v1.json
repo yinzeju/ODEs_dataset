@@ -1,0 +1,29 @@
+{
+  "dataset_id": "l96_nx40_complete_state_v1",
+  "system_id": "lorenz96",
+  "family": "v1_core",
+  "variant": "nx40_f8_complete_state_v1",
+  "state_dim": 40,
+  "parameter_names": ["F0"],
+  "default_parameters": {
+    "F0": 8.0
+  },
+  "initial_condition_domain": {
+    "type": "seed_spawned_gaussian_perturbation_around_forcing",
+    "delta_init": 0.01,
+    "base_state": "F0 * ones(Nx)"
+  },
+  "dt_internal": 0.005,
+  "q_save": 10,
+  "tau": 0.05,
+  "burn_in_time": 100.0,
+  "burn_in_steps": 20000,
+  "trajectory_length": 2048,
+  "num_trajectories": 40,
+  "solver_name": "fixed_step_rk4",
+  "float_type": "Float64",
+  "seed_policy": {
+    "master_seed": 20260624,
+    "spawn_rule": "MersenneTwister(master_seed) draws one UInt32 seed per trajectory; each trajectory uses its own MersenneTwister(seed)."
+  }
+}

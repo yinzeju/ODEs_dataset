@@ -1,0 +1,14 @@
+{
+  "window_id": "l96_nx40_complete_state_v1_windows",
+  "one_step": {
+    "window_id": "l96_nx40_complete_state_v1_one_step",
+    "window_type": "one_step",
+    "lag": 1
+  },
+  "rollout": {
+    "window_id": "l96_nx40_complete_state_v1_rollout",
+    "window_type": "rollout",
+    "h_max": 64,
+    "horizons": [1, 2, 4, 8, 16, 32, 64]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "release_id": "l96_nx40_complete_state_v1",
+  "dataset_version": "1.0.0",
+  "scope": "v1_core",
+  "system_config": "configs/systems/v1_core/l96_nx40_complete_state_v1.json",
+  "split_config": "configs/splits/v1_core/l96_nx40_complete_state_v1_split_i.json",
+  "window_config": "configs/windows/v1_core/l96_nx40_complete_state_v1_windows.json",
+  "task_config": "configs/tasks/v1_core/l96_nx40_complete_state_v1_tasks.json",
+  "output_root": "data/releases/l96_nx40_complete_state_v1",
+  "metadata_json": "data/releases/l96_nx40_complete_state_v1/metadata.json",
+  "normalization_json": "data/releases/l96_nx40_complete_state_v1/normalization.json",
+  "splits_json": "data/releases/l96_nx40_complete_state_v1/splits.json"
+}
