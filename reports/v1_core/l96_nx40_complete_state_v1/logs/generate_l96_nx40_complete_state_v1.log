@@ -1,0 +1,13 @@
+dataset_id: l96_nx40_complete_state_v1
+started_at: 2026-07-08T00:24:51.175
+finished_at: 2026-07-08T00:24:57.133
+shape_all: (480, 2049, 40)
+split_shapes: Dict("test" => [96, 2049, 40], "val" => [96, 2049, 40], "train" => [288, 2049, 40])
+mu_sp: 2.3415958840689868
+sigma_sp: 3.6401584263250446
+epsilon_RK: 1.211238743001693e-8
+epsilon_RK_max: 4.1958652308413425e-8
+state_range: [-11.52720539159384, 18.198655602563182]
+energy_mean_mean_by_trajectory: 9.374898777483443
+all_passed: true
+dataset_root: D:\MyVault\Projects\Julia\ODEs_dataset\data\releases\l96_nx40_complete_state_v1

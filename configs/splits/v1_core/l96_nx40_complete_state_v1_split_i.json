@@ -3,7 +3,7 @@
   "split_type": "initial_condition",
   "grouping_unit": "trajectory",
   "assignment_policy": "deterministic_ordered_trajectory_blocks",
-  "train_count": 24,
-  "val_count": 8,
-  "test_count": 8
+  "train_count": 288,
+  "val_count": 96,
+  "test_count": 96
 }

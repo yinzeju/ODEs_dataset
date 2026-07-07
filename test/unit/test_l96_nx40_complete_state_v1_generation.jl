@@ -16,16 +16,16 @@ include(joinpath(PROJECT_ROOT, "src", "data", "l96_nx40_complete_state_v1_genera
     @test l96_boundary_index_check(config)
 
     splits = l96_split_indices(config)
-    @test length(splits["train"]) == 24
-    @test length(splits["val"]) == 8
-    @test length(splits["test"]) == 8
+    @test length(splits["train"]) == 288
+    @test length(splits["val"]) == 96
+    @test length(splits["test"]) == 96
 
     windows = l96_window_counts(config, splits)
-    @test windows["one_step"]["train"] == 49_152
-    @test windows["one_step"]["val"] == 16_384
-    @test windows["one_step"]["test"] == 16_384
+    @test windows["one_step"]["train"] == 589_824
+    @test windows["one_step"]["val"] == 196_608
+    @test windows["one_step"]["test"] == 196_608
     @test windows["rollout"]["starts_per_trajectory"] == 1_985
-    @test windows["rollout"]["train"] == 47_640
-    @test windows["rollout"]["val"] == 15_880
-    @test windows["rollout"]["test"] == 15_880
+    @test windows["rollout"]["train"] == 571_680
+    @test windows["rollout"]["val"] == 190_560
+    @test windows["rollout"]["test"] == 190_560
 end

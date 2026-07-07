@@ -19,7 +19,7 @@
   "burn_in_time": 100.0,
   "burn_in_steps": 20000,
   "trajectory_length": 2048,
-  "num_trajectories": 40,
+  "num_trajectories": 480,
   "solver_name": "fixed_step_rk4",
   "float_type": "Float64",
   "seed_policy": {
