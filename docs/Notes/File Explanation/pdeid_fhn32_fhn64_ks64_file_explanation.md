@@ -4,7 +4,7 @@
 
 This task generated the `pdeid_fhn32_fhn64_ks64` high-dimensional PDE identification dataset for three complete-state autonomous systems: `fhn32`, `fhn64`, and `ks64`. The implementation follows the task specification in `docs/notes/mathematical explanation/pdeid_fhn32_fhn64_ks64.md` for the data interface, trajectory split, sampling interval, record length, HDF5 schema, and numerical certificates.
 
-The formal run uses `R=120` trajectories per object, split as `80/20/20`, with `M=1024`, `tau=0.25`, and complete-state targets `y_m = z_m`. The output tensors are stored in row-time-dimension layout as `/state_rtd[trajectory, time, state]`.
+The current formal run uses `R=480` trajectories per object, split as `320/80/80`, with `M=1024`, `tau=0.25`, and complete-state targets `y_m = z_m`. The output tensors are stored in row-time-dimension layout as `/state_rtd[trajectory, time, state]`. This 2026-07-07 update expands the original 120-trajectory release by 4x while keeping the dynamics, sampling interval, record length, solver settings, and acceptance/certificate protocol unchanged.
 
 ## Run Entry Points And Scripts
 
@@ -54,7 +54,7 @@ Formal command:
 julia --project=. experiments\data_generation\generate_pdeid_fhn32_fhn64_ks64.jl
 ```
 
-Formal generation passed. Readback checks confirmed HDF5 shapes `[120,1025,64]`, `[120,1025,128]`, and `[120,1025,64]`, with split counts `80/20/20` for every object. Formal one-step time errors were `3.732958e-12`, `3.404201e-12`, and `4.073017e-7`, all below the `1e-4` threshold. KS zero-mean drift stayed at floating-point roundoff scale in generation diagnostics.
+Formal generation passed. Readback checks confirmed HDF5 shapes `[480,1025,64]`, `[480,1025,128]`, and `[480,1025,64]`, with split counts `320/80/80` for every object. Formal one-step time errors were `3.730045e-12`, `3.736437e-12`, and `2.231861e-7`, all below the `1e-4` threshold. The FHN64 space certificate was `1.310732e-3`, the KS64 space certificate was `2.234353e-7`, and KS zero-mean drift stayed at floating-point roundoff scale in generation diagnostics.
 
 ## Numerical Adjustments
 

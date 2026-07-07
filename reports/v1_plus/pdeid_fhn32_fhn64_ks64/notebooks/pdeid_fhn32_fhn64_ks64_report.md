@@ -6,15 +6,15 @@ This report documents the completed `pdeid_fhn32_fhn64_ks64` data-generation tas
 
 | Object | Model | Spatial points | State dimension | Domain | Formal shape |
 | --- | --- | ---: | ---: | --- | --- |
-| `fhn32` | FitzHugh-Nagumo reaction-diffusion | 32 | 64 | `[0,32)` | `[120,1025,64]` |
-| `fhn64` | FitzHugh-Nagumo reaction-diffusion | 64 | 128 | `[0,32)` | `[120,1025,128]` |
-| `ks64` | Kuramoto-Sivashinsky | 64 | 64 | `[0,22)` | `[120,1025,64]` |
+| `fhn32` | FitzHugh-Nagumo reaction-diffusion | 32 | 64 | `[0,32)` | `[480,1025,64]` |
+| `fhn64` | FitzHugh-Nagumo reaction-diffusion | 64 | 128 | `[0,32)` | `[480,1025,128]` |
+| `ks64` | Kuramoto-Sivashinsky | 64 | 64 | `[0,22)` | `[480,1025,64]` |
 
 The task follows the mathematical specification at `docs/notes/mathematical explanation/pdeid_fhn32_fhn64_ks64.md`. It only generates and validates numerical data; no downstream MP-KDSM model is trained here.
 
 ## Method And Engineering Choices
 
-All formal objects use complete-state prediction, so `y_m = z_m`. The trajectory protocol is `R=120`, split by full trajectories into `80/20/20`, with `M=1024`, `tau=0.25`, and rollout horizons `{1,2,4,8,16,32,64}`.
+All formal objects use complete-state prediction, so `y_m = z_m`. The current trajectory protocol is `R=480`, split by full trajectories into `320/80/80`, with `M=1024`, `tau=0.25`, and rollout horizons `{1,2,4,8,16,32,64}`. This 2026-07-07 expansion keeps the original 2026-07-03 dynamics, solver settings, sampling interval, record length, and certificate protocol unchanged while increasing the trajectory count by 4x.
 
 FHN32 and FHN64 use periodic finite differences for the diffusion term and SciML `Rodas5P()` for the method-of-lines ODE. The formal tolerances are `reltol=1e-8` and `abstol=1e-10`.
 
@@ -46,7 +46,7 @@ The validation separates numerical data-generation error from downstream model e
 | --- | --- | --- |
 | HDF5 schema/readback | Required datasets and split counts present | Passed |
 | State finiteness | All saved states finite | Passed |
-| Split counts | `80/20/20` per object | Passed |
+| Split counts | `320/80/80` per object | Passed |
 | One-step time certificate | `epsilon_time_one_step <= 1e-4` | Passed for all objects |
 | KS zero mean | Roundoff-scale mean drift | Passed |
 | Space certificate | Record FHN64 and KS64 one-step reference gaps | Recorded |
@@ -55,9 +55,9 @@ Readback confirmed the formal HDF5 tensor shapes and metadata:
 
 | Object | Tensor shape | Time length | Train/Val/Test | `tau` |
 | --- | ---: | ---: | ---: | ---: |
-| `fhn32` | `[120,1025,64]` | 1025 | `80/20/20` | 0.25 |
-| `fhn64` | `[120,1025,128]` | 1025 | `80/20/20` | 0.25 |
-| `ks64` | `[120,1025,64]` | 1025 | `80/20/20` | 0.25 |
+| `fhn32` | `[480,1025,64]` | 1025 | `320/80/80` | 0.25 |
+| `fhn64` | `[480,1025,128]` | 1025 | `320/80/80` | 0.25 |
+| `ks64` | `[480,1025,64]` | 1025 | `320/80/80` | 0.25 |
 
 ## Results And Diagnostics
 
@@ -65,9 +65,9 @@ The formal numerical certificate produced:
 
 | Object | State range | Train field-shared mean | Train field-shared std | `epsilon_time_one_step` | Space certificate |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| `fhn32` | `[-1.842440, 0.215583]` | `[-1.210499, -0.616971]` | `[0.053265, 0.044952]` | `3.732958e-12` | `epsilon_fhn32_from_fhn64=4.789819e-3` |
-| `fhn64` | `[-1.824191, 0.172919]` | `[-1.210110, -0.617374]` | `[0.051509, 0.042402]` | `3.404201e-12` | `epsilon_space=1.298078e-3` |
-| `ks64` | `[-3.094114, 3.088260]` | `[-1.759487e-16]` | `[1.191481]` | `4.073017e-7` | `epsilon_space=4.073941e-7` |
+| `fhn32` | `[-1.846192, 0.224752]` | `[-1.210508, -0.616961]` | `[0.053307, 0.045015]` | `3.730045e-12` | `epsilon_fhn32_from_fhn64=4.786109e-3` |
+| `fhn64` | `[-1.834584, 0.197110]` | `[-1.210149, -0.617339]` | `[0.051656, 0.042575]` | `3.736437e-12` | `epsilon_space=1.310732e-3` |
+| `ks64` | `[-3.095514, 3.093958]` | `[-7.972581e-17]` | `[1.186932]` | `2.231861e-7` | `epsilon_space=2.234353e-7` |
 
 The generated plots include FHN `u/v` heatmaps, the KS `u` heatmap, the KS time-averaged Fourier energy spectrum, and bar plots for the time and space certificates.
 

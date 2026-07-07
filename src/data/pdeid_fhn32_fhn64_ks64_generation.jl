@@ -67,9 +67,9 @@ function pdeid_profile(project_root::AbstractString, name::Symbol)
     if name == :formal
         return PdeidProfile(
             name = :formal,
-            R_train = 80,
-            R_val = 20,
-            R_test = 20,
+            R_train = 320,
+            R_val = 80,
+            R_test = 80,
             M = 1024,
             tau = 0.25,
             fhn_warm = 32.0,
