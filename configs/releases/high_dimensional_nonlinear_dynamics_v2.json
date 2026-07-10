@@ -1,0 +1,54 @@
+{
+  "release_id": "high_dimensional_nonlinear_dynamics_v2",
+  "release_version": "2.0.0",
+  "source_policy": "fresh_numerical_integration",
+  "normalization_policy": "none_raw_physical_coordinates",
+  "float_type": "Float64",
+  "master_seed": 20260710,
+  "split": {
+    "type": "Split-I trajectory-level",
+    "train": 320,
+    "val": 80,
+    "test": 80
+  },
+  "derived_sampling_views": [0.05, 0.1, 0.25],
+  "objects": {
+    "l96_nx40_raw_v2": {
+      "state_dimension": 40,
+      "base_sampling_interval": 0.05,
+      "trajectory_steps": 2048,
+      "burn_time": 100.0,
+      "solver": "Vern9",
+      "reltol": 1e-10,
+      "abstol": 1e-12,
+      "max_internal_step": 0.01
+    },
+    "ks64_raw_v2": {
+      "state_dimension": 64,
+      "base_sampling_interval": 0.05,
+      "trajectory_steps": 5120,
+      "warm_time": 200.0,
+      "solver": "Fourier pseudospectral ETDRK4",
+      "internal_step": 0.01,
+      "contour_nodes": 64,
+      "reference_spatial_dimension": 128
+    },
+    "fhn64_raw_v2": {
+      "state_dimension": 128,
+      "base_sampling_interval": 0.05,
+      "trajectory_steps": 5120,
+      "solver": "Rodas5P",
+      "reltol": 1e-10,
+      "abstol": 1e-12,
+      "max_internal_step": 0.02,
+      "spatial_discretization": "periodic fourth-order centered difference",
+      "reference_spatial_dimension": 128,
+      "regime_counts": {
+        "active": 240,
+        "formation": 96,
+        "collision": 96,
+        "recovery": 48
+      }
+    }
+  }
+}

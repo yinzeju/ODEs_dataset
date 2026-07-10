@@ -1,0 +1,28 @@
+{
+    "created_at": "2026-07-10T17:22:26.378",
+    "normalization_policy": "none",
+    "output_root": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\data\\releases\\high_dimensional_nonlinear_dynamics_v2",
+    "passed": true,
+    "profile": "formal",
+    "report_root": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\reports\\v2_core\\high_dimensional_nonlinear_dynamics_v2",
+    "source_policy": "fresh_numerical_integration_only",
+    "systems": {
+        "fhn64": {
+            "certificate_path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\data\\releases\\high_dimensional_nonlinear_dynamics_v2\\fhn64_data_certificate_v2.json",
+            "passed": true,
+            "path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\data\\releases\\high_dimensional_nonlinear_dynamics_v2\\fhn64_raw_v2.h5"
+        },
+        "ks64": {
+            "certificate_path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\data\\releases\\high_dimensional_nonlinear_dynamics_v2\\ks64_data_certificate_v2.json",
+            "passed": true,
+            "path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\data\\releases\\high_dimensional_nonlinear_dynamics_v2\\ks64_raw_v2.h5"
+        },
+        "l96": {
+            "certificate_path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\data\\releases\\high_dimensional_nonlinear_dynamics_v2\\l96_nx40_data_certificate_v2.json",
+            "passed": true,
+            "path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\data\\releases\\high_dimensional_nonlinear_dynamics_v2\\l96_nx40_raw_v2.h5"
+        }
+    },
+    "table_path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\reports\\v2_core\\high_dimensional_nonlinear_dynamics_v2\\tables\\generation_summary.csv",
+    "task_code": "high_dimensional_nonlinear_dynamics_v2"
+}
