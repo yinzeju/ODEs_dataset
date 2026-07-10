@@ -12,7 +12,7 @@ The generated learner interfaces are:
 ## Run Entry Points and Scripts
 
 - `experiments/data_generation/generate_duffing_aug_snr10_dataset.jl` is the formal generation entry point.
-- `src/generators/duffing_aug_snr10_generator.jl` contains the local adaptive DOPRI5 integrator, fixed multisine construction, anti-alias decimation, 10 dB noise protocol, standardization statistics, diagnostics, JLD2/JSON writing, and time-series plot generation.
+- `src/generators/duffing_aug_snr10_generator.jl` contains the local adaptive DOPRI5 integrator, fixed multisine construction, anti-alias decimation, 10 dB noise protocol, raw-coordinate persistence, diagnostics, JLD2/JSON writing, and time-series plot generation.
 
 Run command used:
 
@@ -47,7 +47,7 @@ The mathematical note recommends `.mat` filenames. This project run uses the exi
 
 ## Script-to-Script Data Flow
 
-The formal entry script imports `Plots`, includes the generator, and calls `generate_duffing_aug_snr10_dataset(PROJECT_ROOT)`. The generator samples fixed Fourier phases from `forcing_seed`, computes one global multisine normalization factor, samples all trajectory initial conditions from `trajectory_seed`, integrates physical Duffing states at `2000 Hz`, anti-alias filters and decimates physical channels to `500 Hz`, evaluates forcing phase and forcing exactly on the model grid, adds 10 dB Gaussian noise only to `x` and `v` after downsampling, computes clean-train-only standardization statistics, runs diagnostics, then writes data, metadata, report tables, logs, and plots.
+The formal entry script imports `Plots`, includes the generator, and calls `generate_duffing_aug_snr10_dataset(PROJECT_ROOT; profile = :formal)`. The generator samples fixed Fourier phases from `forcing_seed`, computes one global physical-amplitude factor for the multisine template, samples all trajectory initial conditions from `trajectory_seed`, integrates physical Duffing states at `2000 Hz`, anti-alias filters and decimates physical channels to `500 Hz`, evaluates forcing phase and forcing exactly on the model grid, adds 10 dB Gaussian noise only to `x` and `v` after downsampling, runs diagnostics, then writes raw-coordinate data, metadata, report tables, logs, and plots. No input/target standardization statistics are computed or stored.
 
 ## Validation Commands and Results
 

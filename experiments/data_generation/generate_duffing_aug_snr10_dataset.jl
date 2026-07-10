@@ -11,7 +11,7 @@ end
 include(joinpath(PROJECT_ROOT, "src", "generators", "duffing_aug_snr10_generator.jl"))
 
 function run_duffing_aug_snr10_generation()
-    return generate_duffing_aug_snr10_dataset(PROJECT_ROOT)
+    return generate_duffing_aug_snr10_dataset(PROJECT_ROOT; profile = :formal)
 end
 
 if abspath(PROGRAM_FILE) == abspath(@__FILE__)

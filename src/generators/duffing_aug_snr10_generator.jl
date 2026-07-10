@@ -29,7 +29,6 @@ struct DuffingAugSNR10Spec
     trajectory_seed::Int
     noise_seed::Int
     snr_db::Float64
-    eps_std::Float64
     horizons::Vector{Int}
 end
 
@@ -82,9 +81,42 @@ function duffing_aug_snr10_default_spec()
         2026061702,
         2026061703,
         10.0,
-        1.0e-8,
         [1, 2, 4, 8, 16, 32, 64, 128],
     )
+end
+
+function duffing_aug_snr10_smoke_spec()
+    formal = duffing_aug_snr10_default_spec()
+    return DuffingAugSNR10Spec(
+        formal.dataset_id,
+        formal.mass,
+        formal.damping,
+        formal.linear_stiffness,
+        formal.cubic_stiffness,
+        formal.forcing_amplitude,
+        formal.forcing_base_frequency,
+        formal.forcing_frequencies,
+        formal.fs_sim,
+        formal.fs_model,
+        0.5,
+        16,
+        4,
+        4,
+        formal.reltol,
+        formal.abstol,
+        formal.max_internal_step,
+        formal.forcing_seed,
+        formal.trajectory_seed,
+        formal.noise_seed,
+        formal.snr_db,
+        [1, 2, 4, 8, 16, 32],
+    )
+end
+
+function duffing_aug_snr10_spec(profile::Symbol)
+    profile === :formal && return duffing_aug_snr10_default_spec()
+    profile === :smoke && return duffing_aug_snr10_smoke_spec()
+    throw(ArgumentError("unsupported Duffing augmented SNR10 profile: $profile"))
 end
 
 num_trajectories(spec::DuffingAugSNR10Spec) = spec.train_count + spec.val_count + spec.test_count
@@ -396,37 +428,6 @@ function add_noise10(state_clean::Array{Float64,3}, spec::DuffingAugSNR10Spec)
     return state_noise10, x_power, v_power, sigma_x^2, sigma_v^2, sigma_x, sigma_v
 end
 
-function channel_mean_std(values::AbstractVector{Float64})
-    return mean(values), std(values; corrected = false)
-end
-
-function clean_train_standardization(
-    state_clean::Array{Float64,3},
-    forcing_signal::Array{Float64,3},
-    forcing_phase::Array{Float64,3},
-    spec::DuffingAugSNR10Spec,
-)
-    n = spec.train_count * size(state_clean, 2)
-    z = Matrix{Float64}(undef, n, 5)
-    y = Matrix{Float64}(undef, n, 2)
-    row = 1
-    @inbounds for r in 1:spec.train_count, m in axes(state_clean, 2)
-        z[row, 1] = state_clean[r, m, 1]
-        z[row, 2] = state_clean[r, m, 2]
-        z[row, 3] = forcing_signal[r, m, 1]
-        z[row, 4] = forcing_phase[r, m, 1]
-        z[row, 5] = forcing_phase[r, m, 2]
-        y[row, 1] = state_clean[r, m, 1]
-        y[row, 2] = state_clean[r, m, 2]
-        row += 1
-    end
-    input_mean = [mean(@view z[:, j]) for j in axes(z, 2)]
-    input_std = [std(@view z[:, j]; corrected = false) for j in axes(z, 2)]
-    target_mean = [mean(@view y[:, j]) for j in axes(y, 2)]
-    target_std = [std(@view y[:, j]; corrected = false) for j in axes(y, 2)]
-    return input_mean, input_std, target_mean, target_std
-end
-
 function empirical_snr_train_db(state_clean::Array{Float64,3}, state_noise10::Array{Float64,3}, spec::DuffingAugSNR10Spec)
     result = Dict{String,Float64}()
     for (name, channel) in ("x" => 1, "v" => 2)
@@ -656,7 +657,7 @@ function write_markdown_report(path::AbstractString, metadata::AbstractDict)
         println(io, "| Model snapshots per trajectory | `", metadata["num_model_snapshots"], "` |")
         println(io, "| Split counts | `", diag["split_counts"], "` |")
         println(io)
-        println(io, "## Noise and Standardization")
+        println(io, "## Noise and Coordinate Policy")
         println(io, "| Quantity | Value |")
         println(io, "| --- | --- |")
         println(io, "| Training power x | `", noise["training_power_x"], "` |")
@@ -665,6 +666,7 @@ function write_markdown_report(path::AbstractString, metadata::AbstractDict)
         println(io, "| Noise std v | `", noise["noise_std_v"], "` |")
         println(io, "| Empirical SNR x | `", diag["empirical_snr_train_db"]["x"], " dB` |")
         println(io, "| Empirical SNR v | `", diag["empirical_snr_train_db"]["v"], " dB` |")
+        println(io, "| Dataset normalization | `none`; raw physical coordinates |")
         println(io)
         println(io, "## Validation")
         println(io, "| Check | Result |")
@@ -686,7 +688,22 @@ function write_markdown_report(path::AbstractString, metadata::AbstractDict)
     return path
 end
 
-function duffing_aug_snr10_paths(project_root::AbstractString)
+function duffing_aug_snr10_paths(project_root::AbstractString, profile::Symbol)
+    if profile === :smoke
+        root = joinpath(project_root, "runs", "smoke_tests", DUFFING_AUG_SNR10_ID)
+        return Dict(
+            "clean_jld2" => joinpath(root, "kdsm_data_0dot1_duffing_aug_clean.jld2"),
+            "noise10_jld2" => joinpath(root, "kdsm_data_0dot1_duffing_aug_snr10.jld2"),
+            "metadata_json" => joinpath(root, "kdsm_data_0dot1_duffing_aug_metadata.json"),
+            "release_manifest" => joinpath(root, "release_manifest.json"),
+            "summary_csv" => joinpath(root, "duffing_aug_snr10_generation_summary.csv"),
+            "log" => joinpath(root, "duffing_aug_snr10_generation.log"),
+            "report_md" => joinpath(root, "duffing_aug_snr10_report.md"),
+            "plot_dir" => joinpath(root, "plots"),
+        )
+    elseif profile !== :formal
+        throw(ArgumentError("unsupported Duffing augmented SNR10 profile: $profile"))
+    end
     data_root = joinpath(project_root, "data", "processed", DUFFING_AUG_SNR10_ID)
     manifest_root = joinpath(project_root, "data", "manifests", DUFFING_AUG_SNR10_ID)
     release_root = joinpath(project_root, "data", "releases", DUFFING_AUG_SNR10_ID)
@@ -729,10 +746,7 @@ function save_duffing_aug_snr10_dataset(
         initial_phase,
         split_id,
         time_model,
-        input_mean_clean_train = metadata["standardization"]["input_mean_clean_train"],
-        input_std_clean_train = metadata["standardization"]["input_std_clean_train"],
-        target_mean_clean_train = metadata["standardization"]["target_mean_clean_train"],
-        target_std_clean_train = metadata["standardization"]["target_std_clean_train"],
+        normalization_policy = metadata["normalization_policy"],
     )
     ensure_parent_dir(paths["noise10_jld2"])
     JLD2.jldsave(
@@ -748,26 +762,21 @@ function save_duffing_aug_snr10_dataset(
         initial_phase,
         split_id,
         time_model,
-        input_mean_clean_train = metadata["standardization"]["input_mean_clean_train"],
-        input_std_clean_train = metadata["standardization"]["input_std_clean_train"],
-        target_mean_clean_train = metadata["standardization"]["target_mean_clean_train"],
-        target_std_clean_train = metadata["standardization"]["target_std_clean_train"],
+        normalization_policy = metadata["normalization_policy"],
     )
     return paths
 end
 
-function generate_duffing_aug_snr10_dataset(project_root::AbstractString)
-    spec = duffing_aug_snr10_default_spec()
+function generate_duffing_aug_snr10_dataset(project_root::AbstractString; profile::Symbol = :formal)
+    spec = duffing_aug_snr10_spec(profile)
     forcing = build_duffing_forcing(spec)
-    paths = duffing_aug_snr10_paths(project_root)
+    paths = duffing_aug_snr10_paths(project_root, profile)
     @printf("generating %s: R=%d M=%d fs_model=%.0fHz\n", spec.dataset_id, num_trajectories(spec), num_model_snapshots(spec), spec.fs_model)
     initial_state, initial_phase, trajectory_seeds = sample_initial_conditions(spec)
     split_id = split_ids(spec)
     state_clean, forcing_signal, forcing_phase, time_model, accepted_steps, rejected_steps =
         build_clean_tensors(spec, forcing, initial_state, initial_phase)
     state_noise10, px, pv, varx, varv, sigx, sigv = add_noise10(state_clean, spec)
-    input_mean, input_std, target_mean, target_std =
-        clean_train_standardization(state_clean, forcing_signal, forcing_phase, spec)
     diagnostics = validate_duffing_aug_snr10(
         spec,
         forcing,
@@ -780,8 +789,10 @@ function generate_duffing_aug_snr10_dataset(project_root::AbstractString)
     system = spec_metadata(spec, forcing)
     metadata = Dict{String,Any}(
         "dataset_id" => spec.dataset_id,
+        "profile" => String(profile),
         "generated_at" => string(now()),
         "array_layout" => "trajectory_time_channel",
+        "normalization_policy" => "none_raw_physical_coordinates",
         "num_trajectories" => num_trajectories(spec),
         "num_sim_snapshots" => num_sim_snapshots(spec),
         "num_model_snapshots" => num_model_snapshots(spec),
@@ -798,13 +809,6 @@ function generate_duffing_aug_snr10_dataset(project_root::AbstractString)
             "noise_variance_v" => varv,
             "noise_std_x" => sigx,
             "noise_std_v" => sigv,
-        ),
-        "standardization" => Dict(
-            "eps_std" => spec.eps_std,
-            "input_mean_clean_train" => input_mean,
-            "input_std_clean_train" => input_std,
-            "target_mean_clean_train" => target_mean,
-            "target_std_clean_train" => target_std,
         ),
         "integration" => Dict(
             "integrator" => "local_adaptive_dopri5",
@@ -849,6 +853,7 @@ function generate_duffing_aug_snr10_dataset(project_root::AbstractString)
         "dataset_id" => spec.dataset_id,
         "generated_at" => metadata["generated_at"],
         "all_passed" => diagnostics["passed"],
+        "normalization_policy" => metadata["normalization_policy"],
         "generated_files" => metadata["generated_files"],
         "diagnostics" => diagnostics,
     ))

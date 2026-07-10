@@ -12,9 +12,5 @@
     "power_source_split": "train_clean_only",
     "noise_added_after_downsampling": true
   },
-  "normalization_policy": {
-    "raw_physical_units_saved": true,
-    "statistics_source": "clean_train_only",
-    "eps_std": 1.0e-8
-  }
+  "normalization_policy": "none_raw_physical_coordinates"
 }

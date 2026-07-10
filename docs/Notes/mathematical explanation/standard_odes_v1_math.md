@@ -2,22 +2,20 @@
 
 ## 1. 数据集定位
 
-`Standard_ODEs_v1` 是 `ODEs_dataset` 中面向后续常用学习与评测任务整理的一组标准 ODE 对象集合。它不是一个新的动力学家族，而是从项目内已经存在、已经有数学说明和工程对象的系统中抽取一组常用 clean 对象，并为每个对象定义两个统一的含噪观测版本。
+`Standard_ODEs_v1` is a consolidated set of standard ODE objects for common learning and evaluation tasks. It is not a new dynamical family: this specification defines eight clean objects and two consistent noisy observation variants for each object.
 
 本聚合版本包含 8 个 clean 基础对象：
 
-| 序号 | 聚合对象 | 源对象或源说明 | 状态维数 | 类型 |
+| 序号 | 聚合对象 | Definition in this document | 状态维数 | 类型 |
 | ---: | --- | --- | ---: | --- |
-| 1 | `linear_diagonal` | `linear_diagonal_math.md`; `configs/systems/unit_internal/linear_diagonal_small.json` | 4 | 线性实对角谱 |
-| 2 | `linear_rotation_contraction_2d` | `linear_rotation_contraction_2d_math.md`; `configs/systems/unit_internal/linear_rotation_contraction_2d.json` | 2 | 线性复共轭谱 |
-| 3 | `damped_linear_oscillator` | `linear_oscillator_math.md`; `configs/systems/linear_oscillator_v1_core_damped.json` | 2 | 线性阻尼振子 |
-| 4 | `duffing_chi40_medium` | `duffing_nonlinearity_matrix_v1_math.md` 中的 `beta=10.0, Q=2.0` cell | 2 | 中等 Duffing 非线性 |
-| 5 | `duffing_chi320_strong` | `duffing_nonlinearity_matrix_v1_math.md` 中的 `beta=20.0, Q=4.0` cell | 2 | 强 Duffing 非线性 |
-| 6 | `lorenz63_standard` | `lorenz63_math.md`; `configs/systems/v1_core/lorenz63_standard.json` | 3 | 低维耗散混沌 |
-| 7 | `rossler_standard` | `rossler_math.md`; `configs/systems/v1_core/rossler_standard.json` | 3 | 单卷曲耗散混沌 |
-| 8 | `nonlinear_pendulum_lusch2018` | `lusch-aligned_nonlinear_pendulum_math.md`; `configs/systems/v1_plus/nonlinear_pendulum_lusch2018_medium.json` | 2 | Hamiltonian 非线性摆 |
-
-`jordan_nonnormal_linear` 不纳入本聚合版本。
+| 1 | `linear_diagonal` | Section 4.1 | 4 | 线性实对角谱 |
+| 2 | `linear_rotation_contraction_2d` | Section 4.2 | 2 | 线性复共轭谱 |
+| 3 | `damped_linear_oscillator` | Section 4.3 | 2 | 线性阻尼振子 |
+| 4 | `duffing_chi40_medium` | Section 5.1, `beta=10.0, Q=2.0` | 2 | 中等 Duffing 非线性 |
+| 5 | `duffing_chi320_strong` | Section 5.2, `beta=20.0, Q=4.0` | 2 | 强 Duffing 非线性 |
+| 6 | `lorenz63_standard` | Section 6 | 3 | 低维耗散混沌 |
+| 7 | `rossler_standard` | Section 7 | 3 | 单卷曲耗散混沌 |
+| 8 | `nonlinear_pendulum_lusch2018` | Section 8 | 2 | Hamiltonian 非线性摆 |
 
 每个 clean 基础对象同时派生两个含噪观测版本：
 
@@ -274,6 +272,22 @@ $$
 $$
 
 这些设置的目标是让生成数据的数值误差小于后续 Float32 训练和 5 dB / 15 dB 观测噪声带来的学习误差，不把数据生成误差误认为模型误差。
+
+### 2.5 Raw-Coordinate And No-Standardization Policy
+
+`Standard_ODEs_v1` stores the clean state, clean observation, 5 dB and 15 dB noisy observations, and clean target in raw physical coordinates. `ODEs_dataset` does not compute or store training means, training standard deviations, standardized tensors, or a normalizer:
+
+$$
+
+\boxed{
+\texttt{normalization\_policy}
+=
+\texttt{none\_raw\_physical\_coordinates}.
+}
+
+$$
+
+Noise power is still determined from physical signal power in the clean training split because this belongs to the SNR definition, not coordinate standardization. Downstream scaling, when required, must be fitted after the trajectory-level split using training data only and must not be written back into this dataset object.
 
 ---
 
@@ -579,7 +593,7 @@ $$
 
 ## 5. 两个 Duffing 对象
 
-两个 Duffing 对象都来自 `duffing_nonlinearity_matrix_v1`，统一使用 hardening Duffing 形式：
+Both Duffing objects are defined directly in this dataset group using the hardening Duffing form:
 
 $$
 \dot q=p,

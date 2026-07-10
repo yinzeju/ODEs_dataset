@@ -1,4 +1,4 @@
-当前任务沿用上传说明中的单自由度 Duffing 参数与随机相位 multisine 背景，但把“单条长轨线切段”改为“固定强迫系统下的多初值独立轨线”，并将噪声统一设为 $10\,\mathrm{dB}$。fileciteturn3file0
+当前任务沿用上传说明中的单自由度 Duffing 参数与随机相位 multisine 背景，但把“单条长轨线切段”改为“固定强迫系统下的多初值独立轨线”，并将噪声统一设为 $10\,\mathrm{dB}$。
 
 建议任务代号为：
 
@@ -12,7 +12,7 @@ $$
 
 其中 `aug` 表示强迫相位自治增广，`snr10` 表示物理状态观测信噪比为 $10\,\mathrm{dB}$。
 
-:::writing{variant="document" id="61427"}
+
 # KDSM-MP 单自由度增广 Duffing 数据生成任务
 
 ## 0. 任务名称与代号
@@ -1125,131 +1125,35 @@ $$
 
 ---
 
-# 12. 标准化协议
+# 12. Raw Physical-Coordinate Policy
 
-数据生成阶段必须保存物理单位下的 raw clean/noisy 数据，不允许直接覆盖为最大值归一化结果。
-
-只使用 clean training split 计算输入标准化统计量：
+`ODEs_dataset` performs no standardization during data generation. Clean, noise10, and target values are stored in raw physical coordinates:
 
 $$
 
 \boxed{
-\boldsymbol{\mu}_{\mathbf z}
-=
-\mathbb E_{\mathrm{train}}
-\left[
-\mathbf z_{\mathrm{clean}}
-\right],
-}
-
-$$
-
-$$
-
-\boxed{
-\boldsymbol{\sigma}_{\mathbf z}
-=
-\operatorname{Std}_{\mathrm{train}}
-\left[
-\mathbf z_{\mathrm{clean}}
-\right].
-}
-
-$$
-
-目标标准化统计量为
-
-$$
-
-\boxed{
-\boldsymbol{\mu}_{\mathbf y}
-=
-\mathbb E_{\mathrm{train}}
-\left[
-\mathbf y
-\right],
-}
-
-$$
-
-$$
-
-\boxed{
-\boldsymbol{\sigma}_{\mathbf y}
-=
-\operatorname{Std}_{\mathrm{train}}
-\left[
-\mathbf y
-\right].
-}
-
-$$
-
-Clean 输入标准化为
-
-$$
-
-\widetilde{\mathbf z}_{m,\mathrm{clean}}^{(\nu)}
-=
-\frac{
 \mathbf z_{m,\mathrm{clean}}^{(\nu)}
--
-\boldsymbol{\mu}_{\mathbf z}
-}{
-\boldsymbol{\sigma}_{\mathbf z}
-+
-\varepsilon_{\mathrm{std}}
-}.
-
-$$
-
-Noisy 输入使用同一组 clean-training statistics：
-
-$$
-
-\boxed{
-\widetilde{\mathbf z}_{m,\mathrm{noise10}}^{(\nu)}
 =
-\frac{
-\mathbf z_{m,\mathrm{noise10}}^{(\nu)}
--
-\boldsymbol{\mu}_{\mathbf z}
-}{
-\boldsymbol{\sigma}_{\mathbf z}
-+
-\varepsilon_{\mathrm{std}}
-}.
+\begin{bmatrix}
+x_m^{(\nu)} & v_m^{(\nu)} & u_m^{(\nu)} & c_{\mathrm f,m}^{(\nu)} & s_{\mathrm f,m}^{(\nu)}
+\end{bmatrix}^{\top},
 }
 
 $$
 
-目标标准化为
-
 $$
 
-\widetilde{\mathbf y}_m^{(\nu)}
-=
-\frac{
+\boxed{
 \mathbf y_m^{(\nu)}
--
-\boldsymbol{\mu}_{\mathbf y}
-}{
-\boldsymbol{\sigma}_{\mathbf y}
-+
-\varepsilon_{\mathrm{std}}
-}.
+=
+\begin{bmatrix}
+x_m^{(\nu)} & v_m^{(\nu)}
+\end{bmatrix}^{\top}.
+}
 
 $$
 
-建议取
-
-$$
-
-\varepsilon_{\mathrm{std}}=10^{-8}.
-
-$$
-
-不得使用 validation/test 统计量，也不得针对 clean 与 noise10 分别计算两套标准化尺度。
+Data files and metadata store no input or target means, standard deviations, standardized states, or invertible normalizer. Downstream scaling, when required, must be fitted from the training set after the trajectory-level split and must not be written back into this raw dataset object.
 
 ---
 
@@ -1322,16 +1226,15 @@ noise_std_x
 noise_std_v
 ```
 
-## 13.4 标准化统计量
+## 13.4 Raw-Coordinate Policy
 
-保存：
+Store:
 
 ```text
-input_mean_clean_train
-input_std_clean_train
-target_mean_clean_train
-target_std_clean_train
+normalization_policy = none_raw_physical_coordinates
 ```
+
+Do not store input or target standardization statistics.
 
 ---
 
@@ -1349,7 +1252,7 @@ kdsm_data_0dot1_duffing_aug_metadata.json
 
 - `clean.mat` 保存 clean 物理状态、强迫和相位状态；
 - `snr10.mat` 保存与 clean 严格对齐的 $10\,\mathrm{dB}$ noisy 状态；
-- `metadata.json` 保存系统参数、随机种子、频率集合、split 和标准化统计量。
+- `metadata.json` stores system parameters, random seeds, the frequency set, the split, and the raw-coordinate policy.
 
 也可以将 clean 与 noise10 保存到同一个文件，但变量名必须清楚区分。
 

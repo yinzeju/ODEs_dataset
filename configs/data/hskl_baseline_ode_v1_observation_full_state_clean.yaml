@@ -1,6 +1,0 @@
-observation_mode: "full_state"
-noise_level: "clean"
-input_rule: "z_m = x_m"
-target_rule: "y_m = x_m"
-dimension_rule: "d_z = d_y = d_x"
-noise_model: "none"

@@ -1,4 +1,0 @@
-object_id,epsilon_time_one_step,epsilon_space_one_step,passed_time_threshold
-fhn32,1.751642528859458e-13,,true
-fhn64,1.698060161242144e-13,5.973757804286657e-5,true
-ks64,2.544138797796006e-7,2.5461703907236133e-7,true

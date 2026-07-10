@@ -1,9 +1,0 @@
-split_protocols:
-- split_id: "split_i_initial_condition"
-  grouping_unit: "trajectory"
-  train_val_test_source: "disjoint trajectory ids under a fixed parameter regime"
-- split_id: "split_p_parameter"
-  grouping_unit: "parameter_regime"
-  train_val_test_source: "disjoint named parameter regimes"
-excluded:
-- split_o_observation

@@ -1,5 +1,7 @@
 # Standard_ODEs_v1 File Explanation
 
+The release stores clean states, clean/noisy observations, and clean targets in unstandardized physical coordinates. JLD2 objects and manifests declare `normalization_policy = none_raw_physical_coordinates`; no mean, standard deviation, normalized tensor, or normalizer object is generated.
+
 ## Task Summary
 
 This task created the `standard_odes_v1` Float32 dataset release from eight common ODE objects: three linear systems, two Duffing nonlinearity cells, Lorenz63, Rossler, and the Lusch-aligned nonlinear pendulum. Each object stores clean full-state observations plus 5 dB and 15 dB additive Gaussian noisy observation versions. The default target is the clean state.

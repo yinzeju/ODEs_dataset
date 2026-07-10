@@ -1,7 +1,0 @@
-benchmark_version: "hskl_baseline_ode_v1"
-observation_mode: "full_state"
-noise_level: "clean"
-array_layout: "state_dim_by_time_by_trajectory"
-formal_difficulty_levels: ["medium"]
-allowed_split_ids: ["split_i_initial_condition", "split_p_parameter"]
-split_o_observation: "excluded"

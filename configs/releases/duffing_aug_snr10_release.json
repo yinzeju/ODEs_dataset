@@ -7,6 +7,7 @@
   "split_id": "duffing_aug_snr10_split_i",
   "window_id": "duffing_aug_snr10_rollout_horizons",
   "task_id": "duffing_aug_snr10_kdsm_mp_multihorizon",
+  "normalization_policy": "none_raw_physical_coordinates",
   "expected_files": {
     "clean_jld2": "data/processed/duffing_aug_snr10/kdsm_data_0dot1_duffing_aug_clean.jld2",
     "noise10_jld2": "data/processed/duffing_aug_snr10/kdsm_data_0dot1_duffing_aug_snr10.jld2",

@@ -545,6 +545,7 @@ function save_object(profile::Symbol, spec::StandardObjectSpec, X0::Matrix{Float
         observation_noise_15db = Z_15,
         target_clean = Y_clean,
         split_roles = roles,
+        normalization_policy = "none_raw_physical_coordinates",
         params = spec.params,
     )
     diagnostics = basic_diagnostics(X, spec)
@@ -568,6 +569,7 @@ function save_object(profile::Symbol, spec::StandardObjectSpec, X0::Matrix{Float
         "horizons" => spec.horizons,
         "noise_levels_db" => collect(STANDARD_NOISE_LEVELS_DB),
         "target_policy" => "clean_state",
+        "normalization_policy" => "none_raw_physical_coordinates",
         "params" => spec.params,
         "seed" => spec.seed,
         "generated_files" => Dict("processed_jld2" => paths["processed_jld2"]),
@@ -663,6 +665,7 @@ function generate_standard_odes_v1(profile::Symbol)
         "dtype" => "Float32",
         "object_count" => length(manifests),
         "noise_levels_db" => collect(STANDARD_NOISE_LEVELS_DB),
+        "normalization_policy" => "none_raw_physical_coordinates",
         "all_passed" => all(m["diagnostics"]["all_finite"] for m in manifests),
         "totals" => totals,
         "objects" => manifests,
