@@ -2,7 +2,7 @@
 
 ## 0. 任务目标
 
-本任务生成一个用于高维自治混沌动力学建模的标准 Lorenz–96 数据集。数据集只定义动力系统、数值积分、独立轨线、轨线级划分、标准化统计量与数据验收规则；不包含任何特定预测器、字典、核函数或神经网络的训练逻辑。
+本任务生成一个用于高维自治混沌动力学建模的标准 Lorenz–96 数据集。数据集只定义动力系统、数值积分、独立轨线、轨线级划分、原始物理坐标轨线与数据验收规则；不包含任何特定预测器、字典、核函数、神经网络训练逻辑或数据对象内置标准化资源。
 
 本数据集的统一学习对象为完整状态离散动力学：
 
@@ -526,7 +526,7 @@ $$
 \boxed{
 |\mathcal R|
 =
-40
+480
 }
 
 $$
@@ -554,15 +554,15 @@ $$
 \boxed{
 |\mathcal R_{\mathrm{train}}|
 =
-24,
+288,
 \qquad
 |\mathcal R_{\mathrm{val}}|
 =
-8,
+96,
 \qquad
 |\mathcal R_{\mathrm{test}}|
 =
-8.
+96.
 }
 
 $$
@@ -576,9 +576,9 @@ $$
 \boxed{
 M_{\mathrm{pair,train}}
 =
-24\times2048
+288\times2048
 =
-49\,152,
+589\,824,
 }
 
 $$
@@ -590,9 +590,9 @@ M_{\mathrm{pair,val}}
 =
 M_{\mathrm{pair,test}}
 =
-8\times2048
+96\times2048
 =
-16\,384.
+196\,608.
 }
 
 $$
@@ -604,9 +604,9 @@ $$
 \boxed{
 M_{\mathrm{snap,train}}
 =
-24\times2049
+288\times2049
 =
-49\,176,
+590\,112,
 }
 
 $$
@@ -618,9 +618,9 @@ M_{\mathrm{snap,val}}
 =
 M_{\mathrm{snap,test}}
 =
-8\times2049
+96\times2049
 =
-16\,392.
+196\,704.
 }
 
 $$
@@ -701,9 +701,9 @@ $$
 \boxed{
 |\mathcal A_{\mathrm{train}}^{\mathrm{win}}|
 =
-24\times1985
+288\times1985
 =
-47\,640,
+571\,680,
 }
 
 $$
@@ -715,9 +715,9 @@ $$
 =
 |\mathcal A_{\mathrm{test}}^{\mathrm{win}}|
 =
-8\times1985
+96\times1985
 =
-15\,880.
+190\,560.
 }
 
 $$
@@ -726,7 +726,7 @@ window 索引不需要物化为重复数据张量；只需保存轨线数组及�
 
 ---
 
-# 7. 标准化统计量
+# 7. 原始物理坐标数据
 
 ## 7.1 物理坐标数据
 
@@ -744,101 +744,7 @@ $$
 
 数值积分、burn-in、轨线切分与原始数据存储均在物理坐标中进行。
 
----
-
-## 7.2 训练集共享空间标准化
-
-为保持 Lorenz–96 的空间齐次性，标准化采用训练轨线上的全空间共享统计量，而不是有限样本下逐空间通道独立统计量。
-
-定义训练集全局均值：
-
-$$
-
-\boxed{
-\mu_{\mathrm{sp}}
-=
-\frac{
-1
-}{
-40M_{\mathrm{snap,train}}
-}
-\sum_{\nu\in\mathcal R_{\mathrm{train}}}
-\sum_{m=0}^{2048}
-\sum_{j=1}^{40}
-x_{m,j}^{(\nu)}.
-}
-
-$$
-
-定义训练集全局标准差：
-
-$$
-
-\boxed{
-\sigma_{\mathrm{sp}}
-=
-\left[
-\frac{
-1
-}{
-40M_{\mathrm{snap,train}}
-}
-\sum_{\nu\in\mathcal R_{\mathrm{train}}}
-\sum_{m=0}^{2048}
-\sum_{j=1}^{40}
-\left(
-x_{m,j}^{(\nu)}
--
-\mu_{\mathrm{sp}}
-\right)^2
-\right]^{1/2}.
-}
-
-$$
-
-取稳定常数
-
-$$
-
-\boxed{
-\varepsilon_{\mathrm{std}}
-=
-10^{-8}.
-}
-
-$$
-
-下游模型使用的标准化状态定义为
-
-$$
-
-\boxed{
-\widetilde{\mathbf z}_m^{(\nu)}
-=
-\frac{
-\mathbf x_m^{(\nu)}
--
-\mu_{\mathrm{sp}}\mathbf 1
-}{
-\sigma_{\mathrm{sp}}
-+
-\varepsilon_{\mathrm{std}}
-}.
-}
-
-$$
-
-验证集和测试集必须复用固定的
-
-$$
-
-\mu_{\mathrm{sp}},
-\qquad
-\sigma_{\mathrm{sp}},
-
-$$
-
-不得重新估计其自身统计量。
+本数据对象本身不保存标准化、归一化、均值、方差或训练集统计量。若下游学习任务需要预处理，应在读取本 raw release 后由下游任务显式计算并记录，且不改变此数据对象的存储契约。
 
 ---
 
@@ -854,7 +760,6 @@ l96_nx40_complete_state_v1/
 
 ```text
 metadata.json
-normalization.json
 splits.json
 train/
   trajectories
@@ -933,18 +838,6 @@ h_{\max}=64,
 
 $$
 
-`normalization.json` 至少记录：
-
-$$
-
-\mu_{\mathrm{sp}},
-\qquad
-\sigma_{\mathrm{sp}},
-\qquad
-\varepsilon_{\mathrm{std}}.
-
-$$
-
 `splits.json` 必须记录所有 trajectory ID 与其唯一 split 标签。
 
 ---
@@ -997,15 +890,15 @@ $$
 \begin{aligned}
 \mathcal X_{\mathrm{train}}
 &\in
-\mathbb R^{24\times2049\times40},
+\mathbb R^{288\times2049\times40},
 \\
 \mathcal X_{\mathrm{val}}
 &\in
-\mathbb R^{8\times2049\times40},
+\mathbb R^{96\times2049\times40},
 \\
 \mathcal X_{\mathrm{test}}
 &\in
-\mathbb R^{8\times2049\times40}.
+\mathbb R^{96\times2049\times40}.
 \end{aligned}
 
 $$

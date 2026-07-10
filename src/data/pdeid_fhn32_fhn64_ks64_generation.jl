@@ -121,29 +121,6 @@ function ensure_dir(path::AbstractString)
     return path
 end
 
-function field_shared_stats(state_rtd::Array{Float64,3}, train_idx::AbstractVector{<:Integer}, field_slices)
-    mu = Float64[]
-    sigma = Float64[]
-    for inds in field_slices
-        values = @view state_rtd[train_idx, :, inds]
-        push!(mu, mean(values))
-        s = std(values; corrected = false)
-        push!(sigma, max(s, eps(Float64)))
-    end
-    return mu, sigma
-end
-
-function sigma_vector_from_stats(stats::AbstractDict, dz::Integer)
-    field_names = stats["field_names"]
-    sigmas = Float64.(stats["sigma"])
-    if length(field_names) == 2
-        nx = div(dz, 2)
-        return vcat(fill(sigmas[1], nx), fill(sigmas[2], nx))
-    else
-        return fill(sigmas[1], dz)
-    end
-end
-
 function fhn_equilibrium(spec::FhnPdeSpec)
     u = -1.2
     for _ in 1:40
@@ -157,7 +134,7 @@ end
 
 periodic_distance(x::Real, c::Real, L::Real) = min(abs(x - c), L - abs(x - c))
 
-function normalized_low_frequency_field(rng::AbstractRNG, x::AbstractVector{<:Real}, L::Real)
+function unit_rms_low_frequency_field(rng::AbstractRNG, x::AbstractVector{<:Real}, L::Real)
     y = zeros(Float64, length(x))
     for k in 1:3
         amp_cos = randn(rng)
@@ -202,8 +179,8 @@ function sample_fhn_initial_condition(rng::AbstractRNG, spec::FhnPdeSpec)
         end
     end
 
-    u0 .+= 0.03 .* normalized_low_frequency_field(rng, x, spec.L)
-    v0 .+= 0.01 .* normalized_low_frequency_field(rng, x, spec.L)
+    u0 .+= 0.03 .* unit_rms_low_frequency_field(rng, x, spec.L)
+    v0 .+= 0.01 .* unit_rms_low_frequency_field(rng, x, spec.L)
     return vcat(u0, v0)
 end
 
@@ -548,9 +525,8 @@ function hdf5_meta_from_config(config::AbstractDict)
     )
 end
 
-function normalized_one_step_error(prod::AbstractVector, ref::AbstractVector, sigma::AbstractVector)
-    diff = (prod .- ref) ./ sigma
-    return sum(abs2, diff)
+function relative_squared_error(prod::AbstractVector, ref::AbstractVector)
+    return sum(abs2, prod .- ref) / (sum(abs2, ref) + eps(Float64))
 end
 
 function propagate_fhn_one_step(spec::FhnPdeSpec, z::Vector{Float64}, tau::Float64, reltol::Float64, abstol::Float64)
@@ -642,47 +618,41 @@ end
 function fhn_time_certificate(
     spec::FhnPdeSpec,
     state_rtd::Array{Float64,3},
-    stats::AbstractDict,
     profile::PdeidProfile,
 )
-    sigma = sigma_vector_from_stats(stats, size(state_rtd, 3))
     ncheck = min(8, size(state_rtd, 1))
     accum = 0.0
     for r in 1:ncheck
         z = vec(state_rtd[r, 1, :])
         prod = propagate_fhn_one_step(spec, z, profile.tau, profile.fhn_reltol, profile.fhn_abstol)
         ref = propagate_fhn_one_step(spec, z, profile.tau, 1.0e-10, 1.0e-12)
-        accum += normalized_one_step_error(prod, ref, sigma)
+        accum += relative_squared_error(prod, ref)
     end
-    return sqrt(accum / (ncheck * size(state_rtd, 3)))
+    return sqrt(accum / ncheck)
 end
 
 function ks_time_certificate(
     spec::KsPdeSpec,
     state_rtd::Array{Float64,3},
-    stats::AbstractDict,
     profile::PdeidProfile,
 )
-    sigma = sigma_vector_from_stats(stats, size(state_rtd, 3))
     ncheck = min(8, size(state_rtd, 1))
     accum = 0.0
     for r in 1:ncheck
         u = vec(state_rtd[r, 1, :])
         prod = propagate_ks_one_step(spec, u, profile.tau, spec.dt)
         ref = propagate_ks_one_step(spec, u, profile.tau, spec.dt / 2)
-        accum += normalized_one_step_error(prod, ref, sigma)
+        accum += relative_squared_error(prod, ref)
     end
-    return sqrt(accum / (ncheck * size(state_rtd, 3)))
+    return sqrt(accum / ncheck)
 end
 
 function fhn_space_certificate(
     spec::FhnPdeSpec,
     state_rtd::Array{Float64,3},
-    stats::AbstractDict,
     profile::PdeidProfile,
     nxref::Integer,
 )
-    sigma = sigma_vector_from_stats(stats, size(state_rtd, 3))
     refspec = FhnPdeSpec(object_id = string(spec.object_id, "_nx", nxref, "_space_ref"), nx = nxref)
     ncheck = min(8, size(state_rtd, 1))
     accum = 0.0
@@ -692,19 +662,17 @@ function fhn_space_certificate(
         zref0 = resize_fhn_state_linear(z, nxref)
         ref_high = propagate_fhn_one_step(refspec, zref0, profile.tau, 1.0e-10, 1.0e-12)
         ref = resize_fhn_state_linear(ref_high, spec.nx)
-        accum += normalized_one_step_error(prod, ref, sigma)
+        accum += relative_squared_error(prod, ref)
     end
-    return sqrt(accum / (ncheck * size(state_rtd, 3)))
+    return sqrt(accum / ncheck)
 end
 
 function ks_space_certificate(
     spec::KsPdeSpec,
     state_rtd::Array{Float64,3},
-    stats::AbstractDict,
     profile::PdeidProfile,
     nxref::Integer,
 )
-    sigma = sigma_vector_from_stats(stats, size(state_rtd, 3))
     refspec = KsPdeSpec(object_id = "ks128_space_ref", nx = nxref, L = spec.L, dt = spec.dt / 2, contour_nodes = spec.contour_nodes)
     ncheck = min(8, size(state_rtd, 1))
     accum = 0.0
@@ -714,19 +682,17 @@ function ks_space_certificate(
         uref0 = resize_fourier_physical(u, nxref)
         ref_high = propagate_ks_one_step(refspec, uref0, profile.tau, spec.dt / 2)
         ref = resize_fourier_physical(ref_high, spec.nx)
-        accum += normalized_one_step_error(prod, ref, sigma)
+        accum += relative_squared_error(prod, ref)
     end
-    return sqrt(accum / (ncheck * size(state_rtd, 3)))
+    return sqrt(accum / ncheck)
 end
 
 function fhn_cross_resolution_certificate(
     fhn32::Array{Float64,3},
-    stats32::AbstractDict,
     profile::PdeidProfile,
 )
     spec32 = FhnPdeSpec(object_id = "fhn32", nx = 32)
     spec64 = FhnPdeSpec(object_id = "fhn64_cross_ref", nx = 64)
-    sigma = sigma_vector_from_stats(stats32, size(fhn32, 3))
     ncheck = min(8, size(fhn32, 1))
     accum = 0.0
     for r in 1:ncheck
@@ -735,15 +701,14 @@ function fhn_cross_resolution_certificate(
         z64 = resize_fhn_state_linear(z, 64)
         ref64 = propagate_fhn_one_step(spec64, z64, profile.tau, profile.fhn_reltol, profile.fhn_abstol)
         ref = resize_fhn_state_linear(ref64, 32)
-        accum += normalized_one_step_error(prod, ref, sigma)
+        accum += relative_squared_error(prod, ref)
     end
-    return sqrt(accum / (ncheck * size(fhn32, 3)))
+    return sqrt(accum / ncheck)
 end
 
 function object_summary(
     object_id::AbstractString,
     state_rtd::Array{Float64,3},
-    stats::AbstractDict,
     split::AbstractDict,
 )
     return Dict{String,Any}(
@@ -752,8 +717,6 @@ function object_summary(
         "finite" => all(isfinite, state_rtd),
         "state_min" => minimum(state_rtd),
         "state_max" => maximum(state_rtd),
-        "field_shared_mean" => stats["mu"],
-        "field_shared_std" => stats["sigma"],
         "split_counts" => Dict(k => length(v) for (k, v) in split),
     )
 end
@@ -785,7 +748,7 @@ function save_report_tables(report_root::AbstractString, summaries::AbstractDict
     table_dir = ensure_dir(joinpath(report_root, "tables"))
     split_path = joinpath(table_dir, "split_state_summary.csv")
     open(split_path, "w") do io
-        println(io, "object_id,split,count,M,state_dim,state_min,state_max,field_shared_mean,field_shared_std")
+        println(io, "object_id,split,count,M,state_dim,state_min,state_max")
         for object_id in sort(collect(keys(summaries)))
             summary = summaries[object_id]
             for split_name in ["train", "val", "test"]
@@ -797,8 +760,6 @@ function save_report_tables(report_root::AbstractString, summaries::AbstractDict
                     summary["shape"][3],
                     summary["state_min"],
                     summary["state_max"],
-                    JSON.json(summary["field_shared_mean"]),
-                    JSON.json(summary["field_shared_std"]),
                 ], ","))
             end
         end
@@ -902,12 +863,6 @@ function run_pdeid_fhn32_fhn64_ks64_generation(project_root::AbstractString; pro
         write_toml_file(joinpath(profile.output_root, string(object_id, ".toml")), configs[object_id])
     end
 
-    stats = Dict(
-        "fhn32" => Dict("field_names" => ["u", "v"], "mu" => field_shared_stats(fhn32, split["train"], [1:32, 33:64])[1], "sigma" => field_shared_stats(fhn32, split["train"], [1:32, 33:64])[2]),
-        "fhn64" => Dict("field_names" => ["u", "v"], "mu" => field_shared_stats(fhn64, split["train"], [1:64, 65:128])[1], "sigma" => field_shared_stats(fhn64, split["train"], [1:64, 65:128])[2]),
-        "ks64" => Dict("field_names" => ["u"], "mu" => field_shared_stats(ks64, split["train"], [1:64])[1], "sigma" => field_shared_stats(ks64, split["train"], [1:64])[2]),
-    )
-
     certificate = Dict{String,Any}(
         "task_code" => PDEID_TASK_CODE,
         "profile" => String(profile.name),
@@ -926,18 +881,18 @@ function run_pdeid_fhn32_fhn64_ks64_generation(project_root::AbstractString; pro
     )
 
     certificate["objects"]["fhn32"] = Dict(
-        "time_discretization" => Dict("epsilon_time_one_step" => fhn_time_certificate(fhn32_spec, fhn32, stats["fhn32"], profile)),
-        "spatial_resolution" => Dict("epsilon_fhn32_from_fhn64_one_step" => fhn_cross_resolution_certificate(fhn32, stats["fhn32"], profile)),
+        "time_discretization" => Dict("epsilon_time_one_step" => fhn_time_certificate(fhn32_spec, fhn32, profile)),
+        "spatial_resolution" => Dict("epsilon_fhn32_from_fhn64_one_step" => fhn_cross_resolution_certificate(fhn32, profile)),
         "invariants" => merge(fhn_invariants(fhn32, 32), fhn32_generation),
     )
     certificate["objects"]["fhn64"] = Dict(
-        "time_discretization" => Dict("epsilon_time_one_step" => fhn_time_certificate(fhn64_spec, fhn64, stats["fhn64"], profile)),
-        "spatial_resolution" => Dict("epsilon_space_one_step" => fhn_space_certificate(fhn64_spec, fhn64, stats["fhn64"], profile, 128)),
+        "time_discretization" => Dict("epsilon_time_one_step" => fhn_time_certificate(fhn64_spec, fhn64, profile)),
+        "spatial_resolution" => Dict("epsilon_space_one_step" => fhn_space_certificate(fhn64_spec, fhn64, profile, 128)),
         "invariants" => merge(fhn_invariants(fhn64, 64), fhn64_generation),
     )
     certificate["objects"]["ks64"] = Dict(
-        "time_discretization" => Dict("epsilon_time_one_step" => ks_time_certificate(ks64_spec, ks64, stats["ks64"], profile)),
-        "spatial_resolution" => Dict("epsilon_space_one_step" => ks_space_certificate(ks64_spec, ks64, stats["ks64"], profile, 128)),
+        "time_discretization" => Dict("epsilon_time_one_step" => ks_time_certificate(ks64_spec, ks64, profile)),
+        "spatial_resolution" => Dict("epsilon_space_one_step" => ks_space_certificate(ks64_spec, ks64, profile, 128)),
         "invariants" => merge(ks_invariants(ks64), ks64_generation),
     )
 
@@ -965,9 +920,9 @@ function run_pdeid_fhn32_fhn64_ks64_generation(project_root::AbstractString; pro
     copy_environment_files(project_root, profile.output_root)
 
     summaries = Dict(
-        "fhn32" => object_summary("fhn32", fhn32, stats["fhn32"], split),
-        "fhn64" => object_summary("fhn64", fhn64, stats["fhn64"], split),
-        "ks64" => object_summary("ks64", ks64, stats["ks64"], split),
+        "fhn32" => object_summary("fhn32", fhn32, split),
+        "fhn64" => object_summary("fhn64", fhn64, split),
+        "ks64" => object_summary("ks64", ks64, split),
     )
     table_files = save_report_tables(profile.report_root, summaries, certificate)
     plot_files = maybe_save_plots(profile.report_root, datasets, certificate)

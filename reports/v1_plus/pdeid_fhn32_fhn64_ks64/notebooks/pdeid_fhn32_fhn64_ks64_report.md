@@ -2,7 +2,7 @@
 
 ## Objective And Scope
 
-This report documents the completed `pdeid_fhn32_fhn64_ks64` data-generation task. The objective was to generate three complete-state, uniformly sampled, autonomous PDE-discretized datasets for downstream MP-KDSM and Koopman-style direct multi-step prediction studies:
+This report documents the completed `pdeid_fhn32_fhn64_ks64` data-generation task. The objective was to generate three complete-state, uniformly sampled, autonomous PDE-discretized datasets for downstream MP-KDSM and Koopman-style direct multi-step prediction studies. The release stores raw physical-coordinate states only; it does not include in-object standardization, normalization, or field-shared training statistics.
 
 | Object | Model | Spatial points | State dimension | Domain | Formal shape |
 | --- | --- | ---: | ---: | --- | --- |
@@ -14,7 +14,7 @@ The task follows the mathematical specification at `docs/notes/mathematical expl
 
 ## Method And Engineering Choices
 
-All formal objects use complete-state prediction, so `y_m = z_m`. The current trajectory protocol is `R=480`, split by full trajectories into `320/80/80`, with `M=1024`, `tau=0.25`, and rollout horizons `{1,2,4,8,16,32,64}`. This 2026-07-07 expansion keeps the original 2026-07-03 dynamics, solver settings, sampling interval, record length, and certificate protocol unchanged while increasing the trajectory count by 4x.
+All formal objects use complete-state prediction, so `y_m = z_m`. The current trajectory protocol is `R=480`, split by full trajectories into `320/80/80`, with `M=1024`, `tau=0.25`, and rollout horizons `{1,2,4,8,16,32,64}`. The 2026-07-10 regeneration keeps the original dynamics, solver settings, sampling interval, and record length while removing dataset-level standardization semantics from code and documentation.
 
 FHN32 and FHN64 use periodic finite differences for the diffusion term and SciML `Rodas5P()` for the method-of-lines ODE. The formal tolerances are `reltol=1e-8` and `abstol=1e-10`.
 
@@ -63,11 +63,13 @@ Readback confirmed the formal HDF5 tensor shapes and metadata:
 
 The formal numerical certificate produced:
 
-| Object | State range | Train field-shared mean | Train field-shared std | `epsilon_time_one_step` | Space certificate |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| `fhn32` | `[-1.846192, 0.224752]` | `[-1.210508, -0.616961]` | `[0.053307, 0.045015]` | `3.730045e-12` | `epsilon_fhn32_from_fhn64=4.786109e-3` |
-| `fhn64` | `[-1.834584, 0.197110]` | `[-1.210149, -0.617339]` | `[0.051656, 0.042575]` | `3.736437e-12` | `epsilon_space=1.310732e-3` |
-| `ks64` | `[-3.095514, 3.093958]` | `[-7.972581e-17]` | `[1.186932]` | `2.231861e-7` | `epsilon_space=2.234353e-7` |
+| Object | State range | `epsilon_time_one_step` | Space certificate |
+| --- | ---: | ---: | ---: |
+| `fhn32` | `[-1.846192, 0.224752]` | `1.751643e-13` | `epsilon_fhn32_from_fhn64=2.250337e-4` |
+| `fhn64` | `[-1.834584, 0.197110]` | `1.698060e-13` | `epsilon_space=5.973758e-5` |
+| `ks64` | `[-3.095514, 3.093958]` | `2.544139e-7` | `epsilon_space=2.546170e-7` |
+
+The certificate values are raw-state relative errors. No train, validation, or test split statistics are saved as reusable dataset resources.
 
 The generated plots include FHN `u/v` heatmaps, the KS `u` heatmap, the KS time-averaged Fourier energy spectrum, and bar plots for the time and space certificates.
 

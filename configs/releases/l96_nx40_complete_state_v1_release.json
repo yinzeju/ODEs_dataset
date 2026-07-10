@@ -8,6 +8,5 @@
   "task_config": "configs/tasks/v1_core/l96_nx40_complete_state_v1_tasks.json",
   "output_root": "data/releases/l96_nx40_complete_state_v1",
   "metadata_json": "data/releases/l96_nx40_complete_state_v1/metadata.json",
-  "normalization_json": "data/releases/l96_nx40_complete_state_v1/normalization.json",
   "splits_json": "data/releases/l96_nx40_complete_state_v1/splits.json"
 }

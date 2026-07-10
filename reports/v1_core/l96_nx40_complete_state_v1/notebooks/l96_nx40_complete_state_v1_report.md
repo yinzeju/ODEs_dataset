@@ -2,7 +2,7 @@
 
 ## Objective and Scope
 
-This report records the formal generation of `l96_nx40_complete_state_v1`, a complete-state Lorenz96 dataset for high-dimensional autonomous chaotic dynamics. The dataset contains only raw physical-coordinate trajectories, trajectory-level splits, train-only normalization statistics, and acceptance diagnostics. It does not include model training, learned dictionaries, kernels, controls, partial observations, or noise injection.
+This report records the formal generation of `l96_nx40_complete_state_v1`, a complete-state Lorenz96 dataset for high-dimensional autonomous chaotic dynamics. The dataset contains only raw physical-coordinate trajectories, trajectory-level splits, and acceptance diagnostics. It does not include standardization, normalization, model training, learned dictionaries, kernels, controls, partial observations, or noise injection.
 
 The learning object is `z_m = y_m = x_m in R^40`, sampled from the numerical flow `F_num^tau` with `tau = 0.05`.
 
@@ -40,19 +40,6 @@ Initial states are sampled as `F0 * ones(40) + 0.01 * xi`, where each trajectory
 
 The split is trajectory-level. No trajectory is shared across train, validation, and test.
 
-## Normalization
-
-The physical-coordinate tensors remain unnormalized. The saved normalization statistics are train-only, globally shared across all spatial coordinates:
-
-$$
-\widetilde{x} = \frac{x-\mu_{\mathrm{sp}}}{\sigma_{\mathrm{sp}} + 10^{-8}}.
-$$
-
-| Statistic | Value |
-| --- | ---: |
-| `mu_sp` | 2.3415958840689868 |
-| `sigma_sp` | 3.6401584263250446 |
-
 ## Validation Protocol and Results
 
 | Check | Result |
@@ -87,7 +74,7 @@ The early/late energy diagnostic is recorded for quality inspection only. It was
 
 ## Reproducibility Notes
 
-The generated dataset root is `data/releases/l96_nx40_complete_state_v1/`. Split tensors are JLD2 files with layout `trajectory_by_time_by_state`, and metadata, normalization, split, and diagnostic files are JSON. The generation log and report-local CSV tables are stored under `reports/v1_core/l96_nx40_complete_state_v1/`.
+The generated dataset root is `data/releases/l96_nx40_complete_state_v1/`. Split tensors are JLD2 files with layout `trajectory_by_time_by_state`, and metadata, split, and diagnostic files are JSON. The generation log and report-local CSV tables are stored under `reports/v1_core/l96_nx40_complete_state_v1/`.
 
 Main generated files:
 
@@ -97,7 +84,6 @@ Main generated files:
 - `integration_check`: `D:\MyVault\Projects\Julia\ODEs_dataset\data\releases\l96_nx40_complete_state_v1\diagnostics\integration_check.json`
 - `log`: `D:\MyVault\Projects\Julia\ODEs_dataset\reports\v1_core\l96_nx40_complete_state_v1\logs\generate_l96_nx40_complete_state_v1.log`
 - `metadata`: `D:\MyVault\Projects\Julia\ODEs_dataset\data\releases\l96_nx40_complete_state_v1\metadata.json`
-- `normalization`: `D:\MyVault\Projects\Julia\ODEs_dataset\data\releases\l96_nx40_complete_state_v1\normalization.json`
 - `report`: `D:\MyVault\Projects\Julia\ODEs_dataset\reports\v1_core\l96_nx40_complete_state_v1\notebooks\l96_nx40_complete_state_v1_report.md`
 - `splits`: `D:\MyVault\Projects\Julia\ODEs_dataset\data\releases\l96_nx40_complete_state_v1\splits.json`
 - `summary_table`: `D:\MyVault\Projects\Julia\ODEs_dataset\reports\v1_core\l96_nx40_complete_state_v1\tables\diagnostics_summary.csv`
@@ -108,4 +94,4 @@ Main generated files:
 
 ## Limitations and Next Steps
 
-This release contains only the clean complete-state, fixed-forcing Lorenz96 configuration. Downstream tasks should derive one-step and rollout windows by index inside each split and should reuse the train normalization statistics for validation and test data.
+This release contains only the clean complete-state, fixed-forcing Lorenz96 configuration. Downstream tasks should derive one-step and rollout windows by index inside each split and should apply any needed preprocessing outside this dataset release.

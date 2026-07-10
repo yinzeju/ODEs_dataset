@@ -4,7 +4,7 @@
 
 This task generated the `pdeid_fhn32_fhn64_ks64` high-dimensional PDE identification dataset for three complete-state autonomous systems: `fhn32`, `fhn64`, and `ks64`. The implementation follows the task specification in `docs/notes/mathematical explanation/pdeid_fhn32_fhn64_ks64.md` for the data interface, trajectory split, sampling interval, record length, HDF5 schema, and numerical certificates.
 
-The current formal run uses `R=480` trajectories per object, split as `320/80/80`, with `M=1024`, `tau=0.25`, and complete-state targets `y_m = z_m`. The output tensors are stored in row-time-dimension layout as `/state_rtd[trajectory, time, state]`. This 2026-07-07 update expands the original 120-trajectory release by 4x while keeping the dynamics, sampling interval, record length, solver settings, and acceptance/certificate protocol unchanged.
+The current formal run uses `R=480` trajectories per object, split as `320/80/80`, with `M=1024`, `tau=0.25`, and complete-state targets `y_m = z_m`. The output tensors are stored in row-time-dimension layout as `/state_rtd[trajectory, time, state]`. This 2026-07-10 regeneration keeps the 480-trajectory release and removes dataset-level standardization semantics: the HDF5 files store raw physical-coordinate states and no normalization group or field-shared statistics resource.
 
 ## Run Entry Points And Scripts
 
@@ -36,7 +36,7 @@ Report outputs are under `reports/v1_plus/pdeid_fhn32_fhn64_ks64/`, including ce
 
 ## Script-To-Script Data Flow
 
-The smoke and formal entry points both include `src/data/pdeid_fhn32_fhn64_ks64_generation.jl` and select a profile. The profile fixes trajectory counts, warm-up times, record length, output roots, tolerances, seeds, and acceptance settings. The source implementation then generates raw complete-state trajectories, computes train-only field-shared statistics for certificates, writes one HDF5 file and one TOML file per object, writes the shared numerical certificate JSON, and generates report-local tables and plots.
+The smoke and formal entry points both include `src/data/pdeid_fhn32_fhn64_ks64_generation.jl` and select a profile. The profile fixes trajectory counts, warm-up times, record length, output roots, tolerances, seeds, and acceptance settings. The source implementation then generates raw complete-state trajectories, computes raw-state relative numerical certificates, writes one HDF5 file and one TOML file per object, writes the shared numerical certificate JSON, and generates report-local tables and plots.
 
 ## Validation Commands And Results
 
@@ -54,7 +54,7 @@ Formal command:
 julia --project=. experiments\data_generation\generate_pdeid_fhn32_fhn64_ks64.jl
 ```
 
-Formal generation passed. Readback checks confirmed HDF5 shapes `[480,1025,64]`, `[480,1025,128]`, and `[480,1025,64]`, with split counts `320/80/80` for every object. Formal one-step time errors were `3.730045e-12`, `3.736437e-12`, and `2.231861e-7`, all below the `1e-4` threshold. The FHN64 space certificate was `1.310732e-3`, the KS64 space certificate was `2.234353e-7`, and KS zero-mean drift stayed at floating-point roundoff scale in generation diagnostics.
+Formal generation passed. Readback checks confirmed HDF5 shapes `[480,1025,64]`, `[480,1025,128]`, and `[480,1025,64]`, with split counts `320/80/80` for every object and no `normalization` group. Formal one-step raw-state relative errors were `1.751643e-13`, `1.698060e-13`, and `2.544139e-7`, all below the `1e-4` threshold. The FHN64 space certificate was `5.973758e-5`, the KS64 space certificate was `2.546170e-7`, and KS zero-mean drift stayed at floating-point roundoff scale in generation diagnostics.
 
 ## Numerical Adjustments
 

@@ -26,7 +26,6 @@ struct L96CompleteStateConfig
     rollout_horizons::Vector{Int}
     delta_init::Float64
     seed_master::Int
-    epsilon_std::Float64
     S_chk::Int
     rk_acceptance_threshold::Float64
 end
@@ -56,7 +55,6 @@ function L96CompleteStateConfig()
         [1, 2, 4, 8, 16, 32, 64],
         0.01,
         20260624,
-        1.0e-8,
         128,
         1.0e-6,
     )
@@ -219,21 +217,6 @@ function l96_generate_all_trajectories(config::L96CompleteStateConfig)
     return trajectories, seeds, pre_burn_in, burn_in_states
 end
 
-function l96_normalization(trajectories::Array{Float64,3}, train_indices::AbstractVector{<:Integer}, config::L96CompleteStateConfig)
-    train_view = view(trajectories, train_indices, :, :)
-    n = length(train_view)
-    mu = sum(train_view) / n
-    sigma = sqrt(sum(abs2(x - mu) for x in train_view) / n)
-    return Dict(
-        "mu_sp" => mu,
-        "sigma_sp" => sigma,
-        "epsilon_std" => config.epsilon_std,
-        "policy" => "train_split_global_space_shared_population_statistics",
-        "train_snapshot_count" => length(train_indices) * config.snapshots,
-        "train_scalar_count" => n,
-    )
-end
-
 function l96_state_at_linear_index(trajectories::Array{Float64,3}, linear_index::Integer)
     total_per_trajectory = size(trajectories, 2)
     q = div(linear_index - 1, total_per_trajectory) + 1
@@ -329,7 +312,6 @@ end
 
 function l96_dataset_diagnostics(
     trajectories::Array{Float64,3},
-    normalization::AbstractDict,
     integration_check::AbstractDict,
     energy_statistics::AbstractDict,
     config::L96CompleteStateConfig,
@@ -363,8 +345,6 @@ function l96_dataset_diagnostics(
         "state_min" => state_min,
         "state_max" => state_max,
         "state_span" => state_max - state_min,
-        "mu_sp" => normalization["mu_sp"],
-        "sigma_sp" => normalization["sigma_sp"],
         "epsilon_RK" => integration_check["epsilon_RK"],
         "epsilon_RK_max" => integration_check["relative_error_max"],
         "energy_mean_min_by_trajectory" => minimum(energy_means),
@@ -542,7 +522,7 @@ function l96_write_report(
         println(io)
         println(io, "## Objective and Scope")
         println(io)
-        println(io, "This report records the formal generation of `l96_nx40_complete_state_v1`, a complete-state Lorenz96 dataset for high-dimensional autonomous chaotic dynamics. The dataset contains only raw physical-coordinate trajectories, trajectory-level splits, train-only normalization statistics, and acceptance diagnostics. It does not include model training, learned dictionaries, kernels, controls, partial observations, or noise injection.")
+        println(io, "This report records the formal generation of `l96_nx40_complete_state_v1`, a complete-state Lorenz96 dataset for high-dimensional autonomous chaotic dynamics. The dataset contains only raw physical-coordinate trajectories, trajectory-level splits, and acceptance diagnostics. It does not include standardization, normalization, model training, learned dictionaries, kernels, controls, partial observations, or noise injection.")
         println(io)
         println(io, "The learning object is `z_m = y_m = x_m in R^40`, sampled from the numerical flow `F_num^tau` with `tau = 0.05`.")
         println(io)
@@ -583,19 +563,6 @@ function l96_write_report(
         println(io)
         println(io, "The split is trajectory-level. No trajectory is shared across train, validation, and test.")
         println(io)
-        println(io, "## Normalization")
-        println(io)
-        println(io, "The physical-coordinate tensors remain unnormalized. The saved normalization statistics are train-only, globally shared across all spatial coordinates:")
-        println(io)
-        println(io, raw"$$")
-        println(io, raw"\widetilde{x} = \frac{x-\mu_{\mathrm{sp}}}{\sigma_{\mathrm{sp}} + 10^{-8}}.")
-        println(io, raw"$$")
-        println(io)
-        println(io, "| Statistic | Value |")
-        println(io, "| --- | ---: |")
-        println(io, "| `mu_sp` | $(diagnostics["mu_sp"]) |")
-        println(io, "| `sigma_sp` | $(diagnostics["sigma_sp"]) |")
-        println(io)
         println(io, "## Validation Protocol and Results")
         println(io)
         println(io, "| Check | Result |")
@@ -631,7 +598,7 @@ function l96_write_report(
         println(io)
         println(io, "## Reproducibility Notes")
         println(io)
-        println(io, "The generated dataset root is `data/releases/l96_nx40_complete_state_v1/`. Split tensors are JLD2 files with layout `trajectory_by_time_by_state`, and metadata, normalization, split, and diagnostic files are JSON. The generation log and report-local CSV tables are stored under `reports/v1_core/l96_nx40_complete_state_v1/`.")
+        println(io, "The generated dataset root is `data/releases/l96_nx40_complete_state_v1/`. Split tensors are JLD2 files with layout `trajectory_by_time_by_state`, and metadata, split, and diagnostic files are JSON. The generation log and report-local CSV tables are stored under `reports/v1_core/l96_nx40_complete_state_v1/`.")
         println(io)
         println(io, "Main generated files:")
         println(io)
@@ -641,7 +608,7 @@ function l96_write_report(
         println(io)
         println(io, "## Limitations and Next Steps")
         println(io)
-        println(io, "This release contains only the clean complete-state, fixed-forcing Lorenz96 configuration. Downstream tasks should derive one-step and rollout windows by index inside each split and should reuse the train normalization statistics for validation and test data.")
+        println(io, "This release contains only the clean complete-state, fixed-forcing Lorenz96 configuration. Downstream tasks should derive one-step and rollout windows by index inside each split and should apply any needed preprocessing outside this dataset release.")
     end
     return path
 end
@@ -655,7 +622,6 @@ function l96_output_paths(project_root::AbstractString, config::L96CompleteState
         "val_trajectories" => joinpath(root, "val", "trajectories.jld2"),
         "test_trajectories" => joinpath(root, "test", "trajectories.jld2"),
         "metadata" => joinpath(root, "metadata.json"),
-        "normalization" => joinpath(root, "normalization.json"),
         "splits" => joinpath(root, "splits.json"),
         "integration_check" => joinpath(root, "diagnostics", "integration_check.json"),
         "trajectory_statistics" => joinpath(root, "diagnostics", "trajectory_statistics.json"),
@@ -672,14 +638,13 @@ function generate_l96_nx40_complete_state_v1(project_root::AbstractString = norm
     started_at = now()
     output_paths = l96_output_paths(project_root, config)
     splits = l96_split_indices(config)
+    rm(joinpath(output_paths["dataset_root"], "normalization.json"); force = true)
 
     trajectories, seeds, pre_burn_in, burn_in_states = l96_generate_all_trajectories(config)
-    normalization = l96_normalization(trajectories, splits["train"], config)
     integration_check = l96_integration_check(trajectories, config)
     energy_statistics = l96_trajectory_energy_statistics(trajectories, config)
     diagnostics = l96_dataset_diagnostics(
         trajectories,
-        normalization,
         integration_check,
         energy_statistics,
         config,
@@ -691,7 +656,6 @@ function generate_l96_nx40_complete_state_v1(project_root::AbstractString = norm
 
     metadata = l96_metadata_payload(config, seeds, pre_burn_in, burn_in_states, diagnostics, output_paths)
     l96_write_json(output_paths["metadata"], metadata)
-    l96_write_json(output_paths["normalization"], normalization)
     l96_write_json(output_paths["splits"], l96_splits_payload(config, seeds))
     l96_write_json(output_paths["integration_check"], integration_check)
     l96_write_json(output_paths["trajectory_statistics"], energy_statistics)
@@ -707,8 +671,6 @@ function generate_l96_nx40_complete_state_v1(project_root::AbstractString = norm
         println(io, "finished_at: ", now())
         println(io, "shape_all: ", size(trajectories))
         println(io, "split_shapes: ", diagnostics["split_shapes"])
-        println(io, "mu_sp: ", diagnostics["mu_sp"])
-        println(io, "sigma_sp: ", diagnostics["sigma_sp"])
         println(io, "epsilon_RK: ", diagnostics["epsilon_RK"])
         println(io, "epsilon_RK_max: ", diagnostics["epsilon_RK_max"])
         println(io, "state_range: [", diagnostics["state_min"], ", ", diagnostics["state_max"], "]")
@@ -722,7 +684,6 @@ function generate_l96_nx40_complete_state_v1(project_root::AbstractString = norm
         output_paths = output_paths,
         diagnostics = diagnostics,
         integration_check = integration_check,
-        normalization = normalization,
         energy_statistics = energy_statistics,
     )
 end
@@ -747,7 +708,6 @@ function print_l96_nx40_summary(result)
         diagnostics["rollout_window_counts"]["val"],
         diagnostics["rollout_window_counts"]["test"],
     )
-    @printf("mu_sp / sigma_sp: %.12g / %.12g\n", diagnostics["mu_sp"], diagnostics["sigma_sp"])
     @printf("state range: [%.12g, %.12g]\n", diagnostics["state_min"], diagnostics["state_max"])
     @printf("epsilon_RK mean / max: %.12e / %.12e\n", diagnostics["epsilon_RK"], diagnostics["epsilon_RK_max"])
     @printf("energy mean across trajectories: %.12g\n", diagnostics["energy_mean_mean_by_trajectory"])

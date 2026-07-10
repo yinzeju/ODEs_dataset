@@ -10,9 +10,7 @@ epsilon_RK_max,4.1958652308413425e-8
 finite_passed,true
 integration_check_passed,true
 max_abs_late_minus_early_energy,0.7282889597776361
-mu_sp,2.3415958840689868
 shape_passed,true
-sigma_sp,3.6401584263250446
 state_max,18.198655602563182
 state_min,-11.52720539159384
 state_span,29.725860994157024
