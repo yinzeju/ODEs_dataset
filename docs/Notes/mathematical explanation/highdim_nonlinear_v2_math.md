@@ -10,7 +10,7 @@ $$
 \boxed{
 \mathsf{HDND\text{-}Data}
 :=
-\text{High-Dimensional Nonlinear Dynamics Data Generation}.
+\text{High-Dimensional Nonlinear v2}.
 }
 
 $$

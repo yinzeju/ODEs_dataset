@@ -2,9 +2,9 @@ using Test
 
 const PROJECT_ROOT = normpath(joinpath(@__DIR__, "..", ".."))
 
-include(joinpath(PROJECT_ROOT, "src", "data", "high_dimensional_nonlinear_dynamics_v2_generation.jl"))
+include(joinpath(PROJECT_ROOT, "src", "data", "highdim_nonlinear_v2_generation.jl"))
 
-@testset "HDND v2 configuration and dynamics" begin
+@testset "highdim_nonlinear_v2 configuration and dynamics" begin
     formal = hdnd_profile(PROJECT_ROOT, :formal)
     @test formal.split_counts == (train = 320, val = 80, test = 80)
     @test total_trajectory_count(formal) == 480
@@ -37,7 +37,7 @@ include(joinpath(PROJECT_ROOT, "src", "data", "high_dimensional_nonlinear_dynami
     @test count(==("recovery"), labels) == 32
 end
 
-@testset "HDND v2 minimal trajectories" begin
+@testset "highdim_nonlinear_v2 minimal trajectories" begin
     l96 = HDNDL96Spec()
     l96_initial = sample_hdnd_l96_initial_condition(MersenneTwister(2), l96)
     l96_trajectory = solve_hdnd_l96_trajectory(l96_initial, l96, 0.1, 2)

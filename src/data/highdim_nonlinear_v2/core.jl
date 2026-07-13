@@ -11,7 +11,7 @@ using SciMLBase
 using SHA
 using Statistics
 
-const HDND_TASK_CODE = "high_dimensional_nonlinear_dynamics_v2"
+const HIGHDIM_NONLINEAR_V2 = "highdim_nonlinear_v2"
 const HDND_SPLIT_NAMES = ("train", "val", "test")
 const HDND_DERIVED_SAMPLING_VIEWS = [0.05, 0.10, 0.25]
 
@@ -45,8 +45,8 @@ function hdnd_profile(project_root::AbstractString, name::Symbol)
             check_count = 256,
             sample_states_per_split = 2_048,
             master_seed = 20260710,
-            output_root = joinpath(project_root, "data", "releases", HDND_TASK_CODE),
-            report_root = joinpath(project_root, "reports", "v2_core", HDND_TASK_CODE),
+            output_root = joinpath(project_root, "data", "releases", HIGHDIM_NONLINEAR_V2),
+            report_root = joinpath(project_root, "reports", "v2_core", HIGHDIM_NONLINEAR_V2),
         )
     elseif name === :smoke
         return HDNDProfile(
@@ -61,8 +61,8 @@ function hdnd_profile(project_root::AbstractString, name::Symbol)
             check_count = 12,
             sample_states_per_split = 128,
             master_seed = 20260710,
-            output_root = joinpath(project_root, "runs", "smoke_tests", HDND_TASK_CODE),
-            report_root = joinpath(project_root, "runs", "smoke_tests", string(HDND_TASK_CODE, "_report")),
+            output_root = joinpath(project_root, "runs", "smoke_tests", HIGHDIM_NONLINEAR_V2),
+            report_root = joinpath(project_root, "runs", "smoke_tests", string(HIGHDIM_NONLINEAR_V2, "_report")),
         )
     end
     throw(ArgumentError("unsupported HDND profile: $name"))
@@ -138,6 +138,7 @@ function initialize_system_file!(
     write_hdf5_string(meta, "environment_hash", environment_hash(project_root))
     write_hdf5_string(meta, "source_policy", "fresh_numerical_integration")
     write_hdf5_string(meta, "normalization_policy", "none_raw_physical_coordinates")
+    write_hdf5_string(meta, "task_code", HIGHDIM_NONLINEAR_V2)
 
     nt = steps + 1
     time = time_vector(steps, tau)

@@ -6,7 +6,7 @@ using Printf
 using Random
 using Statistics
 
-const STANDARD_ODES_V1 = "standard_odes_v1"
+const LOWDIM_NONLINEAR_V1 = "lowdim_nonlinear_v1"
 const STANDARD_NOISE_LEVELS_DB = (5.0, 15.0)
 
 struct StandardObjectSpec
@@ -115,7 +115,7 @@ function profile_specs(profile::Symbol)
                 Dict("x1_min" => -3.1, "x1_max" => 3.1, "x2_min" => -2.0, "x2_max" => 2.0, "energy_threshold" => 0.99)),
         ]
     else
-        error("unknown Standard_ODEs_v1 profile: $profile")
+        error("unknown lowdim_nonlinear_v1 profile: $profile")
     end
 end
 
@@ -509,15 +509,15 @@ end
 
 function object_paths(profile::Symbol, spec::StandardObjectSpec)
     if profile == :smoke
-        root = project_path("runs", "smoke_tests", STANDARD_ODES_V1, spec.object_id)
+        root = project_path("runs", "smoke_tests", LOWDIM_NONLINEAR_V1, spec.object_id)
         return Dict(
             "processed_jld2" => joinpath(root, "processed_tensors.jld2"),
             "manifest" => joinpath(root, "manifest.json"),
         )
     end
     return Dict(
-        "processed_jld2" => project_path("data", "processed", STANDARD_ODES_V1, spec.object_id, "processed_tensors.jld2"),
-        "manifest" => project_path("data", "manifests", STANDARD_ODES_V1, spec.object_id, "manifest.json"),
+        "processed_jld2" => project_path("data", "processed", LOWDIM_NONLINEAR_V1, spec.object_id, "processed_tensors.jld2"),
+        "manifest" => project_path("data", "manifests", LOWDIM_NONLINEAR_V1, spec.object_id, "manifest.json"),
     )
 end
 
@@ -533,7 +533,7 @@ function save_object(profile::Symbol, spec::StandardObjectSpec, X0::Matrix{Float
     ensure_parent_dir(paths["processed_jld2"])
     JLD2.jldsave(
         paths["processed_jld2"];
-        dataset_id = STANDARD_ODES_V1,
+        dataset_id = LOWDIM_NONLINEAR_V1,
         object_id = spec.object_id,
         dtype = "Float32",
         array_layout = "trajectory_by_time_by_channel",
@@ -554,7 +554,7 @@ function save_object(profile::Symbol, spec::StandardObjectSpec, X0::Matrix{Float
         "15db" => empirical_snr_db(X32, Z_15, spec),
     )
     manifest = Dict(
-        "dataset_id" => STANDARD_ODES_V1,
+        "dataset_id" => LOWDIM_NONLINEAR_V1,
         "profile" => string(profile),
         "object_id" => spec.object_id,
         "family" => spec.family,
@@ -582,15 +582,15 @@ end
 function release_paths(profile::Symbol)
     if profile == :smoke
         return Dict(
-            "manifest" => project_path("runs", "smoke_tests", STANDARD_ODES_V1, "release_manifest.json"),
-            "summary" => project_path("runs", "smoke_tests", STANDARD_ODES_V1, "summary.csv"),
-            "log" => project_path("runs", "smoke_tests", STANDARD_ODES_V1, "generation.log"),
+            "manifest" => project_path("runs", "smoke_tests", LOWDIM_NONLINEAR_V1, "release_manifest.json"),
+            "summary" => project_path("runs", "smoke_tests", LOWDIM_NONLINEAR_V1, "summary.csv"),
+            "log" => project_path("runs", "smoke_tests", LOWDIM_NONLINEAR_V1, "generation.log"),
         )
     end
     return Dict(
-        "manifest" => project_path("data", "releases", STANDARD_ODES_V1, "metadata", "release_manifest.json"),
-        "summary" => project_path("reports", "v1_core", STANDARD_ODES_V1, "tables", "generation_summary.csv"),
-        "log" => project_path("reports", "v1_core", STANDARD_ODES_V1, "logs", "generation.log"),
+        "manifest" => project_path("data", "releases", LOWDIM_NONLINEAR_V1, "metadata", "release_manifest.json"),
+        "summary" => project_path("reports", "v1_core", LOWDIM_NONLINEAR_V1, "tables", "generation_summary.csv"),
+        "log" => project_path("reports", "v1_core", LOWDIM_NONLINEAR_V1, "logs", "generation.log"),
     )
 end
 
@@ -641,7 +641,7 @@ function write_generation_log(path::AbstractString, release_manifest::Dict{Strin
     return path
 end
 
-function generate_standard_odes_v1(profile::Symbol)
+function generate_lowdim_nonlinear_v1(profile::Symbol)
     specs = profile_specs(profile)
     manifests = Dict{String,Any}[]
     for spec in specs
@@ -659,7 +659,7 @@ function generate_standard_odes_v1(profile::Symbol)
         "train_one_step_pairs" => sum(m["diagnostics"]["one_step_counts"]["train"] for m in manifests),
     )
     release_manifest = Dict(
-        "dataset_id" => STANDARD_ODES_V1,
+        "dataset_id" => LOWDIM_NONLINEAR_V1,
         "profile" => string(profile),
         "generated_at" => string(now()),
         "dtype" => "Float32",

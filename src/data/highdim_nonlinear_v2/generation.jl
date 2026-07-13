@@ -172,7 +172,7 @@ function generate_hdnd_l96(project_root::AbstractString, profile::HDNDProfile)
         diagnostics["physical_statistics"]["duplicate_check"]["passed"] &&
         (profile.name === :smoke || diagnostics["lyapunov_spectrum"]["largest_lyapunov_exponent"] > 0)
     certificate = merge(Dict(
-        "task_code" => HDND_TASK_CODE,
+        "task_code" => HIGHDIM_NONLINEAR_V2,
         "system_name" => "L96-40",
         "profile" => String(profile.name),
         "created_at" => string(now()),
@@ -303,7 +303,7 @@ function generate_hdnd_ks64(project_root::AbstractString, profile::HDNDProfile)
         diagnostics["physical_statistics"]["duplicate_check"]["passed"] &&
         (profile.name === :smoke || diagnostics["lyapunov_spectrum"]["largest_lyapunov_exponent"] > 0)
     certificate = merge(Dict(
-        "task_code" => HDND_TASK_CODE,
+        "task_code" => HIGHDIM_NONLINEAR_V2,
         "system_name" => "KS64",
         "profile" => String(profile.name),
         "created_at" => string(now()),
@@ -442,7 +442,7 @@ function generate_hdnd_fhn64(project_root::AbstractString, profile::HDNDProfile)
     wave_speed_statistics = Dict(regime => data["wave_speed_statistics"] for (regime, data) in diagnostics["physical_statistics"]["pulse_statistics"])
     pulse_width_statistics = Dict(regime => data["pulse_width_statistics"] for (regime, data) in diagnostics["physical_statistics"]["pulse_statistics"])
     certificate = merge(Dict(
-        "task_code" => HDND_TASK_CODE,
+        "task_code" => HIGHDIM_NONLINEAR_V2,
         "system_name" => "FHN64",
         "profile" => String(profile.name),
         "created_at" => string(now()),
@@ -663,7 +663,7 @@ function refresh_hdnd_release_certificates(project_root::AbstractString; profile
     end
     table_path = save_hdnd_summary_table(profile, runs)
     summary = Dict(
-        "task_code" => HDND_TASK_CODE,
+        "task_code" => HIGHDIM_NONLINEAR_V2,
         "profile" => String(profile.name),
         "created_at" => string(now()),
         "source_policy" => "fresh_numerical_integration_only",
@@ -694,7 +694,7 @@ function run_hdnd_generation(project_root::AbstractString; profile_name::Symbol 
     plot_files = unique(vcat(save_hdnd_plots(profile, runs), save_hdnd_required_release_plots(project_root; profile_name = profile_name)))
     passed = all(run["certificate"]["passed"] for run in values(runs))
     summary = Dict(
-        "task_code" => HDND_TASK_CODE,
+        "task_code" => HIGHDIM_NONLINEAR_V2,
         "profile" => String(profile.name),
         "created_at" => string(now()),
         "source_policy" => "fresh_numerical_integration_only",

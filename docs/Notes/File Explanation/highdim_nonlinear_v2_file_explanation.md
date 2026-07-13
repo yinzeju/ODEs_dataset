@@ -2,25 +2,25 @@
 
 ## Task Summary
 
-This task implements and releases the independent `high_dimensional_nonlinear_dynamics_v2` data factory defined by `docs/notes/mathematical explanation/High-Dimensional Nonlinear Dynamics Data Generation.md`. The release contains newly integrated raw physical-coordinate trajectories for L96-40, KS64, and FHN64. It does not include or import trajectories from the earlier Lorenz96 or PDEID releases, and it does not store normalized states or normalization parameters.
+This task implements and releases the independent `highdim_nonlinear_v2` data factory defined by `docs/notes/mathematical explanation/highdim_nonlinear_v2_math.md`. The release contains newly integrated raw physical-coordinate trajectories for L96-40, KS64, and FHN64. It does not include or import trajectories from the earlier Lorenz96 or PDEID releases, and it does not store normalized states or normalization parameters.
 
 Each system contains 480 trajectories with trajectory-level Split-I counts `320/80/80`. L96 stores 2,049 snapshots of a 40-dimensional state. KS64 stores 5,121 snapshots of a 64-dimensional field. FHN64 stores 5,121 snapshots of the concatenated 64-point `u` and `v` fields, giving state dimension 128.
 
 ## Run Entry Points
 
-- `experiments/smoke_tests/run_high_dimensional_nonlinear_dynamics_v2_smoke.jl` runs the minimal end-to-end profile.
-- `experiments/data_generation/generate_high_dimensional_nonlinear_dynamics_v2.jl` runs the formal 480-trajectory profile.
-- `test/unit/test_high_dimensional_nonlinear_dynamics_v2.jl` checks fixed configuration contracts, periodic indexing, zero-mean KS initialization, FHN regime counts, and minimal trajectories.
+- `experiments/smoke_tests/run_highdim_nonlinear_v2_smoke.jl` runs the minimal end-to-end profile.
+- `experiments/data_generation/generate_highdim_nonlinear_v2_dataset.jl` runs the formal 480-trajectory profile.
+- `test/unit/test_highdim_nonlinear_v2.jl` checks fixed configuration contracts, periodic indexing, zero-mean KS initialization, FHN regime counts, and minimal trajectories.
 
 The formal command used 16 Julia threads:
 
 ```powershell
-julia --threads=16 --project=. experiments\data_generation\generate_high_dimensional_nonlinear_dynamics_v2.jl
+julia --threads=16 --project=. experiments\data_generation\generate_highdim_nonlinear_v2_dataset.jl
 ```
 
 ## Core Source And Configuration
 
-`src/data/high_dimensional_nonlinear_dynamics_v2_generation.jl` assembles the independent implementation under `src/data/hdnd_v2/`:
+`src/data/highdim_nonlinear_v2_generation.jl` assembles the independent implementation under `src/data/highdim_nonlinear_v2/`:
 
 - `core.jl` defines profiles, deterministic seeds, HDF5 structure, common statistics, PCA split metrics, autocorrelation, and certificate helpers.
 - `l96.jl` defines L96-40, Vern9 production/reference integration, tangent dynamics, and Lyapunov diagnostics.
@@ -28,11 +28,11 @@ julia --threads=16 --project=. experiments\data_generation\generate_high_dimensi
 - `fhn64.jl` defines the fourth-order periodic spatial stencil, Rodas5P integration, four initial-condition regimes, blockwise error certificates, and pulse diagnostics.
 - `generation.jl` performs deterministic multithreaded trajectory generation, main-thread HDF5 writes, diagnostics, plotting, certificate refresh, and run summaries.
 
-The release declaration is `configs/releases/high_dimensional_nonlinear_dynamics_v2.json`. Its source policy is `fresh_numerical_integration`; its normalization policy is `none_raw_physical_coordinates`.
+The release declaration is `configs/releases/highdim_nonlinear_v2.json`. Its source policy is `fresh_numerical_integration`; its normalization policy is `none_raw_physical_coordinates`.
 
 ## Generated Data And Reports
 
-Formal data are under `data/releases/high_dimensional_nonlinear_dynamics_v2/`:
+Formal data are under `data/releases/highdim_nonlinear_v2/`:
 
 - `l96_nx40_raw_v2.h5`: 306,152,176 bytes.
 - `ks64_raw_v2.h5`: 1,201,784,043 bytes.
@@ -41,7 +41,7 @@ Formal data are under `data/releases/high_dimensional_nonlinear_dynamics_v2/`:
 
 Each HDF5 file contains `/meta`, `/train`, `/val`, `/test`, and `/diagnostics`. Split groups contain raw `Float64` state tensors, time, trajectory IDs, deterministic seeds, first recorded states, warm-up times, and regime labels. No file contains a `/normalization` group.
 
-The implementation report, generation table, 25 diagnostic figures, and formal run summary are under `reports/v2_core/high_dimensional_nonlinear_dynamics_v2/`.
+The implementation report, generation table, 25 diagnostic figures, and formal run summary are under `reports/v2_core/highdim_nonlinear_v2/`.
 
 ## Data Flow
 

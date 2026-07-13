@@ -6,9 +6,9 @@ dataset groups:
 
 | Dataset group | Scope | Active release |
 | --- | --- | --- |
-| `standard_odes_v1_math` | Low-dimensional autonomous systems | `standard_odes_v1` |
+| `lowdim_nonlinear_v1` | Low-dimensional autonomous systems | `lowdim_nonlinear_v1` |
 | `duffing_aug_snr10` | Controlled forced Duffing dynamics with clean and 10 dB noisy inputs | `duffing_aug_snr10` |
-| `High-Dimensional Nonlinear Dynamics Data Generation` | L96-40, KS64, and FHN64 | `high_dimensional_nonlinear_dynamics_v2` |
+| `highdim_nonlinear_v2` | L96-40, KS64, and FHN64 | `highdim_nonlinear_v2` |
 
 All active data objects are stored in raw physical coordinates. Dataset
 generation does not compute or persist means, standard deviations, normalized
@@ -28,9 +28,9 @@ the training split and applied outside this repository's data objects.
 ## Formal Entry Points
 
 ```powershell
-julia --project=. experiments/data_generation/generate_standard_odes_v1_dataset.jl
+julia --project=. experiments/data_generation/generate_lowdim_nonlinear_v1_dataset.jl
 julia --threads=auto --project=. experiments/data_generation/generate_duffing_aug_snr10_dataset.jl
-julia --threads=16 --project=. experiments/data_generation/generate_high_dimensional_nonlinear_dynamics_v2.jl
+julia --threads=16 --project=. experiments/data_generation/generate_highdim_nonlinear_v2_dataset.jl
 ```
 
 Use `docs/spec/project_task_list.md` for the current release summary and

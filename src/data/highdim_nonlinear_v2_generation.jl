@@ -1,0 +1,5 @@
+include(joinpath(@__DIR__, "highdim_nonlinear_v2", "core.jl"))
+include(joinpath(@__DIR__, "highdim_nonlinear_v2", "l96.jl"))
+include(joinpath(@__DIR__, "highdim_nonlinear_v2", "ks64.jl"))
+include(joinpath(@__DIR__, "highdim_nonlinear_v2", "fhn64.jl"))
+include(joinpath(@__DIR__, "highdim_nonlinear_v2", "generation.jl"))
