@@ -1,0 +1,105 @@
+{
+  "dataset": {
+    "protocol": "KSF-D1",
+    "release_id": "controlled_lowdim_v1",
+    "artifact_version": "v1",
+    "base_parameter_version": "cld-base-v1",
+    "source_parameter_version": "cld-source-v1",
+    "time_parameter_version": "cld-time-v1",
+    "noise_parameter_version": "cld-noise-v1"
+  },
+  "profiles": {
+    "smoke": {
+      "split_bank_shapes": {"train": [2, 2], "val": [2, 2], "test": [2, 2]},
+      "sample_interval": 0.01,
+      "trajectory_duration": 0.32,
+      "max_internal_step": 0.001,
+      "rtol": 1.0e-9,
+      "atol": 1.0e-11,
+      "seed": 2026071701
+    },
+    "formal": {
+      "split_bank_shapes": {"train": [24, 16], "val": [8, 8], "test": [8, 8]},
+      "sample_interval": 0.01,
+      "trajectory_duration": 20.0,
+      "max_internal_step": 0.001,
+      "rtol": 1.0e-9,
+      "atol": 1.0e-11,
+      "seed": 2026071701
+    }
+  },
+  "source": {
+    "mode": "finite_dimensional_harmonic_exosystem",
+    "angular_frequencies": [1.0, 2.5],
+    "output_vector": [1.0, 0.0, 0.65, 0.0],
+    "amplitude_ranges": [[0.4, 1.0], [0.2, 0.6]],
+    "initial_phase_distribution": "uniform",
+    "global_scale": 0.8,
+    "forcing_safety_limit": 2.0
+  },
+  "forcing": {
+    "feature_mode": "scalar_interval_average",
+    "save_left_value": true,
+    "save_mid_value": true,
+    "save_interval_average": true,
+    "save_source_state": true
+  },
+  "split": {
+    "unit": "trajectory",
+    "reuse_manifest_across_roles": true,
+    "new_state_test": true,
+    "new_forcing_test": true,
+    "pairing": "split_local_cartesian_product"
+  },
+  "noise": {
+    "enabled": true,
+    "model": "additive_gaussian",
+    "apply_to": ["learner_physical_state"],
+    "scale_mode": "clean_training_channel_std_fraction",
+    "scale_fraction": 0.05,
+    "reference": "clean_training_split",
+    "temporal_correlation": "iid",
+    "target_mode": "clean_target",
+    "control_noise": false,
+    "source_state_noise": false,
+    "pendulum_noise_coordinate": "raw_angle",
+    "seed": 2026071799
+  },
+  "systems": {
+    "linosc": {
+      "omega0": 1.2, "zeta": 0.08, "bc": 0.7, "alphac": 0.30,
+      "initial_lower": [-2.0, -2.0], "initial_upper": [2.0, 2.0],
+      "state_abs_limit": 20.0,
+      "bilinear_channel": "stiffness_modulation_x"
+    },
+    "duffing": {
+      "mass": 1.0, "d": 0.20, "k": -1.0, "kc": 1.0, "bc": 0.55, "alphac": 0.30,
+      "initial_lower": [-1.8, -1.5], "initial_upper": [1.8, 1.5],
+      "state_abs_limit": 20.0,
+      "bilinear_channel": "linear_stiffness_modulation_x"
+    },
+    "vdp": {
+      "mu": 1.0, "omega0": 1.0, "bc": 0.50, "alphac": 0.25,
+      "initial_lower": [-3.0, -3.0], "initial_upper": [3.0, 3.0],
+      "state_abs_limit": 20.0,
+      "bilinear_channel": "damping_modulation_p"
+    },
+    "pendulum": {
+      "d": 0.10, "g": 9.81, "ell": 1.0, "bc": 0.75, "alphac": 0.18,
+      "initial_lower": [-3.141592653589793, -2.0], "initial_upper": [3.141592653589793, 2.0],
+      "state_abs_limit": 100.0,
+      "bilinear_channel": "damping_modulation_omega"
+    }
+  },
+  "storage": {
+    "format": "JLD2",
+    "float_type": "Float32",
+    "array_layout": "trajectory_time_channel",
+    "normalization_policy": "none_raw_physical_coordinates",
+    "save_clean": true,
+    "save_observed": true,
+    "save_raw_physical_state": true,
+    "save_metadata": true,
+    "save_generation_report": true
+  }
+}

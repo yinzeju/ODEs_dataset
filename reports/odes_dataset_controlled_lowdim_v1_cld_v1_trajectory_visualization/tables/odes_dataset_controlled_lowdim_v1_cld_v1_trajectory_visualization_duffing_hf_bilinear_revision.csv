@@ -1,0 +1,4 @@
+version,rho,persistence_passing_fraction,persistence_ratio_median,continuous_window_passing_fraction,minimum_window_relative_rms_median,work_damping_abs_ratio_median,bilinear_additive_relative_frobenius,tail_high_frequency_energy_ratio_median,state_max_abs
+v1_baseline,0.3,0,1.31066e-26,,,0.0199028,0.972152,4.11423e-36,0.435254
+v2_formal,10,0.65625,0.627458,0.373698,0.0597677,0.976488,1.51712,0.305849,0.860046
+v3_formal,12,0.998698,1.04868,0.976562,0.570557,0.996458,2.50459,0.356275,1.02295

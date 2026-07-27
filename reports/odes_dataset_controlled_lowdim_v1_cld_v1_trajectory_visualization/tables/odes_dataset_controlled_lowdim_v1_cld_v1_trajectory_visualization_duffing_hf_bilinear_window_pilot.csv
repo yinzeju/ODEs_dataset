@@ -1,0 +1,7 @@
+rho,selected,passed,persistence_passing_fraction,persistence_ratio_median,continuous_window_passing_fraction,minimum_window_relative_rms_median,work_damping_abs_ratio_median,tail_high_frequency_energy_ratio_median,state_max_abs
+10,false,false,0.65625,0.652011,0.421875,0.0820063,0.976516,0.300217,0.73192
+12,true,true,1,0.974181,0.96875,0.578,0.994992,0.341706,0.906966
+14,false,true,1,1.00163,0.984375,0.465732,0.998379,0.428523,1.14307
+16,false,true,1,0.959371,1,0.497409,1.00005,0.539678,1.60558
+18,false,true,1,0.89632,1,0.752257,1.00119,0.449596,1.9007
+20,false,true,1,1.02998,1,0.843346,0.999903,0.676077,2.18454
