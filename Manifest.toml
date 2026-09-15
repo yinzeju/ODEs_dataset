@@ -2,7 +2,7 @@
 
 julia_version = "1.12.5"
 manifest_format = "2.0"
-project_hash = "683e5a6e131b04cdbc9ff931b3d53ef419c480e3"
+project_hash = "e25bda17bdff0883ef8bca0c340924a18ad1e2e5"
 
 [[deps.ADTypes]]
 git-tree-sha1 = "d9aaef7c63466eee4de23b4d9dad03629df54bea"
@@ -1262,7 +1262,7 @@ weakdeps = ["ForwardDiff"]
     NonlinearSolveSpectralMethodsForwardDiffExt = "ForwardDiff"
 
 [[deps.ODEs_dataset]]
-deps = ["JLD2", "JSON", "Plots"]
+deps = ["FFTW", "HDF5", "JLD2", "JSON", "OrdinaryDiffEq", "Plots", "SciMLBase"]
 path = "."
 uuid = "00000000-0000-0000-0000-000000000000"
 version = "0.1.0"
@@ -1360,6 +1360,12 @@ weakdeps = ["SparseArrays"]
 
     [deps.OrdinaryDiffEqDifferentiation.extensions]
     OrdinaryDiffEqDifferentiationSparseArraysExt = "SparseArrays"
+
+[[deps.OrdinaryDiffEqLowOrderRK]]
+deps = ["DiffEqBase", "FastBroadcast", "LinearAlgebra", "MuladdMacro", "OrdinaryDiffEqCore", "RecursiveArrayTools", "Reexport", "SciMLBase"]
+git-tree-sha1 = "ffca1eb28ddddf868033d52ae8de660716f4c35b"
+uuid = "1344f307-1e59-4825-a18e-ace9aa3fa4c6"
+version = "2.2.0"
 
 [[deps.OrdinaryDiffEqNonlinearSolve]]
 deps = ["ADTypes", "ArrayInterface", "DiffEqBase", "FastBroadcast", "FastClosures", "ForwardDiff", "LinearAlgebra", "LinearSolve", "MuladdMacro", "NonlinearSolve", "OrdinaryDiffEqCore", "OrdinaryDiffEqDifferentiation", "PreallocationTools", "RecursiveArrayTools", "SciMLBase", "SciMLOperators", "SciMLStructures", "SimpleNonlinearSolve", "SparseArrays", "StaticArraysCore"]

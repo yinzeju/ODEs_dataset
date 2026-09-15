@@ -1,0 +1,40 @@
+{
+  "protocol_id": "Standard_ODEs_v2",
+  "release_id": "standard_odes_v2_20260916",
+  "protocol_note": "D:/MyVault/Document/Obsidian/Notebook/系统辨识和模型学习/Koopman Space/Part 0 Benchmark & Evaluation/TestSub-1. lowdim_nonlinear_v1_math.md",
+  "seed": 202609160,
+  "state_tolerance": 1e-7,
+  "energy_tolerance": 1e-8,
+  "probe_count": 3,
+  "fput_initial_substeps": 8,
+  "fput_max_substeps": 128,
+  "chaotic_restart_duration": 0.2,
+  "fput_restart_duration": 1.0,
+  "long_statistics_tolerance": 0.35,
+  "noise_snr_tolerance_db": 0.15,
+  "condition_grid_eighths": [0,1,2,3,4,5,6,7,8],
+  "condition_train_eighths": [0,2,4,6,8],
+  "condition_val_eighths": [1,5],
+  "condition_test_eighths": [3,7],
+  "CAN": [
+    {"id":"linear_diagonal","family":"linear_diagonal","d":4,"tau":0.01,"M":1025,"R":512,"burn":0,"parameters":{"a1":-1,"a2":-0.3,"a3":0.1,"a4":0.5},"ic":"uniform_box4","D":1,"E":1},
+    {"id":"linear_rotation_contraction_2d","family":"rotation","d":2,"tau":0.01,"M":2049,"R":512,"burn":0,"parameters":{"gamma":0.15,"omega":6.283185307179586},"ic":"annulus","radii":[0.5,1],"D":1,"E":1},
+    {"id":"damped_linear_oscillator","family":"oscillator","d":2,"tau":0.02,"M":3001,"R":512,"burn":0,"parameters":{"gamma":0.05,"omega0":1},"ic":"annulus","radii":[0.5,1],"D":1,"E":1},
+    {"id":"duffing_chi40_medium","family":"duffing","d":2,"tau":0.01,"M":2049,"R":512,"burn":0,"parameters":{"alpha":1,"delta":0.08,"beta":10},"ic":"annulus","radii":[1.5,2],"D":2,"E":42},
+    {"id":"duffing_chi320_strong","family":"duffing","d":2,"tau":0.01,"M":2049,"R":512,"burn":0,"parameters":{"alpha":1,"delta":0.08,"beta":20},"ic":"annulus","radii":[3,4],"D":4,"E":1288},
+    {"id":"nonlinear_pendulum_lusch2018","family":"pendulum","d":2,"tau":0.02,"M":51,"R":8192,"burn":0,"parameters":{"omega0":1},"ic":"pendulum_can","D":1,"E":1},
+    {"id":"lorenz63_standard","family":"lorenz","d":3,"tau":0.01,"M":4097,"R":512,"burn":10,"parameters":{"sigma":10,"rho":28,"beta":2.6666666666666665},"ic":"lorenz_box","D":20,"E":1},
+    {"id":"rossler_standard","family":"rossler","d":3,"tau":0.02,"M":4097,"R":512,"burn":50,"parameters":{"a":0.2,"b":0.2,"c":5.7},"ic":"rossler_box","D":10,"E":1},
+    {"id":"vanderpol_autonomous_mu03","family":"vanderpol","d":2,"tau":0.02,"M":5001,"R":512,"burn":0,"parameters":{"mu":0.3},"ic":"mixed_annuli","D":3.5,"E":6.125},
+    {"id":"axas_haller_2023_2dof","family":"axas_haller","d":4,"tau":0.1,"M":1001,"R":512,"burn":0,"parameters":{"m":1,"k":1,"c":0.03,"alpha2":-2,"beta3":1},"ic":"axas_safe_ball","D":0.5,"E":0.03333333333333333},
+    {"id":"fput_beta_32dof","family":"fput","d":64,"tau":0.05,"M":8193,"R":512,"burn":0,"parameters":{"n_dof":32,"mass":1,"linear_stiffness":1,"beta":1},"ic":"fput_all_modes","D":1,"E":2}
+  ],
+  "COND": [
+    {"id":"damped_linear_cond_w0","base":"damped_linear_oscillator","axis":"omega0","range":[0.8,1.2],"M":2001},
+    {"id":"duffing_cond_beta","base":"duffing_chi40_medium","axis":"beta","range":[5,25],"M":2049},
+    {"id":"pendulum_cond_w0","base":"nonlinear_pendulum_lusch2018","axis":"omega0","range":[0.8,1.2],"M":2001,"ic":"pendulum_cond"},
+    {"id":"vanderpol_cond_mu","base":"vanderpol_autonomous_mu03","axis":"mu","range":[0.1,0.9],"M":3001},
+    {"id":"axas_haller_cond_beta3","base":"axas_haller_2023_2dof","axis":"beta3","range":[0.5,1.5],"M":1001},
+    {"id":"fput32_cond_beta","base":"fput_beta_32dof","axis":"beta","range":[0.5,1.5],"M":4097}
+  ]
+}
