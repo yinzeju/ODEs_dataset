@@ -1,0 +1,55 @@
+{
+    "created_at": "2026-07-13T15:27:00.613",
+    "normalization_policy": "none",
+    "output_root": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2",
+    "passed": true,
+    "plot_files": [
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\l96_state_heatmap.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\l96_energy.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\l96_lyapunov_spectrum.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\l96_time_error_distribution.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\ks64_state_heatmap.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\ks64_energy.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\ks64_energy_spectrum.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\ks64_lyapunov_spectrum.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\fhn64_active_u_heatmap.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\fhn64_formation_u_heatmap.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\fhn64_collision_u_heatmap.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\fhn64_recovery_u_heatmap.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\fhn64_active_v_heatmap.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\fhn64_activity.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\fhn64_uv_energy_spectrum.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\l96_temporal_autocorrelation.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\l96_power_spectral_density.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\l96_split_statistical_projection.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\ks64_temporal_spatial_autocorrelation.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\ks64_high_frequency_tail.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\ks64_split_statistical_projection.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\ks64_space_convergence.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\fhn64_uv_temporal_autocorrelation.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\fhn64_wave_speed_pulse_width.png",
+        "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\plots\\fhn64_space_convergence.png"
+    ],
+    "profile": "smoke",
+    "report_root": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report",
+    "source_policy": "fresh_numerical_integration_only",
+    "systems": {
+        "fhn64": {
+            "certificate_path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2\\fhn64_data_certificate_v2.json",
+            "passed": true,
+            "path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2\\fhn64_raw_v2.h5"
+        },
+        "ks64": {
+            "certificate_path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2\\ks64_data_certificate_v2.json",
+            "passed": true,
+            "path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2\\ks64_raw_v2.h5"
+        },
+        "l96": {
+            "certificate_path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2\\l96_nx40_data_certificate_v2.json",
+            "passed": true,
+            "path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2\\l96_nx40_raw_v2.h5"
+        }
+    },
+    "table_path": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\smoke_tests\\highdim_nonlinear_v2_report\\tables\\generation_summary.csv",
+    "task_code": "highdim_nonlinear_v2"
+}

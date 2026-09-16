@@ -17,6 +17,7 @@ include(joinpath(PROJECT_ROOT, "src", "data", "highdim_nonlinear_v2_generation.j
     @test l96.tau == 0.05
     @test l96.reltol == 1.0e-10
     @test hdnd_l96_boundary_check(l96)
+    @test hdnd_l96_boundary_check(HDNDL96Spec(nx = 10))
 
     ks = HDNDKSSpec()
     @test ks.nx == 64
@@ -43,6 +44,17 @@ end
     l96_trajectory = solve_hdnd_l96_trajectory(l96_initial, l96, 0.1, 2)
     @test size(l96_trajectory) == (3, 40)
     @test all(isfinite, l96_trajectory)
+
+    l96_nx10 = HDNDL96Spec(nx = 10)
+    l96_nx10_initial = sample_hdnd_l96_initial_condition(MersenneTwister(5), l96_nx10)
+    l96_nx10_trajectory = solve_hdnd_l96_trajectory(
+        l96_nx10_initial,
+        l96_nx10,
+        0.1,
+        2,
+    )
+    @test size(l96_nx10_trajectory) == (3, 10)
+    @test all(isfinite, l96_nx10_trajectory)
 
     ks = HDNDKSSpec()
     ks_initial = sample_hdnd_ks_initial_condition(MersenneTwister(3), ks)

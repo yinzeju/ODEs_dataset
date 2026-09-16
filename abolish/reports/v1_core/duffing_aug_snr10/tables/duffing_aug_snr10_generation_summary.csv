@@ -1,0 +1,2 @@
+dataset_id,R,M,train,val,test,fs_sim,fs_model,snr_x_db,snr_v_db,phase_circle_max_error,forcing_consistency_max_error,all_finite,passed
+duffing_aug_snr10,768,2000,512,128,128,2000,500,9.99335646,9.99278168,2.220446049e-16,1.925570814e-12,true,true

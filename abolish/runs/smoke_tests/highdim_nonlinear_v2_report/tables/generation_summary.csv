@@ -1,0 +1,4 @@
+system,train_trajectories,val_trajectories,test_trajectories,snapshots,state_dimension,time_one_step_error,space_one_step_error,passed
+L96-40,4,4,4,33,40,5.297004230470357e-16,,true
+KS64,4,4,4,41,64,1.4613332572325415e-9,6.170107920416069e-9,true
+FHN64,4,4,4,41,128,3.3203318280808143e-15,0.0014484573262964061,true

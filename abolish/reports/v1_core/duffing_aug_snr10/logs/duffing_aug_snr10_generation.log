@@ -1,0 +1,13 @@
+dataset_id: duffing_aug_snr10
+generated_at: 2026-07-10T17:51:54.190
+num_trajectories: 768
+num_model_snapshots: 2000
+split_counts: Dict("test" => 128, "val" => 128, "train" => 512)
+empirical_snr_train_db: Dict("v" => 9.9927816783009, "x" => 9.993356463927531)
+phase_circle_max_error: 2.220446049250313e-16
+forcing_consistency_max_error: 1.9255708139098715e-12
+accepted_steps_total: 13616034
+rejected_steps_total: 5715441
+passed: true
+clean_path: D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\duffing_aug_snr10\kdsm_data_0dot1_duffing_aug_clean.jld2
+noise10_path: D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\duffing_aug_snr10\kdsm_data_0dot1_duffing_aug_snr10.jld2

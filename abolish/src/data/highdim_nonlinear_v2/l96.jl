@@ -22,13 +22,18 @@ function hdnd_l96_rhs!(du::AbstractVector, x::AbstractVector, spec::HDNDL96Spec,
 end
 
 function hdnd_l96_boundary_check(spec::HDNDL96Spec)
+    spec.nx >= 4 || return false
     x = collect(1.0:spec.nx)
     du = similar(x)
     hdnd_l96_rhs!(du, x, spec, 0.0)
-    first_expected = (x[2] - x[39]) * x[40] - x[1] + spec.forcing
-    last_expected = (x[1] - x[38]) * x[39] - x[40] + spec.forcing
-    return isapprox(du[1], first_expected; atol = 0.0, rtol = 0.0) &&
-        isapprox(du[40], last_expected; atol = 0.0, rtol = 0.0)
+    for j in (firstindex(x), lastindex(x))
+        jm2 = mod1(j - 2, spec.nx)
+        jm1 = mod1(j - 1, spec.nx)
+        jp1 = mod1(j + 1, spec.nx)
+        expected = (x[jp1] - x[jm2]) * x[jm1] - x[j] + spec.forcing
+        isapprox(du[j], expected; atol = 0.0, rtol = 0.0) || return false
+    end
+    return true
 end
 
 function sample_hdnd_l96_initial_condition(rng::AbstractRNG, spec::HDNDL96Spec)

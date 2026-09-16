@@ -1,0 +1,15 @@
+dataset_id: lowdim_nonlinear_v1
+profile: formal
+generated_at: 2026-07-10T17:54:21.780
+object_count: 8
+all_passed: true
+total_state_vectors: 9821696
+total_train_one_step_pairs: 7357440
+linear_diagonal: D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\linear_diagonal\processed_tensors.jld2
+linear_rotation_contraction_2d: D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\linear_rotation_contraction_2d\processed_tensors.jld2
+damped_linear_oscillator: D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\damped_linear_oscillator\processed_tensors.jld2
+duffing_chi40_medium: D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\duffing_chi40_medium\processed_tensors.jld2
+duffing_chi320_strong: D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\duffing_chi320_strong\processed_tensors.jld2
+lorenz63_standard: D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\lorenz63_standard\processed_tensors.jld2
+rossler_standard: D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\rossler_standard\processed_tensors.jld2
+nonlinear_pendulum_lusch2018: D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\nonlinear_pendulum_lusch2018\processed_tensors.jld2

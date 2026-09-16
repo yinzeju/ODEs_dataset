@@ -1,0 +1,16 @@
+{
+  "task_id": "controlled_lowdim_v1_duffing_hf_addc_noise10",
+  "source_dataset": "data/releases/controlled_lowdim_v1/duffing_hf/duffing_hf_addc/clean.jld2",
+  "output_dataset": "data/releases/controlled_lowdim_v1/duffing_hf/duffing_hf_addc/noise10.jld2",
+  "output_metadata": "data/releases/controlled_lowdim_v1/duffing_hf/duffing_hf_addc/noise10_metadata.json",
+  "state_key": "state_observation_clean",
+  "target_key": "target_clean",
+  "forcing_key": "control_feature_clean",
+  "training_role": "train",
+  "snr_db": 10.0,
+  "noise_seed": 2026061703,
+  "noise_model": "independent_channelwise_gaussian_observation_noise",
+  "channel_power_source": "complete_clean_training_split",
+  "target_mode": "clean_target",
+  "forcing_mode": "unchanged_clean_interval_average_applied_force"
+}

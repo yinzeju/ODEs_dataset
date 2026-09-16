@@ -1,0 +1,35 @@
+# Track only project source, configuration, experiments, tests, and docs by default.
+*
+
+# Root project files.
+!/.gitignore
+!/README.md
+!/Project.toml
+!/Manifest.toml
+
+# Tracked project directories.
+!/docs/
+!/docs/**
+!/configs/
+!/configs/**
+!/src/
+!/src/**
+!/experiments/
+!/experiments/**
+!/test/
+!/test/**
+
+# Generated data, runs, logs, checkpoints, caches, and most artifacts stay ignored.
+# Keep optional placeholders for generated-output directories without tracking contents.
+!/artifacts/
+/artifacts/**
+!/artifacts/.gitkeep
+!/artifacts/README.md
+!/runs/
+/runs/**
+!/runs/.gitkeep
+!/runs/README.md
+!/data/
+/data/**
+!/data/.gitkeep
+!/data/README.md

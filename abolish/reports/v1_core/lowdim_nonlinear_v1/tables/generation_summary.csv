@@ -1,0 +1,9 @@
+object_id,state_dim,dt,trajectory_length,num_snapshots,num_trajectories,train,val,test,train_one_step,max_abs_state,all_finite,processed_jld2
+linear_diagonal,4,0.01,1024,1025,512,384,64,64,393216,167.122743,true,D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\linear_diagonal\processed_tensors.jld2
+linear_rotation_contraction_2d,2,0.01,2048,2049,512,384,64,64,786432,1.98034865,true,D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\linear_rotation_contraction_2d\processed_tensors.jld2
+damped_linear_oscillator,2,0.02,3000,3001,512,384,64,64,1152000,2.71343444,true,D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\damped_linear_oscillator\processed_tensors.jld2
+duffing_chi40_medium,2,0.01,2048,2049,512,384,64,64,786432,8.9409728,true,D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\duffing_chi40_medium\processed_tensors.jld2
+duffing_chi320_strong,2,0.01,2048,2049,512,384,64,64,786432,49.6116107,true,D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\duffing_chi320_strong\processed_tensors.jld2
+lorenz63_standard,3,0.01,4096,4097,512,384,64,64,1572864,47.2487718,true,D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\lorenz63_standard\processed_tensors.jld2
+rossler_standard,3,0.02,4096,4097,512,384,64,64,1572864,22.8513573,true,D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\rossler_standard\processed_tensors.jld2
+nonlinear_pendulum_lusch2018,2,0.02,50,51,8192,6144,1024,1024,307200,2.99528593,true,D:\MyVault\Projects\Julia\ODEs_dataset\data\processed\lowdim_nonlinear_v1\nonlinear_pendulum_lusch2018\processed_tensors.jld2

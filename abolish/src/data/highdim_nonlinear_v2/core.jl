@@ -116,6 +116,8 @@ function initialize_system_file!(
     state_dim::Integer,
     steps::Integer,
     tau::Real,
+    ;
+    task_code::AbstractString = HIGHDIM_NONLINEAR_V2,
 )
     meta = create_group(h5, "meta")
     for (key, value) in metadata
@@ -138,7 +140,7 @@ function initialize_system_file!(
     write_hdf5_string(meta, "environment_hash", environment_hash(project_root))
     write_hdf5_string(meta, "source_policy", "fresh_numerical_integration")
     write_hdf5_string(meta, "normalization_policy", "none_raw_physical_coordinates")
-    write_hdf5_string(meta, "task_code", HIGHDIM_NONLINEAR_V2)
+    write_hdf5_string(meta, "task_code", task_code)
 
     nt = steps + 1
     time = time_vector(steps, tau)

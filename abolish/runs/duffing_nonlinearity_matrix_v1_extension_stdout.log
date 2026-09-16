@@ -1,0 +1,126 @@
+release_id: duffing_nonlinearity_matrix_v1
+objects: 56 (54 Duffing cells), split=384/64/64, threads=16
+[01/56] generating L0_discrete_damped_rotation
+  saved state=(512, 1025, 2) chi=0 energy_violations=0 passed=true
+[02/56] generating L1_continuous_linear_oscillator
+  saved state=(512, 1025, 2) chi=0 energy_violations=0 passed=true
+[03/56] generating D_beta_0000__Q_025
+  saved state=(512, 1025, 2) chi=0 energy_violations=0 passed=true
+[04/56] generating D_beta_0000__Q_050
+  saved state=(512, 1025, 2) chi=0 energy_violations=0 passed=true
+[05/56] generating D_beta_0000__Q_100
+  saved state=(512, 1025, 2) chi=0 energy_violations=0 passed=true
+[06/56] generating D_beta_0000__Q_150
+  saved state=(512, 1025, 2) chi=0 energy_violations=0 passed=true
+[07/56] generating D_beta_0000__Q_200
+  saved state=(512, 1025, 2) chi=0 energy_violations=0 passed=true
+[08/56] generating D_beta_0000__Q_400
+  saved state=(512, 1025, 2) chi=0 energy_violations=0 passed=true
+[09/56] generating D_beta_0050__Q_025
+  saved state=(512, 1025, 2) chi=0.003125 energy_violations=0 passed=true
+[10/56] generating D_beta_0050__Q_050
+  saved state=(512, 1025, 2) chi=0.0125 energy_violations=0 passed=true
+[11/56] generating D_beta_0050__Q_100
+  saved state=(512, 1025, 2) chi=0.05 energy_violations=0 passed=true
+[12/56] generating D_beta_0050__Q_150
+  saved state=(512, 1025, 2) chi=0.1125 energy_violations=0 passed=true
+[13/56] generating D_beta_0050__Q_200
+  saved state=(512, 1025, 2) chi=0.2 energy_violations=0 passed=true
+[14/56] generating D_beta_0050__Q_400
+  saved state=(512, 1025, 2) chi=0.8 energy_violations=0 passed=true
+[15/56] generating D_beta_0200__Q_025
+  saved state=(512, 1025, 2) chi=0.0125 energy_violations=0 passed=true
+[16/56] generating D_beta_0200__Q_050
+  saved state=(512, 1025, 2) chi=0.05 energy_violations=0 passed=true
+[17/56] generating D_beta_0200__Q_100
+  saved state=(512, 1025, 2) chi=0.2 energy_violations=0 passed=true
+[18/56] generating D_beta_0200__Q_150
+  saved state=(512, 1025, 2) chi=0.45 energy_violations=0 passed=true
+[19/56] generating D_beta_0200__Q_200
+  saved state=(512, 1025, 2) chi=0.8 energy_violations=0 passed=true
+[20/56] generating D_beta_0200__Q_400
+  saved state=(512, 1025, 2) chi=3.2 energy_violations=0 passed=true
+[21/56] generating D_beta_0500__Q_025
+  saved state=(512, 1025, 2) chi=0.03125 energy_violations=0 passed=true
+[22/56] generating D_beta_0500__Q_050
+  saved state=(512, 1025, 2) chi=0.125 energy_violations=0 passed=true
+[23/56] generating D_beta_0500__Q_100
+  saved state=(512, 1025, 2) chi=0.5 energy_violations=0 passed=true
+[24/56] generating D_beta_0500__Q_150
+  saved state=(512, 1025, 2) chi=1.125 energy_violations=0 passed=true
+[25/56] generating D_beta_0500__Q_200
+  saved state=(512, 1025, 2) chi=2 energy_violations=0 passed=true
+[26/56] generating D_beta_0500__Q_400
+  saved state=(512, 1025, 2) chi=8 energy_violations=0 passed=true
+[27/56] generating D_beta_1000__Q_025
+  saved state=(512, 1025, 2) chi=0.0625 energy_violations=0 passed=true
+[28/56] generating D_beta_1000__Q_050
+  saved state=(512, 1025, 2) chi=0.25 energy_violations=0 passed=true
+[29/56] generating D_beta_1000__Q_100
+  saved state=(512, 1025, 2) chi=1 energy_violations=0 passed=true
+[30/56] generating D_beta_1000__Q_150
+  saved state=(512, 1025, 2) chi=2.25 energy_violations=0 passed=true
+[31/56] generating D_beta_1000__Q_200
+  saved state=(512, 1025, 2) chi=4 energy_violations=0 passed=true
+[32/56] generating D_beta_1000__Q_400
+  saved state=(512, 1025, 2) chi=16 energy_violations=0 passed=true
+[33/56] generating D_beta_2000__Q_025
+  saved state=(512, 1025, 2) chi=0.125 energy_violations=0 passed=true
+[34/56] generating D_beta_2000__Q_050
+  saved state=(512, 1025, 2) chi=0.5 energy_violations=0 passed=true
+[35/56] generating D_beta_2000__Q_100
+  saved state=(512, 1025, 2) chi=2 energy_violations=0 passed=true
+[36/56] generating D_beta_2000__Q_150
+  saved state=(512, 1025, 2) chi=4.5 energy_violations=0 passed=true
+[37/56] generating D_beta_2000__Q_200
+  saved state=(512, 1025, 2) chi=8 energy_violations=0 passed=true
+[38/56] generating D_beta_2000__Q_400
+  saved state=(512, 1025, 2) chi=32 energy_violations=0 passed=true
+[39/56] generating D_beta_5000__Q_025
+  saved state=(512, 1025, 2) chi=0.3125 energy_violations=0 passed=true
+[40/56] generating D_beta_5000__Q_050
+  saved state=(512, 1025, 2) chi=1.25 energy_violations=0 passed=true
+[41/56] generating D_beta_5000__Q_100
+  saved state=(512, 1025, 2) chi=5 energy_violations=0 passed=true
+[42/56] generating D_beta_5000__Q_150
+  saved state=(512, 1025, 2) chi=11.25 energy_violations=0 passed=true
+[43/56] generating D_beta_5000__Q_200
+  saved state=(512, 1025, 2) chi=20 energy_violations=0 passed=true
+[44/56] generating D_beta_5000__Q_400
+  saved state=(512, 1025, 2) chi=80 energy_violations=0 passed=true
+[45/56] generating D_beta_10000__Q_025
+  saved state=(512, 1025, 2) chi=0.625 energy_violations=0 passed=true
+[46/56] generating D_beta_10000__Q_050
+  saved state=(512, 1025, 2) chi=2.5 energy_violations=0 passed=true
+[47/56] generating D_beta_10000__Q_100
+  saved state=(512, 1025, 2) chi=10 energy_violations=0 passed=true
+[48/56] generating D_beta_10000__Q_150
+  saved state=(512, 1025, 2) chi=22.5 energy_violations=0 passed=true
+[49/56] generating D_beta_10000__Q_200
+  saved state=(512, 1025, 2) chi=40 energy_violations=0 passed=true
+[50/56] generating D_beta_10000__Q_400
+  saved state=(512, 1025, 2) chi=160 energy_violations=0 passed=true
+[51/56] generating D_beta_20000__Q_025
+  saved state=(512, 1025, 2) chi=1.25 energy_violations=0 passed=true
+[52/56] generating D_beta_20000__Q_050
+  saved state=(512, 1025, 2) chi=5 energy_violations=0 passed=true
+[53/56] generating D_beta_20000__Q_100
+  saved state=(512, 1025, 2) chi=20 energy_violations=0 passed=true
+[54/56] generating D_beta_20000__Q_150
+  saved state=(512, 1025, 2) chi=45 energy_violations=0 passed=true
+[55/56] generating D_beta_20000__Q_200
+  saved state=(512, 1025, 2) chi=80 energy_violations=0 passed=true
+[56/56] generating D_beta_20000__Q_400
+  saved state=(512, 1025, 2) chi=320 energy_violations=0 passed=true
+release_id: duffing_nonlinearity_matrix_v1
+object_count: 56
+duffing_cell_count: 54
+all_passed: true
+initial_condition_reuse_passed: true
+chi_range: [0, 320]
+release_manifest: D:\MyVault\Projects\Julia\ODEs_dataset\data\releases\duffing_nonlinearity_matrix_v1\duffing_nonlinearity_matrix_v1_manifest.toml
+release_index: D:\MyVault\Projects\Julia\ODEs_dataset\data\releases\duffing_nonlinearity_matrix_v1\release_index.toml
+checksums: D:\MyVault\Projects\Julia\ODEs_dataset\data\releases\duffing_nonlinearity_matrix_v1\checksums.toml
+object_summary: D:\MyVault\Projects\Julia\ODEs_dataset\reports\v1_core\duffing_nonlinearity_matrix_v1\tables\duffing_nonlinearity_matrix_v1_object_summary.csv
+matrix_summary: D:\MyVault\Projects\Julia\ODEs_dataset\reports\v1_core\duffing_nonlinearity_matrix_v1\tables\duffing_nonlinearity_matrix_v1_duffing_matrix_summary.csv
+log: D:\MyVault\Projects\Julia\ODEs_dataset\reports\v1_core\duffing_nonlinearity_matrix_v1\logs\duffing_nonlinearity_matrix_v1_generation.log

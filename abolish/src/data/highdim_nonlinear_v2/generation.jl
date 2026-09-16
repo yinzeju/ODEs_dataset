@@ -52,9 +52,21 @@ function hdnd_fhn_shift_error(state::AbstractVector, spec::HDNDFHNSpec; shift::I
     return norm(propagated_shift .- shifted_propagation) / (norm(shifted_propagation) + eps(Float64))
 end
 
-function generate_hdnd_l96(project_root::AbstractString, profile::HDNDProfile)
-    spec = HDNDL96Spec()
-    path = joinpath(profile.output_root, "l96_nx40_raw_v2.h5")
+function generate_hdnd_l96(
+    project_root::AbstractString,
+    profile::HDNDProfile;
+    spec::HDNDL96Spec = HDNDL96Spec(),
+    task_code::AbstractString = HIGHDIM_NONLINEAR_V2,
+    system_name::Union{Nothing,AbstractString} = nothing,
+    output_filename::Union{Nothing,AbstractString} = nothing,
+    certificate_filename::Union{Nothing,AbstractString} = nothing,
+)
+    resolved_system_name = isnothing(system_name) ? "L96-$(spec.nx)" : String(system_name)
+    resolved_output_filename = isnothing(output_filename) ?
+        "l96_nx$(spec.nx)_raw_v2.h5" : String(output_filename)
+    resolved_certificate_filename = isnothing(certificate_filename) ?
+        "l96_nx$(spec.nx)_data_certificate_v2.json" : String(certificate_filename)
+    path = joinpath(profile.output_root, resolved_output_filename)
     rm(path; force = true)
     mkpath(dirname(path))
     samples = Dict(name => Vector{Vector{Float64}}() for name in HDND_SPLIT_NAMES)
@@ -68,9 +80,9 @@ function generate_hdnd_l96(project_root::AbstractString, profile::HDNDProfile)
     seeds = Vector{Int}(undef, total_trajectory_count(profile))
     ids = hdnd_split_trajectory_ids(profile)
     metadata = Dict(
-        "system_name" => "L96-40",
-        "spatial_dimension" => 40,
-        "physical_parameters" => Dict("N_x" => 40, "F_0" => 8.0),
+        "system_name" => resolved_system_name,
+        "spatial_dimension" => spec.nx,
+        "physical_parameters" => Dict("N_x" => spec.nx, "F_0" => spec.forcing),
         "solver_name" => "Vern9",
         "solver_order" => 9,
         "reltol" => spec.reltol,
@@ -79,7 +91,16 @@ function generate_hdnd_l96(project_root::AbstractString, profile::HDNDProfile)
         "spatial_discretization" => "cyclic_local_coupling",
     )
     h5open(path, "w") do h5
-        writers = initialize_system_file!(h5, project_root, profile, metadata, spec.nx, profile.l96_steps, spec.tau)
+        writers = initialize_system_file!(
+            h5,
+            project_root,
+            profile,
+            metadata,
+            spec.nx,
+            profile.l96_steps,
+            spec.tau;
+            task_code,
+        )
         for split_name in HDND_SPLIT_NAMES
             labels = fill("attractor", split_count(profile, split_name))
             split_ids = ids[split_name]
@@ -172,8 +193,8 @@ function generate_hdnd_l96(project_root::AbstractString, profile::HDNDProfile)
         diagnostics["physical_statistics"]["duplicate_check"]["passed"] &&
         (profile.name === :smoke || diagnostics["lyapunov_spectrum"]["largest_lyapunov_exponent"] > 0)
     certificate = merge(Dict(
-        "task_code" => HIGHDIM_NONLINEAR_V2,
-        "system_name" => "L96-40",
+        "task_code" => task_code,
+        "system_name" => resolved_system_name,
         "profile" => String(profile.name),
         "created_at" => string(now()),
         "finite_check" => all(value["finite_passed"] for value in values(checks)),
@@ -185,7 +206,10 @@ function generate_hdnd_l96(project_root::AbstractString, profile::HDNDProfile)
     certificate["split_statistics"] = diagnostics["split_distribution"]
     certificate["autocorrelation_time"] = Dict(key => value["integrated_time"] for (key, value) in diagnostics["autocorrelation"])
     certificate["effective_sample_size"] = Dict(key => value["effective_sample_size"] for (key, value) in diagnostics["autocorrelation"])
-    certificate_path = save_json(joinpath(profile.output_root, "l96_nx40_data_certificate_v2.json"), certificate)
+    certificate_path = save_json(
+        joinpath(profile.output_root, resolved_certificate_filename),
+        certificate,
+    )
     return Dict("path" => path, "certificate_path" => certificate_path, "certificate" => certificate, "representative" => representative)
 end
 
