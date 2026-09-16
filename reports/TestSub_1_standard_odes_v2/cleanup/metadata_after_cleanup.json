@@ -1,0 +1,8 @@
+{
+  "all_passed": true,
+  "ic_seeds": 34432,
+  "independent_probe_seeds": 195,
+  "metadata_views": 357,
+  "probe_data_seed_overlap": 0,
+  "required_fields": 42
+}

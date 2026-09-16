@@ -29,3 +29,11 @@ listed above. It contains 34,432 trajectories, 63,559,296 state vectors, 357 cle
 view files, and 10.04 GiB of JLD2 data. Read `data/standard_odes_active.json` for the
 current manifest. Earlier rows are preserved as historical evidence. Controlled and
 high-dimensional releases keep their existing independent protocols.
+
+## Repository Cleanup (2026-09-16T12:32+10:00)
+
+Historical entries above retain their original evidence. Their legacy file paths now refer to the archive branch's abolish/ directory; only Standard ODE v2 is active on main.
+
+| Timestamp | Operation | Scope | Status | Validation evidence | Details |
+| --- | --- | --- | --- | --- | --- |
+| 2026-09-16T12:32+10:00 | Archive legacy resources and retain only Standard ODE v2 on main | Archive 234 legacy files and all 9 pending paths; delete 1,837 numerical/temporary files totaling 5,819,595,100 bytes; preserve the qualified release and frozen dependencies | success | Archive SHA-256 and Git blob checks passed; 370/370 focused tests; all 357 data view files passed full readback and metadata audit; one active release remains | Archive branch: archive/abolish-pre-standard-odes-v2-20260916; commit db6bc0a88a6d230fb1d4bf94b717658ee60f1566; docs/notes/file explanation/standard_odes_v2_cleanup.md; reports/TestSub_1_standard_odes_v2/cleanup/result.json |

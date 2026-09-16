@@ -1,0 +1,18 @@
+{
+  "completed_at": "2026-09-16T12:32+10:00",
+  "archive_branch": "archive/abolish-pre-standard-odes-v2-20260916",
+  "archive_commit": "db6bc0a88a6d230fb1d4bf94b717658ee60f1566",
+  "archived_legacy_files": 234,
+  "archive_total_files": 241,
+  "preserved_uncommitted_paths": 9,
+  "deleted_data_files": 1837,
+  "deleted_data_bytes": 5819595100.0,
+  "retained_release": "standard_odes_v2_20260916",
+  "retained_trajectories": 34432,
+  "view_files_verified": 357,
+  "focused_tests_passed": 370,
+  "focused_tests_total": 370,
+  "metadata_required_fields": 42,
+  "all_passed": true,
+  "active_branch": "main"
+}

@@ -1,0 +1,11 @@
+{
+  "all_passed": true,
+  "configuration_hash": "338a0f38ca7746815043d25110f403f7407d5ced3ca33b04a099c362253608bb",
+  "data_bytes": 10783728301,
+  "resource_count": 23,
+  "shards": 119,
+  "state_vectors": 63559296,
+  "trajectory_count": 34432,
+  "verified_at": "2026-09-16T12:30:02.085",
+  "view_count": 357
+}

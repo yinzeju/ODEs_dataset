@@ -1,6 +1,6 @@
 # ODEs_dataset
 
-Julia generators for full-state dynamical-system datasets in raw physical coordinates.
+Julia generation and qualification of the Standard ODE v2 full-state datasets.
 
 ## Current Autonomous ODE Release
 
@@ -19,6 +19,7 @@ points to its manifest.
 julia --threads=12 --project=. experiments/smoke_tests/run_standard_odes_v2_smoke.jl
 julia --threads=12 --project=. experiments/data_generation/generate_standard_odes_v2_dataset.jl
 julia --project=. experiments/data_generation/verify_standard_odes_v2_dataset.jl
+julia --project=. experiments/data_generation/audit_standard_odes_v2_metadata.jl
 ```
 
 The formal generator uses the full registered population. A changed source,
@@ -29,17 +30,32 @@ See [the generation guide](docs/notes/file%20explanation/standard_odes_v2_file_e
 [the frozen mathematical protocol](docs/notes/mathematical%20explanation/standard_odes_v2_math.md),
 and [the Chinese qualification report](reports/TestSub_1_standard_odes_v2/TestSub_1_standard_odes_v2.md).
 
-## Other Dataset Groups
+## Archived Resources
 
-The controlled and high-dimensional resources have their own generation protocols:
+Only Standard ODE v2 and its generation, validation, and reproduction materials
+remain in the active checkout. Legacy code, configurations, tests, notes, reports,
+and the nine previously uncommitted legacy changes are preserved under `abolish/`
+on the local branch:
 
-| Group | Scope |
-| --- | --- |
-| `duffing_aug_snr10` | Controlled forced Duffing, clean and 10 dB observations |
-| `controlled_lowdim_v1` | Controlled low-dimensional AUG, ADD, and BIL resources |
-| `highdim_nonlinear_v2` | L96-40, KS64, and FHN64 |
+```text
+archive/abolish-pre-standard-odes-v2-20260916
+```
 
-Existing additional releases and ongoing work remain separate from Standard ODE v2.
+Archive commit: `db6bc0a88a6d230fb1d4bf94b717658ee60f1566`.
+Other numerical datasets and temporary smoke data were deleted at the user's
+request, reclaiming 5,819,595,100 bytes (5.42 GiB). Numerical data is not backed up
+in the archive branch; regeneration requires the archived generators.
+
+```powershell
+git show archive/abolish-pre-standard-odes-v2-20260916:abolish/ARCHIVE_README.md
+git ls-tree -r --name-only archive/abolish-pre-standard-odes-v2-20260916 -- abolish
+```
+
+See [the cleanup record](docs/notes/file%20explanation/standard_odes_v2_cleanup.md).
+The original dependency lock remains frozen to preserve the qualified release's
+configuration identity. Running the smoke command creates fresh temporary smoke
+data; the historical smoke certificate and logs are retained with the report.
+
 Downstream normalizers must be fitted on the applicable training split outside the
 raw dataset. Numerical qualification statistics and noise reference powers are not
 state normalization transforms.
@@ -48,6 +64,5 @@ state normalization transforms.
 
 Reusable code lives in `src/`, declarations in `configs/`, entry points in
 `experiments/`, generated data in `data/`, and disposable logs in `runs/`.
-`docs/spec/project_task_list.md` records completed operations. Older documentation
-is historical; the v1 numerical files and obsolete v1 generation entry points were
-retired after v2 passed qualification.
+`docs/spec/project_task_list.md` records completed operations; historical entries
+refer to content now held by the archive branch. The active checkout is `main`.

@@ -169,3 +169,11 @@ clean 目标与 clean 观测引用同一个状态数组，噪声文件显式引�
 正式资源根目录：`data/releases/standard_odes_v2_20260916/`。当前指针为 `data/standard_odes_active.json`。中文报告的 `tables/resource_results.json` 保留本次资源汇总，`logs/` 保存 smoke 与正式执行日志副本。
 
 复现命令与读取示例见[生成说明](../../docs/notes/file%20explanation/standard_odes_v2_file_explanation.md)。本次删除旧版 `data/processed/lowdim_nonlinear_v1`、`data/manifests/lowdim_nonlinear_v1` 和 `data/releases/lowdim_nonlinear_v1`，共回收 498,534,110 字节。旧笔记、历史报告和 Git 历史仍保留；项目原有的其他未提交修改未纳入本次完成提交。
+
+## 8. 2026-09-16 后续仓库清理
+
+按用户后续要求，主分支仅保留本轮 Standard ODE v2 及其生成、验证、报告和复现材料。234 个旧代码、配置、测试、笔记和报告文件，以及全部 9 处原有未提交修改，已保存到本地分支 `archive/abolish-pre-standard-odes-v2-20260916` 的 `abolish/` 下。归档提交为 `db6bc0a88a6d230fb1d4bf94b717658ee60f1566`，逐文件 SHA-256 和 Git 内容记录均通过核验。
+
+其他正式数据及全部 smoke 临时数据已删除，共 1,837 个文件、5,819,595,100 字节（5.42 GiB）。Git 归档保留代码、报告和数据删除清单，不包含这些数值数据本身。历史 smoke 证书已另存于本报告的 `cleanup/smoke_verification_before_cleanup.json`。当前主仓库保留的数据仍为 34,432 条轨线、63,559,296 个状态快照，核心源码、物理配置和依赖锁未修改。
+
+清理后再次运行的 370 项针对性测试全部通过；357 个视图文件的完整读回、哈希校验，以及 42 项必需字段的元数据审计全部通过。完整证据位于 `cleanup/`，清理说明见[仓库清理记录](../../docs/notes/file%20explanation/standard_odes_v2_cleanup.md)。本次不涉及数据再生成或模型训练；旧操作记录在主分支保留，其对应旧文件可从归档分支查阅。

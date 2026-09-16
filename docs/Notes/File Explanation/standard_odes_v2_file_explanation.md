@@ -55,8 +55,10 @@ The formal root is `data/releases/standard_odes_v2_20260916/`:
 - `retirement_record.json` and `retired_v1_release_manifest.json`: inventory and hashes of the deleted v1 data. Reclaimed 498,534,110 bytes from the three v1 data directories.
 
 Formal log: `runs/standard_odes_v2_formal.log`. Successful smoke log:
-`runs/standard_odes_v2_smoke.log`. The final smoke artifacts live in
-`runs/smoke_tests/standard_odes_v2/338a0f38ca77/` and are explicitly marked `smoke`.
+`runs/standard_odes_v2_smoke.log`. The final smoke artifacts originally lived in
+`runs/smoke_tests/standard_odes_v2/338a0f38ca77/` and were explicitly marked `smoke`.
+The later 2026-09-16 cleanup removed these temporary tensors. Their certificate is
+preserved at `reports/TestSub_1_standard_odes_v2/cleanup/smoke_verification_before_cleanup.json`.
 
 Formal Chinese report:
 `reports/TestSub_1_standard_odes_v2/TestSub_1_standard_odes_v2.md`.
@@ -113,4 +115,6 @@ formal 0.15 dB noise gate, and numerical thresholds were not changed.
 
 The user-authorized old numerical directories and three obsolete v1 source/entry
 files were removed after full v2 qualification. Historical notes and reports remain
-available, and source history remains in Git. No package-wide `Pkg.test()` was run.
+available in the archive branch after the later project cleanup, and source history
+remains in Git. See `standard_odes_v2_cleanup.md` for the current checkout scope.
+No package-wide `Pkg.test()` was run.
