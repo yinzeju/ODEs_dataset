@@ -33,3 +33,11 @@
 /data/**
 !/data/.gitkeep
 !/data/README.md
+
+# Curated TestSub2 wrap-up documents and compact evidence only.
+!/reports/
+/reports/**
+!/reports/TestSub_2_nonlinear_vibration/
+!/reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration.md
+!/reports/TestSub_2_nonlinear_vibration/2_numerical_appendix.md
+!/reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration_evidence.json

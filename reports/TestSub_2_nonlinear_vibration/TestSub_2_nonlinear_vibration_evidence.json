@@ -1,0 +1,644 @@
+{
+  "task_identity": "TestSub_2_nonlinear_vibration",
+  "task_series_code": "TestSub",
+  "task_code": "2",
+  "evidence_checked_at": "2026-10-04T06:58-07:00",
+  "release_id": "testsub2_nv_20261004",
+  "release_manifest_sha256": "9069e4f8c0d215a879cd2eb66a3b910b279f5750dd41c08d2fcab675ab9d1756",
+  "artifact_manifest_sha256": "94f04c02b700d8a9882ae2f04a7bdaa1873272be12c802b533a2d24fd2f768bd",
+  "active_pointer_matches": true,
+  "all_artifact_hashes_passed": true,
+  "release_file_set_matches_catalog": true,
+  "storage": {
+    "release_bytes": 2952115920,
+    "canonical_bytes": 2438551390,
+    "files": 425,
+    "cataloged_files": 423,
+    "auxiliary_bytes": 513564530,
+    "shared_bytes": 1029122
+  },
+  "configurations": [
+    {
+      "identity": "OSC-DUFFING8/BASE",
+      "relative_path": "data/releases/testsub2_nv_20261004/TestSub2/OSC-DUFFING8/BASE",
+      "result": {
+        "canonical_counts": [
+          12,
+          4,
+          4
+        ],
+        "canonical_trajectories": 20,
+        "complete_readback": true,
+        "configuration_id": "BASE",
+        "displacement_dofs": 8,
+        "independent_qualification_trajectories": 4,
+        "initial_nonlinear_exposure_range": [
+          0.01,
+          0.20028234739939746
+        ],
+        "kinematic_rhs_residual": 0.0,
+        "maximum_energy_balance_relative_error": 2.0490081759999467e-10,
+        "maximum_independent_qualification_energy_error": 1.1974187685190738e-10,
+        "maximum_independent_qualification_state_error": 2.735686515524707e-10,
+        "maximum_scaled_state_error": 8.476423970669667e-10,
+        "object_id": "OSC-DUFFING8",
+        "snapshot_count_per_trajectory": 4097
+      },
+      "physical_metadata": {
+        "coupling_stiffness": 0.2,
+        "cubic_stiffness": 0.1,
+        "damping": "C=0.02 I",
+        "ground_stiffness": 1.0,
+        "mass": 1.0,
+        "mesh_id": "fixed_end_chain_8",
+        "units": "dimensionless",
+        "viscosity": 0.02
+      },
+      "binding": "add4a54bd864922b9c3c7cc3374ffe9ca6611d74bed638e54061fc1244938ba8",
+      "reference_period": 6.208744935291397,
+      "dt_output": 0.048505819806964036,
+      "record_length": 198.6798379293247,
+      "mesh_id": "fixed_end_chain_8",
+      "storage": {
+        "canonical_bytes": 11170196,
+        "auxiliary_bytes": 4703953,
+        "total_bytes": 15874149
+      },
+      "assembly": {
+        "assembly_seconds": 0.4963798,
+        "displacement_dof_count": 8,
+        "first_frequencies_rad_s": [
+          1.0119896005817632,
+          1.0457448172247417,
+          1.0954451150103321,
+          1.153490671368099,
+          1.212212551934178
+        ],
+        "mode_equation_relative_residual": 3.4521102788118795e-16,
+        "nonlinear_tangent_relative_error": 1.1739129612880289e-08,
+        "potential_gradient_relative_error": 4.400125758686524e-12
+      },
+      "solver": "OrdinaryDiffEqRosenbrock.Rodas5P / UMFPACK / analytic Jacobian",
+      "solve_seconds": {
+        "baseline": 12.678941,
+        "fine": 10.650348600000001
+      },
+      "runtime_scope": "sum of all CAN+QUAL integrations"
+    },
+    {
+      "identity": "VK-BEAM-CC/FE12",
+      "relative_path": "data/releases/testsub2_nv_20261004/TestSub2/VK-BEAM-CC/FE12",
+      "result": {
+        "canonical_counts": [
+          3,
+          1,
+          2
+        ],
+        "canonical_trajectories": 6,
+        "complete_readback": true,
+        "configuration_id": "FE12",
+        "displacement_dofs": 33,
+        "independent_qualification_trajectories": 1,
+        "initial_nonlinear_exposure_range": [
+          0.7725357620911509,
+          0.8959214809723764
+        ],
+        "kinematic_rhs_residual": 0.0,
+        "maximum_energy_balance_relative_error": 2.179296811732834e-12,
+        "maximum_independent_qualification_energy_error": 1.6145924022160878e-12,
+        "maximum_independent_qualification_state_error": 8.833609207274454e-12,
+        "maximum_scaled_state_error": 1.1196415029811275e-11,
+        "object_id": "VK-BEAM-CC",
+        "snapshot_count_per_trajectory": 4097
+      },
+      "physical_metadata": {
+        "E_Pa": 70000000000.0,
+        "damping": "C=(1e6/E)K",
+        "density_kg_m3": 2700.0,
+        "element_count": 12,
+        "length_m": 1.0,
+        "material_damping_modulus_Pa_s": 1000000.0,
+        "mesh_id": "hermite_linear_cc_12",
+        "thickness_m": 0.02,
+        "units": "SI; axial/transverse m, slope rad",
+        "width_m": 0.05
+      },
+      "binding": "add4a54bd864922b9c3c7cc3374ffe9ca6611d74bed638e54061fc1244938ba8",
+      "reference_period": 0.009552924194426948,
+      "dt_output": 7.463222026896053e-05,
+      "record_length": 0.3056935742216623,
+      "mesh_id": "hermite_linear_cc_12",
+      "storage": {
+        "canonical_bytes": 13183978,
+        "auxiliary_bytes": 2946044,
+        "total_bytes": 16130022
+      },
+      "assembly": {
+        "assembly_seconds": 0.6189357,
+        "displacement_dof_count": 33,
+        "first_frequencies_rad_s": [
+          657.7237691098936,
+          1813.2394343245394,
+          3555.9320636813018,
+          5882.913400511459,
+          8801.564153311
+        ],
+        "mode_equation_relative_residual": 2.1503526826172344e-11,
+        "nonlinear_tangent_relative_error": 9.116564786414293e-12,
+        "potential_gradient_relative_error": 2.2077545784424343e-13
+      },
+      "solver": "OrdinaryDiffEqRosenbrock.Rodas5P / UMFPACK / analytic Jacobian",
+      "solve_seconds": {
+        "baseline": 21.429983,
+        "fine": 43.7983951
+      },
+      "runtime_scope": "sum of all CAN+QUAL integrations"
+    },
+    {
+      "identity": "VK-SHELL-SHALLOW/NR",
+      "relative_path": "data/releases/testsub2_nv_20261004/TestSub2/VK-SHELL-SHALLOW/NR",
+      "result": {
+        "canonical_counts": [
+          3,
+          1,
+          2
+        ],
+        "canonical_trajectories": 6,
+        "complete_readback": true,
+        "configuration_id": "NR",
+        "displacement_dofs": 1320,
+        "independent_qualification_trajectories": 1,
+        "initial_nonlinear_exposure_range": [
+          0.9972233335162517,
+          0.9980524257453264
+        ],
+        "kinematic_rhs_residual": 2.540457131542714e-15,
+        "maximum_energy_balance_relative_error": 1.0568125558134884e-11,
+        "maximum_independent_qualification_energy_error": 9.809487488803916e-12,
+        "maximum_independent_qualification_state_error": 1.1253486489123755e-11,
+        "maximum_scaled_state_error": 1.2397605548853921e-11,
+        "object_id": "VK-SHELL-SHALLOW",
+        "snapshot_count_per_trajectory": 4097
+      },
+      "physical_metadata": {
+        "E_Pa": 70000000000.0,
+        "curvature_m": 0.1,
+        "damping": "C=a_M M+a_K K",
+        "density_kg_m3": 2700.0,
+        "element_count": 400,
+        "length_m": 2.0,
+        "mass_form": "reference Allman diagonal element mass, rotated and assembled",
+        "mesh_id": "allman_10x20_NR",
+        "nonlinear_shear": "w_x*w_y+u_x*u_y+v_x*v_y; source v1.1",
+        "poisson_ratio": 0.33,
+        "rayleigh_mass": 0.40215303783508494,
+        "rayleigh_stiffness": 8.631167461074237e-06,
+        "thickness_m": 0.01,
+        "units": "SI; translations m, rotations rad",
+        "vertical_origin": "boundary plane z=0; constant translation of source geometry",
+        "width_m": 1.0
+      },
+      "binding": "2324b2de66bd648313c920d13da3b1b8a8b6ccf6addab61ad67fe290ec5c8a98",
+      "reference_period": 0.04261080410522315,
+      "dt_output": 0.0003328969070720559,
+      "record_length": 1.3635457313671409,
+      "mesh_id": "allman_10x20_NR",
+      "storage": {
+        "canonical_bytes": 519376522,
+        "auxiliary_bytes": 103045162,
+        "total_bytes": 622421684
+      },
+      "assembly": {
+        "assembly_seconds": 6.2868341,
+        "displacement_dof_count": 1320,
+        "first_frequencies_rad_s": [
+          147.4552156224014,
+          315.98151156886536,
+          413.18627010287867,
+          545.1535920359971,
+          596.0174158050002
+        ],
+        "mode_equation_relative_residual": 3.056471215274777e-10,
+        "nonlinear_tangent_relative_error": 2.8973800323516092e-12,
+        "potential_gradient_relative_error": 2.4440028798385514e-11,
+        "published_matrix_damping_residual": 7.25512547864186e-13,
+        "published_matrix_stiffness_residual": 1.0794646924057932e-14
+      },
+      "solver": "Float64 GPU full invertible modal coordinates OrdinaryDiffEqVerner.Vern9",
+      "solve_seconds": {
+        "baseline": 473.2577008,
+        "fine": 662.0825922
+      },
+      "runtime_scope": "one shared complete CAN+QUAL GPU batch per phase"
+    },
+    {
+      "identity": "VK-SHELL-SHALLOW/IR12",
+      "relative_path": "data/releases/testsub2_nv_20261004/TestSub2/VK-SHELL-SHALLOW/IR12",
+      "result": {
+        "canonical_counts": [
+          9,
+          3,
+          3
+        ],
+        "canonical_trajectories": 15,
+        "complete_readback": true,
+        "configuration_id": "IR12",
+        "displacement_dofs": 1320,
+        "independent_qualification_trajectories": 3,
+        "initial_nonlinear_exposure_range": [
+          15.571974032969301,
+          78.01701844684942
+        ],
+        "kinematic_rhs_residual": 1.1902651744390741e-15,
+        "maximum_energy_balance_relative_error": 2.4688872378253638e-11,
+        "maximum_independent_qualification_energy_error": 1.7523950285196563e-11,
+        "maximum_independent_qualification_state_error": 1.9296395866996548e-11,
+        "maximum_scaled_state_error": 2.08822409813326e-11,
+        "object_id": "VK-SHELL-SHALLOW",
+        "snapshot_count_per_trajectory": 4097
+      },
+      "physical_metadata": {
+        "E_Pa": 70000000000.0,
+        "curvature_m": 0.041,
+        "damping": "C=a_M M+a_K K",
+        "density_kg_m3": 2700.0,
+        "element_count": 400,
+        "length_m": 2.0,
+        "mass_form": "reference Allman diagonal element mass, rotated and assembled",
+        "mesh_id": "allman_10x20_IR12",
+        "nonlinear_shear": "w_x*w_y+u_x*u_y+v_x*v_y; source v1.1",
+        "poisson_ratio": 0.33,
+        "rayleigh_mass": 0.3980785482489078,
+        "rayleigh_stiffness": 8.928468540554177e-06,
+        "thickness_m": 0.01,
+        "units": "SI; translations m, rotations rad",
+        "vertical_origin": "boundary plane z=0; constant translation of source geometry",
+        "width_m": 1.0
+      },
+      "binding": "2324b2de66bd648313c920d13da3b1b8a8b6ccf6addab61ad67fe290ec5c8a98",
+      "reference_period": 0.04210574604141621,
+      "dt_output": 0.00032895114094856414,
+      "record_length": 1.3473838733253187,
+      "mesh_id": "allman_10x20_IR12",
+      "storage": {
+        "canonical_bytes": 1298441307,
+        "auxiliary_bytes": 277306545,
+        "total_bytes": 1575747852
+      },
+      "assembly": {
+        "assembly_seconds": 0.417636,
+        "displacement_dof_count": 1320,
+        "first_frequencies_rad_s": [
+          149.22393967320508,
+          298.7812228954392,
+          339.73550648473446,
+          353.5618473060154,
+          426.16768233406646
+        ],
+        "mode_equation_relative_residual": 2.7091859453973337e-10,
+        "nonlinear_tangent_relative_error": 2.811234200044681e-12,
+        "potential_gradient_relative_error": 4.842072801402355e-12,
+        "published_matrix_damping_residual": 4.313962695992636e-12,
+        "published_matrix_stiffness_residual": 9.336652390179529e-15
+      },
+      "solver": "Float64 GPU full invertible modal coordinates OrdinaryDiffEqVerner.Vern9",
+      "solve_seconds": {
+        "baseline": 858.2216648,
+        "fine": 1213.5866375
+      },
+      "runtime_scope": "one shared complete CAN+QUAL GPU batch per phase"
+    },
+    {
+      "identity": "VK-PLATE-SQUARE/FE200",
+      "relative_path": "data/releases/testsub2_nv_20261004/TestSub2/VK-PLATE-SQUARE/FE200",
+      "result": {
+        "canonical_counts": [
+          9,
+          3,
+          3
+        ],
+        "canonical_trajectories": 15,
+        "complete_readback": true,
+        "configuration_id": "FE200",
+        "displacement_dofs": 606,
+        "independent_qualification_trajectories": 3,
+        "initial_nonlinear_exposure_range": [
+          16.393606771224167,
+          32.85681441776694
+        ],
+        "kinematic_rhs_residual": 4.4714059377348425e-15,
+        "maximum_energy_balance_relative_error": 8.482216503528634e-13,
+        "maximum_independent_qualification_energy_error": 6.834558681359966e-13,
+        "maximum_independent_qualification_state_error": 3.539766181696534e-11,
+        "maximum_scaled_state_error": 3.723958860177557e-11,
+        "object_id": "VK-PLATE-SQUARE",
+        "snapshot_count_per_trajectory": 4097
+      },
+      "physical_metadata": {
+        "E_Pa": 70000000000.0,
+        "curvature_m": 0.0,
+        "damping": "C=a_M M+a_K K",
+        "density_kg_m3": 2700.0,
+        "element_count": 200,
+        "length_m": 1.0,
+        "mass_form": "reference Allman diagonal element mass, rotated and assembled",
+        "mesh_id": "allman_10x10_PLATE",
+        "nonlinear_shear": "w_x*w_y+u_x*u_y+v_x*v_y; source v1.1",
+        "poisson_ratio": 0.33,
+        "rayleigh_mass": 1.0,
+        "rayleigh_stiffness": 4e-06,
+        "thickness_m": 0.01,
+        "units": "SI; translations m, rotations rad",
+        "vertical_origin": "boundary plane z=0; constant translation of source geometry",
+        "width_m": 1.0
+      },
+      "binding": "2324b2de66bd648313c920d13da3b1b8a8b6ccf6addab61ad67fe290ec5c8a98",
+      "reference_period": 0.008228438997734478,
+      "dt_output": 6.428467966980061e-05,
+      "record_length": 0.2633100479275033,
+      "mesh_id": "allman_10x10_PLATE",
+      "storage": {
+        "canonical_bytes": 596379387,
+        "auxiliary_bytes": 124533704,
+        "total_bytes": 720913091
+      },
+      "assembly": {
+        "assembly_seconds": 0.1558107,
+        "displacement_dof_count": 606,
+        "first_frequencies_rad_s": [
+          306.6892152705414,
+          763.5938370460697,
+          767.7499007586663,
+          1218.7688324053245,
+          1531.144999165509
+        ],
+        "mode_equation_relative_residual": 5.241362644590396e-11,
+        "nonlinear_tangent_relative_error": 3.419178536167122e-12,
+        "potential_gradient_relative_error": 1.1468973811439896e-08,
+        "published_matrix_damping_residual": 4.2373812449361646e-15,
+        "published_matrix_stiffness_residual": 4.23535598381885e-15
+      },
+      "solver": "Float64 GPU full invertible modal coordinates OrdinaryDiffEqVerner.Vern9",
+      "solve_seconds": {
+        "baseline": 174.9566436,
+        "fine": 251.5435195
+      },
+      "runtime_scope": "one shared complete CAN+QUAL GPU batch per phase"
+    }
+  ],
+  "release_configuration": {
+    "protocol": "TestSub2-NV",
+    "release_id": "testsub2_nv_20261004",
+    "protocol_note": "D:/MyVault/Document/Obsidian/Notebook/系统辨识和模型学习/Koopman Space/Part 0 Evaluation & Benchmark/TestSub-2-ODE-FE-HV Nonlinear Vibration Dataset.md",
+    "objects": [
+      "duffing",
+      "beam",
+      "shell_nr",
+      "shell_ir12",
+      "plate"
+    ],
+    "canonical_counts": {
+      "duffing": [
+        12,
+        4,
+        4
+      ],
+      "beam": [
+        3,
+        1,
+        2
+      ],
+      "shell_nr": [
+        3,
+        1,
+        2
+      ],
+      "shell_ir12": [
+        9,
+        3,
+        3
+      ],
+      "plate": [
+        9,
+        3,
+        3
+      ]
+    },
+    "periods": 32,
+    "samples_per_period": 128,
+    "truth_type": "Float64",
+    "dynamic_external_force": 0,
+    "burn_in": 0,
+    "noise_views": [],
+    "hv_generation": "external_user_COMSOL",
+    "solver": {
+      "duffing": "CPU Rodas5P",
+      "beam": "CPU Rodas5P",
+      "shell_nr": "GPU Vern9",
+      "shell_ir12": "GPU Vern9",
+      "plate": "GPU Vern9"
+    },
+    "baseline": {
+      "reltol": 2e-10,
+      "abstol": 2e-12,
+      "max_step_fraction": 0.00390625
+    },
+    "fine": {
+      "reltol": 2e-12,
+      "abstol": 2e-14,
+      "max_step_fraction": 0.001953125
+    },
+    "gpu_baseline": {
+      "reltol": 1e-08,
+      "abstol": 1e-10,
+      "max_step_fraction": 0.0078125
+    },
+    "gpu_fine": {
+      "reltol": 2e-10,
+      "abstol": 2e-12,
+      "max_step_fraction": 0.00390625
+    },
+    "maximum_scaled_state_error": 1e-07,
+    "maximum_relative_energy_balance_error": 1e-07,
+    "time_profile_note": "Minimum 32-period protocol profile frozen for every configuration; no burn-in or trajectory trimming.",
+    "execution": "Float64 full-state CPU Rodas5P for ODE and beam; GPU Vern9 in a scaled, invertible, complete mechanical modal basis for shell and plate, reconstructed to original physical coordinates. No modal truncation, mass approximation, noise generation, or dynamic forcing.",
+    "reference_revisions": {
+      "YetAnotherFEcode_v1.1": "50bc5c5ba75f2b5b32c5753dedcbd60612444f0d",
+      "SSMLearn": "305581114f62239b70c1fe44bce69cbf939326ea"
+    }
+  },
+  "protocol_source": {
+    "path": "D:\\MyVault\\Document\\Obsidian\\Notebook\\系统辨识和模型学习\\Koopman Space\\Part 0 Evaluation & Benchmark\\TestSub-2-ODE-FE-HV Nonlinear Vibration Dataset.md",
+    "sha256": "173eff90d848d7abb8a56b7620b007ce6c0dc0a5371618515ecf6fd940bef58e",
+    "matches_both_frozen_bindings": true
+  },
+  "report_protocol": {
+    "repository": "yinzeju/Notebook",
+    "ref_selection": "current default branch",
+    "path": "系统辨识和模型学习/Koopman Space/Part 0 Evaluation & Benchmark/SKDM-Exp2-Experimental Reporting Protocol.md",
+    "blob_sha": "7fa370f128dec078ef35baf47ac9ce01fcd49e70",
+    "retrieval_date": "2026-10-04"
+  },
+  "retirement": {
+    "archive_branch": "codex/abolish-structural-spectral-v3-20261004",
+    "retired_release": "structural_spectral_v3_20260921_r2",
+    "archive_commit": "5c6d43b5387ef62c293ea7246b475dddf2dd1e94"
+  },
+  "integration_adjustment_history": {
+    "physical_contract": "Unchanged user TestSub2-NV ODE/FE equations, full active DOFs, zero dynamic force, zero initial velocity, 32 periods, 4097 samples, Float64, clean only",
+    "required_scaled_state_error": 1e-07,
+    "required_relative_energy_balance_error": 1e-07,
+    "cpu_implicit_attempts": [
+      "Rodas5P with UMFPACK completed ODE and beam; shell run stopped for runtime",
+      "Rodas5P with KLU reduced factorization cost but unfinished shell integration remained slow"
+    ],
+    "rejected_completed_candidates": [
+      {
+        "method": "GPU full-state ETDRK4",
+        "baseline_substeps": 8,
+        "fine_substeps": 16,
+        "results": [
+          {
+            "baseline": {
+              "all_modes_retained": 1320,
+              "device": "CUDACore.CuDevice(0)",
+              "energy_balance_relative": 0.010855699492047172,
+              "final_energy": 12.181799018192907,
+              "full_modal_reconstruction_error": 1.248269996726999e-12,
+              "initial_energy": 59.348991597116,
+              "maximum_internal_step_over_reference_period": 0.0009765625,
+              "minimum_damping_power": 0.0,
+              "qdot_equals_v_rhs": true,
+              "solver": "Float64 GPU full-state Cox-Matthews ETDRK4",
+              "substeps_per_output": 8,
+              "wall_seconds_batch": 21.4978292
+            },
+            "fine": {
+              "all_modes_retained": 1320,
+              "device": "CUDACore.CuDevice(0)",
+              "energy_balance_relative": 0.0014702147695144169,
+              "final_energy": 12.141004059994847,
+              "full_modal_reconstruction_error": 1.248269996726999e-12,
+              "initial_energy": 59.348991597116,
+              "maximum_internal_step_over_reference_period": 0.00048828125,
+              "minimum_damping_power": 0.0,
+              "qdot_equals_v_rhs": true,
+              "solver": "Float64 GPU full-state Cox-Matthews ETDRK4",
+              "substeps_per_output": 16,
+              "wall_seconds_batch": 36.7372551
+            },
+            "passed": false,
+            "scaled_state_error": 0.01417988674322124,
+            "trajectory_id": "QUAL_qual_001"
+          }
+        ]
+      },
+      {
+        "method": "GPU full-state ETDRK4",
+        "baseline_substeps": 64,
+        "fine_substeps": 128,
+        "results": [
+          {
+            "baseline": {
+              "all_modes_retained": 1320,
+              "device": "CUDACore.CuDevice(0)",
+              "energy_balance_relative": 1.1401348551577572e-05,
+              "final_energy": 12.137612597739436,
+              "full_modal_reconstruction_error": 1.248269996726999e-12,
+              "initial_energy": 59.348991597116,
+              "maximum_internal_step_over_reference_period": 0.0001220703125,
+              "minimum_damping_power": 0.0,
+              "qdot_equals_v_rhs": true,
+              "solver": "Float64 GPU full-state Cox-Matthews ETDRK4",
+              "substeps_per_output": 64,
+              "wall_seconds_batch": 145.0785853
+            },
+            "fine": {
+              "all_modes_retained": 1320,
+              "device": "CUDACore.CuDevice(0)",
+              "energy_balance_relative": 8.051419863172867e-07,
+              "final_energy": 12.137599421877962,
+              "full_modal_reconstruction_error": 1.248269996726999e-12,
+              "initial_energy": 59.348991597116,
+              "maximum_internal_step_over_reference_period": 6.103515625e-05,
+              "minimum_damping_power": 0.0,
+              "qdot_equals_v_rhs": true,
+              "solver": "Float64 GPU full-state Cox-Matthews ETDRK4",
+              "substeps_per_output": 128,
+              "wall_seconds_batch": 287.1236582
+            },
+            "passed": false,
+            "scaled_state_error": 4.6239284120124675e-06,
+            "trajectory_id": "QUAL_qual_001"
+          }
+        ]
+      }
+    ],
+    "development_correction": "An early ETDRK4 coefficient written as 2f2 was parsed by Julia as a Float32 literal; changed to explicit 2*f2 and checked against an analytic scalar solution. Those early nonfinite runs produced no released states.",
+    "physical_coordinate_gpu_attempt": "CPU derivative and energy-power parity passed, but tight-tolerance integration advanced too slowly; incomplete runs were stopped with their logs preserved.",
+    "selected_method": "GPU Vern9 in a scaled, invertible basis retaining all mechanical modes; physical-state output",
+    "selection_population": "Independent complete QUAL trajectory, no CAN-based parameter or population selection",
+    "selected_profile_qualification": {
+      "cached_fine_sha256": "545479dd88ca53242b2716f2bdbe774b9007a61f1d6ce9e339a2b1229eede373",
+      "modal_source_sha256": "022d47b482faf1eb040bf7e37588b302f8f02df560d23670461eb87d78bcf2bf",
+      "profile": "gpu_baseline / gpu_fine",
+      "results": [
+        {
+          "baseline": {
+            "abstol": 1e-10,
+            "accepted_steps": 117084,
+            "all_modes_retained": 1320,
+            "device": "NVIDIA GeForce RTX 4070 SUPER",
+            "displacement_dofs": 1320,
+            "energy_balance_relative": 9.924660820887023e-12,
+            "final_energy": 12.137598556157402,
+            "full_modal_reconstruction_error": 1.2519380788667769e-12,
+            "initial_energy": 59.348991597116,
+            "max_step_over_reference_period": 0.0078125,
+            "minimum_damping_power": 0.0,
+            "qdot_equals_v_rhs": true,
+            "rejected_steps": 2,
+            "reltol": 1e-08,
+            "reproducibility": "Frozen Float64 inputs and environment; GPU atomic accumulation is not guaranteed bitwise reproducible",
+            "rhs_calls": 1873378,
+            "solver": "Float64 GPU full invertible modal coordinates OrdinaryDiffEqVerner.Vern9",
+            "wall_seconds_batch": 360.3287454
+          },
+          "fine": {
+            "abstol": 2e-12,
+            "accepted_steps": 170801,
+            "all_modes_retained": 1320,
+            "device": "NVIDIA GeForce RTX 4070 SUPER",
+            "displacement_dofs": 1320,
+            "energy_balance_relative": 9.8336714940854e-12,
+            "final_energy": 12.137598556157624,
+            "full_modal_reconstruction_error": 1.2519380788667769e-12,
+            "initial_energy": 59.348991597116,
+            "max_step_over_reference_period": 0.00390625,
+            "minimum_damping_power": 0.0,
+            "qdot_equals_v_rhs": true,
+            "rejected_steps": 2,
+            "reltol": 2e-10,
+            "reproducibility": "Frozen Float64 inputs and environment; GPU atomic accumulation is not guaranteed bitwise reproducible",
+            "rhs_calls": 2732850,
+            "solver": "Float64 GPU full invertible modal coordinates OrdinaryDiffEqVerner.Vern9",
+            "wall_seconds_batch": 521.3369545
+          },
+          "passed": true,
+          "scaled_state_error": 2.5764547262367222e-11,
+          "trajectory_id": "QUAL_qual_001"
+        }
+      ],
+      "selection_population": "independent QUAL, no canonical data"
+    },
+    "precision_and_geometry_changed": false,
+    "additional_noise_views_generated": false,
+    "source_reproducibility": "Each released configuration references a frozen source/environment snapshot and individually checksummed state files"
+  },
+  "prior_full_readback_log": "runs/testsub2_nv/frozen_verification.log",
+  "focused_tests": {
+    "cpu_passed": 45,
+    "gpu_passed": 46,
+    "package_wide_tests_run": false
+  }
+}

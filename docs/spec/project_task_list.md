@@ -37,3 +37,21 @@ Historical entries above retain their original evidence. Their legacy file paths
 | Timestamp | Operation | Scope | Status | Validation evidence | Details |
 | --- | --- | --- | --- | --- | --- |
 | 2026-09-16T12:32+10:00 | Archive legacy resources and retain only Standard ODE v2 on main | Archive 234 legacy files and all 9 pending paths; delete 1,837 numerical/temporary files totaling 5,819,595,100 bytes; preserve the qualified release and frozen dependencies | success | Archive SHA-256 and Git blob checks passed; 370/370 focused tests; all 357 data view files passed full readback and metadata audit; one active release remains | Archive branch: archive/abolish-pre-standard-odes-v2-20260916; commit db6bc0a88a6d230fb1d4bf94b717658ee60f1566; docs/notes/file explanation/standard_odes_v2_cleanup.md; reports/TestSub_1_standard_odes_v2/cleanup/result.json |
+
+## TestSub2 Nonlinear Vibration Completion (2026-10-04T07:07-07:00)
+
+Historical entries above retain their original scope and evidence. The active
+releases on `main` are now Standard ODE v2 and TestSub2 clean ODE/FE CAN.
+Task series: `TestSub`; task code: `2`; identity: `TestSub_2_nonlinear_vibration`.
+This is a release-definition task; it does not consume a separate registered
+reuse-code object.
+
+| Timestamp | Operation | Scope and principal objects | Status and outcome | Validation evidence | Outcome commit | Details |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026-10-04T07:07-07:00 | Retire Structural Spectral v3 and generate, qualify and document TestSub2 nonlinear vibration data | `TestSub2NV`; `testsub2_nv_20261004`; retire `structural_spectral_v3_20260921_r2`; user authorized formal execution without smoke and disabled noise | success; 62 CAN plus 12 independent QUAL trajectories across five configurations, 4097 Float64 full-state snapshots each; 2,952,115,920 release bytes; HV external COMSOL pending | CPU 45/45 and GPU 46/46 focused checks; all five configurations passed full readback; maximum state error 8.476424e-10 and energy error 2.049008e-10; immutable verification and wrap-up SHA/file-set audit passed for 423 cataloged files; no package-wide tests | This completion commit | `docs/Notes/File Explanation/testsub2_nv_20261004_file_explanation.md`; `docs/spec/object_registry.md`; `reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration.md`; `reports/TestSub_2_nonlinear_vibration/2_numerical_appendix.md`; `reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration_evidence.json`; `data/testsub2_nv_active.json` |
+
+The retired implementation and pending changes are preserved on
+`codex/abolish-structural-spectral-v3-20261004` at
+`5c6d43b5387ef62c293ea7246b475dddf2dd1e94`. Explicitly requested cleanup removed
+60,701,383,344 bytes of old data and run outputs; Standard ODE v2 was preserved.
+No remote push is part of this wrap-up.
