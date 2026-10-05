@@ -55,3 +55,10 @@ The retired implementation and pending changes are preserved on
 `5c6d43b5387ef62c293ea7246b475dddf2dd1e94`. Explicitly requested cleanup removed
 60,701,383,344 bytes of old data and run outputs; Standard ODE v2 was preserved.
 No remote push is part of this wrap-up.
+
+## 2026-10-05T02:07-07:00 — Complete SKDM9 independent Beam truth extension
+
+- Scope/status: completed skdm9_beam_h512_v1, consuming TestSub2NV fixed CPU source capsule.96 Train/24 Validation/24 Test,66 states,8193 frames each; static-release amplitude grid only. Active releases unchanged.
+- Validation: independent consumer verification of144 hashes, split disjointness and exit0; maximum refinement2.2150035506378005e-11 and energy2.1969606742827447e-12. Compact receipt: reports/skdm_9_TestSub2NV_beam_extension/evidence.json. No regeneration or Pkg.test in closeout.
+- Documentation: docs/Notes/File Explanation/skdm9_beam_extension.md; shared formal Chinese report and numerical appendix at ../InvSub/202609/reports/skdm/skdm_9_ssmlearn_beam_metric_comparison/. Consumer original A and A1/A2 are complete within recorded scope; B, pure MLP SKDM and PyKoopman formal runs remain not executed.
+- Delivery: one scoped local producer completion commit. Large data remain local; no push, heartbeat or shutdown.

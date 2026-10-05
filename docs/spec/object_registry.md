@@ -74,3 +74,13 @@ Standard ODE v2 remains active through `data/standard_odes_active.json`.
 - Historical identity remains distinct from the new TestSub2 CAN release.
 
 The report evidence separately records the time of its read-only integrity audit.
+
+## SKDM9 Beam H512 truth extension
+
+- Updated: 2026-10-05T02:07-07:00.
+- Identity/type/status: skdm9_beam_h512_v1; version1, completed reusable TestSub2NV extension; consumes fixed published CPU capsule add4a54bd864922b9c3c7cc3374ffe9ca6611d74bed638e54061fc1244938ba8.
+- Purpose: independent long full-state Beam truth for SKDM9 window learning;96/24/24 disjoint static-release amplitudes,32 periods at256 intervals per period. No claim of broad initial-velocity or phase coverage.
+- Implementation: src/data/skdm9_beam_extension.jl (configuration, initial_conditions, generate); experiments/data_generation/generate_skdm9_beam.jl and skdm9_beam_campaign.py; experiments/smoke_tests/skdm9_beam_extension.jl. Frozen generation configuration lives with the produced extension.
+- Artifact/dependencies: data/extensions/skdm9_beam_h512_v1; original active release remains unchanged.
+- Authoritative learner manifest SHA: bc5a9b8cc971da3b3459412d02b0a6f83150231c4fdbc7fdf447613327bcf46e.
+- Validation/report: reports/skdm_9_TestSub2NV_beam_extension/evidence.json; docs/Notes/File Explanation/skdm9_beam_extension.md; task-level report and9_numerical_appendix.md in ../InvSub/202609/reports/skdm/skdm_9_ssmlearn_beam_metric_comparison/. Producer completion is separate from model Test evaluation.

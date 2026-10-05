@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-04T15:49:55.458435+00:00",
+  "dataset_project": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset",
+  "manifest_sha256": "73c0331d5a6e07c2174e883ec9738e7eaa296057969cad7e4757b0e449a00fe9",
+  "learner_manifest_sha256": "bc5a9b8cc971da3b3459412d02b0a6f83150231c4fdbc7fdf447613327bcf46e",
+  "counts": {
+    "train": 96,
+    "val": 24,
+    "test": 24
+  },
+  "state_dimension": 66,
+  "snapshot_count": 8193,
+  "trajectory_hashes_checked": 144,
+  "full_h512_train_windows_before_domain_qualification": 737376,
+  "maximum_scaled_state_error": 2.2150035506378005e-11,
+  "maximum_energy_error": 2.1969606742827447e-12,
+  "process_exit_checks": {
+    "supervisor_pid": {
+      "pid": 33132,
+      "state": "absent"
+    },
+    "julia_pid": {
+      "pid": 41796,
+      "state": "absent"
+    }
+  },
+  "test_state_arrays_deserialized": false,
+  "test_model_evaluation": false,
+  "source_file_sha256": "dbc8168eaa98a67b9eb664909ef8b7aed31101620c467de1710b8e028884efb3"
+}
