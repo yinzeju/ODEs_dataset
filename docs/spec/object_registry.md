@@ -84,3 +84,11 @@ The report evidence separately records the time of its read-only integrity audit
 - Artifact/dependencies: data/extensions/skdm9_beam_h512_v1; original active release remains unchanged.
 - Authoritative learner manifest SHA: bc5a9b8cc971da3b3459412d02b0a6f83150231c4fdbc7fdf447613327bcf46e.
 - Validation/report: reports/skdm_9_TestSub2NV_beam_extension/evidence.json; docs/Notes/File Explanation/skdm9_beam_extension.md; task-level report and9_numerical_appendix.md in ../InvSub/202609/reports/skdm/skdm_9_ssmlearn_beam_metric_comparison/. Producer completion is separate from model Test evaluation.
+
+## skdm96-beam-transient-extension
+
+- Type/version/status: Full66-stateBeam truthgenerator and qualified144-motherextension,v1complete.
+- Implementation: src/data/skdm96_beam_extension.jl; experiments/data_generation/generate_skdm96_beam.jl/skdm96_beam_campaign.py; consumes existingTestSub2NV/Beam kernel.
+- Producer/consumer: SKDM9.6; output data/extensions/skdm96_beam_transient_h2048_v1,manifest9642b59859887e0348d57ecaf7d264330ed0f24c3063d35e4675f06341475e1c.
+- Qualification: maximumscaledstateerror1.0812213617120557e-10 andenergyerror6.589052342545405e-12; complete144trajectories and independentconsumer verification.
+- Docs: docs/Notes/File Explanation/skdm96_beam_extension.md and sharedconsumer9.6report/appendix. Updated2026-10-10T18:05-07:00.

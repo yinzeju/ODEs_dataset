@@ -62,3 +62,9 @@ No remote push is part of this wrap-up.
 - Validation: independent consumer verification of144 hashes, split disjointness and exit0; maximum refinement2.2150035506378005e-11 and energy2.1969606742827447e-12. Compact receipt: reports/skdm_9_TestSub2NV_beam_extension/evidence.json. No regeneration or Pkg.test in closeout.
 - Documentation: docs/Notes/File Explanation/skdm9_beam_extension.md; shared formal Chinese report and numerical appendix at ../InvSub/202609/reports/skdm/skdm_9_ssmlearn_beam_metric_comparison/. Consumer original A and A1/A2 are complete within recorded scope; B, pure MLP SKDM and PyKoopman formal runs remain not executed.
 - Delivery: one scoped local producer completion commit. Large data remain local; no push, heartbeat or shutdown.
+
+## 2026-10-10T18:05-07:00 — Complete SKDM9.6 transient Beam extension
+
+- Completed144mothers/66states/4097frames with96Train/24Val/24Test, damping0.75 and secondmodeinitialrelease0.25. Baseline/fine and energy/transient gates passed; no regeneration atcloseout.
+- Sources: src/data/skdm96_beam_extension.jl and experiments/data_generation/generate_skdm96_beam.jl/skdm96_beam_campaign.py. Artifact data/extensions/skdm96_beam_transient_h2048_v1; all data remain local.
+- Fileexplanation: docs/Notes/File Explanation/skdm96_beam_extension.md. SharedChinese report/appendix in ../InvSub/202609/reports/skdm/skdm_9dot6_k32_transient_h2048. Scopedcompletioncommit/push authorized; remoteSHA receipts retained by consumercloseout.
