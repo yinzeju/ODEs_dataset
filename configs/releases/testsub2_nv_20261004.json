@@ -1,7 +1,7 @@
 {
-  "protocol": "TestSub2-NV",
+  "protocol": "Dataset2-NV",
   "release_id": "testsub2_nv_20261004",
-  "protocol_note": "D:/MyVault/Document/Obsidian/Notebook/系统辨识和模型学习/Koopman Space/Part 0 Evaluation & Benchmark/TestSub-2-ODE-FE-HV Nonlinear Vibration Dataset.md",
+  "protocol_note": "D:/MyVault/Document/Obsidian/Notebook/系统辨识和模型学习/Koopman Space/Part 0 Evaluation & Benchmark/Dataset-2-Nonlinear Structural Dynamics.md",
   "objects": ["duffing", "beam", "shell_nr", "shell_ir12", "plate"],
   "canonical_counts": {"duffing": [12, 4, 4], "beam": [3, 1, 2], "shell_nr": [3, 1, 2], "shell_ir12": [9, 3, 3], "plate": [9, 3, 3]},
   "periods": 32,
@@ -10,7 +10,7 @@
   "dynamic_external_force": 0,
   "burn_in": 0,
   "noise_views": [],
-  "hv_generation": "external_user_COMSOL",
+  "scope": ["MECH-ODE", "MECH-FE"],
   "solver": {"duffing": "CPU Rodas5P", "beam": "CPU Rodas5P", "shell_nr": "GPU Vern9", "shell_ir12": "GPU Vern9", "plate": "GPU Vern9"},
   "baseline": {"reltol": 2e-10, "abstol": 2e-12, "max_step_fraction": 0.00390625},
   "fine": {"reltol": 2e-12, "abstol": 2e-14, "max_step_fraction": 0.001953125},

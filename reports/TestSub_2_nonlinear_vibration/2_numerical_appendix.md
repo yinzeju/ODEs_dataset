@@ -1,14 +1,17 @@
 ---
-title: TestSub2 非线性振动数据数值附录
-experiment_id: TestSub_2_nonlinear_vibration
-task_series_code: TestSub
+title: Dataset-2 非线性振动数据数值附录
+experiment_id: Dataset_2_nonlinear_vibration
+legacy_experiment_id: TestSub_2_nonlinear_vibration
+task_series_code: Dataset
 task_code: "2"
 paired_main_report: TestSub_2_nonlinear_vibration.md
 release_id: testsub2_nv_20261004
 date: 2026-10-04
 ---
 
-# TestSub2 非线性振动数据数值附录
+# Dataset-2 非线性振动数据数值附录
+
+命名同步（2026-10-11）：本附录与主报告采用 Dataset-2 代号。历史文件路径、发布 ID、随机种子命名空间与源版本哈希保留原值；数值表未改变。
 
 [返回主报告](TestSub_2_nonlinear_vibration.md)。本附录取值来自冻结发布清单、每条轨线证书及机械装配记录，机器可读依据为[收尾证据](TestSub_2_nonlinear_vibration_evidence.json)。所有表均描述实际完成的 ODE/FE CAN 与独立 QUAL；学习模型训练、优化器、checkpoint 选择与预测评分均为 `N.A.`。
 
@@ -170,7 +173,7 @@ GPU 路径使用正的 $E(0)$ 作分母，本批初能量均远大于机器 epsi
 | --- | --- |
 | 发布清单 SHA-256 | `9069e4f8c0d215a879cd2eb66a3b910b279f5750dd41c08d2fcab675ab9d1756` |
 | artifact catalog SHA-256 | `94f04c02b700d8a9882ae2f04a7bdaa1873272be12c802b533a2d24fd2f768bd` |
-| 数学笔记 SHA-256 | `173eff90d848d7abb8a56b7620b007ce6c0dc0a5371618515ecf6fd940bef58e` |
+| 生成时冻结数学笔记 SHA-256 | `173eff90d848d7abb8a56b7620b007ce6c0dc0a5371618515ecf6fd940bef58e` |
 | CPU 生成绑定 | `add4a54bd864922b9c3c7cc3374ffe9ca6611d74bed638e54061fc1244938ba8` |
 | GPU 生成绑定 | `2324b2de66bd648313c920d13da3b1b8a8b6ccf6addab61ad67fe290ec5c8a98` |
 | SSMLearn 源提交 | `305581114f62239b70c1fe44bce69cbf939326ea` |

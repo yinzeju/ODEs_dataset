@@ -1,7 +1,7 @@
 {
-  "protocol_id": "Standard_ODEs_v2",
+  "protocol_id": "Dataset1",
   "release_id": "standard_odes_v2_20260916",
-  "protocol_note": "D:/MyVault/Document/Obsidian/Notebook/系统辨识和模型学习/Koopman Space/Part 0 Benchmark & Evaluation/TestSub-1. lowdim_nonlinear_v1_math.md",
+  "protocol_note": "D:/MyVault/Document/Obsidian/Notebook/系统辨识和模型学习/Koopman Space/Part 0 Evaluation & Benchmark/Dataset-1-Lowdim Nonlinear Toy Model.md",
   "seed": 202609160,
   "state_tolerance": 1e-7,
   "energy_tolerance": 1e-8,

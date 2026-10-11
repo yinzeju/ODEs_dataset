@@ -5,14 +5,14 @@ ledger rows remain unchanged. The entries below cover the reusable objects creat
 or retired by this task; they are not an exhaustive migration of earlier releases.
 Standard ODE v2 remains active through `data/standard_odes_active.json`.
 
-## TestSub2 Nonlinear Vibration Generator
+## Dataset-2 Nonlinear Vibration Generator
 
-- Updated: `2026-10-04T07:07-07:00`.
-- Identity: `TestSub2NV`; type: reusable Julia mechanical dataset generator;
-  version: `20261004`; status: active, formally validated.
+- Updated: `2026-10-11T00:15-07:00`.
+- Identity: `Dataset2NV` (serialization-compatible alias of `TestSub2NV`); type: reusable Julia mechanical dataset generator;
+  version: `20261004` (canonical naming updated 2026-10-11); status: active, formally validated.
 - Purpose: generate complete clean ODE/FE free-decay populations with independent
   qualification, Train-only normalization and protected learner access.
-- Implementation: `src/data/testsub2_nv/TestSub2NV.jl`; `MechanicalModel`,
+- Implementation: canonical API `src/data/dataset2_nv/Dataset2NV.jl`, backed by `src/data/testsub2_nv/TestSub2NV.jl`; `MechanicalModel`,
   `duffing_model`, `beam_model`, `shell_model`, `initial_conditions`,
   `solve_certified`, `train_normalizer`, and `load_learner_view`; GPU integration
   in `src/data/testsub2_nv/gpu_modal.jl` with complete, invertible modal coordinates.
@@ -31,13 +31,13 @@ Standard ODE v2 remains active through `data/standard_odes_active.json`.
   implementations are preserved by the release source bindings.
 - Details: `docs/Notes/File Explanation/testsub2_nv_20261004_file_explanation.md`.
 
-## TestSub2 Clean CAN Release
+## Dataset-2 Clean CAN Release
 
-- Updated: `2026-10-04T07:07-07:00`.
-- Identity: `testsub2_nv_20261004`; type: frozen dataset artifact;
+- Updated: `2026-10-11T00:15-07:00`.
+- Protocol identity: `Dataset-2`; frozen artifact identity: `testsub2_nv_20261004`; type: frozen dataset artifact;
   status: `dataset-qualified`.
 - Artifact: `data/releases/testsub2_nv_20261004/TestSub2/release_manifest.json`;
-  active pointer: `data/testsub2_nv_active.json`.
+  canonical active pointer: `data/dataset2_active.json`; legacy pointer remains valid.
 - Population: Duffing8/BASE, Beam/FE12, Shell/NR, Shell/IR12, and Plate/FE200;
   62 CAN trajectories plus 12 independent QUAL trajectories; each has 4097
   Float64 full-state snapshots over 32 reference periods.
@@ -53,8 +53,7 @@ Standard ODE v2 remains active through `data/standard_odes_active.json`.
   appendix: `reports/TestSub_2_nonlinear_vibration/2_numerical_appendix.md`;
   evidence: `reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration_evidence.json`.
 - Limits: CAN, not strict REPLAY; fixed FE mesh, no continuum mesh-convergence
-  claim. Noise views are disabled. MEMS-GYRO and TRC-JOINT are external COMSOL
-  work pending the user; they are not qualified objects in this release.
+  claim. Noise views are disabled. MEMS-GYRO and TRC-JOINT are removed from the current Dataset-2 scope as of 2026-10-11; they were never qualified objects in this release.
 
 ## Retired Structural Spectral v3
 
@@ -92,3 +91,25 @@ The report evidence separately records the time of its read-only integrity audit
 - Producer/consumer: SKDM9.6; output data/extensions/skdm96_beam_transient_h2048_v1,manifest9642b59859887e0348d57ecaf7d264330ed0f24c3063d35e4675f06341475e1c.
 - Qualification: maximumscaledstateerror1.0812213617120557e-10 andenergyerror6.589052342545405e-12; complete144trajectories and independentconsumer verification.
 - Docs: docs/Notes/File Explanation/skdm96_beam_extension.md and sharedconsumer9.6report/appendix. Updated2026-10-10T18:05-07:00.
+
+## Canonical Dataset Catalog (2026-10-11)
+
+- Updated: 2026-10-11T00:15-07:00.
+- Identity/type: `Dataset`; current protocol catalog, schema `dataset.catalog.v1`.
+- Implementation: `configs/dataset_catalog.json`; inventory and read-only integrity
+  audit: `experiments/data_generation/audit_dataset_catalog.py`.
+- Dataset-1: `standard_odes_v2_20260916`, canonical pointer
+  `data/dataset1_active.json`, API `src/data/dataset1/Dataset1.jl`.
+- Dataset-2: `testsub2_nv_20261004`, canonical pointer
+  `data/dataset2_active.json`, API `src/data/dataset2_nv/Dataset2NV.jl`.
+- Dataset-2 extensions: `Dataset-2/SKDM9-Beam-H512` and
+  `Dataset-2/SKDM9.6-Beam-Transient-H2048`, preserving their existing SKDM task IDs,
+  artifact directories, frozen parent capsules and learner-manifest checksums.
+- Source registration: Dataset-3 and Dataset-3.1 are note-only; no corresponding
+  local release was found. HV is removed from the current Dataset-2 scope.
+- Existing historical task identities, source bindings and retirement entries
+  remain identifiable. Protocol renaming does not recertify or rewrite their data.
+- Validation pointers: `test/unit/test_dataset_protocol_names.jl`;
+  `experiments/data_generation/verify_dataset1.jl` and `verify_dataset2.jl`;
+  audit receipts under `runs/dataset_naming_20261011/`.
+- Navigation: `docs/Notes/dataset_inventory.md`.

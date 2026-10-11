@@ -68,3 +68,30 @@ No remote push is part of this wrap-up.
 - Completed144mothers/66states/4097frames with96Train/24Val/24Test, damping0.75 and secondmodeinitialrelease0.25. Baseline/fine and energy/transient gates passed; no regeneration atcloseout.
 - Sources: src/data/skdm96_beam_extension.jl and experiments/data_generation/generate_skdm96_beam.jl/skdm96_beam_campaign.py. Artifact data/extensions/skdm96_beam_transient_h2048_v1; all data remain local.
 - Fileexplanation: docs/Notes/File Explanation/skdm96_beam_extension.md. SharedChinese report/appendix in ../InvSub/202609/reports/skdm/skdm_9dot6_k32_transient_h2048. Scopedcompletioncommit/push authorized; remoteSHA receipts retained by consumercloseout.
+
+## 2026-10-11T00:15-07:00 — Unify Dataset protocol naming and remove the Dataset-2 HV scope
+
+- Scope/status: completed active protocol naming as Dataset-1 and Dataset-2;
+  retained the ODEs_dataset repository directory as explicitly confirmed by the user.
+  Cataloged both published releases and the SKDM9/SKDM9.6 Beam extensions:
+  2,461 files, 14,790,502,785 bytes. Dataset-3/3.1 are note-only in this repository.
+- Changed objects: configs/dataset_catalog.json, current release protocol labels
+  and note paths, canonical Dataset1/Dataset2NV API aliases, verification/launcher
+  aliases, data/dataset1_active.json and data/dataset2_active.json. Frozen release
+  IDs, snapshots, binary types, RNG namespaces and historical task/report identities
+  retain their original spelling; legacy pointers and consumers remain compatible.
+- Notebook: Dataset-2-Nonlinear Structural Dynamics now includes only MECH-ODE and
+  MECH-FE. Removed HV objects, budgets, special sampling, software/contact contracts
+  and references; updated three directly dependent scope statements or links.
+  Sections 6–9 retain identical mechanical definitions.
+- Validation: read-only catalog verification passed 1,068 indexed artifact hashes;
+  canonical Dataset2 API/JLD2/access compatibility passed 11/11; Dataset-2 full
+  readback passed for all five configurations; Dataset-1 complete readback passed
+  all 357 views / 119 shards. Note validation passed 49 unique
+  equation tags, surviving equation references, links and ODE/FE-only scope.
+  Existing datasets were neither regenerated nor deleted.
+- Navigation/evidence: docs/Notes/dataset_inventory.md; docs/spec/object_registry.md;
+  experiments/data_generation/audit_dataset_catalog.py;
+  runs/dataset_naming_20261011/integrity_audit.json, alias_checks.log and
+  dataset2_readback.log. This is a naming/scope update, not an experimental wrap-up;
+  no new formal report, completion commit or remote push was requested.

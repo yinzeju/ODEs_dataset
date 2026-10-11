@@ -1,8 +1,10 @@
-# TestSub-1：Standard ODE v2 数据生成与资格验收报告
+# Dataset-1：Standard ODE v2 数据生成与资格验收报告
+
+命名同步（2026-10-11）：协议代号统一为 Dataset-1；历史报告路径、冻结发布标识、源快照与审计记录保留原值。以下数值仍描述原实验。
 
 ## 1. 实验简述
 
-本次依据用户提供的 2026-09-15 版 TestSub-1 笔记，重建自治 ODE 数据资源。新版将固定工况 CAN 与物理参数族 COND 分开，采用跨工况一致的原坐标初值分布，并区分已见工况的新初态泛化与未见工况插值。实际项目目录为 `D:/MyVault/Projects/Julia/ODEs_dataset`。
+本次依据用户提供的 Dataset-1 协议的 2026-09-15 冻结版本，重建自治 ODE 数据资源。新版将固定工况 CAN 与物理参数族 COND 分开，采用跨工况一致的原坐标初值分布，并区分已见工况的新初态泛化与未见工况插值。实际项目目录为 `D:/MyVault/Projects/Julia/ODEs_dataset`。
 
 执行过程为数学与数据合同测试、全流程 smoke、独立数值探针资格化、正式 clean 轨线生成、Train 专用噪声标定、两档噪声视图生成和全部文件读回验收。正式资源包括 10 个方程族、11 个 CAN 配置，以及 6 个 COND 族分别对应的 Split-I、Split-C，共 23 组资源。总计 34,432 条独立轨线、63,559,296 个完整状态快照、357 个 JLD2 视图文件，数据文件占 10,783,728,301 字节，约 10.04 GiB。
 
@@ -10,9 +12,10 @@
 
 | 项目 | 本次实际绑定 |
 | --- | --- |
-| 实验身份 | `TestSub_1_standard_odes_v2` |
+| 当前实验代号 | `Dataset_1_standard_odes_v2` |
+| 历史实验身份 | `TestSub_1_standard_odes_v2` |
 | 资源身份 | `standard_odes_v2_20260916` |
-| 协议身份 | `Standard_ODEs_v2` |
+| 协议代号 / 冻结资源协议标识 | `Dataset-1` / `Standard_ODEs_v2` |
 | 终止阶段 | `qualified_raw_dataset_release` |
 | Core branch、训练模型、预测指标 | N.A. |
 | 观测与目标 | 完整物理状态；clean、5 dB、15 dB 观测；目标始终为 clean |
@@ -23,7 +26,7 @@
 | 配置与源码身份 | `338a0f38ca7746815043d25110f403f7407d5ced3ca33b04a099c362253608bb` |
 | 最终读回完成时间 | 2026-09-16 01:18:32，Australia/Sydney，UTC+10 |
 
-数学来源为用户给定的 [TestSub-1 笔记](<D:/MyVault/Document/Obsidian/Notebook/系统辨识和模型学习/Koopman Space/Part 0 Benchmark & Evaluation/TestSub-1. lowdim_nonlinear_v1_math.md>)；项目保存了[本次冻结副本](../../docs/notes/mathematical%20explanation/standard_odes_v2_math.md)。完整方程、来源 DOI、初值分布与安全集以该副本为准。此任务采用笔记中的本地多初值人口，没有下载或重新发布文献 FPUT 长轨文件。
+数学来源为用户给定笔记的生成时版本；[当前 Dataset-1 笔记](<D:/MyVault/Document/Obsidian/Notebook/系统辨识和模型学习/Koopman Space/Part 0 Evaluation & Benchmark/Dataset-1-Lowdim Nonlinear Toy Model.md>)已更新命名。项目保存了[本次冻结副本](../../docs/notes/mathematical%20explanation/standard_odes_v2_math.md)，本报告实验的完整方程、来源 DOI、初值分布与安全集以该副本为准。此任务采用笔记中的本地多初值人口，没有下载或重新发布文献 FPUT 长轨文件。
 
 ## 2. K0 主指标与本次验收指标
 

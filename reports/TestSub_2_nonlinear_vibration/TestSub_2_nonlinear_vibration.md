@@ -1,7 +1,8 @@
 ---
-title: TestSub2 非线性振动数据简报
-experiment_id: TestSub_2_nonlinear_vibration
-task_series_code: TestSub
+title: Dataset-2 非线性振动数据简报
+experiment_id: Dataset_2_nonlinear_vibration
+legacy_experiment_id: TestSub_2_nonlinear_vibration
+task_series_code: Dataset
 task_code: "2"
 release_id: testsub2_nv_20261004
 status: dataset-qualified
@@ -10,22 +11,24 @@ paired_numeric_report: 2_numerical_appendix.md
 pipeline_terminal_stage: frozen_dataset_verification
 ---
 
-# TestSub2 非线性振动数据简报
+# Dataset-2 非线性振动数据简报
+
+命名同步（2026-10-11）：协议代号统一为 Dataset-2；历史报告路径、冻结发布 ID、源快照和证据文件保留原名。以下数值仍描述 2026-10-04 的已完成实验，不代表重新生成或重新验收。
 
 ## 0. 实验简述
 
-本次任务依据用户指定的 [TestSub2 数学笔记](<D:/MyVault/Document/Obsidian/Notebook/系统辨识和模型学习/Koopman Space/Part 0 Evaluation & Benchmark/TestSub-2-ODE-FE-HV Nonlinear Vibration Dataset.md>)，生成用于后续系统辨识与模型学习的无外力自由衰减数据。旧 Structural Spectral v3 已退役，Standard ODE v2 保留。
+本次任务依据用户指定数学笔记的生成时冻结版本，生成用于后续系统辨识与模型学习的无外力自由衰减数据；[当前 Dataset-2 数学笔记](<D:/MyVault/Document/Obsidian/Notebook/系统辨识和模型学习/Koopman Space/Part 0 Evaluation & Benchmark/Dataset-2-Nonlinear Structural Dynamics.md>)已更新命名与范围。旧 Structural Spectral v3 已退役，Dataset-1（Standard ODE v2）保留。
 
-实际生成对象为 Duffing8、固支梁、浅壳 NR、浅壳 IR12 和方板，共五个配置。Julia 完成机械模型装配、初值构造、基准与精细积分、资格检查和冻结发布；壳与板使用 GPU。按用户要求跳过 smoke、直接执行正式生成，并关闭额外噪声视图。HV 留待用户用 COMSOL 生成。
+实际生成对象为 Duffing8、固支梁、浅壳 NR、浅壳 IR12 和方板，共五个配置。Julia 完成机械模型装配、初值构造、基准与精细积分、资格检查和冻结发布；壳与板使用 GPU。按用户要求跳过 smoke、直接执行正式生成，并关闭额外噪声视图。当前 Dataset-2 仅保留 ODE 与 FE；原 HV 规划已从当前协议移除，不再列作待生成项。
 
 最终得到 **62 条 CAN 正式轨线和 12 条独立 QUAL 轨线**。每条轨线保存 4097 个 Float64 全状态快照，覆盖 32 个参考周期。发布目录共 **2.952 GB（2.749 GiB）**；全部数据通过数值资格和完整回读，可作为固定离散模型的后续学习数据。
 
 | 身份项 | 本次取值 |
 | --- | --- |
-| 实验 / 数据版本 | `TestSub_2_nonlinear_vibration` / `testsub2_nv_20261004` |
+| 实验 / 数据版本 | `Dataset_2_nonlinear_vibration` / `testsub2_nv_20261004` |
 | 方法与分支 | 完整机械方程积分；CPU Rodas5P 与 GPU Vern9 |
-| 启用协议 | TestSub2 CAN、独立 QUAL、时间精细化、机械能量与访问边界检查 |
-| 关闭 / 未执行 | 额外噪声与 smoke：`disabled`；严格 REPLAY：未执行；HV：外部待生成 |
+| 启用协议 | Dataset-2 CAN、独立 QUAL、时间精细化、机械能量与访问边界检查 |
+| 关闭 / 未执行 | 额外噪声与 smoke：`disabled`；严格 REPLAY：未执行；HV：已移出当前协议 |
 | 学习模型训练与预测评分 | `N.A.`；本任务生成与验证数据，尚未训练学习模型 |
 | 最终阶段 | 冻结数据集验证 `frozen_dataset_verification` |
 | 数值记录 | [配套数值附录](2_numerical_appendix.md) |
@@ -65,10 +68,10 @@ CPU 45 项、GPU 46 项针对性检查全部通过。五个配置的全量回读
 | 产物 | 入口与用途 |
 | --- | --- |
 | 冻结数据集 | [发布清单](../../data/releases/testsub2_nv_20261004/TestSub2/release_manifest.json)，定义五个配置、资格结果和源版本绑定 |
-| 当前数据入口 | [活动指针](../../data/testsub2_nv_active.json)，绑定发布清单 SHA-256 |
-| 再验证入口 | [PowerShell 入口](../../experiments/data_generation/run_testsub2_nv.ps1)，已发布时只做验证 |
+| 当前数据入口 | [Dataset-2 活动指针](../../data/dataset2_active.json)，绑定原冻结发布清单 |
+| 再验证入口 | [Dataset-2 PowerShell 入口](../../experiments/data_generation/run_dataset2.ps1)，已发布时只做验证 |
 | 数值与证据 | [数值附录](2_numerical_appendix.md)、[收尾证据](TestSub_2_nonlinear_vibration_evidence.json) |
 
 旧代码保存在本地分支 `codex/abolish-structural-spectral-v3-20261004`，提交 `5c6d43b5387ef62c293ea7246b475dddf2dd1e94`。旧数据及运行输出删除量为 60,701,383,344 字节；代码归档不包含已删除的数值数据。
 
-报告结构采用本次经认证 GitHub 接口读取的 [云端 Exp2 协议](https://github.com/yinzeju/Notebook/blob/main/系统辨识和模型学习/Koopman%20Space/Part%200%20Evaluation%20%26%20Benchmark/SKDM-Exp2-Experimental%20Reporting%20Protocol.md)，读取日期为 2026-10-04，文件 blob SHA 为 `7fa370f128dec078ef35baf47ac9ce01fcd49e70`。数学笔记当前 SHA-256 与两组冻结源绑定中的副本一致。
+报告结构采用原收尾时经认证 GitHub 接口读取的 [云端 Exp2 协议](https://github.com/yinzeju/Notebook/blob/main/系统辨识和模型学习/Koopman%20Space/Part%200%20Evaluation%20%26%20Benchmark/SKDM-Exp2-Experimental%20Reporting%20Protocol.md)，读取日期为 2026-10-04，文件 blob SHA 为 `7fa370f128dec078ef35baf47ac9ce01fcd49e70`。当时数学笔记 SHA-256 与两组冻结源绑定中的副本一致；该哈希描述生成时版本，不描述此后更新的当前笔记。本次仅同步报告代号与当前入口，未重新获取报告模板或重做实验。

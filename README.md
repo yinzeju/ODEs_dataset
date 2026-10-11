@@ -1,11 +1,36 @@
 # ODEs_dataset
 
-Julia generation and qualification of Standard ODE v2 and TestSub2 nonlinear vibration datasets.
+Julia generation and qualification of Dataset-1 autonomous ODE data and Dataset-2 nonlinear structural dynamics data.
 
-## TestSub2 Nonlinear Vibration
+
+## Dataset Catalog And Naming
+
+The active protocol codes are **Dataset-1** and **Dataset-2**. Their 2026-10-11
+inventory, including both Beam extensions, is in
+[dataset inventory](docs/Notes/dataset_inventory.md); machine-readable paths,
+manifest hashes and legacy aliases are in [dataset catalog](configs/dataset_catalog.json).
+Dataset-3 and Dataset-3.1 currently have protocol notes but no local data release.
+
+The project directory and Git repository remain `ODEs_dataset`. Frozen release IDs,
+source-capsule paths, JLD2 type names, RNG namespaces, historical reports and old
+entry points retain their original identities. This is a naming migration, not
+regeneration or a numerical version change. Legacy active pointers remain valid.
+Use `data/dataset1_active.json` and `data/dataset2_active.json` for canonical naming.
+The current Dataset-2 note has ODE/FE-only scope; its archived note snapshots still
+record the protocol that actually produced the published data.
+
+For the current Julia API, include `src/data/dataset1/Dataset1.jl` or
+`src/data/dataset2_nv/Dataset2NV.jl`. These names alias the original modules so
+existing serialized models and consumers remain compatible.
+
+```powershell
+python -X utf8 experiments/data_generation/audit_dataset_catalog.py --verify-data
+```
+
+## Dataset-2: Nonlinear Structural Dynamics
 
 The clean-only release is configured in `configs/releases/testsub2_nv_20261004.json`.
-Its mathematical source is the user-supplied **TestSub-2-ODE-FE-HV Nonlinear Vibration Dataset**
+Its mathematical source is the user-supplied **Dataset-2-Nonlinear Structural Dynamics**
 note, frozen with each release. All states are complete Float64 mechanical states
 in physical coordinates, stored as `state_component × time`, with all displacements
 followed by all velocities. Each trajectory starts at release, has zero initial
@@ -25,12 +50,12 @@ and its [numerical appendix](reports/TestSub_2_nonlinear_vibration/2_numerical_a
 for the completed release, storage breakdown, qualification results and solver adjustments.
 
 ```powershell
-./experiments/data_generation/run_testsub2_nv.ps1
+./experiments/data_generation/run_dataset2.ps1
 ```
 
 The wrapper assembles and validates the complete models, generates the formal
 population, and performs complete readback before publishing
-`data/testsub2_nv_active.json`. The dataset root is
+`data/dataset2_active.json`. The dataset root is
 `data/releases/testsub2_nv_20261004/TestSub2/`. A missing active pointer means that
 the complete release has not yet passed its final verification. Individual model
 generation can be selected with `-Models beam,shell_nr,shell_ir12,plate`.
@@ -72,20 +97,20 @@ mixtures are explicit project choices; these resources are not strict replays of
 the original paper's individual trajectories. No continuum mesh-convergence claim
 is made for this fixed-discretization release.
 
-`TestSub2NV.load_learner_view(abspath(configuration_folder), trajectory_id)` reads only
+`Dataset2NV.load_learner_view(abspath(configuration_folder), trajectory_id)` reads only
 allowlisted canonical state/time files. Per-channel units and the physical state
 ordering are also declared in each learner manifest. Train-only channel means and population
 standard deviations are stored in `can/train_normalizer.jld2`; raw physical states
 are not standardized. Test initialization, matrices and modes remain under
-`audit_only/`. HV resources (`MEMS-GYRO` and `TRC-JOINT`) are reserved for the user's
-COMSOL generation. This release creates no additional noise views.
+`audit_only/`. The current Dataset-2 protocol contains only MECH-ODE and MECH-FE.
+HV is outside its current scope. This release creates no additional noise views.
 
 Focused checks can be run with:
 
 ```powershell
 julia --project=configs/environments/testsub2_nv test/unit/test_testsub2_nv.jl
 julia --project=configs/environments/testsub2_nv_gpu test/unit/test_testsub2_nv_gpu.jl
-julia --project=configs/environments/testsub2_nv experiments/data_generation/verify_testsub2_nv_dataset.jl
+julia --project=configs/environments/testsub2_nv experiments/data_generation/verify_dataset2.jl
 ```
 
 The retired Structural Spectral v3 implementation, its formerly uncommitted
@@ -96,10 +121,10 @@ pointer were deleted at the user's request. The retirement inventory and result
 are in `runs/testsub2_nv/retirement/`; the full inventory is also preserved in the
 archive commit. Standard ODE v2 remains a separate release.
 
-## Current Autonomous ODE Release
+## Dataset-1: Autonomous ODE Release
 
-`Standard_ODEs_v2` replaces the retired `lowdim_nonlinear_v1` resource. The qualified
-release is `data/releases/standard_odes_v2_20260916/`; `data/standard_odes_active.json`
+Dataset-1 uses the frozen `Standard_ODEs_v2` implementation and replaces the retired `lowdim_nonlinear_v1` resource. The qualified
+release is `data/releases/standard_odes_v2_20260916/`; `data/dataset1_active.json`
 points to its manifest.
 
 - 10 equation families, 11 CAN configurations, and 6 COND families with independent Split-I and Split-C resources.
@@ -112,7 +137,7 @@ points to its manifest.
 ```powershell
 julia --threads=12 --project=. experiments/smoke_tests/run_standard_odes_v2_smoke.jl
 julia --threads=12 --project=. experiments/data_generation/generate_standard_odes_v2_dataset.jl
-julia --project=. experiments/data_generation/verify_standard_odes_v2_dataset.jl
+julia --project=. experiments/data_generation/verify_dataset1.jl
 julia --project=. experiments/data_generation/audit_standard_odes_v2_metadata.jl
 ```
 

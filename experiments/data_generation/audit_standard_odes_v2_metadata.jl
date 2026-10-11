@@ -4,6 +4,8 @@ using .StandardODEsV2, JLD2, JSON
 function audit_metadata()
     cfg=JSON.parsefile(joinpath(StandardODEsV2.ROOT,"configs","releases","standard_odes_v2.json"))
     out=joinpath(StandardODEsV2.ROOT,"data","releases",cfg["release_id"])
+    # Audit the producing configuration, not later protocol naming or scope revisions.
+    cfg=JSON.parsefile(joinpath(out,"frozen_config.json"))
     expected=StandardODEsV2.group_specs(cfg,:formal)
     manifest=JSON.parsefile(joinpath(out,"release_manifest.json"))
     @assert manifest["all_passed"] && length(expected)==length(manifest["objects"])
@@ -42,10 +44,10 @@ function audit_metadata()
         push!(probe_seeds,probe["seed"])
     end
     @assert isempty(intersect(ic_seeds,probe_seeds))
-    @assert StandardODEsV2.filehash(cfg["protocol_note"])==StandardODEsV2.filehash(joinpath(out,"protocol_note_snapshot.md"))==manifest["note_sha256"]
+    @assert StandardODEsV2.filehash(joinpath(out,"protocol_note_snapshot.md"))==manifest["note_sha256"]
     result=Dict("all_passed"=>true,"metadata_views"=>views,"ic_seeds"=>length(ic_seeds),
         "independent_probe_seeds"=>length(probe_seeds),"probe_data_seed_overlap"=>0,"required_fields"=>length(required))
-    StandardODEsV2.write_json(joinpath(out,"metadata_audit.json"),result)
+    # A metadata audit must not rewrite the frozen release.
     println(JSON.json(result))
 end
 

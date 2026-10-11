@@ -1,0 +1,173 @@
+{
+  "schema": "dataset.catalog.v1",
+  "updated": "2026-10-11T00:08-07:00",
+  "project_directory": "ODEs_dataset",
+  "naming_policy": "Dataset-N is the active protocol code. Frozen IDs, source capsules, RNG namespaces, historical reports and binary type identities are retained for compatibility.",
+  "resources": [
+    {
+      "dataset_code": "Dataset-1",
+      "aliases": [
+        "Dataset1",
+        "TestSub1",
+        "TestSub-1",
+        "Standard_ODEs_v2"
+      ],
+      "artifact_root": "data/releases/standard_odes_v2_20260916",
+      "manifest": "data/releases/standard_odes_v2_20260916/release_manifest.json",
+      "manifest_kind": "standard_odes",
+      "manifest_sha256": "a3b3570f92c905b1ce7fae5d7dcef4f926370c086ea551517ea0d9f694db11c0",
+      "current_protocol_note": "D:\\MyVault\\Document\\Obsidian\\Notebook\\系统辨识和模型学习\\Koopman Space\\Part 0 Evaluation & Benchmark\\Dataset-1-Lowdim Nonlinear Toy Model.md",
+      "current_protocol_note_sha256": "cec695f64007e7c42862b7b00f3a62a0b9360e253424a2eedf5812517082e841",
+      "scope": [
+        "autonomous_ODE"
+      ],
+      "storage_bytes": 10845350414,
+      "file_count": 872,
+      "frozen_release_id": "standard_odes_v2_20260916",
+      "trajectory_count": 34432,
+      "resource_count": 23,
+      "condition_shards": 119,
+      "state_dimensions": [
+        2,
+        3,
+        4,
+        64
+      ],
+      "snapshot_counts": [
+        51,
+        1001,
+        1025,
+        2001,
+        2049,
+        3001,
+        4097,
+        5001,
+        8193
+      ],
+      "observation_views": [
+        "clean",
+        "noise_5db",
+        "noise_15db"
+      ],
+      "recorded_status": "qualified"
+    },
+    {
+      "dataset_code": "Dataset-2",
+      "aliases": [
+        "Dataset2",
+        "Dataset2-NV",
+        "TestSub2",
+        "TestSub-2",
+        "TestSub2-NV"
+      ],
+      "artifact_root": "data/releases/testsub2_nv_20261004/TestSub2",
+      "manifest": "data/releases/testsub2_nv_20261004/TestSub2/release_manifest.json",
+      "manifest_kind": "dataset2_release",
+      "manifest_sha256": "9069e4f8c0d215a879cd2eb66a3b910b279f5750dd41c08d2fcab675ab9d1756",
+      "current_protocol_note": "D:\\MyVault\\Document\\Obsidian\\Notebook\\系统辨识和模型学习\\Koopman Space\\Part 0 Evaluation & Benchmark\\Dataset-2-Nonlinear Structural Dynamics.md",
+      "current_protocol_note_sha256": "9e1fccd98b08eb56cb1057c5ee96ed862b0621f838f8bf252856fd722f21b7f1",
+      "scope": [
+        "MECH-ODE",
+        "MECH-FE"
+      ],
+      "storage_bytes": 2952115920,
+      "file_count": 425,
+      "frozen_release_id": "testsub2_nv_20261004",
+      "trajectory_count": 62,
+      "qualification_count": 12,
+      "configuration_count": 5,
+      "state_dimensions": [
+        16,
+        66,
+        1212,
+        2640
+      ],
+      "snapshot_counts": [
+        4097
+      ],
+      "observation_views": [
+        "clean"
+      ],
+      "recorded_status": "dataset-qualified"
+    },
+    {
+      "dataset_code": "Dataset-2/SKDM9-Beam-H512",
+      "aliases": [
+        "skdm9_beam_h512_v1"
+      ],
+      "artifact_root": "data/extensions/skdm9_beam_h512_v1",
+      "manifest": "data/extensions/skdm9_beam_h512_v1/learner_manifest.json",
+      "manifest_kind": "beam_extension",
+      "manifest_sha256": "bc5a9b8cc971da3b3459412d02b0a6f83150231c4fdbc7fdf447613327bcf46e",
+      "current_protocol_note": "D:\\MyVault\\Document\\Obsidian\\Notebook\\系统辨识和模型学习\\Koopman Space\\Part 0 Evaluation & Benchmark\\Dataset-2-Nonlinear Structural Dynamics.md",
+      "current_protocol_note_sha256": "9e1fccd98b08eb56cb1057c5ee96ed862b0621f838f8bf252856fd722f21b7f1",
+      "scope": [
+        "MECH-FE"
+      ],
+      "storage_bytes": 661426350,
+      "file_count": 581,
+      "frozen_release_id": "skdm9_beam_h512_v1",
+      "trajectory_count": 144,
+      "split_counts": {
+        "train": 96,
+        "val": 24,
+        "test": 24
+      },
+      "snapshot_counts": [
+        8193
+      ],
+      "state_dimensions": [
+        66
+      ],
+      "observation_views": [
+        "clean"
+      ],
+      "recorded_status": "passed",
+      "parent_dataset": "Dataset-2"
+    },
+    {
+      "dataset_code": "Dataset-2/SKDM9.6-Beam-Transient-H2048",
+      "aliases": [
+        "skdm96_beam_transient_h2048_v1"
+      ],
+      "artifact_root": "data/extensions/skdm96_beam_transient_h2048_v1",
+      "manifest": "data/extensions/skdm96_beam_transient_h2048_v1/learner_manifest.json",
+      "manifest_kind": "beam_extension",
+      "manifest_sha256": "9642b59859887e0348d57ecaf7d264330ed0f24c3063d35e4675f06341475e1c",
+      "current_protocol_note": "D:\\MyVault\\Document\\Obsidian\\Notebook\\系统辨识和模型学习\\Koopman Space\\Part 0 Evaluation & Benchmark\\Dataset-2-Nonlinear Structural Dynamics.md",
+      "current_protocol_note_sha256": "9e1fccd98b08eb56cb1057c5ee96ed862b0621f838f8bf252856fd722f21b7f1",
+      "scope": [
+        "MECH-FE"
+      ],
+      "storage_bytes": 331610101,
+      "file_count": 583,
+      "frozen_release_id": "skdm96_beam_transient_h2048_v1",
+      "trajectory_count": 144,
+      "split_counts": {
+        "train": 96,
+        "val": 24,
+        "test": 24
+      },
+      "snapshot_counts": [
+        4097
+      ],
+      "state_dimensions": [
+        66
+      ],
+      "observation_views": [
+        "clean"
+      ],
+      "recorded_status": "passed_numerics_and_transient_design",
+      "parent_dataset": "Dataset-2"
+    }
+  ],
+  "notes_without_local_release": [
+    "Dataset-3",
+    "Dataset-3.1"
+  ],
+  "dataset2_removed_scope": [
+    "MECH-HV",
+    "MEMS-GYRO",
+    "TRC-JOINT"
+  ]
+}

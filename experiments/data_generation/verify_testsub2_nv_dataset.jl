@@ -190,12 +190,12 @@ function main()
         artifacts[relative]=TestSub2NV.file_sha(path)
     end
     catalog=TestSub2NV.write_json(joinpath(release,"manifests","artifact_manifest.json"),Dict("files"=>artifacts))
-    # HV entries are explicit external responsibilities, never fabricated data.
+    # New publication metadata follows the ODE/FE-only Dataset2 scope.
     result=Dict("release_id"=>cfg["release_id"],"status"=>"dataset-qualified",
         "resource"=>"CAN","noise_views"=>["clean"],"formal_trajectory_count"=>sum(r["canonical_trajectories"] for r in results),
         "canonical_data_bytes"=>totalbytes,"configurations"=>results,"source_bindings"=>sort!(collect(bindings)),
         "artifact_manifest"=>"manifests/artifact_manifest.json","artifact_manifest_sha256"=>TestSub2NV.file_sha(catalog),
-        "HV"=>Dict("MEMS-GYRO"=>"external user COMSOL generation pending","TRC-JOINT"=>"external user COMSOL generation pending"),
+        "protocol"=>"Dataset2-NV","scope"=>["MECH-ODE","MECH-FE"],
         "REPLAY"=>"Not a strict replay release; CAN populations use independently declared amplitudes and seeds.",
         "qualification_scope"=>"Full-state time refinement for every CAN and independent QUAL trajectory; reference FE matrix parity; energy and kinematics; no continuum mesh-convergence claim.")
     manifest=TestSub2NV.write_json(joinpath(release,"release_manifest.json"),result)
