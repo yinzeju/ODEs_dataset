@@ -206,6 +206,15 @@ function integrate(path,m,backend,p,q0,cfg)
                 ("connector_potential",cv.potential),("strain_max",geo.strain))
                 ds[name][frame]=val
             end
+            if max_strain>cfg["solver_proposal"]["maximum_strain_component"] || max_balance>cfg["solver_proposal"]["energy_balance_relative_target"]
+                failure=Dict("status"=>"quarantined_physics_gate","frame"=>frame,"time_s"=>(frame-1)*dt,
+                    "max_strain"=>max_strain,"max_energy_balance_relative"=>max_balance,
+                    "strain_limit"=>cfg["solver_proposal"]["maximum_strain_component"],
+                    "energy_balance_limit"=>cfg["solver_proposal"]["energy_balance_relative_target"])
+                NC.writejson(joinpath(dirname(path),"physics_failure.json"),failure)
+                NC.JLD2.jldsave(joinpath(dirname(path),"physics_failure_state.jld2");q,v,frame)
+                error("NLC6 physics gate: "*NC.JSON.json(failure))
+            end
             if time_ns()>=next_log || frame==frames
                 println("NLC6_PROGRESS frame=",frame,"/",frames," energy_ratio=",E/E0,
                     " balance=",max_balance," strain=",max_strain);flush(stdout)

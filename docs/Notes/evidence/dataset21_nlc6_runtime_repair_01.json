@@ -1,0 +1,151 @@
+{
+  "repair": {
+    "utc": "2026-10-12T16:00:12.555485+00:00",
+    "parent": "dataset21_nlc6_f4096_144_v1",
+    "release": "dataset21_nlc6_f4096_144_v1_r1",
+    "reused_trajectories": 31,
+    "method": "NTFS hardlinks to immutable accepted HDF5; metadata copied; original source lineage preserved per trajectory.",
+    "physical_changes": false,
+    "initial_condition_changes": false,
+    "numerical_timestep_changes": false,
+    "gate_changes": false,
+    "engineering_changes": [
+      "early rejection with closed failure artifact",
+      "continue other frozen cases after quarantined physics failure"
+    ],
+    "original_partial_unreadable": "Killed worker left 48-byte HDF5; retained as evidence. Same rejected initial condition will be retried under early-stop wrapper to capture readable failure state.",
+    "status": "engineering_repair_executed",
+    "initial_plan_equal": true,
+    "all_31_parent_readbacks_passed": true,
+    "failed_cases_reproduced": [
+      {
+        "id": "NLC6_train_022",
+        "failure": {
+          "energy_balance_limit": 0.0001,
+          "frame": 3,
+          "max_energy_balance_relative": 1.1087051838086026e-06,
+          "max_strain": 0.0011854098589346121,
+          "status": "quarantined_physics_gate",
+          "strain_limit": 0.001,
+          "time_s": 0.001
+        },
+        "closed_partial_readable": true,
+        "bytes": 1346282,
+        "sha256": "bb7576462b08b959e89f92ec149643b2d587e12031888d7b42819863fd736546"
+      },
+      {
+        "id": "NLC6_train_023",
+        "failure": {
+          "energy_balance_limit": 0.0001,
+          "frame": 3,
+          "max_energy_balance_relative": 1.0342139550530817e-06,
+          "max_strain": 0.0010791422598107861,
+          "status": "quarantined_physics_gate",
+          "strain_limit": 0.001,
+          "time_s": 0.001
+        },
+        "closed_partial_readable": true,
+        "bytes": 1346282,
+        "sha256": "3f59fbebc186bffb3564bb85ab257c0d2ba0313d1f6d721b8a654ec130b5fba4"
+      },
+      {
+        "id": "NLC6_train_024",
+        "failure": {
+          "energy_balance_limit": 0.0001,
+          "frame": 3,
+          "max_energy_balance_relative": 1.0192466274164164e-06,
+          "max_strain": 0.001030899673211313,
+          "status": "quarantined_physics_gate",
+          "strain_limit": 0.001,
+          "time_s": 0.001
+        },
+        "closed_partial_readable": true,
+        "bytes": 1346282,
+        "sha256": "f11cefcb22c1b60bbee4117fdfd54920c8c705192f37e68e721f427595a3071d"
+      },
+      {
+        "id": "NLC6_validation_006",
+        "failure": {
+          "energy_balance_limit": 0.0001,
+          "frame": 3,
+          "max_energy_balance_relative": 1.1393307513744268e-06,
+          "max_strain": 0.0012596439111676916,
+          "status": "quarantined_physics_gate",
+          "strain_limit": 0.001,
+          "time_s": 0.001
+        },
+        "closed_partial_readable": true,
+        "bytes": 1346282,
+        "sha256": "7174ab73118054ccdaf7ae3dc24299cde327f4123d7e72e8db0bc31d8fdcdbb8"
+      },
+      {
+        "id": "NLC6_test_006",
+        "failure": {
+          "energy_balance_limit": 0.0001,
+          "frame": 3,
+          "max_energy_balance_relative": 1.1359492321113089e-06,
+          "max_strain": 0.0012335190649503992,
+          "status": "quarantined_physics_gate",
+          "strain_limit": 0.001,
+          "time_s": 0.001
+        },
+        "closed_partial_readable": true,
+        "bytes": 1346282,
+        "sha256": "e55e853ab96eeba15297761640a9f925867c87204b2bce3a73cafd036e8b635f"
+      }
+    ],
+    "interpretation": "Reproducible dynamic strain screen violation at unchanged initial conditions. This is not a temporal convergence certificate or a validated change to the physical model."
+  },
+  "stop": {
+    "utc": "2026-10-12T15:57:16.887025+00:00",
+    "reason": "Observed irreversible maximum-strain gate violation; stop only the verified own worker to preserve evidence and avoid continuing an inadmissible trajectory.",
+    "pid": 47040,
+    "process_started_utc": "2026-10-12T05:21:18.0421928Z",
+    "campaign_status": {
+      "completed": 31,
+      "current_id": "NLC6_train_022",
+      "current_path": "data/releases/dataset21_nlc6_f4096_144_v1/train/NLC6_train_022/trajectory.h5",
+      "status": "generating",
+      "total": 144
+    },
+    "progress": {
+      "elapsed_seconds": 139.7390909,
+      "energy_balance": 1.1097804608992614e-06,
+      "energy_ratio": 0.9824810180429183,
+      "frame": 21,
+      "frames": 4096,
+      "max_strain": 0.0011854098589346262
+    },
+    "initial_condition": {
+      "actual_connector_energy_ratio": 0.26350475445581056,
+      "connector_energy_ratio": 0.2635047544565503,
+      "family": 3,
+      "family_ordinal": 8,
+      "id": "NLC6_train_022",
+      "initial_amplitude_m": 0.010695538031283416,
+      "initial_state_sha256": "c7b659aa1fbd7c39197f66b331ec125185410fe8a66dd26e18818fe823281c86",
+      "initial_strain": 0.0006807822506229995,
+      "linear_energy_fractions": [
+        1.0
+      ],
+      "modal_coefficients": [
+        -0.03861896412270492
+      ],
+      "modes": [
+        3
+      ],
+      "relative_path": "train/NLC6_train_022/trajectory.h5",
+      "seed_hex": "82822a6216f039e",
+      "signs": [
+        -1
+      ],
+      "split": "train",
+      "static_sign": -1,
+      "tier": 3
+    },
+    "partial_file": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\data\\releases\\dataset21_nlc6_f4096_144_v1\\train\\NLC6_train_022\\trajectory.h5.partial.h5"
+  },
+  "population_plan_equal": true,
+  "status": "early_failure_capture_and_quarantine_working",
+  "amplitude_change_authorized": false
+}

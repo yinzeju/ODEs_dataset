@@ -105,3 +105,10 @@ No remote push is part of this wrap-up.
 - Navigation: docs/notes/code explanation/dataset21_nlc6_population.md; docs/notes/evidence/dataset21_naca_retirement_20261012.json; runs/dataset21_nlc6_f4096_144_v1/. Current shutdown hold remains. Code/archive publication is requested; final population report remains pending generation.
 
 - Completion policy clarification: the full-population resumption preserves the earlier user request for reporting, publication and final shutdown. Shutdown is blocked during generation and until all completion checks pass and unrelated experiments are inactive; the single-trial hold no longer prevents authorized full-campaign closeout.
+
+## 2026-10-12T09:04-07:00 — Contain NLC6 runtime strain failure without relaxing physics gates
+
+- Observed: v1 NLC6_train_022 initial strain 0.0006807823 passed, but dynamic maximum 0.0011854099 exceeded the unchanged 0.001 limit. The verified own worker was terminated; 31 completed cases remain accepted. Original truncated partial file and logs are preserved.
+- Engineering repair: v1_r1 closes/rejects trajectories immediately on energy/strain gate violation, writes failure state, quarantines them, and continues other unchanged planned cases. Population equality across all144 plans was checked; physics, amplitude targets, RNG, time steps and thresholds are unchanged.
+- Reuse: 31 immutable parent HDF5 hardlinks preserve original source lineage via reused_from.json; full readback occurs before reuse is counted in r1. Same failing initial condition is replayed for readable failure-state capture, not independent qualification. No smoke/time/grid qualification was added.
+- Status: repair running; any amplitude change awaits the pending user decision. Quarantined/missing cases block full completion and shutdown. Evidence: docs/Notes/evidence/dataset21_nlc6_runtime_repair_01.json and runs/dataset21_nlc6_f4096_144_v1_r1/.

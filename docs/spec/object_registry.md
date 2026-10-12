@@ -124,3 +124,9 @@ The report evidence separately records the time of its read-only integrity audit
 - Numerical methods: FP64 GPU shell forces, CPU sparse Radau solves, analytic rank-18 connector stage tangent, and nonlinear constrained static release initialization. Runtime convergence, energy, strain, state-finiteness, saved-port identity and hash/readback checks remain enabled.
 - Evidence/navigation: docs/notes/code explanation/dataset21_nlc6_population.md; prior trial completion.json and analysis.json; current campaign_status.json and completed.json as available. No final report until the population is complete.
 - Retired lineage: old dataset21_naca_zeta006 trajectory and qualification HDF5 data deleted by request; preserved shared code remains active. Historical source capsules and exact-byte ZIP: codex/abolish-naca-pre-nlc6-20261012, 9d72cce0134ce8b57fb72f043d0ecc9a50ba163c. Retirement receipt: docs/notes/evidence/dataset21_naca_retirement_20261012.json.
+
+### NACA-NLC6 v1_r1 runtime-gate revision (2026-10-12T09:04-07:00)
+
+- Same physical model, 144-member initial-condition plan and integration parameters as v1; independently qualified status remains waived. New early energy/strain rejection and closed failure snapshot replace the former end-only acceptance check. Per-case quarantine continues other cases without claiming 144 successes.
+- Implementation: src/data/dataset21_nlc6/Dataset21NLC6.jl and campaign.jl; config configs/releases/dataset21_nlc6_v1_r1.json. Parent 31 accepted files are immutable hardlinks with per-file source-lineage records. No amplitude changes are authorized yet.
+- Active output: data/releases/dataset21_nlc6_f4096_144_v1_r1; runtime evidence and quarantined-case list under matching runs/. Parent v1 remains evidence and must not restart. Final report remains pending completion and resolution of inadmissible initial conditions.

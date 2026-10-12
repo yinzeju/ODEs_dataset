@@ -11,7 +11,7 @@ function planned_population(cfg)
             allocation=ic["family_strength_split_allocations"][family][tier]
             for (split,number) in zip(("train","validation","test"),allocation), _ in 1:number
                 ordinal+=1;counters[split]+=1
-                identity="$(cfg["release_id"])/$(ic["seed"])/$family/$ordinal"
+                identity="$(get(cfg,"population_identity",cfg["release_id"]))/$(ic["seed"])/$family/$ordinal"
                 seed=parse(UInt64,bytes2hex(sha256(identity))[1:16];base=16);rng=Xoshiro(seed)
                 ratio=ic["added_energy_ratio_centers"][tier]*(1+ic["ratio_relative_jitter"]*(2rand(rng)-1))
                 modes=family==12 ? Int[] : Int.(ic["families"][family])
@@ -170,8 +170,9 @@ function run_campaign(config_path)
             "state_dimension"=>cfg["state_dimension"],"frames"=>4096,"counts"=>cfg["initial_conditions"]["counts"],
             "dt_seconds"=>cfg["sampling"]["dt_candidate_s"],"model_sha256"=>NC.filehash(modelpath),
             "source_fingerprint"=>hashes,"trajectories"=>Any[],"noise_views"=>Any[])
-        completed=Any[];seen=Set{String}()
+        completed=Any[];quarantined=Any[];seen=Set{String}()
         for row in rows
+            try
             current=row["id"];path=joinpath(release,row["relative_path"]);mkpath(dirname(path))
             NC.writejson(joinpath(folder,"campaign_status.json"),Dict("status"=>"generating","current_id"=>current,
                 "current_path"=>NC.portable_relative(path,NC.ROOT),"completed"=>length(completed),"total"=>144))
@@ -179,7 +180,7 @@ function run_campaign(config_path)
             q0,details=campaign_initial_condition(m,p,row,cfg)
             initialhash=bytes2hex(sha256(reinterpret(UInt8,q0)));initialhash in seen && error("Duplicate initial state")
             push!(seen,initialhash);geo=NC.evaluate!(NC.CPUBackend(m),m,q0;tangent=false)
-            geo.strain<=cfg["solver_proposal"]["maximum_strain_component"] || error("Initial strain limit: $current")
+            geo.strain<=cfg["solver_proposal"]["maximum_strain_component"] || error("NLC6 physics gate: initial strain limit: $current")
             ratio=sum(p.kappa.*(transpose(p.B)*q0).^4)/4/(dot(q0,m.K*q0)/2)
             isapprox(ratio,row["connector_energy_ratio"];rtol=1e-7) || error("Initial energy ratio")
             initial=merge(copy(row),details,Dict("initial_state_sha256"=>initialhash,"initial_strain"=>geo.strain,
@@ -194,17 +195,37 @@ function run_campaign(config_path)
                 trajectorycfg=deepcopy(cfg);merge!(trajectorycfg["trial"],row)
                 receipt=integrate(path,m,backend,p,q0,trajectorycfg)
             end
-            receipt["physics_checks_passed"]===true || error("Trajectory physics limits: $current")
+            receipt["physics_checks_passed"]===true || error("NLC6 physics gate: trajectory limits: $current")
             readback_trajectory(path,m,p,q0,cfg,receipt)
             NC.writejson(joinpath(dirname(path),"readback.json"),Dict("status"=>"passed","sha256"=>receipt["sha256"],"frames"=>4096))
             result=merge(copy(row),Dict("sha256"=>receipt["sha256"],"initial_state_sha256"=>initialhash,
                 "wall_seconds"=>receipt["wall_seconds"],"max_energy_balance_relative"=>receipt["max_energy_balance_relative"],
                 "max_strain"=>receipt["max_recovered_strain_component"],"final_energy_ratio"=>receipt["final_energy_ratio"]))
+            originpath=joinpath(dirname(path),"reused_from.json")
+            isfile(originpath) && (result["reused_from"]=NC.JSON.parsefile(originpath))
             push!(completed,result);metadata["trajectories"]=completed
             NC.writejson(joinpath(release,"release_manifest.json"),metadata)
             NC.writejson(joinpath(folder,"completed.json"),completed)
             println("NLC6_TRAJECTORY_COMPLETE id=",current," completed=",length(completed),"/144");flush(stdout)
             GC.gc()
+            catch exception
+                if get(cfg,"quarantine_physics_failures",false) && exception isa ErrorException && startswith(exception.msg,"NLC6 physics gate:")
+                    push!(quarantined,Dict("id"=>current,"error"=>sprint(showerror,exception),"row"=>row))
+                    NC.writejson(joinpath(folder,"quarantined.json"),quarantined)
+                    metadata["quarantined"]=quarantined
+                    NC.writejson(joinpath(release,"release_manifest.json"),metadata)
+                    println("NLC6_QUARANTINED id=",current," reason=",sprint(showerror,exception));flush(stdout)
+                    continue
+                end
+                rethrow()
+            end
+        end
+        if !isempty(quarantined)
+            metadata["status"]="incomplete_quarantined_physics_cases"
+            NC.writejson(joinpath(release,"release_manifest.json"),metadata)
+            NC.writejson(joinpath(folder,"campaign_status.json"),Dict("status"=>metadata["status"],
+                "completed"=>length(completed),"quarantined"=>length(quarantined),"total"=>144))
+            return nothing
         end
         metadata["status"]="complete_user_waived_independent_qualification"
         NC.writejson(joinpath(release,"release_manifest.json"),metadata)

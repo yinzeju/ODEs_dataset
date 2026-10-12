@@ -30,7 +30,7 @@ python -X utf8 experiments/data_generation/audit_dataset_catalog.py --verify-dat
 ## Dataset-2.1: NACA-NLC6 Campaign
 
 The user authorized **144 clean full-state NACA-NLC6 trajectories (96/24/24)**.
-Generation is in progress under `dataset21_nlc6_f4096_144_v1`. The model adds six
+Generation continues under `dataset21_nlc6_f4096_144_v1_r1` after a runtime-strain failure in v1. The model adds six
 passive cubic-spring and smooth velocity-dependent damping connectors, retains
 29,844 states and 4096 frames, and uses a 0.5 ms output interval (2.0475 s).
 The accepted NLC6 baseline damping targets modes 1 and 4 at 1.0% and 0.12%; this
@@ -211,3 +211,7 @@ Reusable code lives in `src/`, declarations in `configs/`, entry points in
 `experiments/`, generated data in `data/`, and disposable logs in `runs/`.
 `docs/spec/project_task_list.md` records completed operations; historical entries
 refer to content now held by the archive branch. The active checkout is `main`.
+
+## NLC6 runtime gate repair (2026-10-12)
+
+Case NLC6_train_022 exceeded the unchanged 0.001 strain threshold. Thirty-one accepted v1 trajectories are preserved and reused with their original provenance. The r1 driver closes and quarantines energy/strain failures immediately, then continues other frozen cases. Physics, initial-condition targets, RNG plan, timesteps and limits are unchanged. Initial-amplitude reduction requires the pending user decision; no such change has been made. Missing/quarantined cases prevent dataset completion and shutdown. See runs/dataset21_nlc6_f4096_144_v1_r1/repair_record.json and its quarantined.json when available.
