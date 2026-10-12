@@ -1,0 +1,208 @@
+{
+  "plan": {
+    "status": "planned",
+    "authorization": "User requested deletion of old NACA validation and trajectory data, preserving code.",
+    "files": [
+      {
+        "path": "data/releases/dataset21_naca_zeta006_f4096_v3_partial/train/CAN_train_001.h5",
+        "bytes": 978224317
+      },
+      {
+        "path": "data/releases/dataset21_naca_zeta006_f4096_v3_partial/train/CAN_train_002.h5",
+        "bytes": 978224317
+      },
+      {
+        "path": "data/releases/dataset21_naca_zeta006_f4096_v3_partial/train/CAN_train_003.h5",
+        "bytes": 978224317
+      },
+      {
+        "path": "data/releases/dataset21_naca_zeta006_f4096_v3_partial/train/CAN_train_004.h5.partial.h5",
+        "bytes": 592322605
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v1_r5/qualification/case_1/substeps_16.h5.partial.h5",
+        "bytes": 112200377
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v1_r5/qualification/case_1/substeps_4.h5",
+        "bytes": 717521993
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v1_r5/qualification/case_1/substeps_8.h5",
+        "bytes": 717521993
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/cpu_reference.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/double_rate.h5",
+        "bytes": 1956202889
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/linear.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/substeps_1.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/substeps_2.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/double_rate.h5",
+        "bytes": 1956202889
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/linear.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/substeps_1.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/substeps_2.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/naca_precision_r6/time_pair/substeps_4.h5",
+        "bytes": 717521993
+      },
+      {
+        "path": "runs/naca_precision_r6/time_pair/substeps_8.h5",
+        "bytes": 717521993
+      },
+      {
+        "path": "runs/naca_precision_r7_radau/time_pair/substeps_1.h5.partial.h5",
+        "bytes": 277529
+      },
+      {
+        "path": "runs/naca_precision_r7b_radau/time_pair/substeps_1.h5",
+        "bytes": 717521993
+      },
+      {
+        "path": "runs/naca_precision_r7b_radau/time_pair/substeps_2.h5",
+        "bytes": 717521993
+      },
+      {
+        "path": "runs/naca_precision_r7b_radau/time_pair/substeps_4.h5",
+        "bytes": 717521993
+      }
+    ],
+    "total_bytes": 19422102598,
+    "file_count": 22,
+    "archive": "runs\\naca_retirement_20261012\\old_sources_and_receipts.zip",
+    "archive_sha256": "8df8f0b5c4d196a9e6ab16e01dc8cc7777a6e57aabe72bd4eb24bf30bf1bbf70",
+    "protected": {
+      "artifacts/dataset21_nlc6/base_model.jld2": "c2aca06d27abf835ad75d03f3c9f968037a3137bb6a36ed6be54e16686e34b14",
+      "artifacts/dataset21_nlc6/Wing.msh": "5d2263f7449af56aac24ddbda0c302faba15c53da00dfc8b4e19efcd71d832d4",
+      "runs/dataset21_nlc6_trial_01/trajectory.h5": "743e6df118db0b9347d2e4e4e30083a80ff72810287294880c90eec7a992acc7",
+      "runs/dataset21_naca_zeta006_f4096_v3_partial/models/candidate.jld2": "c2aca06d27abf835ad75d03f3c9f968037a3137bb6a36ed6be54e16686e34b14",
+      "runs/dataset21_naca_zeta006_f4096_v2/meshes/candidate/Wing.msh": "5d2263f7449af56aac24ddbda0c302faba15c53da00dfc8b4e19efcd71d832d4"
+    },
+    "archive_branch": "codex/abolish-naca-pre-nlc6-20261012",
+    "archive_commit": "badd9e3fcb2d0d6543b144424f24e8327e1f56bc",
+    "exact_byte_archive_commit": "9d72cce0134ce8b57fb72f043d0ecc9a50ba163c"
+  },
+  "result": {
+    "status": "completed",
+    "archive_commit": "badd9e3fcb2d0d6543b144424f24e8327e1f56bc",
+    "deleted": [
+      {
+        "path": "data/releases/dataset21_naca_zeta006_f4096_v3_partial/train/CAN_train_001.h5",
+        "bytes": 978224317
+      },
+      {
+        "path": "data/releases/dataset21_naca_zeta006_f4096_v3_partial/train/CAN_train_002.h5",
+        "bytes": 978224317
+      },
+      {
+        "path": "data/releases/dataset21_naca_zeta006_f4096_v3_partial/train/CAN_train_003.h5",
+        "bytes": 978224317
+      },
+      {
+        "path": "data/releases/dataset21_naca_zeta006_f4096_v3_partial/train/CAN_train_004.h5.partial.h5",
+        "bytes": 592322605
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v1_r5/qualification/case_1/substeps_16.h5.partial.h5",
+        "bytes": 112200377
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v1_r5/qualification/case_1/substeps_4.h5",
+        "bytes": 717521993
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v1_r5/qualification/case_1/substeps_8.h5",
+        "bytes": 717521993
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/cpu_reference.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/double_rate.h5",
+        "bytes": 1956202889
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/linear.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/substeps_1.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/substeps_2.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/double_rate.h5",
+        "bytes": 1956202889
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/linear.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/substeps_1.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/substeps_2.h5",
+        "bytes": 978224201
+      },
+      {
+        "path": "runs/naca_precision_r6/time_pair/substeps_4.h5",
+        "bytes": 717521993
+      },
+      {
+        "path": "runs/naca_precision_r6/time_pair/substeps_8.h5",
+        "bytes": 717521993
+      },
+      {
+        "path": "runs/naca_precision_r7_radau/time_pair/substeps_1.h5.partial.h5",
+        "bytes": 277529
+      },
+      {
+        "path": "runs/naca_precision_r7b_radau/time_pair/substeps_1.h5",
+        "bytes": 717521993
+      },
+      {
+        "path": "runs/naca_precision_r7b_radau/time_pair/substeps_2.h5",
+        "bytes": 717521993
+      },
+      {
+        "path": "runs/naca_precision_r7b_radau/time_pair/substeps_4.h5",
+        "bytes": 717521993
+      }
+    ],
+    "failed": [],
+    "deleted_bytes": 19422102598,
+    "protected_hashes_verified": true,
+    "finished_utc": "2026-10-12T05:23:58.2604826+00:00"
+  }
+}

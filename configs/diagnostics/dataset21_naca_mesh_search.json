@@ -1,0 +1,14 @@
+{
+  "base_config": "configs/releases/dataset21_naca_v1_r5.json",
+  "reference_models": "runs/dataset21_naca_zeta006_f4096_v1_r5/models.json",
+  "output": "runs/naca_campaign_control/mesh_search_01",
+  "purpose": "Diagnose anisotropic spatial resolution before any formal population; preserve all structural topology.",
+  "candidates": [
+    {"La": 3, "a1": 2, "a2": 3},
+    {"La": 4, "a1": 2, "a2": 3},
+    {"La": 6, "a1": 2, "a2": 2},
+    {"La": 6, "a1": 2, "a2": 3},
+    {"La": 8, "a1": 2, "a2": 2},
+    {"La": 6, "a1": 3, "a2": 3}
+  ]
+}

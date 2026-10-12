@@ -113,3 +113,14 @@ The report evidence separately records the time of its read-only integrity audit
   `experiments/data_generation/verify_dataset1.jl` and `verify_dataset2.jl`;
   audit receipts under `runs/dataset_naming_20261011/`.
 - Navigation: `docs/Notes/dataset_inventory.md`.
+
+## Dataset-2.1 NACA-NLC6 full-state generator
+
+- Updated: 2026-10-11T22:27-07:00. Identity: Dataset-2.1/FE-NACA-NLC6; implementation v1, population in progress, independent qualification waived by user.
+- Capability: 29,844-state nonlinear wing with six cubic spring/smooth velocity-damper patch ports; 4096 frames, 0.5 ms interval, 96/24/24 clean split. No reduced physical dynamics.
+- Source: src/data/dataset21_nlc6/Dataset21NLC6.jl and campaign.jl; depends on src/data/dataset21_naca/. Entry and config: experiments/data_generation/run_dataset21_nlc6_campaign.jl and configs/releases/dataset21_nlc6_v1.json.
+- Dependencies: pinned upstream source/NOTICE and isolated configs/environments/dataset21_naca; local base model artifacts/dataset21_nlc6/base_model.jld2. All initial-condition recipes, seeds, ratio tiers and allocation are frozen in the release input capsule.
+- Output: data/releases/dataset21_nlc6_f4096_144_v1; completed single trial remains runs/dataset21_nlc6_trial_01, separate from the population. No current dataset-completion or independent-qualification claim.
+- Numerical methods: FP64 GPU shell forces, CPU sparse Radau solves, analytic rank-18 connector stage tangent, and nonlinear constrained static release initialization. Runtime convergence, energy, strain, state-finiteness, saved-port identity and hash/readback checks remain enabled.
+- Evidence/navigation: docs/notes/code explanation/dataset21_nlc6_population.md; prior trial completion.json and analysis.json; current campaign_status.json and completed.json as available. No final report until the population is complete.
+- Retired lineage: old dataset21_naca_zeta006 trajectory and qualification HDF5 data deleted by request; preserved shared code remains active. Historical source capsules and exact-byte ZIP: codex/abolish-naca-pre-nlc6-20261012, 9d72cce0134ce8b57fb72f043d0ecc9a50ba163c. Retirement receipt: docs/notes/evidence/dataset21_naca_retirement_20261012.json.

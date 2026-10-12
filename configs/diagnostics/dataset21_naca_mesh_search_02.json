@@ -1,0 +1,16 @@
+{
+  "base_config": "configs/releases/dataset21_naca_v1_r5.json",
+  "reference_models": "runs/dataset21_naca_zeta006_f4096_v1_r5/models.json",
+  "output": "runs/naca_campaign_control/mesh_search_02",
+  "purpose": "Follow up the strong through-section resolution effect seen in mesh_search_01.",
+  "candidates": [
+    {"La": 2, "a1": 3, "a2": 3},
+    {"La": 2, "a1": 3, "a2": 4},
+    {"La": 2, "a1": 4, "a2": 3},
+    {"La": 2, "a1": 4, "a2": 4},
+    {"La": 3, "a1": 3, "a2": 4},
+    {"La": 3, "a1": 3, "a2": 5},
+    {"La": 3, "a1": 4, "a2": 4},
+    {"La": 2, "a1": 3, "a2": 5}
+  ]
+}

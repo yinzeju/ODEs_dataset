@@ -6,6 +6,7 @@
 !/README.md
 !/Project.toml
 !/Manifest.toml
+!/AUTONOMOUS_NACA.md
 
 # Tracked project directories.
 !/docs/
@@ -18,6 +19,10 @@
 !/experiments/**
 !/test/
 !/test/**
+
+# Python bytecode is generated, including inside tracked experiment directories.
+**/__pycache__/
+*.pyc
 
 # Generated data, runs, logs, checkpoints, caches, and most artifacts stay ignored.
 # Keep optional placeholders for generated-output directories without tracking contents.

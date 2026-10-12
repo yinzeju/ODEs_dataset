@@ -95,3 +95,11 @@ No remote push is part of this wrap-up.
   runs/dataset_naming_20261011/integrity_audit.json, alias_checks.log and
   dataset2_readback.log. This is a naming/scope update, not an experimental wrap-up;
   no new formal report, completion commit or remote push was requested.
+
+## 2026-10-11T22:27-07:00 — Launch NACA-NLC6 population and retire old NACA numerical outputs
+
+- Scope/status: user authorized 144 clean trajectories (96/24/24) with the accepted NLC6 connectors and explicitly waived new smoke and independent numerical qualification. Generation is running; this is not population completion.
+- Implementation: src/data/dataset21_nlc6/campaign.jl, run_dataset21_nlc6_campaign.jl, start_dataset21_nlc6_campaign.ps1 and configs/releases/dataset21_nlc6_v1.json. Shared original shell source, all earlier configs and diagnostics are preserved.
+- Retirement completed: 22 old NACA trajectory/qualification HDF5 files, 19,422,102,598 bytes. Protected model/mesh and NLC6 trial hashes remained unchanged. Old source capsules, small receipts and exact-byte ZIP are retained on codex/abolish-naca-pre-nlc6-20261012, tip 9d72cce0134ce8b57fb72f043d0ecc9a50ba163c.
+- Checks: syntax/load and frozen allocation checks occurred during launch; no new validation simulation was run. The worker is advancing the first formal trajectory with runtime physics/readback checks enabled. Prior single-trial evidence is separate and is not counted in the 144.
+- Navigation: docs/notes/code explanation/dataset21_nlc6_population.md; docs/notes/evidence/dataset21_naca_retirement_20261012.json; runs/dataset21_nlc6_f4096_144_v1/. Current shutdown hold remains. Code/archive publication is requested; final population report remains pending generation.

@@ -27,6 +27,32 @@ existing serialized models and consumers remain compatible.
 python -X utf8 experiments/data_generation/audit_dataset_catalog.py --verify-data
 ```
 
+## Dataset-2.1: NACA-NLC6 Campaign
+
+The user authorized **144 clean full-state NACA-NLC6 trajectories (96/24/24)**.
+Generation is in progress under `dataset21_nlc6_f4096_144_v1`. The model adds six
+passive cubic-spring and smooth velocity-dependent damping connectors, retains
+29,844 states and 4096 frames, and uses a 0.5 ms output interval (2.0475 s).
+The accepted NLC6 baseline damping targets modes 1 and 4 at 1.0% and 0.12%; this
+replaces the former 0.6% campaign settings. Full-state Radau IIA5 uses Float64 GPU
+shell forces with CPU sparse solves and exact low-rank connector tangents.
+
+The user waived new smoke and independent temporal/spatial qualification runs.
+Runtime Newton, strain, energy and complete artifact-readback checks remain enabled.
+The release must be labeled `user_waived_independent_qualification`; it is not a
+fully qualified dataset. See the [population guide](docs/notes/code%20explanation/dataset21_nlc6_population.md)
+and [accepted mathematical proposal](docs/notes/code%20explanation/dataset21_naca_nlc6_proposal.md).
+The completed exploratory NLC6 trajectory and plots remain local in
+`runs/dataset21_nlc6_trial_01/`; they are not counted among the 144 new trajectories.
+
+Old NACA validation and trajectory HDF5 outputs were retired at the user's request:
+22 files / 19,422,102,598 bytes. Code, configurations, receipts, shared models and
+mesh dependencies remain. Frozen historical sources and an exact-byte source ZIP
+are preserved on `codex/abolish-naca-pre-nlc6-20261012`; see the
+[retirement receipt](docs/notes/evidence/dataset21_naca_retirement_20261012.json).
+The monitor may diagnose interruptions and resume this population only; old
+qualification and old generation must not restart. Shutdown remains on hold.
+
 ## Dataset-2: Nonlinear Structural Dynamics
 
 The clean-only release is configured in `configs/releases/testsub2_nv_20261004.json`.
