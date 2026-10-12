@@ -1,0 +1,1 @@
+[{"base_substeps":1,"fine_energy_balance":7.220559482320899e-9,"fine_substeps":2,"passed":false,"state_error":0.0001768033194620189},{"base_substeps":2,"fine_energy_balance":1.514988624217159e-9,"fine_substeps":4,"passed":true,"state_error":9.671521469034274e-6}]

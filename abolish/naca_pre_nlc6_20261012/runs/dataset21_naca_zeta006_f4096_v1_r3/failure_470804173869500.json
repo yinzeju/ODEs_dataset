@@ -1,0 +1,1 @@
+{"config_sha256":"e15b02d027ae40f8aaa00989b96a8296e0a5ce0c6d7f3b0490e1c7b7da53f575","error":"UndefVarError: `CUDA` not defined in `Main.Dataset21NACA`\nThe binding may be too new: running in world age 39084, while current world is 39178.\nHint: CUDA is loaded but not imported in the active module Main.","stage":"qualify","status":"failed"}

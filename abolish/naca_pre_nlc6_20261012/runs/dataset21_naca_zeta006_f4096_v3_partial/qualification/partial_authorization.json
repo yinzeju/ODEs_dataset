@@ -1,0 +1,78 @@
+{
+  "status": "user_authorized_partial",
+  "user_authorized_skip_remaining": true,
+  "parent_release": "dataset21_naca_zeta006_f4096_v2",
+  "config_sha256": "af5003bb8932d3fcf8bb2458e37fbae9c5bac9224134b9b7d93395766157fb2e",
+  "models_sha256": "73dbd6512c6a97f8a43f69c335db31ad3ceb4c855a4043b70fa109062afc7a12",
+  "inputs_sha256": "8f29e5077c5b1cbd9cf72f5414a12041abde649ad54600de9121e39755536983",
+  "amplitude_max_m": 0.006,
+  "substeps": 2,
+  "backend": "gpu",
+  "cases": [
+    {
+      "effective_omega": 34.51878144586514,
+      "family": 1,
+      "initial_state": {
+        "amplitude_m": 0.0006000000000000001,
+        "family": 1,
+        "kind": "modal_displacement",
+        "modes": [
+          1
+        ],
+        "physical_shape_coefficients_m": [
+          0.0006000000000000002
+        ]
+      },
+      "initial_state_sha256": "30fd894a5328cb7c08f0377230a95387c9712d24334a9c1ec7d5c8e794344be4",
+      "level": 0.1,
+      "nonlinear_difference": 0.020756172484973582,
+      "nonlinear_energy_signal": 1.964490839552239e-05,
+      "substeps": 2,
+      "temporal_energy_feature_error": 1.1278208154954596e-09,
+      "time_error": 1.2913330748380764e-07
+    },
+    {
+      "effective_omega": 34.51878144586514,
+      "family": 1,
+      "initial_state": {
+        "amplitude_m": 0.0048000000000000004,
+        "family": 1,
+        "kind": "modal_displacement",
+        "modes": [
+          1
+        ],
+        "physical_shape_coefficients_m": [
+          0.004800000000000001
+        ]
+      },
+      "initial_state_sha256": "69b4499a640cbcf26b9255ab5d01a4f537d2c7ac4c55d663fdb6e51f42745eb3",
+      "level": 0.8,
+      "nonlinear_difference": 0.1637965848413847,
+      "nonlinear_energy_signal": 0.0012550860689608315,
+      "substeps": 2,
+      "temporal_energy_feature_error": 2.0301601334917377e-09,
+      "time_error": 1.0530859264467427e-06
+    }
+  ],
+  "retained_evidence_sha256": {
+    "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/cpu_gpu_trajectory.json": "083a7b32ff45eb92100502c87f226a37730446b76ba3c5dea1fb33edfec19867",
+    "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/cpu_reference.h5.json": "5ec4d6dfc5d6223a5849c4bfa0d808d05d411268acc0546c23538286df900de6",
+    "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/double_rate.h5.json": "1e729d2dbe7681865618805691c09e64b4df6550f6758070c75a84ab43b61a33",
+    "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/linear.h5.json": "261e0810b1cea1724a8ae1a9fe58da72407df367e24d7cda55b816a5bfe55f9a",
+    "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/substeps_1.h5.json": "e01bbec69a805ff34621e30186fe1ed207853ceb76e418994ce868edb8af04df",
+    "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/substeps_2.h5.json": "4506f4b1e19e7ae07a7ecf116e6a96bdbff586de857f8f28550399fe732296e1",
+    "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_1/time_refinement.json": "0d398c9aeba02649b43d1d7536d88ad0877c8ac9a84ed818b0a2c32a03f7c130",
+    "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/double_rate.h5.json": "9123447fc1aae2e4b4679818856e43b8f696bcf69ac519ad0348ef2eb0121e47",
+    "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/linear.h5.json": "98550529082c975b7f2b061e9f24c9ae3204ef275d7c2c8e5ae54aafafa44ca6",
+    "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/substeps_1.h5.json": "d8a1ab5cf09c42668572896ad20f2e89df7dcb902b512eba4bc39af99e2d7e89",
+    "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/substeps_2.h5.json": "92a4cf97b9fd6a3e623f4445d140cd3566f56af2065c3e2e47f6d44eaba8e999",
+    "runs/dataset21_naca_zeta006_f4096_v2/qualification/case_2/time_refinement.json": "16f7bd78b8faa61443579ede638ffe906dcb2ed8a2a6a175cbb9028b98628d82"
+  },
+  "unperformed_scope": [
+    "remaining independent qualification",
+    "mixed-mode QUAL",
+    "static-release QUAL",
+    "complete nonlinear spatial qualification"
+  ],
+  "authorization_note": "docs/notes/code explanation/dataset21_naca_partial_authorization.md"
+}

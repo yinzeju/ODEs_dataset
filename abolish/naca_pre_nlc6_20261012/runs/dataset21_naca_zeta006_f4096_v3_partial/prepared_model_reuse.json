@@ -1,0 +1,7 @@
+{
+  "utc": "2026-10-12T03:11:14.008675+00:00",
+  "parent_release": "dataset21_naca_zeta006_f4096_v2",
+  "candidate_sha256": "c2aca06d27abf835ad75d03f3c9f968037a3137bb6a36ed6be54e16686e34b14",
+  "numerical_sources_verified_unchanged": true,
+  "change": "Explicit partial-qualification execution and truthful release labeling only; numerical solver unchanged."
+}

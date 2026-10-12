@@ -1,0 +1,167 @@
+{
+  "schema": "dataset21.naca.preparation.v1",
+  "release_id": "dataset21_naca_zeta006_f4096_v1_r3",
+  "status": "execution_authorized_pending_qualification",
+  "source_commit": "de6cbc71427d23827feb9efd313cb63a1fc52ff8",
+  "protocol_snapshot": "docs/Notes/mathematical explanation/Dataset-2.1-Wing and Blade Structural Dynamics.md",
+  "execution_authorized": true,
+  "material": {
+    "E": 70000000000.0,
+    "nu": 0.33,
+    "rho": 2700.0,
+    "thickness": 0.0015
+  },
+  "damping": {
+    "type": "Rayleigh",
+    "target_modes": [
+      1,
+      2
+    ],
+    "target_ratio": 0.006
+  },
+  "sampling": {
+    "frames": 4096,
+    "dt_seconds": 0.0008,
+    "minimum_samples_per_effective_cycle": 24
+  },
+  "mesh": {
+    "modes": 12,
+    "state_dimension_soft_range": [
+      16000,
+      24000
+    ],
+    "candidate": {
+      "La": 2,
+      "a1": 2,
+      "a2": 4
+    },
+    "fine1": {
+      "La": 3,
+      "a1": 4,
+      "a2": 6
+    },
+    "fine2": {
+      "La": 6,
+      "a1": 5,
+      "a2": 10
+    }
+  },
+  "initial_conditions": {
+    "seed": 20261011,
+    "amplitude_candidates_m": [
+      0.001,
+      0.003,
+      0.01,
+      0.03,
+      0.1
+    ],
+    "maximum_strain_component": 0.001,
+    "maximum_strain_status": "conservative engineering screening value; not an aluminium yield measurement",
+    "levels": [
+      0.15,
+      0.4,
+      0.7
+    ],
+    "relative_jitter": 0.08,
+    "counts": {
+      "train": 96,
+      "validation": 24,
+      "test": 24
+    },
+    "families": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        2,
+        3,
+        4
+      ],
+      []
+    ]
+  },
+  "solver": {
+    "method": "Newmark average acceleration with Newton and line search",
+    "beta": 0.25,
+    "gamma": 0.5,
+    "substeps": 4,
+    "maximum_qualification_substeps": 64,
+    "newton_relative_tolerance": 1E-11,
+    "newton_max_iterations": 20,
+    "maximum_bisections": 6
+  },
+  "compute": {
+    "backend": "auto",
+    "benchmark_repeats": 3,
+    "minimum_gpu_speedup": 1.15,
+    "trajectory_concurrency": 1
+  },
+  "qualification": {
+    "threshold_status": "engineering defaults awaiting numerical qualification; never relax automatically",
+    "frequency_relative": 0.03,
+    "minimum_mac": 0.95,
+    "source_frequency_reference_rad_s": [
+      29.3428,
+      152.26,
+      180.88,
+      313.81
+    ],
+    "source_frequency_relative": 0.02,
+    "static_relative": 0.05,
+    "spatial_trajectory_relative": 0.05,
+    "temporal_state_relative": 0.0001,
+    "energy_balance_relative": 0.0001,
+    "minimum_nonlinear_difference": 0.01,
+    "nonlinear_to_error_ratio": 5.0,
+    "cpu_gpu_relative_tolerance": 1E-10,
+    "end_energy_fraction": 0.4,
+    "spectrum_power_tail_fraction": 0.0001,
+    "maximum_mapping_distance_m": 0.015
+  },
+  "gravity": false,
+  "rotation": false,
+  "external_force_after_release": false,
+  "initial_velocity": 0.0,
+  "noise_views": [],
+  "output": {
+    "format": "HDF5",
+    "precision": "Float64",
+    "compression": "none",
+    "keep_qualification_trajectories": true
+  },
+  "revision_reason": "Static Newton force cancellation diagnosed at Float64 roundoff; require backward-error force balance and relative correction <= 1e-9. Physical qualification gates unchanged."
+}
