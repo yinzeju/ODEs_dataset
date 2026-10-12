@@ -1,0 +1,62 @@
+{
+  "utc": "2026-10-12T16:28:09.564765+00:00",
+  "status": "authorized_queued_after_live_parent",
+  "user_authorization": "User allowed amplitude reduction with versioned records, then delegated subsequent choices to the agent provided decisions are recorded.",
+  "parent_release": "dataset21_nlc6_f4096_144_v1_r1",
+  "next_release": "dataset21_nlc6_f4096_144_v1_r2",
+  "scale_factor": 0.8,
+  "energy_ratio_multiplier": 0.64,
+  "cases": [
+    {
+      "id": "NLC6_train_022",
+      "original_amplitude_mm": 10.695538031283416,
+      "proposed_amplitude_mm": 8.556430425026733,
+      "original_ratio": 0.2635047544565503,
+      "proposed_ratio": 0.1686430428521922,
+      "observed_strain": 0.0011854098589346121
+    },
+    {
+      "id": "NLC6_train_023",
+      "original_amplitude_mm": 10.240568007785875,
+      "proposed_amplitude_mm": 8.1924544062287,
+      "original_ratio": 0.24156347870045375,
+      "proposed_ratio": 0.1546006263682904,
+      "observed_strain": 0.0010791422598107861
+    },
+    {
+      "id": "NLC6_train_024",
+      "original_amplitude_mm": 10.14716109060974,
+      "proposed_amplitude_mm": 8.117728872487792,
+      "original_ratio": 0.23717684797704672,
+      "proposed_ratio": 0.1517931827053099,
+      "observed_strain": 0.001030899673211313
+    },
+    {
+      "id": "NLC6_validation_006",
+      "original_amplitude_mm": 10.883545637069096,
+      "proposed_amplitude_mm": 8.706836509655275,
+      "original_ratio": 0.2728500190212376,
+      "proposed_ratio": 0.17462401217359208,
+      "observed_strain": 0.0012596439111676916
+    },
+    {
+      "id": "NLC6_test_006",
+      "original_amplitude_mm": 10.861507562699098,
+      "proposed_amplitude_mm": 8.689206050159278,
+      "original_ratio": 0.27174615061949825,
+      "proposed_ratio": 0.1739175363964789,
+      "observed_strain": 0.0012335190649503992
+    }
+  ],
+  "execution_decision": "Keep healthy parent worker running. At parent termination, implement explicit override-plan consumption in a versioned driver, reuse accepted immutable files with lineage and full readback, and run replacements in r2. Config launch interlock remains false until override handling is implemented and checked.",
+  "future_decision_policy": "Autonomously diagnose failures and make recorded engineering decisions. Further amplitude revisions apply only to failed cases with retained evidence and distinct versions. Preserve physics model, state cap, frame grid, split and runtime quality limits; do not silently weaken checks or count failures as accepted. Static-release cases require their equilibrium initialization contract, not arbitrary scaling.",
+  "unchanged": [
+    "29844 states",
+    "4096 frames",
+    "dt 0.0005 s",
+    "96/24/24",
+    "clean only",
+    "runtime Newton/strain/energy/readback/hash checks"
+  ],
+  "qualification_status": "user_waived_independent_qualification"
+}
