@@ -1,0 +1,3164 @@
+[
+  {
+    "connector_energy_ratio": 0.023091150177144946,
+    "family": 1,
+    "family_ordinal": 1,
+    "id": "NLC6_train_001",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      1
+    ],
+    "relative_path": "train/NLC6_train_001/trajectory.h5",
+    "seed_hex": "f967a36dad91118f",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.026901963994728464,
+    "family": 1,
+    "family_ordinal": 2,
+    "id": "NLC6_train_002",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      1
+    ],
+    "relative_path": "train/NLC6_train_002/trajectory.h5",
+    "seed_hex": "9bbbeb277bd11516",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.09381055519212439,
+    "family": 1,
+    "family_ordinal": 3,
+    "id": "NLC6_train_003",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      1
+    ],
+    "relative_path": "train/NLC6_train_003/trajectory.h5",
+    "seed_hex": "708a00374fd6b6bf",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10108861219303233,
+    "family": 1,
+    "family_ordinal": 4,
+    "id": "NLC6_train_004",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      1
+    ],
+    "relative_path": "train/NLC6_train_004/trajectory.h5",
+    "seed_hex": "463aee0f402df815",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09763328665523219,
+    "family": 1,
+    "family_ordinal": 5,
+    "id": "NLC6_train_005",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      1
+    ],
+    "relative_path": "train/NLC6_train_005/trajectory.h5",
+    "seed_hex": "76e48d48f0a7d678",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09111884261672099,
+    "family": 1,
+    "family_ordinal": 6,
+    "id": "NLC6_validation_001",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      1
+    ],
+    "relative_path": "validation/NLC6_validation_001/trajectory.h5",
+    "seed_hex": "24f9ce5601d24862",
+    "signs": [
+      -1
+    ],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09915708702790266,
+    "family": 1,
+    "family_ordinal": 7,
+    "id": "NLC6_test_001",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      1
+    ],
+    "relative_path": "test/NLC6_test_001/trajectory.h5",
+    "seed_hex": "2dba63daefab3a3d",
+    "signs": [
+      1
+    ],
+    "split": "test",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.24415912485935387,
+    "family": 1,
+    "family_ordinal": 8,
+    "id": "NLC6_train_006",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      1
+    ],
+    "relative_path": "train/NLC6_train_006/trajectory.h5",
+    "seed_hex": "878cce911dd39c3a",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2506459470157935,
+    "family": 1,
+    "family_ordinal": 9,
+    "id": "NLC6_train_007",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      1
+    ],
+    "relative_path": "train/NLC6_train_007/trajectory.h5",
+    "seed_hex": "b3860a427041ef07",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.24342068814720572,
+    "family": 1,
+    "family_ordinal": 10,
+    "id": "NLC6_train_008",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      1
+    ],
+    "relative_path": "train/NLC6_train_008/trajectory.h5",
+    "seed_hex": "c96e1a3716dcc89b",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2729986387999144,
+    "family": 1,
+    "family_ordinal": 11,
+    "id": "NLC6_validation_002",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      1
+    ],
+    "relative_path": "validation/NLC6_validation_002/trajectory.h5",
+    "seed_hex": "d4c1799de7bdffa6",
+    "signs": [
+      1
+    ],
+    "split": "validation",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2323965954902236,
+    "family": 1,
+    "family_ordinal": 12,
+    "id": "NLC6_test_002",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      1
+    ],
+    "relative_path": "test/NLC6_test_002/trajectory.h5",
+    "seed_hex": "a45f431a2835b54a",
+    "signs": [
+      -1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.023080451732665982,
+    "family": 2,
+    "family_ordinal": 1,
+    "id": "NLC6_train_009",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      2
+    ],
+    "relative_path": "train/NLC6_train_009/trajectory.h5",
+    "seed_hex": "7cf851eb5c89ec6f",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.02317959599069215,
+    "family": 2,
+    "family_ordinal": 2,
+    "id": "NLC6_train_010",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      2
+    ],
+    "relative_path": "train/NLC6_train_010/trajectory.h5",
+    "seed_hex": "285d60fbb3f6a15b",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.09238970691767873,
+    "family": 2,
+    "family_ordinal": 3,
+    "id": "NLC6_train_011",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      2
+    ],
+    "relative_path": "train/NLC6_train_011/trajectory.h5",
+    "seed_hex": "bf983697c34224c3",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09787839790296121,
+    "family": 2,
+    "family_ordinal": 4,
+    "id": "NLC6_train_012",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      2
+    ],
+    "relative_path": "train/NLC6_train_012/trajectory.h5",
+    "seed_hex": "de54328a0b9d385",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09098497280699616,
+    "family": 2,
+    "family_ordinal": 5,
+    "id": "NLC6_train_013",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      2
+    ],
+    "relative_path": "train/NLC6_train_013/trajectory.h5",
+    "seed_hex": "53930dcc8eda8c38",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09826336834920418,
+    "family": 2,
+    "family_ordinal": 6,
+    "id": "NLC6_validation_003",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      2
+    ],
+    "relative_path": "validation/NLC6_validation_003/trajectory.h5",
+    "seed_hex": "aae8ccba718fd39c",
+    "signs": [
+      -1
+    ],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10832287187874992,
+    "family": 2,
+    "family_ordinal": 7,
+    "id": "NLC6_test_003",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      2
+    ],
+    "relative_path": "test/NLC6_test_003/trajectory.h5",
+    "seed_hex": "471a34a3e8502b63",
+    "signs": [
+      1
+    ],
+    "split": "test",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.260740999765374,
+    "family": 2,
+    "family_ordinal": 8,
+    "id": "NLC6_train_014",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      2
+    ],
+    "relative_path": "train/NLC6_train_014/trajectory.h5",
+    "seed_hex": "eedc1838a2ac38ee",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.264755026112304,
+    "family": 2,
+    "family_ordinal": 9,
+    "id": "NLC6_train_015",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      2
+    ],
+    "relative_path": "train/NLC6_train_015/trajectory.h5",
+    "seed_hex": "60408d45077cdc29",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2548758044887969,
+    "family": 2,
+    "family_ordinal": 10,
+    "id": "NLC6_train_016",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      2
+    ],
+    "relative_path": "train/NLC6_train_016/trajectory.h5",
+    "seed_hex": "71342b4651290f2a",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.26308805849187245,
+    "family": 2,
+    "family_ordinal": 11,
+    "id": "NLC6_validation_004",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      2
+    ],
+    "relative_path": "validation/NLC6_validation_004/trajectory.h5",
+    "seed_hex": "2003cfcb6b7cdf18",
+    "signs": [
+      1
+    ],
+    "split": "validation",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.23061842220111584,
+    "family": 2,
+    "family_ordinal": 12,
+    "id": "NLC6_test_004",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      2
+    ],
+    "relative_path": "test/NLC6_test_004/trajectory.h5",
+    "seed_hex": "86d5015847d4155e",
+    "signs": [
+      -1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.024181474998973457,
+    "family": 3,
+    "family_ordinal": 1,
+    "id": "NLC6_train_017",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      3
+    ],
+    "relative_path": "train/NLC6_train_017/trajectory.h5",
+    "seed_hex": "7e67c90ce7943569",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.02565983446604917,
+    "family": 3,
+    "family_ordinal": 2,
+    "id": "NLC6_train_018",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      3
+    ],
+    "relative_path": "train/NLC6_train_018/trajectory.h5",
+    "seed_hex": "4eeabd171205b24e",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.10739062774498345,
+    "family": 3,
+    "family_ordinal": 3,
+    "id": "NLC6_train_019",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      3
+    ],
+    "relative_path": "train/NLC6_train_019/trajectory.h5",
+    "seed_hex": "d6bcab7fd5014c1f",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09304141414977465,
+    "family": 3,
+    "family_ordinal": 4,
+    "id": "NLC6_train_020",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      3
+    ],
+    "relative_path": "train/NLC6_train_020/trajectory.h5",
+    "seed_hex": "81f62b076fb6722a",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09744951910339655,
+    "family": 3,
+    "family_ordinal": 5,
+    "id": "NLC6_train_021",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      3
+    ],
+    "relative_path": "train/NLC6_train_021/trajectory.h5",
+    "seed_hex": "e60fc563618dc905",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09103066088864918,
+    "family": 3,
+    "family_ordinal": 6,
+    "id": "NLC6_validation_005",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      3
+    ],
+    "relative_path": "validation/NLC6_validation_005/trajectory.h5",
+    "seed_hex": "729eeaa65eead8ab",
+    "signs": [
+      -1
+    ],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09286648859495164,
+    "family": 3,
+    "family_ordinal": 7,
+    "id": "NLC6_test_005",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      3
+    ],
+    "relative_path": "test/NLC6_test_005/trajectory.h5",
+    "seed_hex": "247132024349d77c",
+    "signs": [
+      1
+    ],
+    "split": "test",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.1686430428521922,
+    "family": 3,
+    "family_ordinal": 8,
+    "id": "NLC6_train_022",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      3
+    ],
+    "relative_path": "train/NLC6_train_022/trajectory.h5",
+    "seed_hex": "82822a6216f039e",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3,
+    "amplitude_revision": {
+      "parent_release": "dataset21_nlc6_f4096_144_v1_r1",
+      "original_connector_energy_ratio": 0.2635047544565503,
+      "displacement_scale": 0.8,
+      "reason": "User-authorized reduction after dynamic strain gate failure; all runtime checks unchanged."
+    }
+  },
+  {
+    "connector_energy_ratio": 0.1546006263682904,
+    "family": 3,
+    "family_ordinal": 9,
+    "id": "NLC6_train_023",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      3
+    ],
+    "relative_path": "train/NLC6_train_023/trajectory.h5",
+    "seed_hex": "b4274b5ca3ea058d",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3,
+    "amplitude_revision": {
+      "parent_release": "dataset21_nlc6_f4096_144_v1_r1",
+      "original_connector_energy_ratio": 0.24156347870045375,
+      "displacement_scale": 0.8,
+      "reason": "User-authorized reduction after dynamic strain gate failure; all runtime checks unchanged."
+    }
+  },
+  {
+    "connector_energy_ratio": 0.1517931827053099,
+    "family": 3,
+    "family_ordinal": 10,
+    "id": "NLC6_train_024",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      3
+    ],
+    "relative_path": "train/NLC6_train_024/trajectory.h5",
+    "seed_hex": "a4d637d57fabb769",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3,
+    "amplitude_revision": {
+      "parent_release": "dataset21_nlc6_f4096_144_v1_r1",
+      "original_connector_energy_ratio": 0.23717684797704672,
+      "displacement_scale": 0.8,
+      "reason": "User-authorized reduction after dynamic strain gate failure; all runtime checks unchanged."
+    }
+  },
+  {
+    "connector_energy_ratio": 0.17462401217359208,
+    "family": 3,
+    "family_ordinal": 11,
+    "id": "NLC6_validation_006",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      3
+    ],
+    "relative_path": "validation/NLC6_validation_006/trajectory.h5",
+    "seed_hex": "600f62ee84614409",
+    "signs": [
+      1
+    ],
+    "split": "validation",
+    "static_sign": 1,
+    "tier": 3,
+    "amplitude_revision": {
+      "parent_release": "dataset21_nlc6_f4096_144_v1_r1",
+      "original_connector_energy_ratio": 0.2728500190212376,
+      "displacement_scale": 0.8,
+      "reason": "User-authorized reduction after dynamic strain gate failure; all runtime checks unchanged."
+    }
+  },
+  {
+    "connector_energy_ratio": 0.1739175363964789,
+    "family": 3,
+    "family_ordinal": 12,
+    "id": "NLC6_test_006",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      3
+    ],
+    "relative_path": "test/NLC6_test_006/trajectory.h5",
+    "seed_hex": "f855846072cdfece",
+    "signs": [
+      -1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 3,
+    "amplitude_revision": {
+      "parent_release": "dataset21_nlc6_f4096_144_v1_r1",
+      "original_connector_energy_ratio": 0.27174615061949825,
+      "displacement_scale": 0.8,
+      "reason": "User-authorized reduction after dynamic strain gate failure; all runtime checks unchanged."
+    }
+  },
+  {
+    "connector_energy_ratio": 0.027123144148359393,
+    "family": 4,
+    "family_ordinal": 1,
+    "id": "NLC6_train_025",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      4
+    ],
+    "relative_path": "train/NLC6_train_025/trajectory.h5",
+    "seed_hex": "3ee63132821a0869",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.026633562830258847,
+    "family": 4,
+    "family_ordinal": 2,
+    "id": "NLC6_train_026",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      4
+    ],
+    "relative_path": "train/NLC6_train_026/trajectory.h5",
+    "seed_hex": "e77a40248289ad66",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.09536667776638974,
+    "family": 4,
+    "family_ordinal": 3,
+    "id": "NLC6_train_027",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      4
+    ],
+    "relative_path": "train/NLC6_train_027/trajectory.h5",
+    "seed_hex": "35bce01af8da5e23",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10184027067274873,
+    "family": 4,
+    "family_ordinal": 4,
+    "id": "NLC6_train_028",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      4
+    ],
+    "relative_path": "train/NLC6_train_028/trajectory.h5",
+    "seed_hex": "2eac19607426390e",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09118494480160036,
+    "family": 4,
+    "family_ordinal": 5,
+    "id": "NLC6_train_029",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      4
+    ],
+    "relative_path": "train/NLC6_train_029/trajectory.h5",
+    "seed_hex": "5973e11d9f0a1874",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09655456312801353,
+    "family": 4,
+    "family_ordinal": 6,
+    "id": "NLC6_validation_007",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      4
+    ],
+    "relative_path": "validation/NLC6_validation_007/trajectory.h5",
+    "seed_hex": "6d3d9662cde72f41",
+    "signs": [
+      -1
+    ],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10905986676223417,
+    "family": 4,
+    "family_ordinal": 7,
+    "id": "NLC6_test_007",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      4
+    ],
+    "relative_path": "test/NLC6_test_007/trajectory.h5",
+    "seed_hex": "754571993332dbc8",
+    "signs": [
+      1
+    ],
+    "split": "test",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.2742430068929974,
+    "family": 4,
+    "family_ordinal": 8,
+    "id": "NLC6_train_030",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      4
+    ],
+    "relative_path": "train/NLC6_train_030/trajectory.h5",
+    "seed_hex": "c447658090702192",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.23187807572883534,
+    "family": 4,
+    "family_ordinal": 9,
+    "id": "NLC6_train_031",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      4
+    ],
+    "relative_path": "train/NLC6_train_031/trajectory.h5",
+    "seed_hex": "f706215368afbf8c",
+    "signs": [
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.26694414969080904,
+    "family": 4,
+    "family_ordinal": 10,
+    "id": "NLC6_train_032",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      4
+    ],
+    "relative_path": "train/NLC6_train_032/trajectory.h5",
+    "seed_hex": "6c39ad0cc130c64a",
+    "signs": [
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2522107075951182,
+    "family": 4,
+    "family_ordinal": 11,
+    "id": "NLC6_validation_008",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      4
+    ],
+    "relative_path": "validation/NLC6_validation_008/trajectory.h5",
+    "seed_hex": "1736c43a71d5e5d8",
+    "signs": [
+      1
+    ],
+    "split": "validation",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.22888532638444087,
+    "family": 4,
+    "family_ordinal": 12,
+    "id": "NLC6_test_008",
+    "linear_energy_fractions": [
+      1.0
+    ],
+    "modes": [
+      4
+    ],
+    "relative_path": "test/NLC6_test_008/trajectory.h5",
+    "seed_hex": "b061465f829acd47",
+    "signs": [
+      -1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.023069135922950897,
+    "family": 5,
+    "family_ordinal": 1,
+    "id": "NLC6_train_033",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      1,
+      2
+    ],
+    "relative_path": "train/NLC6_train_033/trajectory.h5",
+    "seed_hex": "8d78450bb4913d1c",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.0274103295840958,
+    "family": 5,
+    "family_ordinal": 2,
+    "id": "NLC6_validation_009",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      1,
+      2
+    ],
+    "relative_path": "validation/NLC6_validation_009/trajectory.h5",
+    "seed_hex": "174c5afc41ee7bfa",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.09586427681994164,
+    "family": 5,
+    "family_ordinal": 3,
+    "id": "NLC6_train_034",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      1,
+      2
+    ],
+    "relative_path": "train/NLC6_train_034/trajectory.h5",
+    "seed_hex": "ae03ea07c4d5bec6",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09921343213386069,
+    "family": 5,
+    "family_ordinal": 4,
+    "id": "NLC6_train_035",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      1,
+      2
+    ],
+    "relative_path": "train/NLC6_train_035/trajectory.h5",
+    "seed_hex": "f755e427b9f8b32a",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10868853663369432,
+    "family": 5,
+    "family_ordinal": 5,
+    "id": "NLC6_train_036",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      1,
+      2
+    ],
+    "relative_path": "train/NLC6_train_036/trajectory.h5",
+    "seed_hex": "111550b9626ca990",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09027610743937997,
+    "family": 5,
+    "family_ordinal": 6,
+    "id": "NLC6_train_037",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      1,
+      2
+    ],
+    "relative_path": "train/NLC6_train_037/trajectory.h5",
+    "seed_hex": "bd0619cbde643f0",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10103067052289004,
+    "family": 5,
+    "family_ordinal": 7,
+    "id": "NLC6_test_009",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      1,
+      2
+    ],
+    "relative_path": "test/NLC6_test_009/trajectory.h5",
+    "seed_hex": "b8f3cb8421fdb100",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "test",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.25202709820268,
+    "family": 5,
+    "family_ordinal": 8,
+    "id": "NLC6_train_038",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      1,
+      2
+    ],
+    "relative_path": "train/NLC6_train_038/trajectory.h5",
+    "seed_hex": "924a45a7398b2b22",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.22925994931401225,
+    "family": 5,
+    "family_ordinal": 9,
+    "id": "NLC6_train_039",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      1,
+      2
+    ],
+    "relative_path": "train/NLC6_train_039/trajectory.h5",
+    "seed_hex": "c8dd6391333b4d1e",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.24140307314494083,
+    "family": 5,
+    "family_ordinal": 10,
+    "id": "NLC6_train_040",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      1,
+      2
+    ],
+    "relative_path": "train/NLC6_train_040/trajectory.h5",
+    "seed_hex": "a6ede4e2175ce4b7",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2333206820984977,
+    "family": 5,
+    "family_ordinal": 11,
+    "id": "NLC6_validation_010",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      1,
+      2
+    ],
+    "relative_path": "validation/NLC6_validation_010/trajectory.h5",
+    "seed_hex": "5752ff7d45448813",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "validation",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2621149252848367,
+    "family": 5,
+    "family_ordinal": 12,
+    "id": "NLC6_test_010",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      1,
+      2
+    ],
+    "relative_path": "test/NLC6_test_010/trajectory.h5",
+    "seed_hex": "83a37391d5bf3ceb",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.026102951364424483,
+    "family": 6,
+    "family_ordinal": 1,
+    "id": "NLC6_train_041",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      1,
+      3
+    ],
+    "relative_path": "train/NLC6_train_041/trajectory.h5",
+    "seed_hex": "ca39d46c6dfc531f",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.024448782050462886,
+    "family": 6,
+    "family_ordinal": 2,
+    "id": "NLC6_validation_011",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      1,
+      3
+    ],
+    "relative_path": "validation/NLC6_validation_011/trajectory.h5",
+    "seed_hex": "3c554eba03490476",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.09413709984737614,
+    "family": 6,
+    "family_ordinal": 3,
+    "id": "NLC6_train_042",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      1,
+      3
+    ],
+    "relative_path": "train/NLC6_train_042/trajectory.h5",
+    "seed_hex": "54c1bdafbca1eb95",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.1073781475943594,
+    "family": 6,
+    "family_ordinal": 4,
+    "id": "NLC6_train_043",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      1,
+      3
+    ],
+    "relative_path": "train/NLC6_train_043/trajectory.h5",
+    "seed_hex": "e4f90df74a4bca3",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10361085203043308,
+    "family": 6,
+    "family_ordinal": 5,
+    "id": "NLC6_train_044",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      1,
+      3
+    ],
+    "relative_path": "train/NLC6_train_044/trajectory.h5",
+    "seed_hex": "620e38047026a74a",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09188840862936158,
+    "family": 6,
+    "family_ordinal": 6,
+    "id": "NLC6_train_045",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      1,
+      3
+    ],
+    "relative_path": "train/NLC6_train_045/trajectory.h5",
+    "seed_hex": "94b417b1306b06b5",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10882090640175822,
+    "family": 6,
+    "family_ordinal": 7,
+    "id": "NLC6_test_011",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      1,
+      3
+    ],
+    "relative_path": "test/NLC6_test_011/trajectory.h5",
+    "seed_hex": "9e42d3f775a3760",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "test",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.2451062212863857,
+    "family": 6,
+    "family_ordinal": 8,
+    "id": "NLC6_train_046",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      1,
+      3
+    ],
+    "relative_path": "train/NLC6_train_046/trajectory.h5",
+    "seed_hex": "508dcccecc920e38",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.24337995952176397,
+    "family": 6,
+    "family_ordinal": 9,
+    "id": "NLC6_train_047",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      1,
+      3
+    ],
+    "relative_path": "train/NLC6_train_047/trajectory.h5",
+    "seed_hex": "eb6475d4cd188464",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.23289458087234152,
+    "family": 6,
+    "family_ordinal": 10,
+    "id": "NLC6_train_048",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      1,
+      3
+    ],
+    "relative_path": "train/NLC6_train_048/trajectory.h5",
+    "seed_hex": "7fcca798440f7e32",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.23574498461776022,
+    "family": 6,
+    "family_ordinal": 11,
+    "id": "NLC6_validation_012",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      1,
+      3
+    ],
+    "relative_path": "validation/NLC6_validation_012/trajectory.h5",
+    "seed_hex": "4c3268eec5fbccf5",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "validation",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.23544719330449213,
+    "family": 6,
+    "family_ordinal": 12,
+    "id": "NLC6_test_012",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      1,
+      3
+    ],
+    "relative_path": "test/NLC6_test_012/trajectory.h5",
+    "seed_hex": "b22a349f9461c82",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.025164572227646915,
+    "family": 7,
+    "family_ordinal": 1,
+    "id": "NLC6_train_049",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      1,
+      4
+    ],
+    "relative_path": "train/NLC6_train_049/trajectory.h5",
+    "seed_hex": "3161de9241f3335d",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.024807822472031133,
+    "family": 7,
+    "family_ordinal": 2,
+    "id": "NLC6_validation_013",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      1,
+      4
+    ],
+    "relative_path": "validation/NLC6_validation_013/trajectory.h5",
+    "seed_hex": "8ac6263718160dc9",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.09721758664036302,
+    "family": 7,
+    "family_ordinal": 3,
+    "id": "NLC6_train_050",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      1,
+      4
+    ],
+    "relative_path": "train/NLC6_train_050/trajectory.h5",
+    "seed_hex": "33433870e818c742",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10289093787641623,
+    "family": 7,
+    "family_ordinal": 4,
+    "id": "NLC6_train_051",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      1,
+      4
+    ],
+    "relative_path": "train/NLC6_train_051/trajectory.h5",
+    "seed_hex": "9ae80b357e959119",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09200505939734199,
+    "family": 7,
+    "family_ordinal": 5,
+    "id": "NLC6_train_052",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      1,
+      4
+    ],
+    "relative_path": "train/NLC6_train_052/trajectory.h5",
+    "seed_hex": "1043b7065ec1ccb4",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10751458917323181,
+    "family": 7,
+    "family_ordinal": 6,
+    "id": "NLC6_validation_014",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      1,
+      4
+    ],
+    "relative_path": "validation/NLC6_validation_014/trajectory.h5",
+    "seed_hex": "8bc65f890d9e66e8",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09616491589118571,
+    "family": 7,
+    "family_ordinal": 7,
+    "id": "NLC6_test_013",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      1,
+      4
+    ],
+    "relative_path": "test/NLC6_test_013/trajectory.h5",
+    "seed_hex": "2c25f0245ef8535f",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "test",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.22977890139833676,
+    "family": 7,
+    "family_ordinal": 8,
+    "id": "NLC6_train_053",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      1,
+      4
+    ],
+    "relative_path": "train/NLC6_train_053/trajectory.h5",
+    "seed_hex": "a81241d7635f2675",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.22624411163815938,
+    "family": 7,
+    "family_ordinal": 9,
+    "id": "NLC6_train_054",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      1,
+      4
+    ],
+    "relative_path": "train/NLC6_train_054/trajectory.h5",
+    "seed_hex": "fd077e1bec3e72d4",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2715194100195387,
+    "family": 7,
+    "family_ordinal": 10,
+    "id": "NLC6_train_055",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      1,
+      4
+    ],
+    "relative_path": "train/NLC6_train_055/trajectory.h5",
+    "seed_hex": "d6c803ffe793c1d7",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.24707534359799796,
+    "family": 7,
+    "family_ordinal": 11,
+    "id": "NLC6_train_056",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      1,
+      4
+    ],
+    "relative_path": "train/NLC6_train_056/trajectory.h5",
+    "seed_hex": "6f3fe60a6211b870",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.27009435990073316,
+    "family": 7,
+    "family_ordinal": 12,
+    "id": "NLC6_test_014",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      1,
+      4
+    ],
+    "relative_path": "test/NLC6_test_014/trajectory.h5",
+    "seed_hex": "93f26a542ab5ee9d",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.024873476020949588,
+    "family": 8,
+    "family_ordinal": 1,
+    "id": "NLC6_train_057",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      2,
+      3
+    ],
+    "relative_path": "train/NLC6_train_057/trajectory.h5",
+    "seed_hex": "c20f3f6e1e76ee21",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.022575493619568444,
+    "family": 8,
+    "family_ordinal": 2,
+    "id": "NLC6_validation_015",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      2,
+      3
+    ],
+    "relative_path": "validation/NLC6_validation_015/trajectory.h5",
+    "seed_hex": "3638140edc29368c",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.10340833541436278,
+    "family": 8,
+    "family_ordinal": 3,
+    "id": "NLC6_train_058",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      2,
+      3
+    ],
+    "relative_path": "train/NLC6_train_058/trajectory.h5",
+    "seed_hex": "1ecd524a8b505020",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10423374840865139,
+    "family": 8,
+    "family_ordinal": 4,
+    "id": "NLC6_train_059",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      2,
+      3
+    ],
+    "relative_path": "train/NLC6_train_059/trajectory.h5",
+    "seed_hex": "dd212dfc61e80fd0",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09726251167409815,
+    "family": 8,
+    "family_ordinal": 5,
+    "id": "NLC6_train_060",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      2,
+      3
+    ],
+    "relative_path": "train/NLC6_train_060/trajectory.h5",
+    "seed_hex": "227e60612e472967",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.1004369100777594,
+    "family": 8,
+    "family_ordinal": 6,
+    "id": "NLC6_validation_016",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      2,
+      3
+    ],
+    "relative_path": "validation/NLC6_validation_016/trajectory.h5",
+    "seed_hex": "dea5591f51b4fdb2",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09972236410403217,
+    "family": 8,
+    "family_ordinal": 7,
+    "id": "NLC6_test_015",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      2,
+      3
+    ],
+    "relative_path": "test/NLC6_test_015/trajectory.h5",
+    "seed_hex": "912099b6733c301e",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "test",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.24040611721350835,
+    "family": 8,
+    "family_ordinal": 8,
+    "id": "NLC6_train_061",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      2,
+      3
+    ],
+    "relative_path": "train/NLC6_train_061/trajectory.h5",
+    "seed_hex": "6a1e6984d53a5322",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.24482429256620705,
+    "family": 8,
+    "family_ordinal": 9,
+    "id": "NLC6_train_062",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      2,
+      3
+    ],
+    "relative_path": "train/NLC6_train_062/trajectory.h5",
+    "seed_hex": "dd0bbde0617a7580",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2701849923603783,
+    "family": 8,
+    "family_ordinal": 10,
+    "id": "NLC6_train_063",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      2,
+      3
+    ],
+    "relative_path": "train/NLC6_train_063/trajectory.h5",
+    "seed_hex": "136c5b4fc9288c83",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2339099356027148,
+    "family": 8,
+    "family_ordinal": 11,
+    "id": "NLC6_train_064",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      2,
+      3
+    ],
+    "relative_path": "train/NLC6_train_064/trajectory.h5",
+    "seed_hex": "d0de921d8a51128b",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.23446794969839133,
+    "family": 8,
+    "family_ordinal": 12,
+    "id": "NLC6_test_016",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      2,
+      3
+    ],
+    "relative_path": "test/NLC6_test_016/trajectory.h5",
+    "seed_hex": "90e075ff5e109af9",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.02632543251786317,
+    "family": 9,
+    "family_ordinal": 1,
+    "id": "NLC6_train_065",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "train/NLC6_train_065/trajectory.h5",
+    "seed_hex": "af04b99728547e01",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.025828755806265848,
+    "family": 9,
+    "family_ordinal": 2,
+    "id": "NLC6_test_017",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "test/NLC6_test_017/trajectory.h5",
+    "seed_hex": "d196cf41dd898552",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.09286962404480892,
+    "family": 9,
+    "family_ordinal": 3,
+    "id": "NLC6_train_066",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "train/NLC6_train_066/trajectory.h5",
+    "seed_hex": "b135fd6e790551df",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.093089849447976,
+    "family": 9,
+    "family_ordinal": 4,
+    "id": "NLC6_train_067",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "train/NLC6_train_067/trajectory.h5",
+    "seed_hex": "60f84f290d081141",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10151144261192231,
+    "family": 9,
+    "family_ordinal": 5,
+    "id": "NLC6_train_068",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "train/NLC6_train_068/trajectory.h5",
+    "seed_hex": "e58d702e9c6d7e32",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09920606977442527,
+    "family": 9,
+    "family_ordinal": 6,
+    "id": "NLC6_train_069",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "train/NLC6_train_069/trajectory.h5",
+    "seed_hex": "29af03bb738e5804",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10062119062987676,
+    "family": 9,
+    "family_ordinal": 7,
+    "id": "NLC6_validation_017",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "validation/NLC6_validation_017/trajectory.h5",
+    "seed_hex": "c157efdded0de1cf",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "validation",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.2317978773469995,
+    "family": 9,
+    "family_ordinal": 8,
+    "id": "NLC6_train_070",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "train/NLC6_train_070/trajectory.h5",
+    "seed_hex": "a6ec6cfb735adf4a",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.23613881467266598,
+    "family": 9,
+    "family_ordinal": 9,
+    "id": "NLC6_train_071",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "train/NLC6_train_071/trajectory.h5",
+    "seed_hex": "b7e5393ee2388369",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.25764363506176624,
+    "family": 9,
+    "family_ordinal": 10,
+    "id": "NLC6_train_072",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "train/NLC6_train_072/trajectory.h5",
+    "seed_hex": "c9b074898b57d29f",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2666974868480653,
+    "family": 9,
+    "family_ordinal": 11,
+    "id": "NLC6_validation_018",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "validation/NLC6_validation_018/trajectory.h5",
+    "seed_hex": "e27ad5d83483feb1",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "validation",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.24034868379961213,
+    "family": 9,
+    "family_ordinal": 12,
+    "id": "NLC6_test_018",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "test/NLC6_test_018/trajectory.h5",
+    "seed_hex": "85e916e413514f8e",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.02466870299081344,
+    "family": 10,
+    "family_ordinal": 1,
+    "id": "NLC6_train_073",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_073/trajectory.h5",
+    "seed_hex": "397592b2bfee506c",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.02673301497945901,
+    "family": 10,
+    "family_ordinal": 2,
+    "id": "NLC6_test_019",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      3,
+      4
+    ],
+    "relative_path": "test/NLC6_test_019/trajectory.h5",
+    "seed_hex": "eef006b21b242688",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.09029721982317379,
+    "family": 10,
+    "family_ordinal": 3,
+    "id": "NLC6_train_074",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_074/trajectory.h5",
+    "seed_hex": "e9e91a5a576c6922",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09909481507171379,
+    "family": 10,
+    "family_ordinal": 4,
+    "id": "NLC6_train_075",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_075/trajectory.h5",
+    "seed_hex": "134e33cdcf8d6b9e",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09562487584328185,
+    "family": 10,
+    "family_ordinal": 5,
+    "id": "NLC6_train_076",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_076/trajectory.h5",
+    "seed_hex": "1fd9056758ca494e",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10701709578173574,
+    "family": 10,
+    "family_ordinal": 6,
+    "id": "NLC6_train_077",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_077/trajectory.h5",
+    "seed_hex": "655070b26a626674",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10460432049897582,
+    "family": 10,
+    "family_ordinal": 7,
+    "id": "NLC6_validation_019",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      3,
+      4
+    ],
+    "relative_path": "validation/NLC6_validation_019/trajectory.h5",
+    "seed_hex": "2dc8ba293a95d716",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "validation",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.23496167482315924,
+    "family": 10,
+    "family_ordinal": 8,
+    "id": "NLC6_train_078",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_078/trajectory.h5",
+    "seed_hex": "7bf59ac56f0a7774",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2512197629230568,
+    "family": 10,
+    "family_ordinal": 9,
+    "id": "NLC6_train_079",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_079/trajectory.h5",
+    "seed_hex": "1eb20ba6e950d739",
+    "signs": [
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.23655438155295863,
+    "family": 10,
+    "family_ordinal": 10,
+    "id": "NLC6_train_080",
+    "linear_energy_fractions": [
+      0.25,
+      0.75
+    ],
+    "modes": [
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_080/trajectory.h5",
+    "seed_hex": "852bed72c215cc5e",
+    "signs": [
+      -1,
+      1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.241283254723665,
+    "family": 10,
+    "family_ordinal": 11,
+    "id": "NLC6_validation_020",
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modes": [
+      3,
+      4
+    ],
+    "relative_path": "validation/NLC6_validation_020/trajectory.h5",
+    "seed_hex": "cd060a984fd4c667",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "validation",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2634189320938559,
+    "family": 10,
+    "family_ordinal": 12,
+    "id": "NLC6_test_020",
+    "linear_energy_fractions": [
+      0.75,
+      0.25
+    ],
+    "modes": [
+      3,
+      4
+    ],
+    "relative_path": "test/NLC6_test_020/trajectory.h5",
+    "seed_hex": "d96f4cd1c2f5c8fe",
+    "signs": [
+      -1,
+      -1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.025199872487502297,
+    "family": 11,
+    "family_ordinal": 1,
+    "id": "NLC6_train_081",
+    "linear_energy_fractions": [
+      0.2007710420906328,
+      0.40282121355402173,
+      0.0942013453473746,
+      0.30220639900797097
+    ],
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_081/trajectory.h5",
+    "seed_hex": "7baace8e605ca851",
+    "signs": [
+      1,
+      1,
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.02429014576077997,
+    "family": 11,
+    "family_ordinal": 2,
+    "id": "NLC6_test_021",
+    "linear_energy_fractions": [
+      0.41117344696752567,
+      0.19490559465334895,
+      0.10032993138431352,
+      0.2935910269948119
+    ],
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_path": "test/NLC6_test_021/trajectory.h5",
+    "seed_hex": "f35e881ad6939336",
+    "signs": [
+      -1,
+      1,
+      -1,
+      1
+    ],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.10438386807314148,
+    "family": 11,
+    "family_ordinal": 3,
+    "id": "NLC6_train_082",
+    "linear_energy_fractions": [
+      0.3011233663494443,
+      0.09525444367919716,
+      0.20473456384847008,
+      0.3988876261228885
+    ],
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_082/trajectory.h5",
+    "seed_hex": "3ff501f01b615935",
+    "signs": [
+      1,
+      -1,
+      1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.0908640782491669,
+    "family": 11,
+    "family_ordinal": 4,
+    "id": "NLC6_train_083",
+    "linear_energy_fractions": [
+      0.20143758972118211,
+      0.37401046040867586,
+      0.10786249469310874,
+      0.31668945517703323
+    ],
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_083/trajectory.h5",
+    "seed_hex": "6e0818d689a3bbdf",
+    "signs": [
+      -1,
+      1,
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09804291318435626,
+    "family": 11,
+    "family_ordinal": 5,
+    "id": "NLC6_train_084",
+    "linear_energy_fractions": [
+      0.09217992717167195,
+      0.2731593788726931,
+      0.20103805243606934,
+      0.43362264151956575
+    ],
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_084/trajectory.h5",
+    "seed_hex": "749f9db1a1daf465",
+    "signs": [
+      1,
+      1,
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10220988440089679,
+    "family": 11,
+    "family_ordinal": 6,
+    "id": "NLC6_validation_021",
+    "linear_energy_fractions": [
+      0.2892906718194272,
+      0.20727868632947513,
+      0.3994325341268027,
+      0.10399810772429492
+    ],
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_path": "validation/NLC6_validation_021/trajectory.h5",
+    "seed_hex": "fdaf9c9275faa29a",
+    "signs": [
+      -1,
+      1,
+      1,
+      1
+    ],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10640915900174774,
+    "family": 11,
+    "family_ordinal": 7,
+    "id": "NLC6_test_022",
+    "linear_energy_fractions": [
+      0.37865605204631686,
+      0.32575082066935657,
+      0.0971902558597446,
+      0.19840287142458193
+    ],
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_path": "test/NLC6_test_022/trajectory.h5",
+    "seed_hex": "23fd50593a5d6c7b",
+    "signs": [
+      1,
+      1,
+      -1,
+      1
+    ],
+    "split": "test",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.24010419163401078,
+    "family": 11,
+    "family_ordinal": 8,
+    "id": "NLC6_train_085",
+    "linear_energy_fractions": [
+      0.40898140684254036,
+      0.10587881499517195,
+      0.1873060928494391,
+      0.29783368531284854
+    ],
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_085/trajectory.h5",
+    "seed_hex": "17fc9a57a6de113b",
+    "signs": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.23139790472311347,
+    "family": 11,
+    "family_ordinal": 9,
+    "id": "NLC6_train_086",
+    "linear_energy_fractions": [
+      0.0973385341531651,
+      0.2744760435746858,
+      0.2104288211675177,
+      0.4177566011046316
+    ],
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_086/trajectory.h5",
+    "seed_hex": "436cbc12e87cb7b0",
+    "signs": [
+      1,
+      -1,
+      -1,
+      1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.23689697728486267,
+    "family": 11,
+    "family_ordinal": 10,
+    "id": "NLC6_train_087",
+    "linear_energy_fractions": [
+      0.10198927704624448,
+      0.31753709084462234,
+      0.372983925773218,
+      0.20748970633591518
+    ],
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_087/trajectory.h5",
+    "seed_hex": "2e76f5c7ce0ceab0",
+    "signs": [
+      -1,
+      1,
+      -1,
+      1
+    ],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.2676080809537371,
+    "family": 11,
+    "family_ordinal": 11,
+    "id": "NLC6_train_088",
+    "linear_energy_fractions": [
+      0.1851114929968493,
+      0.09391091350810434,
+      0.39362155972158774,
+      0.3273560337734587
+    ],
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_path": "train/NLC6_train_088/trajectory.h5",
+    "seed_hex": "29a741d121c745da",
+    "signs": [
+      1,
+      1,
+      1,
+      -1
+    ],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.22562246821268672,
+    "family": 11,
+    "family_ordinal": 12,
+    "id": "NLC6_validation_022",
+    "linear_energy_fractions": [
+      0.27814460014292364,
+      0.41294842001588095,
+      0.20237853936737848,
+      0.10652844047381717
+    ],
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relative_path": "validation/NLC6_validation_022/trajectory.h5",
+    "seed_hex": "72a70e5aa324ce40",
+    "signs": [
+      -1,
+      1,
+      -1,
+      -1
+    ],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.024097214410769105,
+    "family": 12,
+    "family_ordinal": 1,
+    "id": "NLC6_train_089",
+    "linear_energy_fractions": [],
+    "modes": [],
+    "relative_path": "train/NLC6_train_089/trajectory.h5",
+    "seed_hex": "c45b1714df36858f",
+    "signs": [],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.02639640737295016,
+    "family": 12,
+    "family_ordinal": 2,
+    "id": "NLC6_test_023",
+    "linear_energy_fractions": [],
+    "modes": [],
+    "relative_path": "test/NLC6_test_023/trajectory.h5",
+    "seed_hex": "a0facf735b1aec66",
+    "signs": [],
+    "split": "test",
+    "static_sign": -1,
+    "tier": 1
+  },
+  {
+    "connector_energy_ratio": 0.10487926377400217,
+    "family": 12,
+    "family_ordinal": 3,
+    "id": "NLC6_train_090",
+    "linear_energy_fractions": [],
+    "modes": [],
+    "relative_path": "train/NLC6_train_090/trajectory.h5",
+    "seed_hex": "d56a104fc76658c9",
+    "signs": [],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09703206442834203,
+    "family": 12,
+    "family_ordinal": 4,
+    "id": "NLC6_train_091",
+    "linear_energy_fractions": [],
+    "modes": [],
+    "relative_path": "train/NLC6_train_091/trajectory.h5",
+    "seed_hex": "b3eb3d3fcf881821",
+    "signs": [],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.09936260172233934,
+    "family": 12,
+    "family_ordinal": 5,
+    "id": "NLC6_train_092",
+    "linear_energy_fractions": [],
+    "modes": [],
+    "relative_path": "train/NLC6_train_092/trajectory.h5",
+    "seed_hex": "eac898fca38db9db",
+    "signs": [],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.1004625792738815,
+    "family": 12,
+    "family_ordinal": 6,
+    "id": "NLC6_validation_023",
+    "linear_energy_fractions": [],
+    "modes": [],
+    "relative_path": "validation/NLC6_validation_023/trajectory.h5",
+    "seed_hex": "25b91c688df99aac",
+    "signs": [],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.10089467974241269,
+    "family": 12,
+    "family_ordinal": 7,
+    "id": "NLC6_test_024",
+    "linear_energy_fractions": [],
+    "modes": [],
+    "relative_path": "test/NLC6_test_024/trajectory.h5",
+    "seed_hex": "b829db54f28d90a3",
+    "signs": [],
+    "split": "test",
+    "static_sign": 1,
+    "tier": 2
+  },
+  {
+    "connector_energy_ratio": 0.23281850618519037,
+    "family": 12,
+    "family_ordinal": 8,
+    "id": "NLC6_train_093",
+    "linear_energy_fractions": [],
+    "modes": [],
+    "relative_path": "train/NLC6_train_093/trajectory.h5",
+    "seed_hex": "86e03fd96babce18",
+    "signs": [],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.24353351555183086,
+    "family": 12,
+    "family_ordinal": 9,
+    "id": "NLC6_train_094",
+    "linear_energy_fractions": [],
+    "modes": [],
+    "relative_path": "train/NLC6_train_094/trajectory.h5",
+    "seed_hex": "3ab8a6612c13da27",
+    "signs": [],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.24975609529758347,
+    "family": 12,
+    "family_ordinal": 10,
+    "id": "NLC6_train_095",
+    "linear_energy_fractions": [],
+    "modes": [],
+    "relative_path": "train/NLC6_train_095/trajectory.h5",
+    "seed_hex": "faff98b55001917a",
+    "signs": [],
+    "split": "train",
+    "static_sign": -1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.24216922688579698,
+    "family": 12,
+    "family_ordinal": 11,
+    "id": "NLC6_train_096",
+    "linear_energy_fractions": [],
+    "modes": [],
+    "relative_path": "train/NLC6_train_096/trajectory.h5",
+    "seed_hex": "8ee7a7263ebc12dd",
+    "signs": [],
+    "split": "train",
+    "static_sign": 1,
+    "tier": 3
+  },
+  {
+    "connector_energy_ratio": 0.24672099158717983,
+    "family": 12,
+    "family_ordinal": 12,
+    "id": "NLC6_validation_024",
+    "linear_energy_fractions": [],
+    "modes": [],
+    "relative_path": "validation/NLC6_validation_024/trajectory.h5",
+    "seed_hex": "c78728c551546888",
+    "signs": [],
+    "split": "validation",
+    "static_sign": -1,
+    "tier": 3
+  }
+]
