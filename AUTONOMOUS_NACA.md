@@ -20,5 +20,5 @@ completed NLC6 trial as separate evidence, not one of the 144 formal cases.
 
 After all 144 and readback, write the Chinese report and numerical appendix,
 update project records, commit/push task changes and verify remote parity.
-Automatic shutdown remains on hold. Stay quiet for healthy unchanged progress;
+The earlier final-shutdown authorization resumes with this full campaign. Shut down only after all data, readback, reports and publication are complete, remote parity is verified, and unrelated experiments are inactive. Stay quiet for healthy unchanged progress;
 report meaningful milestones, failures, repairs, or completion.

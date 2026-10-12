@@ -51,7 +51,7 @@ mesh dependencies remain. Frozen historical sources and an exact-byte source ZIP
 are preserved on `codex/abolish-naca-pre-nlc6-20261012`; see the
 [retirement receipt](docs/notes/evidence/dataset21_naca_retirement_20261012.json).
 The monitor may diagnose interruptions and resume this population only; old
-qualification and old generation must not restart. Shutdown remains on hold.
+qualification and old generation must not restart. Final shutdown follows the earlier user authorization only after all data, readback, reports and publication are complete and unrelated experiments are inactive.
 
 ## Dataset-2: Nonlinear Structural Dynamics
 
