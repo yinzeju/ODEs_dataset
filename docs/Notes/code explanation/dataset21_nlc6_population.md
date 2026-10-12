@@ -112,6 +112,6 @@ capsules, small receipts and an exact-byte ZIP are on archive branch
 models and source code were protected. Do not restart the retired campaign.
 
 The existing heartbeat follows this population and reports only meaningful
-changes or required repairs. Shutdown remains on hold. The final Chinese report
+changes or required repairs. The earlier final-shutdown authorization applies only after data, readback, reporting and publication are complete and unrelated experiments are inactive. The final Chinese report
 and numerical appendix will use the completed population evidence; this launch
 does not claim that all trajectories are already generated.
