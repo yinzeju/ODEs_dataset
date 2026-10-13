@@ -127,3 +127,21 @@ The existing heartbeat follows this population and reports only meaningful
 changes or required repairs. The earlier final-shutdown authorization applies only after data, readback, reporting and publication are complete and unrelated experiments are inactive. The final Chinese report
 and numerical appendix will use the completed population evidence; this launch
 does not claim that all trajectories are already generated.
+
+## Visualization workspace
+
+Current plots and animations are curated in
+`reports/Dataset21_NLC6_v1_nonlinear_wing/`. Open `tables/index.html` there for the
+single offline summary of four selected completed cases and the separate trial.
+All current GIFs use 10x display displacement and six-second playback; metrics use
+the full 4096-frame histories. Figures are in `plots/`, GIFs in `animations/`, CSV
+and JSON metrics in `tables/`, and hashes/relocation records in `evidence/`.
+Superseded renderings and the retired original NACA preview are retained under
+`archive/` and are clearly separated from current NLC6 evidence.
+
+Maintained analysis, plotting and rendering scripts moved to
+`experiments/postprocessing/`; shared report paths and selected IDs are declared
+in `configs/visualizations/dataset21_nlc6_report.json`. Simulation data and active
+worker inputs remain in their original locations. Rebuild only the dashboard with
+`python -X utf8 experiments/postprocessing/dataset21_nlc6_report.py`; audit the
+curated files with `audit_dataset21_nlc6_report.py` in the same directory.

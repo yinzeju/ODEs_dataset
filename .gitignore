@@ -46,3 +46,15 @@
 !/reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration.md
 !/reports/TestSub_2_nonlinear_vibration/2_numerical_appendix.md
 !/reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration_evidence.json
+
+# NLC6 report navigation and compact evidence; media, raw metrics and archives stay local.
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/README.md
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/tables/
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/tables/index.html
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/tables/summary.csv
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/organization_summary.json
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/relocation.json
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/report_manifest.json
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/audit.json

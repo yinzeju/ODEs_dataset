@@ -11,12 +11,9 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.animation import PillowWriter
-from matplotlib.colors import TwoSlopeNorm
-from mpl_toolkits.mplot3d.art3d import Poly3DCollection
-from PIL import Image
 import psutil
-from plot_dataset21_naca_completed import read_mesh
+from dataset21_nlc6_report import REPORT_ROOT, section_path
+from render_dataset21_nlc6_preview import render_preview
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -25,7 +22,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--id", default="dataset21_nlc6_trial_01")
     parser.add_argument("--gif", action="store_true")
+    parser.add_argument("--out", type=Path, default=REPORT_ROOT, help="Report root for trial plots, metrics and animation.")
     args = parser.parse_args()
+    if (args.out/"plots/trial/diagnostics.png").exists():
+        parser.error("This frozen trial presentation already exists; choose a new versioned --out directory.")
     psutil.Process().nice(psutil.BELOW_NORMAL_PRIORITY_CLASS)
     run = ROOT / "runs" / args.id
     completion = json.loads((run / "completion.json").read_text())
@@ -36,8 +36,8 @@ def main():
     with source.open("rb") as stream:
         digest = hashlib.file_digest(stream, "sha256").hexdigest()
     assert digest == completion["trajectory_sha256"] == receipt["sha256"]
-    out = run / "plots"
-    out.mkdir(exist_ok=True)
+    out = section_path(args.out, "plots", "trial")
+    tables = section_path(args.out, "tables", "trial")
     with h5py.File(run / "analysis_reference.h5", "r") as ref:
         phi, mass_phi = ref["modes"][:].T, ref["mass_modes"][:].T
         omega, active = ref["omega"][:], ref["active"][:].astype(int) - 1
@@ -53,8 +53,6 @@ def main():
     tips = np.flatnonzero(np.isclose(xyz[:, 2], xyz[:, 2].max()))
     tip = tips[np.argmax(abs(all_u0[tips, 1]))]
     tip_column = np.flatnonzero(active == 6 * tip + 1).item()
-    snapshots = {}
-    animation_indices = np.arange(0, 401, 2)  # 0.20 s, 1 ms sampling, 40x slow playback.
     window_sums = np.zeros((4, 4))
     with h5py.File(source, "r") as f:
         assert f["x"].shape == (4096, 2 * nq)
@@ -95,8 +93,6 @@ def main():
             u[:, nodes, components] = q[:, translation]
             max_u[first:stop] = np.linalg.norm(u, axis=2).max(axis=1)
             tip_q[first:stop], tip_v[first:stop] = q[:, tip_column], v[:, tip_column]
-            for k in animation_indices[(animation_indices >= first) & (animation_indices < stop)]:
-                snapshots[int(k)] = u[k - first].copy()
     slin, wlin = eta_lin @ (B.T @ phi[:, indices]).T, vel_lin @ (B.T @ phi[:, indices]).T
     balance = abs(E + D - E[0]) / E[0]
     assert np.isclose(balance.max(), receipt["max_energy_balance_relative"], atol=1e-12)
@@ -193,37 +189,10 @@ def main():
         "limitations": ["No same-IC physical time-refinement test", "No new spatial qualification", "One initial condition only", "Port spectrum is a windowed output-bandwidth diagnostic, not a full-state aliasing guarantee"],
         "physics_checks_passed": receipt["physics_checks_passed"]}
     if args.gif:
-        mesh = ROOT/"runs/dataset21_naca_zeta006_f4096_v2/meshes/candidate/Wing.msh"
-        mesh_xyz, triangles, _, mesh_active = read_mesh(mesh)
-        assert np.array_equal(mesh_active, active) and np.allclose(mesh_xyz, xyz, atol=1e-12)
-        scale, fps = 35., 25
-        umax = max(abs(snapshots[k][:, 1]).max() for k in snapshots)*1000
-        norm, cmap = TwoSlopeNorm(vmin=-umax, vcenter=0, vmax=umax), plt.get_cmap("coolwarm")
-        fig = plt.figure(figsize=(9, 5.5)); ax = fig.add_subplot(111, projection="3d")
-        collection = Poly3DCollection(xyz[triangles][:, :, [2, 0, 1]], linewidths=.05, edgecolors=(0, 0, 0, .08))
-        ax.add_collection3d(collection)
-        ax.set(xlim=(0, 5), ylim=(-.1, 1.1), zlim=(-.45, .45), xlabel="Span z (m)", ylabel="Chord x (m)", zlabel="Normal y (m)")
-        ax.set_box_aspect((5, 1.2, .9)); ax.view_init(elev=22, azim=-70)
-        fig.colorbar(plt.cm.ScalarMappable(norm=norm, cmap=cmap), ax=ax, shrink=.6, pad=.1, label="Actual normal displacement (mm)")
-        title = fig.suptitle("")
-        fig.text(.5, .03, "NLC6 single trial | deformation 35x | first 0.20 s | playback 40x slower\nFull physical snapshots; nodal translations rendered", ha="center", fontsize=9)
-        writer = PillowWriter(fps=fps)
-        with writer.saving(fig, str(out/"wing_vibration.gif"), dpi=100):
-            for number, k in enumerate(animation_indices):
-                u = snapshots[int(k)]
-                collection.set_verts((xyz+scale*u)[triangles][:, :, [2, 0, 1]])
-                collection.set_facecolor(cmap(norm(u[triangles, 1].mean(axis=1)*1000)))
-                title.set_text(f"NACA-NLC6 | t = {t[k]:.3f} s | E/E0 = {E[k]/E[0]:.3f}")
-                writer.grab_frame()
-                if number == 0:
-                    fig.savefig(out/"wing_initial.png", dpi=100)
-                if number % 50 == 0:
-                    print(f"ANIMATION {number+1}/{len(animation_indices)}", flush=True)
-        plt.close(fig)
-        with Image.open(out/"wing_vibration.gif") as animation:
-            assert animation.n_frames == len(animation_indices)
-        summary["animation"] = dict(frames=len(animation_indices), physical_duration_s=.2, frame_dt_s=.001, playback_fps=fps, deformation_scale=scale)
-    (run/"analysis.json").write_text(json.dumps(summary, indent=2)+"\n", encoding="utf-8")
+        summary["animation"] = render_preview(source, section_path(args.out, "animations", "trial"), "NACA-NLC6 trial")
+    np.savetxt(tables/"metrics.csv", np.column_stack([t, tip_q, tip_v, max_u, E, D, balance, strain]),
+        delimiter=",", comments="", header="time_s,tip_uy_m,tip_vy_m_s,max_translation_m,energy_J,dissipated_J,energy_balance_relative,strain_max")
+    (tables/"analysis.json").write_text(json.dumps(summary, indent=2)+"\n", encoding="utf-8")
     print(json.dumps(summary, indent=2), flush=True)
 
 

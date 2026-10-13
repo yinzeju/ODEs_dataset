@@ -13,9 +13,11 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.colors import TwoSlopeNorm
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection, Line3DCollection
+from mpl_toolkits.mplot3d import proj3d
 from PIL import Image
 import psutil
 from plot_dataset21_naca_completed import read_mesh
+from dataset21_nlc6_report import CONFIG, REPORT_ROOT
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -60,7 +62,9 @@ def exterior_mesh(path, xyz, triangles):
     return tri, edges, faces, abs(float(volume))
 
 
-def render_preview(source, out, label="NACA-NLC6", gain=25.):
+def render_preview(source, out, label="NACA-NLC6", gain=CONFIG["animation"]["displacement_gain"]):
+    if (out/f"wing_vibration_6s_{gain:g}x.gif").exists():
+        raise FileExistsError("This frozen animation already exists; choose a new versioned output directory.")
     psutil.Process().nice(psutil.BELOW_NORMAL_PRIORITY_CLASS)
     out.mkdir(parents=True, exist_ok=True)
     xyz, triangles, _, active = read_mesh(ROOT / "artifacts/dataset21_nlc6/Wing.msh")
@@ -91,14 +95,16 @@ def render_preview(source, out, label="NACA-NLC6", gain=25.):
     ax.add_collection3d(surface)
     outline = Line3DCollection(xyz[edges][:, :, [2, 0, 1]], colors="#a7b0bc", linewidths=.75, alpha=.9)
     ax.add_collection3d(outline)
-    surface.set_zorder(1); outline.set_zorder(2)
+    surface.set_zorder(3); outline.set_zorder(4)
     displayed = xyz[None, :, :] + gain*u
     padding = np.array([.08, .04, .08])
     low = np.minimum(displayed.min(axis=(0, 1))-padding, [-.10, -.15, -.08])
     high = np.maximum(displayed.max(axis=(0, 1))+padding, [1.10, .15, 5.08])
     bounds = np.column_stack([low[[2, 0, 1]], high[[2, 0, 1]]])
     ax.set(xlim=bounds[0], ylim=bounds[1], zlim=bounds[2], xlabel="Span z (m)")
-    ax.set_box_aspect(np.diff(bounds, axis=1).ravel(), zoom=1.15)
+    box_aspect = np.diff(bounds, axis=1).ravel()
+    zoom = 1.0
+    ax.set_box_aspect(box_aspect, zoom=zoom)
     ax.set_xticks([0, 1, 2, 3, 4, 5]); ax.set_yticks([0, .5, 1]); ax.set_zticks([-.1, 0, .1])
     ax.tick_params(labelsize=8, pad=1)
     ax.view_init(elev=25, azim=-65)
@@ -108,6 +114,24 @@ def render_preview(source, out, label="NACA-NLC6", gain=25.):
     fig.colorbar(plt.cm.ScalarMappable(norm=norm, cmap=cmap), cax=color_ax, label="Actual normal displacement (mm)")
     title = fig.suptitle("", fontsize=13, y=.96)
     fig.text(.5, .065, f"Actual FE wing-box exterior | displacement {gain:g}x | equal axis units\nFirst 0.20 s of motion | 6.00 s playback per loop | visible light-gray contours", ha="center", fontsize=10)
+    # Equal axis units do not guarantee that the projected geometry fits the
+    # square Axes3D clipping rectangle. Fit all frames in display coordinates.
+    projected_geometry = displayed[:, :, [2, 0, 1]].reshape(-1, 3)
+    margin_px = 16.0
+    for _ in range(12):
+        fig.canvas.draw()
+        px, py, _ = proj3d.proj_transform(*projected_geometry.T, ax.get_proj())
+        pixels = ax.transData.transform(np.column_stack([px, py]))
+        lower, upper = pixels.min(axis=0), pixels.max(axis=0)
+        allowed_lower = np.array([ax.bbox.x0, ax.bbox.y0])+margin_px
+        allowed_upper = np.array([ax.bbox.x1, ax.bbox.y1])-margin_px
+        if np.all(lower >= allowed_lower) and np.all(upper <= allowed_upper):
+            break
+        zoom *= .9
+        ax.set_box_aspect(box_aspect, zoom=zoom)
+    else:
+        raise RuntimeError("Could not fit the full animated wing inside the viewport")
+    viewport_clearance = np.minimum(lower-allowed_lower+margin_px, allowed_upper-upper+margin_px)
     frames = []
     edge_counts = []
     for j, k in enumerate(indices):
@@ -115,8 +139,8 @@ def render_preview(source, out, label="NACA-NLC6", gain=25.):
         normals = np.cross(deformed[triangles[:, 1]]-deformed[triangles[:, 0]], deformed[triangles[:, 2]]-deformed[triangles[:, 0]])
         normals /= np.linalg.norm(normals, axis=1)[:, None]
         facing = normals @ view_xyz; front = facing > 1e-10
-        surface.set_verts(deformed[triangles[front]][:, :, [2, 0, 1]])
-        surface.set_facecolor(cmap(norm(u[j, triangles[front], 1].mean(axis=1)*1000)))
+        surface.set_verts(deformed[triangles][:, :, [2, 0, 1]])
+        surface.set_facecolor(cmap(norm(u[j, triangles, 1].mean(axis=1)*1000)))
         left, right = edge_faces.T
         silhouette = front[left] != front[right]
         crease = np.einsum("ij,ij->i", normals[left], normals[right]) < np.cos(np.deg2rad(30))
@@ -131,7 +155,7 @@ def render_preview(source, out, label="NACA-NLC6", gain=25.):
             frame.save(out / ("initial.png" if j == 0 else "midpoint.png"))
         if j % 25 == 0:
             print(f"RENDER {j+1}/{len(indices)}", flush=True)
-    path = out / "wing_vibration_6s_25x.gif"
+    path = out / f"wing_vibration_6s_{gain:g}x.gif"
     frames[0].save(path, save_all=True, append_images=frames[1:], duration=[40]*len(frames), loop=0, optimize=False, disposal=2)
     plt.close(fig)
     with Image.open(path) as gif:
@@ -144,7 +168,10 @@ def render_preview(source, out, label="NACA-NLC6", gain=25.):
         snapshot_indices=indices.tolist(), displacement_gain=gain, geometry_gain=1, equal_axis_units=True,
         projection="orthographic", exterior_triangles=len(triangles), closed_exterior=True, reference_enclosed_volume_m3=enclosed_volume,
         visible_edge_count_range=[min(edge_counts), max(edge_counts)], edge_color="#a7b0bc", edge_display="per-frame outward-facing physical exterior creases and silhouettes; internal rib/stiffener edges excluded",
-        color_values="Actual normal displacement in mm, without display gain", bounds_plot_m=bounds.tolist(), simulation_executed=False)
+        color_values="Actual normal displacement in mm, without display gain", bounds_plot_m=bounds.tolist(),
+        render_revision="v2_projected_viewport_fit", camera_zoom=zoom,
+        all_frame_projected_clearance_px=viewport_clearance.tolist(), minimum_required_clearance_px=margin_px,
+        all_exterior_faces_rendered=True, simulation_executed=False)
     (out / "render_metadata.json").write_text(json.dumps(metadata, indent=2)+"\n", encoding="utf-8")
     print(json.dumps({k:v for k,v in metadata.items() if k != "snapshot_indices"}, indent=2), flush=True)
     return metadata
@@ -153,10 +180,11 @@ def render_preview(source, out, label="NACA-NLC6", gain=25.):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", type=Path, default=ROOT/"runs/dataset21_nlc6_trial_01/trajectory.h5")
-    parser.add_argument("--out", type=Path, default=ROOT/"runs/dataset21_nlc6_trial_01/plots/preview_6s_25x")
+    parser.add_argument("--out", type=Path, default=REPORT_ROOT/"animations/trial")
     parser.add_argument("--label", default="NACA-NLC6")
+    parser.add_argument("--gain", type=float, default=CONFIG["animation"]["displacement_gain"])
     args = parser.parse_args()
-    render_preview(args.source.resolve(), args.out.resolve(), args.label)
+    render_preview(args.source.resolve(), args.out.resolve(), args.label, gain=args.gain)
 
 
 if __name__ == "__main__":

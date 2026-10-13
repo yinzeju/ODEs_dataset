@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-13T06:44:41.953893+00:00",
+  "status": "all_original_bytes_preserved_and_relocated",
+  "source_file_count": 146,
+  "unique_asset_count": 120,
+  "duplicate_files_merged": 26,
+  "original_bytes": 135104743,
+  "preserved_unique_bytes": 93532748,
+  "duplicate_bytes_reclaimed": 41571995,
+  "source_scopes": [
+    "runs/dataset21_nlc6_selected_previews_20261012",
+    "runs/dataset21_nlc6_trial_01/plots",
+    "runs/naca_gif_render_fix_02",
+    "reports/Dataset21_NACA_v3_partial_preview"
+  ],
+  "protected_scope": "All trajectories, HDF5 reference data, models, meshes, active campaign inputs and worker files remain in place.",
+  "original_receipts": "Archived receipts retain original path strings. Resolve them through files[].source to files[].destination; do not interpret them as current entry points."
+}

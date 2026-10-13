@@ -64,7 +64,7 @@ def main():
     source = ROOT/"data/releases"/release/row["path"]
     receipt = json.loads(Path(str(source)+".json").read_text())
     assert receipt["physical_gates_passed"] and receipt["frames"] == 4096
-    out = ROOT/"reports/Dataset21_NACA_v3_partial_preview"/args.id
+    out = ROOT/"reports/Dataset21_NLC6_v1_nonlinear_wing/archive/retired_naca_preview"/args.id
     out.mkdir(parents=True, exist_ok=True)
     mesh = ROOT/"runs/dataset21_naca_zeta006_f4096_v2/meshes/candidate/Wing.msh"
     expected = json.loads((run/"models.json").read_text())["candidate"]

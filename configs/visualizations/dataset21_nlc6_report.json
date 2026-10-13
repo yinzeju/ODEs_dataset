@@ -1,0 +1,16 @@
+{
+  "report_identity": "Dataset21_NLC6_v1_nonlinear_wing",
+  "report_root": "reports/Dataset21_NLC6_v1_nonlinear_wing",
+  "dashboard": "tables/index.html",
+  "selected_ids": ["NLC6_train_006", "NLC6_train_019", "NLC6_train_030", "NLC6_train_046"],
+  "trial_id": "dataset21_nlc6_trial_01",
+  "animation": {
+    "displacement_gain": 10,
+    "frames": 150,
+    "playback_duration_ms": 6000,
+    "physical_window_s": [0, 0.2],
+    "equal_axis_units": true
+  },
+  "qualification_status": "user_waived_independent_qualification",
+  "scope": "Illustrative completed trajectories and a separate exploratory trial; the population is still generating."
+}

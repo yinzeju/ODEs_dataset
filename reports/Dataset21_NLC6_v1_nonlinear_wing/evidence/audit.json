@@ -1,0 +1,52 @@
+{
+  "utc": "2026-10-13T07:00:06.742761+00:00",
+  "status": "passed",
+  "preserved_source_records": 146,
+  "unique_relocated_assets": 120,
+  "duplicate_files_merged": 26,
+  "duplicate_bytes_reclaimed": 41571995,
+  "offline_links_checked": 100,
+  "current_animations": [
+    {
+      "path": "animations/selected/NLC6_train_006/wing_vibration_6s_10x.gif",
+      "sha256": "705b0a2ea4c7519fb7d2b5f4b196b1ca61834f570086c53ef4e62e78f17fb4a9",
+      "frames": 150,
+      "playback_duration_ms": 6000,
+      "displacement_gain": 10
+    },
+    {
+      "path": "animations/selected/NLC6_train_019/wing_vibration_6s_10x.gif",
+      "sha256": "836dfdcef26c2a2b06e190be90946212f949aa757ca21ab8aabd5c5b219aaa61",
+      "frames": 150,
+      "playback_duration_ms": 6000,
+      "displacement_gain": 10
+    },
+    {
+      "path": "animations/selected/NLC6_train_030/wing_vibration_6s_10x.gif",
+      "sha256": "00438bd8fcc0137055482d977768e2db30ce60da39edf697e24abc01d9648901",
+      "frames": 150,
+      "playback_duration_ms": 6000,
+      "displacement_gain": 10
+    },
+    {
+      "path": "animations/selected/NLC6_train_046/wing_vibration_6s_10x.gif",
+      "sha256": "ab47fc8744562778e48a54f74a0a026da404f28061e7ae991e3a1f207d8b4550",
+      "frames": 150,
+      "playback_duration_ms": 6000,
+      "displacement_gain": 10
+    },
+    {
+      "path": "animations/trial/wing_vibration_6s_10x.gif",
+      "sha256": "9c983dd5dea35ceca6c02365ca73bac1f6ac9b185908dd2ae3e904f5abb422f5",
+      "frames": 150,
+      "playback_duration_ms": 6000,
+      "displacement_gain": 10
+    }
+  ],
+  "full_history_metric_rows_checked": 16384,
+  "artifact_count": 137,
+  "artifact_bytes": 93726642,
+  "source_trajectory_hashes_verified": 5,
+  "simulation_executed": false,
+  "independent_qualification_executed": false
+}

@@ -13,6 +13,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import psutil
 from render_dataset21_nlc6_preview import ROOT, render_preview
+from dataset21_nlc6_report import CONFIG, REPORT_ROOT, build_dashboard, section_path
 
 
 def read_json(path):
@@ -29,8 +30,10 @@ def save_figure(fig, out, name):
     plt.close(fig)
 
 
-def analyze(source, row, cfg, reference, out):
-    out.mkdir(parents=True, exist_ok=True)
+def analyze(source, row, cfg, reference, report):
+    out = section_path(report, "plots", "selected", row["id"])
+    tables = section_path(report, "tables", "selected", row["id"])
+    animation = section_path(report, "animations", "selected", row["id"])
     receipt = read_json(source.with_name(source.name+".json"))
     back = read_json(source.with_name("readback.json"))
     ic = read_json(source.with_name("initial_condition.json"))
@@ -132,7 +135,7 @@ def analyze(source, row, cfg, reference, out):
     ax[1, 1].set(title="Recovered strain maximum", xlabel="Time (s)", ylabel="Strain component (dimensionless)"); ax[1, 1].legend(fontsize=8)
     fig.suptitle(row["id"]+" | runtime diagnostics; independent qualification waived", fontsize=14)
     save_figure(fig, out, "energy_strain")
-    np.savetxt(out/"metrics.csv", np.column_stack([t, tip_q, tip_v, max_u, rms_u, E, data["dissipated"], balance, data["strain_max"]]), delimiter=",", comments="", header="time_s,tip_ux_m,tip_uy_m,tip_uz_m,tip_vx_m_s,tip_vy_m_s,tip_vz_m_s,max_translation_m,rms_translation_m,energy_J,dissipated_J,energy_balance_relative,strain_max")
+    np.savetxt(tables/"metrics.csv", np.column_stack([t, tip_q, tip_v, max_u, rms_u, E, data["dissipated"], balance, data["strain_max"]]), delimiter=",", comments="", header="time_s,tip_ux_m,tip_uy_m,tip_uz_m,tip_vx_m_s,tip_vy_m_s,tip_vz_m_s,max_translation_m,rms_translation_m,energy_J,dissipated_J,energy_balance_relative,strain_max")
     summary = dict(id=row["id"], family=row["family"], modes=ic["modes"], tier=row["tier"],
         connector_energy_ratio=ic["connector_energy_ratio"], initial_amplitude_mm=ic["initial_amplitude_m"]*1000,
         maximum_translation_mm=float(max_u.max()*1000), terminal_energy_fraction=float(E[-1]/E[0]),
@@ -144,28 +147,38 @@ def analyze(source, row, cfg, reference, out):
         physics_checks_passed=True, full_readback_receipt_verified=True,
         reference="Analytic original linear tangent response, same modal initial condition and linear damping; differences include phase accumulation and integration error, not a percentage of nonlinearity.",
         postprocessing="CPU only; all 4096 saved frames used for metrics. No new simulation or independent qualification.")
-    write_json(out/"analysis.json", summary)
-    render_preview(source, out, row["id"])
+    write_json(tables/"analysis.json", summary)
+    render_preview(source, animation, row["id"], gain=CONFIG["animation"]["displacement_gain"])
     return summary, (t, tip_q[:, 1]*1000, tip_v[:, 1], E/E[0])
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--out", type=Path, default=ROOT/"runs/dataset21_nlc6_selected_previews_20261012")
-    args = parser.parse_args(); args.out.mkdir(parents=True, exist_ok=True)
+    parser.add_argument("--out", type=Path, default=REPORT_ROOT, help="Report root; plots, animations and tables are separated below it.")
+    args = parser.parse_args()
+    if (args.out/"evidence/selected/manifest.json").exists():
+        parser.error("This frozen packet already exists; choose a new versioned --out directory.")
+    args.out.mkdir(parents=True, exist_ok=True)
     psutil.Process().nice(psutil.BELOW_NORMAL_PRIORITY_CLASS)
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10, "axes.spines.top": False,
         "axes.spines.right": False, "axes.grid": True, "grid.alpha": .18})
     state = read_json(ROOT/"runs/naca_campaign_control/state.json"); release = state["release_id"]
-    cfg = read_json(ROOT/state["config"]); rows = read_json(ROOT/"runs"/release/"completed.json")
+    cfg = read_json(ROOT/state["config"])
+    candidates = [(release, read_json(ROOT/"runs"/release/"completed.json"))]
+    parent = cfg.get("repair_parent_release")
+    if parent:
+        candidates.append((parent, read_json(ROOT/"runs"/parent/"completed.json")))
     with h5py.File(ROOT/"runs/dataset21_nlc6_trial_01/analysis_reference.h5") as f:
         reference = (f["nodes"][:].T, f["active"][:].astype(int)-1, f["modes"][:].T, f["mass_modes"][:].T, f["omega"][:])
-    selections = [(1, 3), (3, 2), (4, 3), (6, 3)]
     summaries, series = [], []
-    for family, tier in selections:
-        row = next(x for x in rows if x["family"]==family and x["tier"]==tier and x["split"]=="train")
+    for case in CONFIG["selected_ids"]:
+        match = next(((source_release, row) for source_release, rows in candidates for row in rows
+            if row["id"] == case and (source_release == release or cfg.get("amplitude_overrides", {}).get(case, 1) == 1)), None)
+        if match is None:
+            raise RuntimeError(f"Selected case has no accepted current or unchanged-parent receipt: {case}")
+        source_release, row = match
         print("ANALYZE", row["id"], flush=True)
-        summary, curves = analyze(ROOT/"data/releases"/release/row["relative_path"], row, cfg, reference, args.out/row["id"])
+        summary, curves = analyze(ROOT/"data/releases"/source_release/row["relative_path"], row, cfg, reference, args.out)
         summaries.append(summary); series.append(curves)
     fig, axes = plt.subplots(4, 3, figsize=(15, 12), layout="constrained")
     for i, (summary, (t, q, v, energy)) in enumerate(zip(summaries, series)):
@@ -173,9 +186,10 @@ def main():
             axes[i, j].plot(t, values, lw=.8); axes[i, j].set(xlabel="Time (s)", ylabel=ylabel)
         axes[i, 0].set_title(f"{summary['id']} | modes {summary['modes']} | R={summary['connector_energy_ratio']:.3f}")
     fig.suptitle("Four accepted NACA-NLC6 population trajectories | full time histories", fontsize=16)
-    save_figure(fig, args.out, "overview")
-    write_json(args.out/"manifest.json", dict(release=release, selection="First accepted training member in families/tiers (1,3),(3,2),(4,3),(6,3); illustrative selection, not population statistics.", trajectories=summaries,
-        animation=dict(frames=150, duration_s=6, physical_window_s=[0, .2], displacement_gain=25, equal_axis_units=True)))
+    save_figure(fig, section_path(args.out, "plots", "selected"), "overview")
+    write_json(section_path(args.out, "evidence", "selected")/"manifest.json", dict(release=release, selection="Frozen illustrative IDs; accepted current or unchanged-parent files, never population statistics.", trajectories=summaries,
+        animation=dict(frames=150, duration_s=6, physical_window_s=[0, .2], displacement_gain=10, equal_axis_units=True)))
+    build_dashboard(args.out)
     print("COMPLETE", args.out, flush=True)
 
 

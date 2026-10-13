@@ -215,3 +215,15 @@ refer to content now held by the archive branch. The active checkout is `main`.
 ## NLC6 runtime gate repair (2026-10-12)
 
 Case NLC6_train_022 exceeded the unchanged 0.001 strain threshold. The r1 driver closes and quarantines energy/strain failures immediately, then continues other cases. The user subsequently authorized reduced amplitudes and delegated recorded continuation decisions. The active r2 plan reduces only five rejected family-3 cases to 0.8 displacement (0.64 energy-ratio multiplier), preserves all other recipes and runtime limits, and reuses 71 accepted parent files with immutable hardlink lineage and complete readback. Missing/rejected cases prevent completion and shutdown. See `runs/dataset21_nlc6_f4096_144_v1_r2/detached_launch.json` and `docs/Notes/evidence/dataset21_nlc6_detached_restart_02.json`. The original r1 interrupted partial file, stale lock and receipts remain evidence.
+
+## NLC6 visualization summary
+
+Open [the offline summary](reports/Dataset21_NLC6_v1_nonlinear_wing/tables/index.html)
+for the four selected population trajectories, separate exploratory trial, current
+10x/six-second GIFs, full-history figures and numeric downloads. The report guide
+is [here](reports/Dataset21_NLC6_v1_nonlinear_wing/README.md).
+Figures, animations, tables and historical renderings are organized in that one
+report folder; large local media remain excluded from Git. Maintained CPU-only
+postprocessing entry points are in `experiments/postprocessing/`, with shared paths
+and selection in `configs/visualizations/dataset21_nlc6_report.json`.
+The visualization summary is not the final report of the still-running campaign.

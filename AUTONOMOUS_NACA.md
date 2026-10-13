@@ -38,3 +38,17 @@ Seventy-one accepted parent HDF5 hashes were verified and hardlinked immutably i
 Subsequent failures may be repaired autonomously, including further recorded, versioned initial-amplitude reductions only for failed cases. Retain before/after evidence and all runtime gates; static releases must still satisfy their nonlinear equilibrium initialization. Do not count rejected cases, weaken quality limits, or shut down before all 144 accepted trajectories and closeout. The user's waiver of independent qualification remains in effect.
 
 Derive planned ordinal from population_plan.json rather than completed+1 because quarantined cases create gaps.
+
+## Organized visualization workspace
+
+The current report root is reports/Dataset21_NLC6_v1_nonlinear_wing. Its single
+summary is tables/index.html. Figures, current 10x/six-second animations, numeric
+tables, source/hash evidence and historical renders are in plots/, animations/,
+tables/, evidence/ and archive/. Maintained plotting entry points are now under
+experiments/postprocessing/; use configs/visualizations/dataset21_nlc6_report.json
+for the shared report identity. Old selected-preview, trial plots and repair
+folders were removed only after verified relocation and identical-byte merging.
+Do not recreate those old plotting folders. Simulation HDF5 files, reference data,
+models, frozen campaign sources and worker files have not moved. The visualization
+summary is illustrative and is not a campaign-completion claim. Write the final
+Chinese report and numerical appendix in this report root after all data checks.
