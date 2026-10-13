@@ -5,6 +5,18 @@ and explicitly authorized 144 clean trajectories without additional smoke or
 independent qualification runs. This is an implementation and launch record,
 not a completed-dataset report. Generation is in progress.
 
+Current engineering revision: `dataset21_nlc6_f4096_144_v1_r2`, configured by
+`configs/releases/dataset21_nlc6_v1_r2.json` and its hashed explicit population
+plan. Five failed family-3 cases use the user-authorized 0.8 displacement scale;
+all other recipes, split identities and physics remain unchanged. Seventy-one
+accepted parent files are reused immutably with full readback. The r1 worker
+disappeared without a Julia exception; its evidence remains preserved. The
+current worker uses `launch_dataset21_nlc6_detached.ps1` and a hidden native
+Windows PowerShell supervisor created through WMI, outside the Codex terminal
+process tree. Inspect `runs/naca_campaign_control/state.json` for the current
+receipt before any launch. The original v1 design/launch details below remain
+historical references and must not be used to restart retired workers.
+
 ## Frozen design
 
 - Release: `dataset21_nlc6_f4096_144_v1`.

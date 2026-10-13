@@ -36,6 +36,31 @@ function planned_population(cfg)
         end
     end
     length(rows)==144 && all(counters[s]==ic["counts"][s] for s in keys(counters)) || error("Population allocation")
+    if haskey(cfg,"population_plan_override")
+        path=joinpath(NC.ROOT,cfg["population_plan_override"])
+        NC.filehash(path)==cfg["population_plan_sha256"] || error("Override population hash mismatch")
+        revised=NC.JSON.parsefile(path);scales=cfg["amplitude_overrides"]
+        length(revised)==length(rows) || error("Override population length")
+        issubset(Set(keys(scales)),Set(row["id"] for row in rows)) || error("Unknown amplitude override")
+        for (original,replacement) in zip(rows,revised)
+            id=original["id"]
+            if haskey(scales,id)
+                scale=Float64(scales[id])
+                isfinite(scale) && 0<scale<=1 || error("Invalid amplitude reduction")
+                revision=replacement["amplitude_revision"]
+                revision["parent_release"]==cfg["repair_parent_release"] || error("Override parent mismatch")
+                revision["original_connector_energy_ratio"]==original["connector_energy_ratio"] || error("Override original ratio")
+                revision["displacement_scale"]==scale || error("Override scale mismatch")
+                isapprox(replacement["connector_energy_ratio"],original["connector_energy_ratio"]*scale^2;rtol=1e-14) || error("Override energy ratio")
+                restored=copy(replacement);delete!(restored,"amplitude_revision")
+                restored["connector_energy_ratio"]=original["connector_energy_ratio"]
+                restored==original || error("Override changed population recipe beyond amplitude")
+            else
+                replacement==original || error("Unapproved population change")
+            end
+        end
+        return revised
+    end
     return rows
 end
 
@@ -127,6 +152,10 @@ function bind_campaign_inputs(folder,config_path,cfg)
     end
     for path in (config_path,joinpath(NC.ROOT,"experiments/data_generation/run_dataset21_nlc6_campaign.jl"),
         joinpath(NC.ROOT,"configs/designs/dataset21_naca_nlc6_proposal.json"))
+        hashes[NC.portable_relative(path,NC.ROOT)]=NC.filehash(path)
+    end
+    if haskey(cfg,"population_plan_override")
+        path=joinpath(NC.ROOT,cfg["population_plan_override"])
         hashes[NC.portable_relative(path,NC.ROOT)]=NC.filehash(path)
     end
     manifest=joinpath(folder,"input_fingerprint.json")

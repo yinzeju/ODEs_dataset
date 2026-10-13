@@ -1,0 +1,44 @@
+{
+  "utc": "2026-10-13T05:39:03.886762+00:00",
+  "status": "running_initialization_or_readback",
+  "worker_identity_verified": true,
+  "process_chain": [
+    {
+      "pid": 29068,
+      "name": "julia.exe",
+      "creation_utc": "2026-10-13T05:37:39.329960+00:00"
+    },
+    {
+      "pid": 12916,
+      "name": "powershell.exe",
+      "creation_utc": "2026-10-13T05:37:38.516401+00:00"
+    },
+    {
+      "pid": 7032,
+      "name": "WmiPrvSE.exe",
+      "creation_utc": "2026-10-06T04:50:15.777537+00:00"
+    }
+  ],
+  "detached_from_codex_terminal": true,
+  "launch_attempts": [
+    {
+      "attempt": "01",
+      "result": "Supervisor exited before worker receipt; cause unrecorded; retain supervisor_01.json."
+    },
+    {
+      "attempt": "02",
+      "result": "WMI rejected Codex bundled pwsh executable path with return code 9; no process launched."
+    },
+    {
+      "attempt": "03",
+      "result": "Native Windows PowerShell, explicit absolute Julia executable, transcript and independent WMI parent successfully launched."
+    }
+  ],
+  "parent_accepted_hashes_verified": 71,
+  "initial_population_plan_checks": "8/8 no-integration checks",
+  "launcher_hashes": {
+    "experiments/data_generation/launch_dataset21_nlc6_detached.ps1": "917ea5ec296bc70f9ec782e2a393c33715cc1ad6be50cac4dbfc6ffdb8ba921c",
+    "experiments/data_generation/supervise_dataset21_nlc6.ps1": "0eb223ff8e3d3d27a9a05f35b3eb0a8b4c647dcabd2b57c24e5643af51659566",
+    "experiments/data_generation/start_dataset21_nlc6_campaign.ps1": "f54deec05fe53772e2a1914c21e92b49d94e53cd4133ac0b9ac959adf9dac8c4"
+  }
+}

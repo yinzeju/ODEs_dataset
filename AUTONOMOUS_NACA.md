@@ -1,8 +1,8 @@
 # Current authorized NACA-NLC6 campaign
 
 The user approved the NLC6 model and authorized 144 trajectories (96/24/24).
-Use configs/releases/dataset21_nlc6_v1_r1.json and runs/naca_campaign_control/state.json.
-The active release is dataset21_nlc6_f4096_144_v1_r1. Its separate worker receipt and
+Use configs/releases/dataset21_nlc6_v1_r2.json and runs/naca_campaign_control/state.json.
+The active release is dataset21_nlc6_f4096_144_v1_r2. Its separate worker receipt and
 campaign_status.json record process identity and progress. Never duplicate a live
 worker. Do not disturb unrelated processes. Resume only missing trajectories;
 verify PID plus creation time and preserve failed partial files before repair.
@@ -31,7 +31,9 @@ NLC6_train_022 (family 3, high tier) exceeded strain 0.001: observed 0.001185409
 
 The user authorized reduced amplitude for failed cases and subsequently delegated future choices to the agent, requiring decision records. No amplitude question is pending. See runs/naca_campaign_control/amplitude_authorization.json and docs/Notes/evidence/dataset21_nlc6_amplitude_revision_02.json.
 
-Keep the healthy r1 worker running to finish unchanged cases. Then transition to dataset21_nlc6_f4096_144_v1_r2, reusing accepted immutable files with lineage and complete readback. The frozen r2 population file changes only five failed family-3 high-tier rows: displacement scale 0.8, connector-energy-ratio multiplier 0.64. Preserve the failed parent files. The r2 config has a launch interlock: first implement explicit override-plan consumption in a versioned driver; the existing driver ignores this new field. Only then enable its formal launch flag. Do not launch a second worker while r1 is alive or edit its frozen inputs.
+The r1 worker disappeared with no Julia exception, last log 2026-10-13T04:03:41Z, at planned ordinal77 NLC6_train_052 frame89. Its stale receipt/lock and partial file are preserved. The user explicitly requested detachment from Codex. r2 now runs through a hidden Windows WMI-created PowerShell supervisor (attempt03), with an explicit absolute Julia executable and transcript. Verified process chain: Julia PID29068 -> PowerShell PID12916 -> WmiPrvSE PID7032; no Codex terminal ancestor. Always reverify PID plus creation time from current_receipt; these numeric IDs are historical launch evidence only.
+
+Seventy-one accepted parent HDF5 hashes were verified and hardlinked immutably into r2 with lineage. The active Julia worker repeats complete readback before counting reuse. Parent files must never be overwritten. The r2 driver explicitly loads and hashes the frozen population override, validates the original144-member seed/recipe/split contract, and changes only five rejected family3 rows: displacement scale0.8, energy-ratio multiplier0.64. Eight no-integration contract checks passed. No new qualification simulation was run. r2 launch interlock has been cleared after implementation; state.json points to worker_03.json. Continue this worker; do not restart parent r1/v1.
 
 Subsequent failures may be repaired autonomously, including further recorded, versioned initial-amplitude reductions only for failed cases. Retain before/after evidence and all runtime gates; static releases must still satisfy their nonlinear equilibrium initialization. Do not count rejected cases, weaken quality limits, or shut down before all 144 accepted trajectories and closeout. The user's waiver of independent qualification remains in effect.
 

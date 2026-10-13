@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-13T05:32:19.632090+00:00",
+  "status": "worker_absent_with_stale_running_receipt",
+  "worker_pid": 40016,
+  "expected_creation_utc": "2026-10-12T16:01:19.3407869Z",
+  "last_log_write_utc": "2026-10-13T04:03:41.212651+00:00",
+  "last_status": {
+    "completed": 71,
+    "current_id": "NLC6_train_052",
+    "current_path": "data/releases/dataset21_nlc6_f4096_144_v1_r1/train/NLC6_train_052/trajectory.h5",
+    "status": "interrupted_worker_absent",
+    "total": 144,
+    "observed_utc": "2026-10-13T05:32:19.632090+00:00"
+  },
+  "stderr_bytes": 0,
+  "cause": "Undetermined external termination; no Julia exception or completed launcher receipt. No operating-system shutdown event found in recent System log.",
+  "decision": "Preserve all parent data and stale lock; activate authorized r2 override plan, reuse accepted files and restart incomplete case in fresh release. No gate, solver or physics changes."
+}

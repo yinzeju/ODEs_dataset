@@ -1,9 +1,9 @@
 {
   "schema": "dataset21.nlc6.campaign.v1",
   "model_code": "Dataset-2.1/FE-NACA-NLC6",
-  "status": "authorized_pending_revision_driver",
+  "status": "formal_generation_authorized",
   "execution_authorized": true,
-  "formal_launch_authorized": false,
+  "formal_launch_authorized": true,
   "created_utc": "2026-10-12T04:23:30.348770+00:00",
   "base_model_sha256": "c2aca06d27abf835ad75d03f3c9f968037a3137bb6a36ed6be54e16686e34b14",
   "state_dimension": 29844,
@@ -743,5 +743,6 @@
     "NLC6_validation_006": 0.8,
     "NLC6_test_006": 0.8
   },
-  "revision_driver_required": true
+  "revision_driver_required": false,
+  "population_plan_sha256": "489f4c1fd25129696d46d7e5d019fc34aafcad24a1fdaea1e4dbc86feec8441b"
 }
