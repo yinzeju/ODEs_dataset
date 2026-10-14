@@ -1,0 +1,117 @@
+{
+  "schema": "dataset21.nlc6.numerical_revision.addendum.v1",
+  "utc": "2026-10-14T00:16:51.079768+00:00",
+  "status": "queued_after_live_r2_driver_required",
+  "parent_release": "dataset21_nlc6_f4096_144_v1_r2",
+  "next_release": "dataset21_nlc6_f4096_144_v1_r3",
+  "parent_decision_records": [
+    "docs/Notes/evidence/dataset21_nlc6_numerical_revision_03.json",
+    "docs/Notes/evidence/dataset21_nlc6_numerical_revision_03_addendum_01.json",
+    "docs/Notes/evidence/dataset21_nlc6_numerical_revision_03_addendum_02.json"
+  ],
+  "cases": [
+    {
+      "case_id": "NLC6_validation_020",
+      "observed_failure": {
+        "energy_balance_limit": 0.0001,
+        "frame": 194,
+        "max_energy_balance_relative": 0.00010036921724564053,
+        "max_strain": 0.00013143745174922907,
+        "status": "quarantined_physics_gate",
+        "strain_limit": 0.001,
+        "time_s": 0.0965
+      },
+      "initial_condition": {
+        "actual_connector_energy_ratio": 0.2412832547239329,
+        "connector_energy_ratio": 0.241283254723665,
+        "family": 10,
+        "family_ordinal": 11,
+        "id": "NLC6_validation_020",
+        "initial_amplitude_m": 0.0015743016094728628,
+        "initial_state_sha256": "ba2ec8575578ddf6585d08c3ee8f171d94bf8606885e73a162c7a5f570db4b7b",
+        "initial_strain": 9.585078892290798e-05,
+        "linear_energy_fractions": [
+          0.5,
+          0.5
+        ],
+        "modal_coefficients": [
+          0.0033455756296417245,
+          0.001954151603901116
+        ],
+        "modes": [
+          3,
+          4
+        ],
+        "relative_path": "validation/NLC6_validation_020/trajectory.h5",
+        "seed_hex": "cd060a984fd4c667",
+        "signs": [
+          1,
+          1
+        ],
+        "split": "validation",
+        "static_sign": 1,
+        "tier": 3
+      },
+      "prefix_audit": {
+        "saved_prefix_frames": 194,
+        "allocated_state_shape": [
+          4096,
+          29844
+        ],
+        "last_saved_time_s": 0.0965,
+        "initial_energy_J": 0.45875029547182705,
+        "signed_energy_defect_relative": -0.00010036921724564053,
+        "max_abs_energy_defect_relative": 0.00010036921724564053,
+        "finite_saved_prefix": true,
+        "balance_at_startup_end": -2.1544569195427137e-07
+      },
+      "failure_artifacts": [
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/validation/NLC6_validation_020/initial_condition.json",
+          "bytes": 596,
+          "sha256": "9c32d0e0799282dfe6aede20e0dc90f380047d077a1845090fcc432113cb37d7"
+        },
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/validation/NLC6_validation_020/physics_failure.json",
+          "bytes": 206,
+          "sha256": "7840cc5a7b30d7629e9c4fa09a42b3a54e58d525170addc090d99c18fb6ac7ff"
+        },
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/validation/NLC6_validation_020/physics_failure_state.jld2",
+          "bytes": 239735,
+          "sha256": "8546536e21ab9f1929f6a7d876047bbc66c36fba90d8a936dec05698dff11fa8"
+        },
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/validation/NLC6_validation_020/progress.json",
+          "bytes": 166,
+          "sha256": "0329b3abb1260ee01251f96d9a819d9041f06dcf21ade64344f4fc1c1b366acf"
+        },
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/validation/NLC6_validation_020/trajectory.h5.partial.h5",
+          "bytes": 46958378,
+          "sha256": "5ad34c215316488b3ad5d0421ffcb78555d947559bf36c6419eedc5ec681547f"
+        }
+      ],
+      "before_solver": {
+        "substeps": 2,
+        "startup_refinement": 32,
+        "newton_relative_tolerance": 1e-13
+      },
+      "after_solver": {
+        "substeps": 4,
+        "startup_refinement": 32,
+        "newton_relative_tolerance": 1e-13
+      },
+      "initial_state_sha256_required": "ba2ec8575578ddf6585d08c3ee8f171d94bf8606885e73a162c7a5f570db4b7b"
+    }
+  ],
+  "diagnosis": "Finite saved prefix has a negative energy-plus-dissipation defect that grows after startup refinement ends. This is a numerical energy-balance gate failure; its precise numerical error contribution is not isolated. Strain remains admissible.",
+  "decision": "Extend unlaunched r3 to this failed case only. Preserve its exact initial state and physical parameters, frames/dt, Newton tolerance, startup refinement and all gates; increase internal Radau substeps from 2 to 4. Keep live r2 inputs untouched.",
+  "queued_config_before_sha256": "2dd88023ae46bb607b82fb323120ab0c99b288deec1ca2be6501668aa69dfd26",
+  "queued_config_before_snapshot": "runs/dataset21_nlc6_f4096_144_v1_r2/energy_gate_failure_03/queued_r3_before_addendum_02.json",
+  "after_validation": "pending replacement trajectory and full readback; no improvement claim",
+  "changed_initial_conditions": [],
+  "changed_physical_parameters": [],
+  "changed_gates": [],
+  "queued_config_after_sha256": "9e06dbece3b34ef735da9b45d6d3e24acc8bc4cba40c04742ae74e3801a5a346"
+}

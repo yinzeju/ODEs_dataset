@@ -64,6 +64,39 @@ function planned_population(cfg)
     return rows
 end
 
+"""Reject unbound, unknown, or weakening per-case numerical repairs before execution."""
+function validate_numerical_overrides(cfg,rows)
+    overrides=get(cfg,"case_solver_overrides",Dict{String,Any}())
+    hashes=get(cfg,"case_initial_state_sha256",Dict{String,Any}())
+    Set(keys(overrides))==Set(keys(hashes)) || error("Numerical repair must bind the exact initial state")
+    issubset(Set(keys(overrides)),Set(row["id"] for row in rows)) || error("Unknown numerical repair case")
+    base=cfg["trial"]["solver"]["substeps"]
+    for (id,override) in overrides
+        Set(keys(override))==Set(["substeps"]) || error("Unapproved case solver setting: $id")
+        count=override["substeps"]
+        count isa Integer && !(count isa Bool) && count>base && count%base==0 ||
+            error("Case substeps must be a strict integer refinement: $id")
+        hash=hashes[id]
+        hash isa AbstractString && occursin(r"^[0-9a-f]{64}$",hash) || error("Invalid initial-state SHA256: $id")
+    end
+    return nothing
+end
+
+"""Copy the frozen recipe and apply only the validated per-case solver refinement."""
+function trajectory_config(cfg,row)
+    result=deepcopy(cfg);merge!(result["trial"],row)
+    overrides=get(cfg,"case_solver_overrides",Dict{String,Any}())
+    haskey(overrides,row["id"]) && merge!(result["trial"]["solver"],overrides[row["id"]])
+    return result
+end
+
+function verify_initial_state_binding(cfg,id,q0)
+    hash=bytes2hex(sha256(reinterpret(UInt8,q0)))
+    bindings=get(cfg,"case_initial_state_sha256",Dict{String,Any}())
+    haskey(bindings,id) && bindings[id]!=hash && error("Replacement initial-state SHA256 mismatch: $id")
+    return hash
+end
+
 """Solve the full nonlinear equilibrium and energy-ratio constraint together."""
 function static_initial_condition(m,p,target,sign,settings)
     backend=NC.CPUBackend(m);load_shape=NC.preload(m);shape=m.K\load_shape
@@ -71,6 +104,11 @@ function static_initial_condition(m,p,target,sign,settings)
     q=sign*sqrt((target/16)*E2/E4)*shape;load=sign*sqrt((target/16)*E2/E4)
     trace=Any[];absolute_stiffness=abs.(m.K)
     for ratio in target.*[1/16,1/4,1/2,1.]
+        # Predict on the nonzero branch: quartic/quadratic energy scales as amplitude squared.
+        previous_ratio=(sum(p.kappa.*(transpose(p.B)*q).^4)/4)/(dot(q,m.K*q)/2)
+        isfinite(previous_ratio) && previous_ratio>0 || error("Invalid static continuation state")
+        predictor_scale=sqrt(ratio/previous_ratio)
+        q*=predictor_scale;load*=predictor_scale
         converged=false
         for iteration in 1:settings["maximum_iterations"]
             NC.evaluate!(backend,m,q;tangent=true);s=transpose(p.B)*q
@@ -87,7 +125,8 @@ function static_initial_condition(m,p,target,sign,settings)
             if norm(residual)<=force_tolerance && correction<=settings["correction_relative_tolerance"] && ratio_error<=settings["ratio_relative_tolerance"]
                 converged=true;push!(trace,Dict("ratio"=>ratio,"iterations"=>iteration,"load_N"=>load,
                     "force_residual"=>norm(residual),"force_tolerance"=>force_tolerance,
-                    "correction_relative"=>correction,"ratio_relative_error"=>ratio_error));break
+                    "correction_relative"=>correction,"ratio_relative_error"=>ratio_error,
+                    "predictor_scale"=>predictor_scale));break
             end
             force_scale=max(norm(load*load_shape),1.);energy_scale=max(ratio*E2,eps())
             merit=hypot(norm(residual)/force_scale,constraint/energy_scale);accepted=false
@@ -175,6 +214,7 @@ end
 function run_campaign(config_path)
     BLAS.set_num_threads(1);cfg=NC.JSON.parsefile(config_path)
     cfg["execution_authorized"]===true && cfg["formal_launch_authorized"]===true || error("Campaign authorization missing")
+    !get(cfg,"revision_driver_required",false) && !get(cfg,"numerical_revision_driver_required",false) || error("Revision launch interlock")
     cfg["qualification_status"]=="user_waived_independent_qualification" || error("Qualification scope")
     cfg["sampling"]["frames"]==4096 && cfg["state_dimension"]<=30000 || error("State/frame contract")
     id=cfg["release_id"];occursin(r"^[a-zA-Z0-9_-]+$",id) || error("Release identity")
@@ -188,7 +228,8 @@ function run_campaign(config_path)
         NC.filehash(basepath)==cfg["base_model_sha256"] || error("Base model hash")
         m=with_damping(NC.JLD2.load(basepath,"model"),cfg);p=build_connectors(m,cfg)
         2length(m.active)==cfg["state_dimension"] || error("Physical dimension mismatch")
-        backend=NC.GPUBackend(m);rows=planned_population(cfg)
+        rows=planned_population(cfg);validate_numerical_overrides(cfg,rows)
+        backend=NC.GPUBackend(m)
         planpath=joinpath(folder,"population_plan.json")
         isfile(planpath) && NC.JSON.parsefile(planpath)!=rows && error("Population plan changed")
         NC.writejson(planpath,rows);NC.writejson(joinpath(release,"population_plan.json"),rows)
@@ -207,7 +248,8 @@ function run_campaign(config_path)
                 "current_path"=>NC.portable_relative(path,NC.ROOT),"completed"=>length(completed),"total"=>144))
             println("NLC6_INITIALIZE ",current," family=",row["family"]," tier=",row["tier"]);flush(stdout)
             q0,details=campaign_initial_condition(m,p,row,cfg)
-            initialhash=bytes2hex(sha256(reinterpret(UInt8,q0)));initialhash in seen && error("Duplicate initial state")
+            initialhash=verify_initial_state_binding(cfg,current,q0)
+            initialhash in seen && error("Duplicate initial state")
             push!(seen,initialhash);geo=NC.evaluate!(NC.CPUBackend(m),m,q0;tangent=false)
             geo.strain<=cfg["solver_proposal"]["maximum_strain_component"] || error("NLC6 physics gate: initial strain limit: $current")
             ratio=sum(p.kappa.*(transpose(p.B)*q0).^4)/4/(dot(q0,m.K*q0)/2)
@@ -217,19 +259,21 @@ function run_campaign(config_path)
             initialpath=joinpath(dirname(path),"initial_condition.json")
             isfile(initialpath) && NC.JSON.parsefile(initialpath)!=initial && error("Initial-condition binding changed")
             NC.writejson(initialpath,initial)
+            trajectorycfg=trajectory_config(cfg,row)
             if isfile(path)
                 isfile(path*".json") || error("Completed file lacks receipt")
                 receipt=NC.JSON.parsefile(path*".json")
             else
-                trajectorycfg=deepcopy(cfg);merge!(trajectorycfg["trial"],row)
                 receipt=integrate(path,m,backend,p,q0,trajectorycfg)
             end
+            receipt["solver"]==trajectorycfg["trial"]["solver"] || error("Actual solver receipt differs from the bound case settings: $current")
             receipt["physics_checks_passed"]===true || error("NLC6 physics gate: trajectory limits: $current")
             readback_trajectory(path,m,p,q0,cfg,receipt)
             NC.writejson(joinpath(dirname(path),"readback.json"),Dict("status"=>"passed","sha256"=>receipt["sha256"],"frames"=>4096))
             result=merge(copy(row),Dict("sha256"=>receipt["sha256"],"initial_state_sha256"=>initialhash,
                 "wall_seconds"=>receipt["wall_seconds"],"max_energy_balance_relative"=>receipt["max_energy_balance_relative"],
-                "max_strain"=>receipt["max_recovered_strain_component"],"final_energy_ratio"=>receipt["final_energy_ratio"]))
+                "max_strain"=>receipt["max_recovered_strain_component"],"final_energy_ratio"=>receipt["final_energy_ratio"],
+                "solver"=>receipt["solver"]))
             originpath=joinpath(dirname(path),"reused_from.json")
             isfile(originpath) && (result["reused_from"]=NC.JSON.parsefile(originpath))
             push!(completed,result);metadata["trajectories"]=completed

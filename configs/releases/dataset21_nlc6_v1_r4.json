@@ -1,0 +1,785 @@
+{
+  "schema": "dataset21.nlc6.campaign.v1",
+  "model_code": "Dataset-2.1/FE-NACA-NLC6",
+  "status": "queued_numerical_repair_driver_required",
+  "execution_authorized": true,
+  "formal_launch_authorized": true,
+  "created_utc": "2026-10-12T04:23:30.348770+00:00",
+  "base_model_sha256": "c2aca06d27abf835ad75d03f3c9f968037a3137bb6a36ed6be54e16686e34b14",
+  "state_dimension": 29844,
+  "maximum_state_dimension": 30000,
+  "new_dynamic_dofs": 0,
+  "physical_definition": "Clamped nonlinear NACA wing plus six passive fixed-direction generalized patch connectors. Ground connectors represent a stationary support fixture, not a free-flying original NACA wing.",
+  "material": {
+    "E_Pa": 70000000000.0,
+    "nu": 0.33,
+    "rho_kg_m3": 2700,
+    "thickness_m": 0.0015
+  },
+  "patches": [
+    {
+      "center_x_z_m": [
+        0.2,
+        3.0
+      ],
+      "half_width_x_z_m": [
+        0.1,
+        0.12
+      ],
+      "name": "mid_front",
+      "node_count": 18,
+      "nodes_one_based": [
+        199,
+        200,
+        1016,
+        1017,
+        1026,
+        1027,
+        1034,
+        1035,
+        1036,
+        1037,
+        2120,
+        2121,
+        2122,
+        2123,
+        2140,
+        2141,
+        2142,
+        2143
+      ],
+      "weighted_center_m": [
+        0.2058578255996464,
+        5.7859151497696715e-12,
+        2.9861111111111116
+      ],
+      "weights": [
+        0.05555918525919788,
+        0.055559185269216424,
+        0.05573975148731657,
+        0.055367729915085366,
+        0.05536772991509405,
+        0.055739751487425875,
+        0.05555918525919735,
+        0.05555918525919699,
+        0.05555918526921589,
+        0.055559185269215536,
+        0.05573975148731604,
+        0.05573975148731568,
+        0.05536772991508484,
+        0.055367729915084485,
+        0.05536772991509352,
+        0.055367729915093165,
+        0.05573975148742535,
+        0.05573975148742499
+      ]
+    },
+    {
+      "center_x_z_m": [
+        0.8,
+        3.0
+      ],
+      "half_width_x_z_m": [
+        0.1,
+        0.12
+      ],
+      "name": "mid_rear",
+      "node_count": 18,
+      "nodes_one_based": [
+        207,
+        208,
+        209,
+        210,
+        1021,
+        1022,
+        1054,
+        1055,
+        1056,
+        1057,
+        1059,
+        1060,
+        1061,
+        1062,
+        2130,
+        2131,
+        2132,
+        2133
+      ],
+      "weighted_center_m": [
+        0.7987348911743765,
+        -2.1888209127129965e-11,
+        2.986111111111111
+      ],
+      "weights": [
+        0.06647111754429183,
+        0.0664711174745471,
+        0.0333985133322101,
+        0.03339851363285869,
+        0.06679703567471426,
+        0.06679703567471419,
+        0.06647111754429119,
+        0.06647111754429076,
+        0.06647111747454648,
+        0.06647111747454604,
+        0.03339851333220989,
+        0.03339851333220953,
+        0.03339851363285826,
+        0.033398513632858194,
+        0.06679703567471362,
+        0.0667970356747132,
+        0.06679703567471354,
+        0.06679703567471311
+      ]
+    },
+    {
+      "center_x_z_m": [
+        0.2,
+        4.5
+      ],
+      "half_width_x_z_m": [
+        0.1,
+        0.12
+      ],
+      "name": "outer_front",
+      "node_count": 18,
+      "nodes_one_based": [
+        311,
+        312,
+        1363,
+        1364,
+        1365,
+        1366,
+        1392,
+        1393,
+        1402,
+        1403,
+        2428,
+        2429,
+        2430,
+        2431,
+        2448,
+        2449,
+        2450,
+        2451
+      ],
+      "weighted_center_m": [
+        0.2058578255996464,
+        5.7859142824079335e-12,
+        4.51388888888889
+      ],
+      "weights": [
+        0.0555591852591974,
+        0.05555918526921595,
+        0.055559185259197764,
+        0.05555918525919705,
+        0.055559185269216306,
+        0.05555918526921559,
+        0.055739751487316094,
+        0.0553677299150849,
+        0.05536772991509358,
+        0.0557397514874254,
+        0.055739751487316455,
+        0.05573975148731574,
+        0.055367729915085255,
+        0.05536772991508454,
+        0.055367729915093936,
+        0.05536772991509322,
+        0.055739751487425764,
+        0.05573975148742505
+      ]
+    },
+    {
+      "center_x_z_m": [
+        0.8,
+        4.5
+      ],
+      "half_width_x_z_m": [
+        0.1,
+        0.12
+      ],
+      "name": "outer_rear",
+      "node_count": 18,
+      "nodes_one_based": [
+        319,
+        320,
+        321,
+        322,
+        1383,
+        1384,
+        1385,
+        1386,
+        1388,
+        1389,
+        1390,
+        1391,
+        1397,
+        1398,
+        2438,
+        2439,
+        2440,
+        2441
+      ],
+      "weighted_center_m": [
+        0.7987348911743765,
+        -2.1888209560810834e-11,
+        4.51388888888889
+      ],
+      "weights": [
+        0.06647111754429127,
+        0.06647111747454655,
+        0.033398513332209744,
+        0.03339851363285847,
+        0.06647111754429169,
+        0.06647111754429083,
+        0.06647111747454698,
+        0.06647111747454612,
+        0.033398513332210174,
+        0.033398513332209605,
+        0.03339851363285847,
+        0.03339851363285819,
+        0.06679703567471369,
+        0.06679703567471361,
+        0.06679703567471414,
+        0.06679703567471329,
+        0.06679703567471405,
+        0.06679703567471319
+      ]
+    }
+  ],
+  "ports": [
+    {
+      "cubic_stiffness_N_per_m3": 13080745236.530123,
+      "damping_cap_N_s_per_m": 1.7756980545253584,
+      "damping_carrier_rad_s": 29.466147587860227,
+      "kref_N_per_m": 52322.980946120486,
+      "low_velocity_cubic_damping_N_s3_per_m3": 4439.245136313396,
+      "name": "mid_bending_ground",
+      "reference_extension_m": 0.002,
+      "reference_omega_rad_s": 149.57886122911663,
+      "reference_velocity_m_per_s": 0.29915772245823324,
+      "saturation_speed_m_per_s": 0.02
+    },
+    {
+      "cubic_stiffness_N_per_m3": 3797289945.867351,
+      "damping_cap_N_s_per_m": 0.5154783039818613,
+      "damping_carrier_rad_s": 29.466147587860227,
+      "kref_N_per_m": 15189.159783469404,
+      "low_velocity_cubic_damping_N_s3_per_m3": 572.753671090957,
+      "name": "outer_bending_ground",
+      "reference_extension_m": 0.002,
+      "reference_omega_rad_s": 108.89984940329828,
+      "reference_velocity_m_per_s": 0.21779969880659655,
+      "saturation_speed_m_per_s": 0.03
+    },
+    {
+      "cubic_stiffness_N_per_m3": 515697107057.61444,
+      "damping_cap_N_s_per_m": 1.658517842773081,
+      "damping_carrier_rad_s": 310.9385342489633,
+      "kref_N_per_m": 515697.1070576144,
+      "low_velocity_cubic_damping_N_s3_per_m3": 663.4071371092323,
+      "name": "mid_differential",
+      "reference_extension_m": 0.001,
+      "reference_omega_rad_s": 310.7025300912654,
+      "reference_velocity_m_per_s": 0.31070253009126536,
+      "saturation_speed_m_per_s": 0.05
+    },
+    {
+      "cubic_stiffness_N_per_m3": 344558019709.2438,
+      "damping_cap_N_s_per_m": 1.1081226086740406,
+      "damping_carrier_rad_s": 310.9385342489633,
+      "kref_N_per_m": 344558.01970924373,
+      "low_velocity_cubic_damping_N_s3_per_m3": 226.14747115796743,
+      "name": "outer_differential",
+      "reference_extension_m": 0.001,
+      "reference_omega_rad_s": 310.85931871785135,
+      "reference_velocity_m_per_s": 0.3108593187178514,
+      "saturation_speed_m_per_s": 0.07
+    },
+    {
+      "cubic_stiffness_N_per_m3": 344459506974.40814,
+      "damping_cap_N_s_per_m": 9.041991170353604,
+      "damping_carrier_rad_s": 152.3821470225733,
+      "kref_N_per_m": 1377838.0278976324,
+      "low_velocity_cubic_damping_N_s3_per_m3": 2511.6642139871124,
+      "name": "mid_chord_ground",
+      "reference_extension_m": 0.002,
+      "reference_omega_rad_s": 152.38337067349485,
+      "reference_velocity_m_per_s": 0.3047667413469897,
+      "saturation_speed_m_per_s": 0.06
+    },
+    {
+      "cubic_stiffness_N_per_m3": 103980478954.79579,
+      "damping_cap_N_s_per_m": 2.729466173997208,
+      "damping_carrier_rad_s": 152.3821470225733,
+      "kref_N_per_m": 415921.91581918317,
+      "low_velocity_cubic_damping_N_s3_per_m3": 336.97113259224795,
+      "name": "outer_chord_ground",
+      "reference_extension_m": 0.002,
+      "reference_omega_rad_s": 152.38345920602126,
+      "reference_velocity_m_per_s": 0.3047669184120425,
+      "saturation_speed_m_per_s": 0.09
+    }
+  ],
+  "elastic_law": "kappa_j*s_j^3",
+  "damping_law": "c_infinity_j*w_j^3/(w_j^2+v_scale_j^2)",
+  "linear_damping": {
+    "type": "Rayleigh on original K0",
+    "aM_per_s": 0.5879008847043158,
+    "aK_s": 1.6378470960752408e-06,
+    "target_modes": [
+      1,
+      4
+    ],
+    "target_ratios": [
+      0.01,
+      0.0012
+    ],
+    "actual_first_four_ratios": [
+      0.010000000000000002,
+      0.0020538239831187216,
+      0.0017672303141118653,
+      0.0012000000000000001
+    ]
+  },
+  "sampling": {
+    "frames": 4096,
+    "dt_candidate_s": 0.0005,
+    "duration_candidate_s": 2.0475,
+    "minimum_samples_per_effective_cycle": 24,
+    "candidate_effective_frequency_limit_Hz": 83.33333333333333,
+    "sampling_status": "Frozen for this user-authorized population; single-trial port spectrum observed, no independent sampling qualification."
+  },
+  "solver_proposal": {
+    "method": "Full-state Radau IIA order 5 with exact connector tangents",
+    "float_type": "Float64",
+    "initial_substeps": 2,
+    "startup_duration_s": 0.05,
+    "startup_refinement": 32,
+    "newton_scaled_tolerance": 1e-13,
+    "time_refinement_relative_target": 0.0001,
+    "energy_balance_relative_target": 0.0001,
+    "maximum_strain_component": 0.001,
+    "terminal_energy_fraction_target": 0.4
+  },
+  "initial_conditions": {
+    "velocity": "zero",
+    "families": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        2,
+        3,
+        4
+      ],
+      "nonlinear_static_release"
+    ],
+    "amplitude_rule": "Added connector quartic energy / original linear strain energy",
+    "added_energy_ratio_centers": [
+      0.025,
+      0.1,
+      0.25
+    ],
+    "ratio_relative_jitter": 0.1,
+    "per_family_strength_counts": [
+      2,
+      5,
+      5
+    ],
+    "population_strength_counts": [
+      24,
+      60,
+      60
+    ],
+    "counts": {
+      "train": 96,
+      "validation": 24,
+      "test": 24
+    },
+    "strength_by_split_counts": {
+      "train": [
+        16,
+        40,
+        40
+      ],
+      "validation": [
+        4,
+        10,
+        10
+      ],
+      "test": [
+        4,
+        10,
+        10
+      ]
+    },
+    "family_strength_split_allocations": [
+      [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          3,
+          1,
+          1
+        ]
+      ],
+      [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          3,
+          1,
+          1
+        ]
+      ],
+      [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          3,
+          1,
+          1
+        ]
+      ],
+      [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          3,
+          1,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          4,
+          0,
+          1
+        ],
+        [
+          3,
+          1,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          4,
+          0,
+          1
+        ],
+        [
+          3,
+          1,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          4,
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          4,
+          0,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          4,
+          1,
+          0
+        ],
+        [
+          3,
+          1,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          4,
+          1,
+          0
+        ],
+        [
+          3,
+          1,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          4,
+          1,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          4,
+          1,
+          0
+        ]
+      ]
+    ],
+    "allocation_axes": [
+      "family",
+      "low_mid_high",
+      "train_validation_test"
+    ],
+    "mixture_convention": "Mass-normalized original modes, energy-weighted coefficients; mode shapes only initialize complete physical states.",
+    "pair_energy_fractions": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "four_mode_base_energy_fractions": [
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ],
+    "four_mode_fraction_jitter": 0.1,
+    "modal_signs": [
+      -1,
+      1
+    ],
+    "static_loading": "Same outer 10 percent skin normal preload, both signs; solve full new nonlinear equilibrium and remove preload for release.",
+    "seed": 20261012,
+    "fixed_physics_across_all_trajectories": true
+  },
+  "evidence_boundary": {
+    "completed": "One NLC6 trial and complete readback; 11 prior focused kernel checks.",
+    "waived": "New smoke, independent temporal/spatial qualification and ablation simulations.",
+    "retained": "Per-trajectory convergence, initial/dynamic strain, energy, passivity, hash and complete saved-state readback checks."
+  },
+  "source_proposal_sha256": "e995ead414181e5d8aac37e97b71aa4f771a4e11372ef71883a13ade9c10f37e",
+  "trial": {
+    "id": "dataset21_nlc6_trial_01",
+    "trajectory_count": 144,
+    "backend": "gpu",
+    "modes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "linear_energy_fractions": [
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ],
+    "signs": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "connector_energy_ratio": 0.1,
+    "initial_velocity": "zero",
+    "solver": {
+      "substeps": 2,
+      "newton_relative_tolerance": 1e-13,
+      "newton_max_iterations": 20,
+      "maximum_chord_iterations": 10,
+      "maximum_bisections": 6,
+      "startup_duration_s": 0.05,
+      "startup_refinement": 32
+    },
+    "authorization": "User accepted NLC6 scheme, requested 144 trajectories without further validation experiments, old NACA trajectory/validation cleanup, and code commit/push. Runtime physics and readback checks remain enabled."
+  },
+  "release_id": "dataset21_nlc6_f4096_144_v1_r4",
+  "qualification_status": "user_waived_independent_qualification",
+  "base_model_path": "artifacts/dataset21_nlc6/base_model.jld2",
+  "noise_views": [],
+  "authorization": "User accepted NLC6 scheme, requested 144 trajectories without further validation experiments, old NACA trajectory/validation cleanup, and code commit/push. Runtime physics and readback checks remain enabled.",
+  "static_initialization": {
+    "maximum_iterations": 50,
+    "force_relative_tolerance": 1e-10,
+    "correction_relative_tolerance": 1e-09,
+    "ratio_relative_tolerance": 1e-08
+  },
+  "population_identity": "dataset21_nlc6_f4096_144_v1",
+  "quarantine_physics_failures": true,
+  "repair_parent_release": "dataset21_nlc6_f4096_144_v1_r1",
+  "repair_reason": "Resume the remaining11 prescribed static releases after an explicit user pause; no numerical, physical, amplitude or population changes.",
+  "population_plan_override": "configs/releases/dataset21_nlc6_v1_r2_population.json",
+  "amplitude_overrides": {
+    "NLC6_train_022": 0.8,
+    "NLC6_train_023": 0.8,
+    "NLC6_train_024": 0.8,
+    "NLC6_validation_006": 0.8,
+    "NLC6_test_006": 0.8
+  },
+  "revision_driver_required": false,
+  "population_plan_sha256": "489f4c1fd25129696d46d7e5d019fc34aafcad24a1fdaea1e4dbc86feec8441b",
+  "numerical_revision_driver_required": false,
+  "reuse_parent_release": "dataset21_nlc6_f4096_144_v1_r3",
+  "numerical_repair_parent_release": "dataset21_nlc6_f4096_144_v1_r2",
+  "case_solver_overrides": {
+    "NLC6_validation_018": {
+      "substeps": 4
+    },
+    "NLC6_train_078": {
+      "substeps": 4
+    },
+    "NLC6_train_079": {
+      "substeps": 4
+    },
+    "NLC6_validation_020": {
+      "substeps": 4
+    },
+    "NLC6_test_020": {
+      "substeps": 4
+    }
+  },
+  "numerical_revision_record": "docs/Notes/evidence/dataset21_nlc6_numerical_revision_03.json",
+  "case_initial_state_sha256": {
+    "NLC6_validation_018": "87a64c816232628bec82e9571034892166204a4451f447b3042e14ed9b6e69a3",
+    "NLC6_train_078": "6eea82e5c21fca6e808b89b34eee822195d4018bbc157ef0538ac1acb7acbfff",
+    "NLC6_train_079": "b9e3308c5945806633b80e622ff3d8221be0c0dd64a92fb75873f57c66344b7c",
+    "NLC6_validation_020": "ba2ec8575578ddf6585d08c3ee8f171d94bf8606885e73a162c7a5f570db4b7b",
+    "NLC6_test_020": "ded02724fcc2fd4565887bc3c1f3cbe87784b2efa56ee21fee6d45679d677fe7"
+  },
+  "numerical_revision_records": [
+    "docs/Notes/evidence/dataset21_nlc6_numerical_revision_03.json",
+    "docs/Notes/evidence/dataset21_nlc6_numerical_revision_03_addendum_01.json",
+    "docs/Notes/evidence/dataset21_nlc6_numerical_revision_03_addendum_02.json",
+    "docs/Notes/evidence/dataset21_nlc6_numerical_revision_03_addendum_03.json"
+  ],
+  "static_revision_record": "docs/Notes/evidence/dataset21_nlc6_static_revision_03.json",
+  "resume_parent_release": "dataset21_nlc6_f4096_144_v1_r3",
+  "resumption_record": "docs/Notes/evidence/dataset21_nlc6_resumption_04.json"
+}

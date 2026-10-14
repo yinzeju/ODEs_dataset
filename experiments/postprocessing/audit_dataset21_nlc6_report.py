@@ -91,8 +91,15 @@ def audit(report=REPORT_ROOT):
     assert sha256(ROOT / "runs/dataset21_nlc6_trial_01/trajectory.h5") == trial["source_sha256"]
     artifacts = [dict(path=p.relative_to(report).as_posix(), bytes=p.stat().st_size, sha256=sha256(p))
         for p in sorted(report.rglob("*")) if p.is_file() and p.name not in ["report_manifest.json", "audit.json"]]
+    completion_path = report / "evidence/campaign_completion_04.json"
+    completed = read_json(completion_path) if completion_path.exists() else None
+    if completed:
+        integrity = read_json(report / "evidence/campaign_integrity_04.json")
+        assert completed["accepted"] == integrity["accepted"] == 144 and integrity["status"] == "passed"
+        assert completed["manifest_sha256"] == integrity["manifest_sha256"]
     manifest = dict(report_identity=CONFIG["report_identity"], dashboard="tables/index.html",
-        qualification_status=CONFIG["qualification_status"], population_completion_claim=False,
+        qualification_status=CONFIG["qualification_status"], population_completion_claim=bool(completed),
+        population_completion_evidence="evidence/campaign_completion_04.json" if completed else None,
         selected_sources=[{k:row[k] for k in ["id", "source", "source_sha256"]} for row in selected],
         separate_trial_source="runs/dataset21_nlc6_trial_01/trajectory.h5", artifacts=artifacts)
     write_json(report / "evidence/report_manifest.json", manifest)

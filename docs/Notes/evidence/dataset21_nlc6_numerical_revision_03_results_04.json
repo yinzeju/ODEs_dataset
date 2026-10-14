@@ -1,0 +1,57 @@
+{
+  "utc": "2026-10-14T08:47:34.474301+00:00",
+  "release_id": "dataset21_nlc6_f4096_144_v1_r3",
+  "parent_release": "dataset21_nlc6_f4096_144_v1_r2",
+  "results": [
+    {
+      "id": "NLC6_validation_020",
+      "status": "accepted_full_runtime_readback_hash",
+      "initial_state_sha256": "ba2ec8575578ddf6585d08c3ee8f171d94bf8606885e73a162c7a5f570db4b7b",
+      "initial_state_identical": true,
+      "original_failed_frame": 194,
+      "original_failed_time_s": 0.0965,
+      "original_energy_balance_at_failure": 0.00010036921724564053,
+      "replacement_energy_balance_at_same_frame": 3.371373700590416e-06,
+      "same_frame_defect_reduction_factor": 29.771015069632668,
+      "replacement_full_trajectory_max_energy_balance": 4.970491384310552e-06,
+      "replacement_final_energy_fraction": 0.14616243823621333,
+      "replacement_max_strain": 0.00013143745177831025,
+      "replacement_max_newton_scaled_residual": 9.997949696988046e-14,
+      "solver": {
+        "substeps": 4,
+        "newton_relative_tolerance": 1e-13,
+        "newton_max_iterations": 20,
+        "maximum_chord_iterations": 10,
+        "maximum_bisections": 6,
+        "startup_duration_s": 0.05,
+        "startup_refinement": 32
+      },
+      "frames": 4096,
+      "dt_seconds": 0.0005,
+      "wall_seconds": 2808.5043665,
+      "sha256": "d186df4b9382ca295fd0185f30f859847d145b7aac508a1d71da85dd13259826",
+      "external_hash_verification": {
+        "sha256": "d186df4b9382ca295fd0185f30f859847d145b7aac508a1d71da85dd13259826",
+        "utc": "2026-10-14T08:47:29.471574+00:00"
+      },
+      "readback": {
+        "frames": 4096,
+        "sha256": "d186df4b9382ca295fd0185f30f859847d145b7aac508a1d71da85dd13259826",
+        "status": "passed"
+      },
+      "amplitude_changed": false,
+      "runtime_gates_weakened": false
+    }
+  ],
+  "accepted_numerical_repair_cases": [
+    "NLC6_train_078",
+    "NLC6_train_079",
+    "NLC6_validation_018",
+    "NLC6_validation_020"
+  ],
+  "pending_numerical_repair_cases": [
+    "NLC6_test_020"
+  ],
+  "qualification_status": "user_waived_independent_qualification",
+  "evidence_boundary": "Same-initial-state runtime energy gate repairs passed; no independent time/grid qualification or exact temporal-error estimate is implied."
+}

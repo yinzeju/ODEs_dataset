@@ -1,0 +1,70 @@
+{
+  "schema": "dataset21.nlc6.completion.v1",
+  "utc": "2026-10-14T19:08:54.852927+00:00",
+  "status": "all144_runtime_and_final_integrity_passed_reports_written_publication_pending",
+  "release_id": "dataset21_nlc6_f4096_144_v1_r4",
+  "manifest_sha256": "614c4fc54c6c1cfdd92afc976d7621bfd47893acb3573653458f77d25afcc9a0",
+  "integrity_sha256": "a8c8d9d3704358f95088d7f07a6172730b103b409358b255d5b38bba9d4a6edf",
+  "accepted": 144,
+  "counts": {
+    "train": 96,
+    "validation": 24,
+    "test": 24
+  },
+  "qualification_status": "user_waived_independent_qualification",
+  "report": "reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md",
+  "appendix": "reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md",
+  "report_sha256": "1b25a43330dfd1db256eab47b2dfcff51630684bedab0ca9270fbb8a87353543",
+  "appendix_sha256": "76c50a86a07f650428feb14808f29659b661a8f194ce433c5538e41ceb56c7a5",
+  "protocol_blob_sha": "7fa370f128dec078ef35baf47ac9ce01fcd49e70",
+  "mathematical_note_sha256": "2944be97731c5f5abdc9a0f661d7ec736d908458e9ce9ee312000a823ddd4a01",
+  "amplitude_revision_cases": [
+    "NLC6_train_022",
+    "NLC6_train_023",
+    "NLC6_train_024",
+    "NLC6_validation_006",
+    "NLC6_test_006"
+  ],
+  "numerical_refinement_cases": [
+    "NLC6_validation_018",
+    "NLC6_train_078",
+    "NLC6_train_079",
+    "NLC6_validation_020",
+    "NLC6_test_020"
+  ],
+  "runtime_metrics": {
+    "max_energy_balance_relative": {
+      "minimum": 3.809167787044915e-08,
+      "median": 1.621738136379355e-06,
+      "maximum": 9.761689157330619e-05,
+      "sum": 0.0016559863088331283
+    },
+    "max_strain": {
+      "minimum": 5.061595935933108e-06,
+      "median": 4.330270240005256e-05,
+      "maximum": 0.0006969655975785179,
+      "sum": 0.014067623600031599
+    },
+    "final_energy_ratio": {
+      "minimum": 0.0983715173282677,
+      "median": 0.2238941269458114,
+      "maximum": 0.2975764670814523,
+      "sum": 31.609842316289626
+    },
+    "wall_seconds": {
+      "minimum": 811.6688229,
+      "median": 1188.9369454,
+      "maximum": 3246.1314771,
+      "sum": 188334.2158253
+    },
+    "max_newton_scaled_residual": {
+      "minimum": 9.834558465841257e-14,
+      "median": 9.995204296500778e-14,
+      "maximum": 9.999997401403296e-14,
+      "sum": 1.4383580565475929e-11
+    }
+  },
+  "trajectory_file_bytes": 140940259488,
+  "publication_pending": true,
+  "shutdown_scheduled": false
+}

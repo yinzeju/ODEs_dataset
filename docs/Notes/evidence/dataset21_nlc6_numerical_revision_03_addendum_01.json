@@ -1,0 +1,207 @@
+{
+  "schema": "dataset21.nlc6.numerical_revision.addendum.v1",
+  "utc": "2026-10-13T23:37:04.885771+00:00",
+  "status": "queued_after_live_r2_driver_required",
+  "parent_release": "dataset21_nlc6_f4096_144_v1_r2",
+  "next_release": "dataset21_nlc6_f4096_144_v1_r3",
+  "parent_decision_record": "docs/Notes/evidence/dataset21_nlc6_numerical_revision_03.json",
+  "cases": [
+    {
+      "case_id": "NLC6_train_078",
+      "observed_failure": {
+        "energy_balance_limit": 0.0001,
+        "frame": 202,
+        "max_energy_balance_relative": 0.00010021155034224898,
+        "max_strain": 0.00012999678352208622,
+        "status": "quarantined_physics_gate",
+        "strain_limit": 0.001,
+        "time_s": 0.1005
+      },
+      "initial_condition": {
+        "actual_connector_energy_ratio": 0.2349616748232029,
+        "connector_energy_ratio": 0.23496167482315924,
+        "family": 10,
+        "family_ordinal": 8,
+        "id": "NLC6_train_078",
+        "initial_amplitude_m": 0.0015535415131112229,
+        "initial_state_sha256": "6eea82e5c21fca6e808b89b34eee822195d4018bbc157ef0538ac1acb7acbfff",
+        "initial_strain": 9.457438666768853e-05,
+        "linear_energy_fractions": [
+          0.5,
+          0.5
+        ],
+        "modal_coefficients": [
+          -0.003301457989134596,
+          -0.0019283824784945651
+        ],
+        "modes": [
+          3,
+          4
+        ],
+        "relative_path": "train/NLC6_train_078/trajectory.h5",
+        "seed_hex": "7bf59ac56f0a7774",
+        "signs": [
+          -1,
+          -1
+        ],
+        "split": "train",
+        "static_sign": -1,
+        "tier": 3
+      },
+      "prefix_audit": {
+        "saved_prefix_frames": 202,
+        "allocated_state_shape": [
+          4096,
+          29844
+        ],
+        "last_saved_time_s": 0.1005,
+        "initial_energy_J": 0.44445223125843214,
+        "signed_energy_defect_relative": -0.00010021155034224898,
+        "max_abs_energy_defect_relative": 0.00010021155034224898,
+        "finite_saved_prefix": true,
+        "balance_at_startup_end": -2.1263226392845536e-07
+      },
+      "failure_artifacts": [
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/train/NLC6_train_078/initial_condition.json",
+          "bytes": 582,
+          "sha256": "d559fec8ed924563a3a1dec105bf94d46ceba7d6ae1de4395792cff26325c04a"
+        },
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/train/NLC6_train_078/physics_failure.json",
+          "bytes": 206,
+          "sha256": "39cc41d0b357b56af2ef8f307a790399a44a6a67fca1fe9edfdaa847e4c87de5"
+        },
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/train/NLC6_train_078/physics_failure_state.jld2",
+          "bytes": 239735,
+          "sha256": "f511069f3a6a49fa8b69fd3628a444cdcaa23e5c3743c10a8577ae847a8f9f0a"
+        },
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/train/NLC6_train_078/progress.json",
+          "bytes": 166,
+          "sha256": "4a5fc4898d27dded66e33762c647e5a2400898883df861a344e14a140b0e06f8"
+        },
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/train/NLC6_train_078/trajectory.h5.partial.h5",
+          "bytes": 48868394,
+          "sha256": "63c80f4902eec82a841ccc56ac3f0943ed38e0d1b500fa0b7a898c5ac4405378"
+        }
+      ],
+      "before_solver": {
+        "substeps": 2,
+        "startup_refinement": 32,
+        "newton_relative_tolerance": 1e-13
+      },
+      "after_solver": {
+        "substeps": 4,
+        "startup_refinement": 32,
+        "newton_relative_tolerance": 1e-13
+      },
+      "initial_state_sha256_required": "6eea82e5c21fca6e808b89b34eee822195d4018bbc157ef0538ac1acb7acbfff"
+    },
+    {
+      "case_id": "NLC6_train_079",
+      "observed_failure": {
+        "energy_balance_limit": 0.0001,
+        "frame": 149,
+        "max_energy_balance_relative": 0.00010104770306248302,
+        "max_strain": 0.00019876416575243094,
+        "status": "quarantined_physics_gate",
+        "strain_limit": 0.001,
+        "time_s": 0.074
+      },
+      "initial_condition": {
+        "actual_connector_energy_ratio": 0.2512197629228783,
+        "connector_energy_ratio": 0.2512197629230568,
+        "family": 10,
+        "family_ordinal": 9,
+        "id": "NLC6_train_079",
+        "initial_amplitude_m": 0.0022760577070647125,
+        "initial_state_sha256": "b9e3308c5945806633b80e622ff3d8221be0c0dd64a92fb75873f57c66344b7c",
+        "initial_strain": 0.00010636106274654148,
+        "linear_energy_fractions": [
+          0.75,
+          0.25
+        ],
+        "modal_coefficients": [
+          0.0059768684656650506,
+          -0.0020155820055661514
+        ],
+        "modes": [
+          3,
+          4
+        ],
+        "relative_path": "train/NLC6_train_079/trajectory.h5",
+        "seed_hex": "1eb20ba6e950d739",
+        "signs": [
+          1,
+          -1
+        ],
+        "split": "train",
+        "static_sign": 1,
+        "tier": 3
+      },
+      "prefix_audit": {
+        "saved_prefix_frames": 149,
+        "allocated_state_shape": [
+          4096,
+          29844
+        ],
+        "last_saved_time_s": 0.074,
+        "initial_energy_J": 0.9842733474528427,
+        "signed_energy_defect_relative": -0.00010104770306248302,
+        "max_abs_energy_defect_relative": 0.00010104770306248302,
+        "finite_saved_prefix": true,
+        "balance_at_startup_end": -2.8302764401107267e-07
+      },
+      "failure_artifacts": [
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/train/NLC6_train_079/initial_condition.json",
+          "bytes": 583,
+          "sha256": "b5284613007ea7278e8ff8f3c1ee021a0419acdb85883bb098e0a451917461dd"
+        },
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/train/NLC6_train_079/physics_failure.json",
+          "bytes": 205,
+          "sha256": "df002df4675b473062a310ddfc651a8adde15bfdfcad8ec1bfb54891e56277db"
+        },
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/train/NLC6_train_079/physics_failure_state.jld2",
+          "bytes": 239735,
+          "sha256": "43b3c50e6373ad50f478335cba49049c073936b943095e4b21e741eca5aa7015"
+        },
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/train/NLC6_train_079/progress.json",
+          "bytes": 166,
+          "sha256": "96d34b32fddad3abf32df322807594c0bee7d56613516d2d1dd0e759266b2c92"
+        },
+        {
+          "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/train/NLC6_train_079/trajectory.h5.partial.h5",
+          "bytes": 36211922,
+          "sha256": "5080bcb2a9d5560d61f91aa3d3f9472e62d0c760244dd4d930f0d3a4f5a0286f"
+        }
+      ],
+      "before_solver": {
+        "substeps": 2,
+        "startup_refinement": 32,
+        "newton_relative_tolerance": 1e-13
+      },
+      "after_solver": {
+        "substeps": 4,
+        "startup_refinement": 32,
+        "newton_relative_tolerance": 1e-13
+      },
+      "initial_state_sha256_required": "b9e3308c5945806633b80e622ff3d8221be0c0dd64a92fb75873f57c66344b7c"
+    }
+  ],
+  "diagnosis": "Both finite saved prefixes have a negative energy-plus-dissipation defect after startup refinement ends. This is a numerical energy-balance gate failure; the precise component of numerical error is not isolated. Strain remains admissible.",
+  "decision": "Extend the unlaunched r3 numerical repair to these failed cases only, preserving exact initial-state hashes and all physical parameters, output frames/dt, Newton tolerance, startup refinement and gates. Increase internal Radau substeps from 2 to 4. Keep live r2 inputs untouched.",
+  "queued_config_before_sha256": "e1e7d4c614d475e5cfcedd27fbccab6cc2e4d84236d232b90133cd069d6c890b",
+  "queued_config_before_snapshot": "runs/dataset21_nlc6_f4096_144_v1_r2/energy_gate_failure_02/queued_r3_before_addendum_01.json",
+  "after_validation": "pending replacement trajectories and full readback; no improvement claim",
+  "changed_initial_conditions": [],
+  "changed_physical_parameters": [],
+  "changed_gates": [],
+  "queued_config_after_sha256": "2dd88023ae46bb607b82fb323120ab0c99b288deec1ca2be6501668aa69dfd26"
+}

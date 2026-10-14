@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-14T19:15:38.783212+00:00",
+  "status": "passed",
+  "accepted_unique": 144,
+  "full_integrity_evidence_sha256": "a8c8d9d3704358f95088d7f07a6172730b103b409358b255d5b38bba9d4a6edf",
+  "report_sha256": "1b25a43330dfd1db256eab47b2dfcff51630684bedab0ca9270fbb8a87353543",
+  "appendix_sha256": "76c50a86a07f650428feb14808f29659b661a8f194ce433c5538e41ceb56c7a5",
+  "report_links_checked": 14,
+  "markdown_tables_checked": 16,
+  "per_case_numeric_rows_checked": 144,
+  "frozen_numerical_inputs_unchanged": 20,
+  "paused_partial_hash_and_stale_lock_preserved": true,
+  "historical_failure_records_preserved": true,
+  "r3_contract_checks_from_frozen_evidence": 309,
+  "qualification_status": "user_waived_independent_qualification",
+  "new_simulation_performed": false,
+  "scope": "Final report/evidence consistency; complete data audit is separate campaign_integrity_04.json."
+}

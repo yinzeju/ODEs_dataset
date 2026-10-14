@@ -5,7 +5,7 @@ Julia generation and qualification of Dataset-1 autonomous ODE data and Dataset-
 
 ## Dataset Catalog And Naming
 
-The active protocol codes are **Dataset-1** and **Dataset-2**. Their 2026-10-11
+The active protocol codes are **Dataset-1**, **Dataset-2**, and **Dataset-2.1/FE-NACA-NLC6**. Their 2026-10-11
 inventory, including both Beam extensions, is in
 [dataset inventory](docs/Notes/dataset_inventory.md); machine-readable paths,
 manifest hashes and legacy aliases are in [dataset catalog](configs/dataset_catalog.json).
@@ -27,31 +27,44 @@ existing serialized models and consumers remain compatible.
 python -X utf8 experiments/data_generation/audit_dataset_catalog.py --verify-data
 ```
 
-## Dataset-2.1: NACA-NLC6 Campaign
+## Dataset-2.1: NACA-NLC6 Complete Population
 
-The user authorized **144 clean full-state NACA-NLC6 trajectories (96/24/24)**.
-Generation continues under `dataset21_nlc6_f4096_144_v1_r2` with a detached Windows WMI supervisor after an unexplained r1 process exit. The model adds six
-passive cubic-spring and smooth velocity-dependent damping connectors, retains
-29,844 states and 4096 frames, and uses a 0.5 ms output interval (2.0475 s).
-The accepted NLC6 baseline damping targets modes 1 and 4 at 1.0% and 0.12%; this
-replaces the former 0.6% campaign settings. Full-state Radau IIA5 uses Float64 GPU
-shell forces with CPU sparse solves and exact low-rank connector tangents.
+The complete release is **`dataset21_nlc6_f4096_144_v1_r4`**, with **144 accepted unique
+trajectories (96/24/24)**, 29,844 physical states, 4096 Float64 frames and a
+0.5 ms output interval. The active pointer is [data/dataset21_active.json](data/dataset21_active.json).
+All files passed the original runtime convergence, strain and energy gates,
+complete state/port readback and final SHA256 verification. The final manifest
+SHA256 is `614c4fc54c6c1cfdd92afc976d7621bfd47893acb3573653458f77d25afcc9a0`.
 
-The user waived new smoke and independent temporal/spatial qualification runs.
-Runtime Newton, strain, energy and complete artifact-readback checks remain enabled.
-The release must be labeled `user_waived_independent_qualification`; it is not a
-fully qualified dataset. See the [population guide](docs/notes/code%20explanation/dataset21_nlc6_population.md)
-and [accepted mathematical proposal](docs/notes/code%20explanation/dataset21_naca_nlc6_proposal.md).
-The completed exploratory NLC6 trajectory and plots remain local in
-`runs/dataset21_nlc6_trial_01/`; they are not counted among the 144 new trajectories.
+The model is a clamped nonlinear wing plus six passive cubic spring and smooth
+velocity-dependent patch dampers, including a stationary support fixture.
+Full-state Radau IIA5 uses FP64 GPU shell forces and CPU sparse solves. Five
+physical-admissibility failures use recorded 0.8 displacement scales; five
+separate energy failures use exactly the original initial states and four
+internal substeps instead of two. Static initialization uses a nonzero-branch
+continuation predictor with unchanged equilibrium gates. The user pause and
+all failed partial files, parent source capsules and immutable reuse lineage
+remain preserved. The final r4 worker exited0; do not restart parent releases.
 
-Old NACA validation and trajectory HDF5 outputs were retired at the user's request:
-22 files / 19,422,102,598 bytes. Code, configurations, receipts, shared models and
-mesh dependencies remain. Frozen historical sources and an exact-byte source ZIP
-are preserved on `codex/abolish-naca-pre-nlc6-20261012`; see the
-[retirement receipt](docs/notes/evidence/dataset21_naca_retirement_20261012.json).
-The monitor may diagnose interruptions and resume this population only; old
-qualification and old generation must not restart. Final shutdown follows the earlier user authorization only after all data, readback, reports and publication are complete and unrelated experiments are inactive.
+Independent temporal/spatial/sampling qualification was waived. The required
+status is **`user_waived_independent_qualification`**, never fully qualified.
+See the [Chinese formal report](reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md),
+[numerical appendix](reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md), [final integrity evidence](reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json)
+and [population guide](docs/Notes/code%20explanation/dataset21_nlc6_population.md).
+The single [offline summary](reports/Dataset21_NLC6_v1_nonlinear_wing/tables/index.html) keeps illustrative
+examples separate from the full-population result. The exploratory trial is
+excluded from the144. Large local HDF5/model/mesh/log artifacts are not uploaded
+by the source/report publication.
+
+Read-only re-verification, using a new output filename:
+
+```powershell
+python -X utf8 experiments/postprocessing/audit_dataset21_nlc6_release.py --config configs/releases/dataset21_nlc6_v1_r4.json --worker-receipt runs/dataset21_nlc6_f4096_144_v1_r4/worker_05.json --output runs/naca_campaign_control/repeated_integrity_audit.json
+```
+
+Old NACA/QUAL numerical outputs were retired by user request and must not be
+regenerated. Historical sources remain on `codex/abolish-naca-pre-nlc6-20261012`;
+see the [retirement receipt](docs/Notes/evidence/dataset21_naca_retirement_20261012.json).
 
 ## Dataset-2: Nonlinear Structural Dynamics
 
@@ -171,8 +184,8 @@ The formal generator uses the full registered population. A changed source,
 dependency manifest, configuration, or protocol note requires a new release identity;
 the generator refuses to overwrite an existing release with a different hash.
 
-See [the generation guide](docs/notes/file%20explanation/standard_odes_v2_file_explanation.md),
-[the frozen mathematical protocol](docs/notes/mathematical%20explanation/standard_odes_v2_math.md),
+See [the generation guide](docs/Notes/file%20explanation/standard_odes_v2_file_explanation.md),
+[the frozen mathematical protocol](docs/Notes/mathematical%20explanation/standard_odes_v2_math.md),
 and [the Chinese qualification report](reports/TestSub_1_standard_odes_v2/TestSub_1_standard_odes_v2.md).
 
 ## Archived Resources
@@ -196,7 +209,7 @@ git show archive/abolish-pre-standard-odes-v2-20260916:abolish/ARCHIVE_README.md
 git ls-tree -r --name-only archive/abolish-pre-standard-odes-v2-20260916 -- abolish
 ```
 
-See [the cleanup record](docs/notes/file%20explanation/standard_odes_v2_cleanup.md).
+See [the cleanup record](docs/Notes/file%20explanation/standard_odes_v2_cleanup.md).
 The original dependency lock remains frozen to preserve the qualified release's
 configuration identity. Running the smoke command creates fresh temporary smoke
 data; the historical smoke certificate and logs are retained with the report.
@@ -214,7 +227,13 @@ refer to content now held by the archive branch. The active checkout is `main`.
 
 ## NLC6 runtime gate repair (2026-10-12)
 
-Case NLC6_train_022 exceeded the unchanged 0.001 strain threshold. The r1 driver closes and quarantines energy/strain failures immediately, then continues other cases. The user subsequently authorized reduced amplitudes and delegated recorded continuation decisions. The active r2 plan reduces only five rejected family-3 cases to 0.8 displacement (0.64 energy-ratio multiplier), preserves all other recipes and runtime limits, and reuses 71 accepted parent files with immutable hardlink lineage and complete readback. Missing/rejected cases prevent completion and shutdown. See `runs/dataset21_nlc6_f4096_144_v1_r2/detached_launch.json` and `docs/Notes/evidence/dataset21_nlc6_detached_restart_02.json`. The original r1 interrupted partial file, stale lock and receipts remain evidence.
+Historical repair: NLC6_train_022 exceeded the unchanged 0.001 strain threshold.
+The r1 driver added immediate closed quarantine; the authorized r2 plan changed
+only five failed family-3 displacements by0.8 (energy ratios by0.64). All five
+replacements were accepted and their immutable files remain in the final r4
+population. See `docs/Notes/evidence/dataset21_nlc6_amplitude_revision_02.json`
+and the formal report for the subsequent numerical/static repairs. The original
+r1 interrupted partial file, stale lock and receipts remain evidence.
 
 ## NLC6 visualization summary
 
@@ -226,4 +245,5 @@ Figures, animations, tables and historical renderings are organized in that one
 report folder; large local media remain excluded from Git. Maintained CPU-only
 postprocessing entry points are in `experiments/postprocessing/`, with shared paths
 and selection in `configs/visualizations/dataset21_nlc6_report.json`.
-The visualization summary is not the final report of the still-running campaign.
+The summary links the completed formal report and full-population audit; its
+selected visualization examples remain illustrative.

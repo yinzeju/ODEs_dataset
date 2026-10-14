@@ -98,9 +98,25 @@ def build_dashboard(report=REPORT_ROOT):
         ("evidence/report_manifest.json", "Artifact and source manifest"), ("evidence/relocation.json", "Migration and deduplication record")]
         if (report/path).exists())
     scope_label = "four accepted population trajectories and one separate trial" if trial else "four accepted population trajectories"
+    status_text = ("This page summarizes completed examples; it is not a live progress counter. "
+        "Independent numerical qualification was waived; selected files passed runtime checks and full readback.")
+    completion_path = report / "evidence/campaign_completion_04.json"
+    if completion_path.exists():
+        completion = read_json(completion_path)
+        integrity = read_json(report / "evidence/campaign_integrity_04.json")
+        if (completion["accepted"] != 144 or integrity["status"] != "passed"
+                or completion["manifest_sha256"] != integrity["manifest_sha256"]):
+            raise ValueError("Campaign completion evidence does not match its final audit")
+        status_text = ("Formal population completed: 144/144 unique trajectories (96 Train / 24 Validation / 24 Test). "
+            "All files passed runtime gates, complete saved-state readback and SHA256 verification. "
+            "Qualification status: user_waived_independent_qualification. "
+            '<a href="../Dataset21_NLC6_v1_nonlinear_wing.md">Chinese formal report</a> · '
+            '<a href="../NLC6_numerical_appendix.md">Numerical appendix</a> · '
+            '<a href="../evidence/campaign_integrity_04.json">Full-population integrity evidence</a>. '
+            "The plots below remain illustrative selected examples.")
     page = f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dataset-2.1 NLC6 — visualization summary</title><style>{css}</style></head><body>
 <h1>Dataset-2.1 NACA-NLC6</h1><p class="muted">Visualization summary · {scope_label}</p>
-<p class="status">The full campaign is still generating. This page summarizes existing completed examples; it is not a live progress counter or a final dataset report. Independent numerical qualification was waived; the selected population files passed runtime checks and full readback.</p>
+<p class="status">{status_text}</p>
 <nav><a href="#summary">Metrics</a><a href="#overview">Overview</a>{trial_nav}{archive_nav}{guide_nav}</nav>
 <div class="panel"><p>29,844 physical states · 4,096 saved frames · 0.5 ms sampling · 2.0475 s per full trajectory.</p><p>Current animations show the first 0.20 s with <strong>10x displacement and 6.00 s playback</strong>. Geometry remains at its actual scale, all axis units are equal, light-gray lines mark the physical exterior, and colors show actual normal displacement in mm. Histories and metrics use all 4,096 frames.</p><p>The same-initial-condition linear tangent reference is analytic. Relative response differences include phase accumulation and integration error; they are not a percentage of nonlinearity. The four examples are illustrative and do not characterize the whole population.</p></div>
 <section id="summary"><h2>Completed-example metrics</h2><p><a href="summary.csv">Download summary CSV</a>{evidence_links}</p><div class="scroll"><table><thead><tr><th>Trajectory</th><th>Original modes</th><th>Initial ratio R</th><th>Peak translation (mm)</th><th>Final energy / E0</th><th>Maximum strain</th><th>Energy-balance error</th></tr></thead><tbody>{table}</tbody></table></div></section>

@@ -1,147 +1,85 @@
-# NACA-NLC6 population generation
+# NACA-NLC6 accepted population
 
-The user accepted the NLC6 proposal after one completed exploratory trajectory
-and explicitly authorized 144 clean trajectories without additional smoke or
-independent qualification runs. This is an implementation and launch record,
-not a completed-dataset report. Generation is in progress.
+The accepted release is `dataset21_nlc6_f4096_144_v1_r4`:144 unique clean trajectories,
+96 Train/24 Validation/24 Test,12 families with8/2/2 each. The worker exited0
+after complete saved-state readback. A separate final audit rechecked every
+HDF5 hash, all saved states and port identities, exact initial states, runtime
+receipts, model/source bindings and133 immutable parent hardlinks.
+The active pointer is `data/dataset21_active.json`. Never restart parent releases.
 
-Current engineering revision: `dataset21_nlc6_f4096_144_v1_r2`, configured by
-`configs/releases/dataset21_nlc6_v1_r2.json` and its hashed explicit population
-plan. Five failed family-3 cases use the user-authorized 0.8 displacement scale;
-all other recipes, split identities and physics remain unchanged. Seventy-one
-accepted parent files are reused immutably with full readback. The r1 worker
-disappeared without a Julia exception; its evidence remains preserved. The
-current worker uses `launch_dataset21_nlc6_detached.ps1` and a hidden native
-Windows PowerShell supervisor created through WMI, outside the Codex terminal
-process tree. Inspect `runs/naca_campaign_control/state.json` for the current
-receipt before any launch. The original v1 design/launch details below remain
-historical references and must not be used to restart retired workers.
+## Frozen model and data contract
 
-## Frozen design
+- 14,922 displacement DOFs;29,844 physical states; no modal truncation or new connector states.
+- Fixed clamped wingbox mesh, local lumped shell mass, six fixed-direction passive patch connectors.
+- Cubic springs and smooth saturating velocity-dependent dampers; all physical parameters fixed.
+- Rayleigh aM=0.5879008847043158/s,aK=1.6378470960752408e-6s; mode1/4 targets1%/0.12%.
+- 4096 Float64 frames,dt0.0005s,T2.0475s;zero initial velocities and no continuing force, gravity,rotation or noise.
+- HDF5 `x` is state/time in Julia and time/state in h5py; all q followed by all v.
+- Auxiliary fields store energy, linear/connector dissipation, six port coordinates/velocities, connector potential and recovered strain.
 
-- Release: `dataset21_nlc6_f4096_144_v1`.
-- Config: `configs/releases/dataset21_nlc6_v1.json`.
-- Mechanical model: 14,922 displacement DOFs, 29,844 full physical states; no
-  reduced dynamics and no additional connector states.
-- Six passive fixed-direction patch connectors implement cubic elastic forces
-  and smooth saturating velocity-dependent damping, as specified in
-  `dataset21_naca_nlc6_proposal.md`. The model includes a stationary support
-  fixture and is distinct from the original SSMTool NACA example.
-- Updated baseline Rayleigh coefficients: aM = 0.5879008847043158 /s and
-  aK = 1.6378470960752408e-6 s. The first/fourth mode targets are 1.0% / 0.12%.
-- 4096 Float64 frames including t=0, dt=0.0005 s, duration=2.0475 s.
-- Full-state Radau IIA5: two internal substeps, startup refinement 32 over the
-  first 0.05 s, scaled Newton tolerance 1e-13. GPU evaluates shell geometric
-  forces; CPU sparse solves use exact rank-18 connector stage-tangent updates.
-- Zero initial velocities, no ongoing force, no gravity, rotation or noise.
+## Initialization and engineering revisions
 
-## Population and initialization
+Four single-mode,six pair-mode,one four-mode mixture and one nonlinear static-release
+family share the original144-member SHA-derived seed namespace20261012.
+Nominal low/middle/high allocation is24/60/60 with ratios0.025/0.1/0.25 and frozen10% jitter.
+The actual ratio is connector quartic potential/original quadratic strain energy.
+Mode shapes initialize complete physical states only.
 
-Twelve families contain the four individual original modes, their six pairs,
-one four-mode mixture, and a nonlinear static release. Modes set initial
-conditions only. Every family contributes eight Train, two Validation and two
-Test cases. The Validation split is a machine-learning split; its name does not
-mean that an independent numerical qualification campaign is being executed.
+Five family3 physical-admissibility failures use displacement0.8 and ratio0.64
+relative to their original recipes; their original nominal tier remains identifiable.
+Five separate energy-failed cases preserve exactly their original initial-state SHA
+and use internal Radau substeps4 rather than2. All other cases use2.
+Startup refinement32 over0.05s,Newton1e-13,20 iterations,chord10 and bisections6 remain.
+Static releases solve the full nonlinear force and energy-ratio constraint after
+a sqrt(new_ratio/previous_actual_ratio) nonzero-branch predictor. No static
+force/correction/ratio/strain gate was weakened.
 
-| Split | Low | Middle | High | Total |
-| --- | ---: | ---: | ---: | ---: |
-| Train | 16 | 40 | 40 | 96 |
-| Validation | 4 | 10 | 10 | 24 |
-| Test | 4 | 10 | 10 | 24 |
-| Total | 24 | 60 | 60 | 144 |
+## Runtime gates and final audit
 
-Strength means added quartic connector potential divided by the original linear
-strain energy. Its centers are 0.025, 0.10 and 0.25, with predeclared 10% relative
-jitter. The frozen per-family allocation in the JSON config sets every count.
-Seeds are SHA256-derived from release identity, seed 20261012, family and ordinal.
-The leading modal/static sign alternates, with independent signs for remaining
-modal components. Pair energy fractions cycle through 0.25, 0.50 and 0.75;
-four-mode fractions permute 0.1/0.2/0.3/0.4, jitter by 10%, then normalize.
-The complete plan is saved before the first trajectory starts.
+Every accepted file passed Newton convergence,finite complete states,strain<=0.001,
+relative energy balance<=1e-4,terminal energy fraction<=0.4,all-frame saved-port
+identity,initial-state equality,time grid and file SHA256 checks. The generator's
+`integrated_pending_readback` solver-receipt status describes the integration stage;
+the matching passed readback receipt and final release manifest establish acceptance.
 
-Modal states use the exact algebraic scale for the target connector-energy
-ratio. Static states solve the full nonlinear equilibrium and the same ratio
-constraint jointly, with a unit-total normal load over the outer 10% of the
-skin; the load is removed for release. Continuation uses 1/16, 1/4, 1/2 and 1
-times the requested ratio. The force check is roundoff-aware, the correction
-tolerance is 1e-9, and the ratio tolerance is 1e-8. This equilibrium calculation
-is required initial-condition construction, not a validation trajectory.
-An inadmissible initial state stops the run; its strength is not silently lowered.
+Independent time/grid/sampling qualification and new smoke/ablation experiments
+were waived. Preserve `user_waived_independent_qualification`; runtime energy
+acceptance is not a reference-solution full-state accuracy certificate.
+Validation/Test labels describe future learning partitions, not independent qualification runs.
 
-## Execution and recovery
-
-Entry points:
+Read-only verification (choose a new output path):
 
 ```powershell
-pwsh -NoProfile -File experiments/data_generation/start_dataset21_nlc6_campaign.ps1 -Attempt 01
+python -X utf8 experiments/postprocessing/audit_dataset21_nlc6_release.py --config configs/releases/dataset21_nlc6_v1_r4.json --worker-receipt runs/dataset21_nlc6_f4096_144_v1_r4/worker_05.json --output runs/naca_campaign_control/repeated_integrity_audit.json
 ```
 
-The above attempt is already running. Do not repeat it. A resume requires a new
-attempt identifier and verification that the previous PID/creation-time pair is
-no longer alive. The directory execution lock prevents duplicate launches.
-The Julia entry is `experiments/data_generation/run_dataset21_nlc6_campaign.jl`;
-the reusable driver is `src/data/dataset21_nlc6/campaign.jl`.
+## Provenance and storage
 
-The retained base model is `artifacts/dataset21_nlc6/base_model.jld2`, SHA256
-`c2aca06d27abf835ad75d03f3c9f968037a3137bb6a36ed6be54e16686e34b14`.
-Its mesh is retained alongside it. These local numerical dependencies are not
-uploaded to Git. The inherited shell source, pinned upstream identity, source
-retrieval tool, mesh assembly recipes, environment and diagnostics remain in
-`src/data/dataset21_naca/`, `configs/` and `experiments/data_generation/`.
+The final source/config/environment capsule is `runs/dataset21_nlc6_f4096_144_v1_r4/source_snapshot/`;
+`input_fingerprint.json` binds20 inputs. Accepted parent HDF5 files are immutable
+hardlinks with source-lineage receipts; r4 repeats their complete readback before
+counting reuse. There are133 parent files and11 new static releases. Each final
+trajectory directory retains initial-condition metadata,solver/progress/readback
+receipts and `trajectory.h5`. The root manifest has144 ordered members.
 
-Data are saved under `data/releases/dataset21_nlc6_f4096_144_v1/`; each trajectory
-has its own directory containing `trajectory.h5`, initial-condition metadata,
-solver receipt, progress and readback receipt. Julia x axes are state/time;
-h5py sees time/state. The first half of each state is q, followed by qdot.
-Separate fields store energy, linear/nonlinear dissipated work, connector
-potential, six connector displacements and velocities, and recovered strain.
+Preserve r1 `interruption_02.json`,stale locks/receipts and partial file;
+r2 energy/static failure capsules; r3 `pause_20261014.json`,exit130 and the original
+interrupted NLC6_test_023 partial. r4 reran that case from its exact original initial
+condition. All prior launch failures and native PowerShell quoting/UTF8/exit-handle
+repairs remain recorded. Never overwrite accepted HDF5 or remove historical evidence.
 
-`runs/dataset21_nlc6_f4096_144_v1/` holds the immutable input fingerprint/source
-capsule, population plan, completed list, campaign status, launcher receipts
-and logs. Recovery reuses only complete files with matching initial states,
-hashes and full readback. Partial files and failure receipts are preserved.
-Changing frozen numerical inputs requires an explicit versioned repair record.
+The separate exploratory trial remains outside the formal144. Old NACA/QUAL HDF5
+were deleted by user request; do not recreate them. Shared models/meshes and pinned
+upstream source/license remain required local dependencies. Git publishes source,
+configuration,small evidence and reports,not these large local data artifacts.
 
-## Execution checks and evidence boundary
+## Reports and visualizations
 
-Independent time/grid qualification and new validation experiments are waived.
-The release status is `user_waived_independent_qualification`. Existing checks
-remain: finite states, Newton convergence, strain <=0.001, relative energy-balance
-error <=1e-4, terminal energy <=40%, complete readback and SHA256 binding. Failure
-stops the campaign for diagnosis; no parameter or acceptance limit is relaxed
-automatically. The generator writes a complete manifest only after 144 successes.
-
-The prior single NLC6 trial remains separate evidence: 4096 frames, energy ratio
-0.1941108740, maximum energy-balance error 1.2140542e-5, strain 6.6231445e-5,
-1451.93 s integration time, 978,751,801 HDF5 bytes. Extrapolating that one case
-gives roughly 58 hours and 131.26 GiB for 144 trajectories; actual runtimes vary
-by initial condition and these estimates do not constitute batch results.
-
-The old NACA trajectory and verification HDF5 data were removed at the user's
-request. See `../evidence/dataset21_naca_retirement_20261012.json`. Old source
-capsules, small receipts and an exact-byte ZIP are on archive branch
-`codex/abolish-naca-pre-nlc6-20261012`. New NLC6 data, the completed trial, shared
-models and source code were protected. Do not restart the retired campaign.
-
-The existing heartbeat follows this population and reports only meaningful
-changes or required repairs. The earlier final-shutdown authorization applies only after data, readback, reporting and publication are complete and unrelated experiments are inactive. The final Chinese report
-and numerical appendix will use the completed population evidence; this launch
-does not claim that all trajectories are already generated.
-
-## Visualization workspace
-
-Current plots and animations are curated in
-`reports/Dataset21_NLC6_v1_nonlinear_wing/`. Open `tables/index.html` there for the
-single offline summary of four selected completed cases and the separate trial.
-All current GIFs use 10x display displacement and six-second playback; metrics use
-the full 4096-frame histories. Figures are in `plots/`, GIFs in `animations/`, CSV
-and JSON metrics in `tables/`, and hashes/relocation records in `evidence/`.
-Superseded renderings and the retired original NACA preview are retained under
-`archive/` and are clearly separated from current NLC6 evidence.
-
-Maintained analysis, plotting and rendering scripts moved to
-`experiments/postprocessing/`; shared report paths and selected IDs are declared
-in `configs/visualizations/dataset21_nlc6_report.json`. Simulation data and active
-worker inputs remain in their original locations. Rebuild only the dashboard with
-`python -X utf8 experiments/postprocessing/dataset21_nlc6_report.py`; audit the
-curated files with `audit_dataset21_nlc6_report.py` in the same directory.
+The formal Chinese report is `reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md`; its sibling is `NLC6_numerical_appendix.md`.
+Final audit: `reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json`. All adjustments,qualification limits and provenance are
+included. The unique summary is `reports/Dataset21_NLC6_v1_nonlinear_wing/tables/index.html`; it connects the formal
+result to four illustrative population examples and a separately labeled trial.
+Animations remain10x/six seconds; numeric histories use all4096 frames.
+Maintained postprocessing entry points live under `experiments/postprocessing/`.
+Never recreate removed old plotting folders. Read control state for publication
+and explicitly authorized conditional shutdown receipts.

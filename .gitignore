@@ -58,3 +58,11 @@
 !/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/relocation.json
 !/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/report_manifest.json
 !/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/audit.json
+
+# Final NLC6 release definition, formal reports and compact integrity evidence.
+!/data/dataset21_active.json
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_completion_04.json
+!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/report_protocol_20261014.json

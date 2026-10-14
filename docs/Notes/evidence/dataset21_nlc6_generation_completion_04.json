@@ -1,0 +1,29 @@
+{
+  "utc": "2026-10-14T19:03:08.592765+00:00",
+  "status": "generation_complete_final_external_integrity_and_closeout_pending",
+  "release_id": "dataset21_nlc6_f4096_144_v1_r4",
+  "accepted_unique": 144,
+  "active_release_full_readback_count": 144,
+  "parent_reused_count": 133,
+  "new_in_active_release": 11,
+  "quarantined": 0,
+  "worker": {
+    "status": "completed",
+    "pid": 24828,
+    "process_started_utc": "2026-10-14T15:15:25.9813852Z",
+    "config": "configs/releases/dataset21_nlc6_v1_r4.json",
+    "attempt": "05",
+    "stdout": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\dataset21_nlc6_f4096_144_v1_r4\\worker_05.log",
+    "stderr": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\dataset21_nlc6_f4096_144_v1_r4\\worker_05.err.log",
+    "exit_code": 0,
+    "finished_utc": "2026-10-14T19:00:25.4009957+00:00"
+  },
+  "campaign_status": {
+    "completed": 144,
+    "full_readback_passed": true,
+    "manifest_sha256": "614c4fc54c6c1cfdd92afc976d7621bfd47893acb3573653458f77d25afcc9a0",
+    "status": "complete"
+  },
+  "qualification_status": "user_waived_independent_qualification",
+  "evidence_boundary": "All144 passed unchanged runtime gates and worker full readback. A fresh external full-file integrity audit is running; reports/publication/shutdown remain pending."
+}

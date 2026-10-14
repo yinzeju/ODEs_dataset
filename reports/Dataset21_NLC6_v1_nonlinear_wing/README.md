@@ -2,7 +2,10 @@
 
 Open [tables/index.html](tables/index.html) for the complete visualization summary.
 It combines four accepted population examples and the separate exploratory trial.
-The full 144-trajectory campaign is still running; this is not its final report.
+The formal144-trajectory population is complete and passed final full-state/SHA verification.
+Read [the Chinese formal report](Dataset21_NLC6_v1_nonlinear_wing.md),
+[numerical appendix](NLC6_numerical_appendix.md) and
+[full integrity evidence](evidence/campaign_integrity_04.json).
 
 Current animations use 10x displacement, six-second playback, equal physical axis
 units, and light-gray actual exterior contours. They show the first 0.20 s of
@@ -55,5 +58,5 @@ Independent time/grid qualification remains waived. Runtime checks and complete
 readback support the selected files; this illustrative subset does not establish
 population-wide behavior. The analytic same-initial-condition linear reference
 includes phase accumulation in its differences and is not a direct percentage
-measure of nonlinearity. The formal Chinese campaign report and numerical appendix
-will be written here after full generation and integrity checks finish.
+measure of nonlinearity. The formal report and appendix now document the complete population.
+The visual examples remain illustrative and separate from the population audit.

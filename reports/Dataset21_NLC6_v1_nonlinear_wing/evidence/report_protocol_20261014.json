@@ -1,0 +1,9 @@
+{
+  "repository": "yinzeju/Notebook",
+  "path": "系统辨识和模型学习/Koopman Space/Part 0 Evaluation & Benchmark/SKDM-Exp2-Experimental Reporting Protocol.md",
+  "source_url": "https://github.com/yinzeju/Notebook/blob/main/系统辨识和模型学习/Koopman%20Space/Part%200%20Evaluation%20%26%20Benchmark/SKDM-Exp2-Experimental%20Reporting%20Protocol.md",
+  "blob_sha": "7fa370f128dec078ef35baf47ac9ce01fcd49e70",
+  "retrieval_date": "2026-10-14",
+  "retrieval_method": "Authenticated GitHub connector fetch_file, default branch, complete content read",
+  "adaptation": "Dataset production: runtime acceptance and immutable saved-state integrity; learner training/selection/Test prediction scores are N.A."
+}

@@ -2,7 +2,7 @@ param([string]$Config, [string]$Attempt, [string]$JuliaExecutable)
 $ErrorActionPreference='Stop'
 $projectRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 Set-Location -LiteralPath $projectRoot
-$cfg=Get-Content -LiteralPath $Config -Raw | ConvertFrom-Json
+$cfg=Get-Content -LiteralPath $Config -Raw -Encoding UTF8 | ConvertFrom-Json
 $runRoot=Join-Path $projectRoot ('runs/'+$cfg.release_id)
 Start-Transcript -LiteralPath (Join-Path $runRoot ('supervisor_'+$Attempt+'.log')) | Out-Null
 try {

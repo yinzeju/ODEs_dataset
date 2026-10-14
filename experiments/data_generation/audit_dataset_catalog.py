@@ -45,6 +45,9 @@ def audit(catalog_path: Path, *, verify_data: bool = False) -> dict:
                     raise ValueError("Dataset2 artifact catalog changed")
                 references = [{"path": path, "sha256": digest}
                               for path, digest in read_json(index_path)["files"].items()]
+            elif entry["manifest_kind"] == "dataset21_nlc6_release":
+                references = [{"path": row["relative_path"], "sha256": row["sha256"]}
+                              for row in manifest["trajectories"]]
             else:
                 references = manifest["trajectories"]
             for row in references:

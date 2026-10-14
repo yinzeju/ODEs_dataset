@@ -2,7 +2,8 @@
   "report_identity": "Dataset21_NLC6_v1_nonlinear_wing",
   "dashboard": "tables/index.html",
   "qualification_status": "user_waived_independent_qualification",
-  "population_completion_claim": false,
+  "population_completion_claim": true,
+  "population_completion_evidence": "evidence/campaign_completion_04.json",
   "selected_sources": [
     {
       "id": "NLC6_train_006",
@@ -458,6 +459,21 @@
       "sha256": "638091e0bf73e3627f563dc964de17d8d98d36268e9a599952c5f24a7d52cfac"
     },
     {
+      "path": "Dataset21_NLC6_v1_nonlinear_wing.md",
+      "bytes": 11610,
+      "sha256": "1b25a43330dfd1db256eab47b2dfcff51630684bedab0ca9270fbb8a87353543"
+    },
+    {
+      "path": "evidence/campaign_completion_04.json",
+      "bytes": 2499,
+      "sha256": "e9dd9b9899462c36d71e6cd17bd5a8a735a6ea25563fed5161aab1d0a38f4445"
+    },
+    {
+      "path": "evidence/campaign_integrity_04.json",
+      "bytes": 1461608,
+      "sha256": "a8c8d9d3704358f95088d7f07a6172730b103b409358b255d5b38bba9d4a6edf"
+    },
+    {
       "path": "evidence/organization_summary.json",
       "bytes": 845,
       "sha256": "a03d59daea792d2ac163afceb2a8d991ff74d29395e7cc90316ebbaa7b4e4f49"
@@ -471,6 +487,11 @@
       "path": "evidence/relocation_plan.json",
       "bytes": 52752,
       "sha256": "b4f5cd3b7bf5e408997ae59167df033c3f29164531633e985bcbf404ba0ac4d2"
+    },
+    {
+      "path": "evidence/report_protocol_20261014.json",
+      "bytes": 728,
+      "sha256": "6feb31ffd69871d4626dbd232736028d6e139f4b9a5a8814830da985839220d4"
     },
     {
       "path": "evidence/selected/manifest.json",
@@ -501,6 +522,11 @@
       "path": "evidence/trial/trial_summary.md",
       "bytes": 5119,
       "sha256": "809130b1ea2bdaacdd24a03d42ab0b099a28b9dec7852dc08eab57678da4b8aa"
+    },
+    {
+      "path": "NLC6_numerical_appendix.md",
+      "bytes": 54438,
+      "sha256": "76c50a86a07f650428feb14808f29659b661a8f194ce433c5538e41ceb56c7a5"
     },
     {
       "path": "plots/selected/NLC6_train_006/displacement_velocity.pdf",
@@ -654,13 +680,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 3727,
-      "sha256": "5cd29efecd0b4df4f5c65133cab0100c03015e233ad717b8e9546831342dfc99"
+      "bytes": 4009,
+      "sha256": "ba7bcbe9b3b2c577af9a4341cd255233842ab4920b5dd1b2d2daf1a519f15995"
     },
     {
       "path": "tables/index.html",
-      "bytes": 10647,
-      "sha256": "924082ff3e689d05bb90535eb03454b9c41ad018eea8792259eba6c01281f13f"
+      "bytes": 10909,
+      "sha256": "43180dc5c5b22116c48203c9be7a643673624066e51d64f6d87d4dcd05f41e56"
     },
     {
       "path": "tables/selected/NLC6_train_006/analysis.json",

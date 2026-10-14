@@ -1,0 +1,118 @@
+{
+  "schema": "dataset21.nlc6.numerical_revision.v1",
+  "utc": "2026-10-13T20:18:43.308608+00:00",
+  "status": "queued_after_live_r2_driver_required",
+  "authority": "User delegated subsequent engineering choices provided they are recorded. Preserve gates and physics; numerical refinement does not alter initial amplitudes.",
+  "parent_release": "dataset21_nlc6_f4096_144_v1_r2",
+  "next_release": "dataset21_nlc6_f4096_144_v1_r3",
+  "case_id": "NLC6_validation_018",
+  "observed_failure": {
+    "energy_balance_limit": 0.0001,
+    "frame": 347,
+    "max_energy_balance_relative": 0.00010005571691552474,
+    "max_strain": 0.00010419470991147046,
+    "status": "quarantined_physics_gate",
+    "strain_limit": 0.001,
+    "time_s": 0.17300000000000001
+  },
+  "failed_initial_condition": {
+    "actual_connector_energy_ratio": 0.2666974868481836,
+    "connector_energy_ratio": 0.2666974868480653,
+    "family": 9,
+    "family_ordinal": 11,
+    "id": "NLC6_validation_018",
+    "initial_amplitude_m": 0.0011040088611600173,
+    "initial_state_sha256": "87a64c816232628bec82e9571034892166204a4451f447b3042e14ed9b6e69a3",
+    "initial_strain": 0.00010419470991147046,
+    "linear_energy_fractions": [
+      0.5,
+      0.5
+    ],
+    "modal_coefficients": [
+      0.003347696978221048,
+      0.001640611236411927
+    ],
+    "modes": [
+      2,
+      4
+    ],
+    "relative_path": "validation/NLC6_validation_018/trajectory.h5",
+    "seed_hex": "e27ad5d83483feb1",
+    "signs": [
+      1,
+      1
+    ],
+    "split": "validation",
+    "static_sign": 1,
+    "tier": 3
+  },
+  "saved_prefix_audit": {
+    "saved_prefix_frames": 347,
+    "allocated_state_shape": [
+      4096,
+      29844
+    ],
+    "last_saved_time_s": 0.17300000000000001,
+    "initial_energy_J": 0.3298624798998865,
+    "last_saved_energy_J": 0.27012235464653556,
+    "last_saved_dissipation_J": 0.059707120626441006,
+    "signed_energy_defect_relative": -0.00010005571691552474,
+    "finite_saved_prefix": true
+  },
+  "failure_artifacts": [
+    {
+      "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/validation/NLC6_validation_018/initial_condition.json",
+      "bytes": 597,
+      "sha256": "720d85df73bf59e25ed9bdfd251255a8bf980a24d5cb88aed681fb6167484a8e"
+    },
+    {
+      "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/validation/NLC6_validation_018/physics_failure.json",
+      "bytes": 219,
+      "sha256": "601f35948bb5cc6eb09c84ca96d697b3ff18ce69fbae42c0d3c66204b369ce44"
+    },
+    {
+      "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/validation/NLC6_validation_018/physics_failure_state.jld2",
+      "bytes": 239735,
+      "sha256": "5e4cdaa64fda6e9400730e7a1fa6fcfd82e97d86b773362f32b10c3942df8099"
+    },
+    {
+      "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/validation/NLC6_validation_018/progress.json",
+      "bytes": 166,
+      "sha256": "c7c7e13fad0e75613c6a5ff6a510175f1fc2f43386a628615d30c275d3579ade"
+    },
+    {
+      "path": "data/releases/dataset21_nlc6_f4096_144_v1_r2/validation/NLC6_validation_018/trajectory.h5.partial.h5",
+      "bytes": 83492666,
+      "sha256": "ccea59214978633dcc9d6ec69c94a833b32cc8c3bca7aec17bdd5a12c398c861"
+    }
+  ],
+  "diagnosis": "The saved energy plus integrated dissipation falls short of initial energy. State values are finite and strain is admissible. The defect increases mainly after startup refinement ends at 0.05 s. This is evidence of a numerical energy-balance failure; its precise error contribution is not isolated.",
+  "decision": "Keep the same initial state and physical model. For this failed case only, increase Radau internal substeps from 2 to 4; retain startup refinement 32, output dt, frames, Newton tolerance and every gate. Keep the healthy r2 worker running on frozen inputs. After it exits, implement strict case_solver_overrides consumption, validate no-integration configuration contracts, reuse accepted immutable r2 files with lineage and full readback, and run r3.",
+  "before_solver": {
+    "substeps": 2,
+    "startup_refinement": 32,
+    "newton_relative_tolerance": 1e-13
+  },
+  "after_solver": {
+    "substeps": 4,
+    "startup_refinement": 32,
+    "newton_relative_tolerance": 1e-13
+  },
+  "initial_state_sha256_required": "87a64c816232628bec82e9571034892166204a4451f447b3042e14ed9b6e69a3",
+  "changed_physical_parameters": [],
+  "changed_initial_conditions": [],
+  "changed_gates": [],
+  "output_contract": {
+    "state_dimension": 29844,
+    "frames": 4096,
+    "dt_seconds": 0.0005,
+    "counts": {
+      "train": 96,
+      "validation": 24,
+      "test": 24
+    },
+    "noise_views": []
+  },
+  "after_validation": "pending actual replacement trajectory and complete readback; no improvement claim",
+  "qualification_status": "user_waived_independent_qualification"
+}

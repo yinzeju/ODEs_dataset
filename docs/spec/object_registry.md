@@ -122,8 +122,8 @@ The report evidence separately records the time of its read-only integrity audit
 - Dependencies: pinned upstream source/NOTICE and isolated configs/environments/dataset21_naca; local base model artifacts/dataset21_nlc6/base_model.jld2. All initial-condition recipes, seeds, ratio tiers and allocation are frozen in the release input capsule.
 - Output: data/releases/dataset21_nlc6_f4096_144_v1; completed single trial remains runs/dataset21_nlc6_trial_01, separate from the population. No current dataset-completion or independent-qualification claim.
 - Numerical methods: FP64 GPU shell forces, CPU sparse Radau solves, analytic rank-18 connector stage tangent, and nonlinear constrained static release initialization. Runtime convergence, energy, strain, state-finiteness, saved-port identity and hash/readback checks remain enabled.
-- Evidence/navigation: docs/notes/code explanation/dataset21_nlc6_population.md; prior trial completion.json and analysis.json; current campaign_status.json and completed.json as available. No final report until the population is complete.
-- Retired lineage: old dataset21_naca_zeta006 trajectory and qualification HDF5 data deleted by request; preserved shared code remains active. Historical source capsules and exact-byte ZIP: codex/abolish-naca-pre-nlc6-20261012, 9d72cce0134ce8b57fb72f043d0ecc9a50ba163c. Retirement receipt: docs/notes/evidence/dataset21_naca_retirement_20261012.json.
+- Evidence/navigation: docs/Notes/code explanation/dataset21_nlc6_population.md; prior trial completion.json and analysis.json; current campaign_status.json and completed.json as available. No final report until the population is complete.
+- Retired lineage: old dataset21_naca_zeta006 trajectory and qualification HDF5 data deleted by request; preserved shared code remains active. Historical source capsules and exact-byte ZIP: codex/abolish-naca-pre-nlc6-20261012, 9d72cce0134ce8b57fb72f043d0ecc9a50ba163c. Retirement receipt: docs/Notes/evidence/dataset21_naca_retirement_20261012.json.
 
 ### NACA-NLC6 v1_r1 runtime-gate revision (2026-10-12T09:04-07:00)
 
@@ -147,3 +147,20 @@ The report evidence separately records the time of its read-only integrity audit
 - Artifacts: plots/, animations/, tables/, evidence/ and archive/ under the report root. 146 original file mappings and preserved source snapshots retain historical provenance; 26 identical copies were merged only after SHA256 equality. Local images, raw per-frame CSV and archives are not restored by a Git checkout alone.
 - Validation: 100 offline links, four complete metric histories, five source hashes and five current GIFs passed; all 20 frozen campaign inputs unchanged. Report evidence/audit.json and relocation.json hold exact records; the task file explanation documents data flow and unavailable browser inspection.
 - Related objects: consumes the NACA-NLC6 full-state generator and separate trial. Retired NACA figures are historical only. The formal Chinese campaign report/numerical appendix remain pending and will share this report root.
+
+## Dataset-2.1 NACA-NLC6 accepted release v1_r4
+
+- Updated: 2026-10-14T12:12-07:00. Stable object: `Dataset-2.1/FE-NACA-NLC6`; type: complete clean full-state dataset and reusable generator; version: v1_r4; status: `complete_user_waived_independent_qualification`. Supersedes the earlier in-progress v1/r1/r2 entries above; parent versions remain failure/source/accepted-file lineage.
+- Producing task: `Dataset21_NLC6_v1_nonlinear_wing` (series Dataset21,task NLC6,release-definition v1). Purpose: fixed nonlinear structural free-decay data for future learning tasks; no trained learner is registered.
+- Implementation/configuration: `src/data/dataset21_nlc6/Dataset21NLC6.jl`, `campaign.jl`,shared `src/data/dataset21_naca/`; `configs/releases/dataset21_nlc6_v1_r4.json`,hashed r2 population,isolated NACA environment. Fixed physical model,29,844 states,4096 frames,0.5ms,96/24/24.
+- Engineering identity:5 recorded amplitude reductions;5 exact-IC numerical refinements; nonzero static continuation predictor with unchanged gates. WMI/native-hidden PowerShell launcher retains explicit executable,UTF8 parsing and exit receipts. Frozen source capsules preserve all producing implementations.
+- Artifact/pointer: `data/releases/dataset21_nlc6_f4096_144_v1_r4/release_manifest.json`; `data/dataset21_active.json`; manifest SHA `614c4fc54c6c1cfdd92afc976d7621bfd47893acb3573653458f77d25afcc9a0`.133 reused hardlinks and11 new static releases;144 distinct initial states.
+- Validation: `reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json`;144 complete state/port readbacks and HDF5 hashes;309 no-integration contracts,5 exact repair hashes and12 static initializations. Report/appendix: `reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md` and `reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md`; file explanation: `docs/Notes/File Explanation/dataset21_nlc6_v1_completion.md`.
+- Reuse boundary: complete local binary data/model/mesh are required and not restored by Git alone. Fixed discretization; independent temporal/spatial/sampling qualification waived. Original NACA/QUAL numerical outputs remain retired and must not be regenerated. No global accuracy or arbitrary-initial-state/parameter coverage claim.
+
+### Completed NLC6 report workspace and integrity auditor
+
+- Updated: 2026-10-14T12:12-07:00; identity `Dataset21_NLC6_v1_nonlinear_wing`; status: formal report and complete population audit available,illustrative previews retained separately.
+- Entry points: `experiments/postprocessing/audit_dataset21_nlc6_release.py`, `dataset21_nlc6_report.py`, `audit_dataset21_nlc6_report.py`; config `configs/visualizations/dataset21_nlc6_report.json`.
+- Capability: read-only final full-population SHA/state/port/lineage audit plus evidence-bound dashboard. No numerical simulation or new qualification. `tables/index.html` remains the single summary; formal Chinese report and NLC6 appendix share the same root.
+- Artifact/evidence: `reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json`, `campaign_completion_04.json`,fresh cloud Exp2 retrieval record,updated presentation audit and preserved relocation map. Existing images/GIFs/source receipts retain original hashes and local-only storage.

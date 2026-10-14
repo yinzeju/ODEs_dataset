@@ -1,0 +1,79 @@
+{
+  "utc": "2026-10-14T15:59:17.967381+00:00",
+  "status": "interrupted_case_rerun_accepted_with_exact_initial_state",
+  "release_id": "dataset21_nlc6_f4096_144_v1_r4",
+  "parent_release": "dataset21_nlc6_f4096_144_v1_r3",
+  "id": "NLC6_test_023",
+  "initial_state_sha256": "a34dea765c3083972018303e097669c32a234ce5459b8d443ccb138b72ac3fe5",
+  "original_static_trace_identical": true,
+  "initial_strain": 4.869603116106215e-06,
+  "static_trace": [
+    {
+      "correction_relative": 2.45575303041768e-11,
+      "force_residual": 2.46563592530498e-10,
+      "force_tolerance": 4.5184753705377255e-09,
+      "iterations": 3,
+      "load_N": -1.4679430782490939,
+      "predictor_scale": 1.0000000000350686,
+      "ratio": 0.001649775460809385,
+      "ratio_relative_error": 3.874167653350469e-11
+    },
+    {
+      "correction_relative": 5.804655246803067e-11,
+      "force_residual": 4.5415896924496455e-10,
+      "force_tolerance": 8.937679512152895e-09,
+      "iterations": 3,
+      "load_N": -2.965506093300066,
+      "predictor_scale": 2.0000000000387415,
+      "ratio": 0.00659910184323754,
+      "ratio_relative_error": 1.0663314675696256e-10
+    },
+    {
+      "correction_relative": 7.307793338526607e-12,
+      "force_residual": 6.348898749788319e-10,
+      "force_tolerance": 1.2599751033064712e-08,
+      "iterations": 3,
+      "load_N": -4.249757803999531,
+      "predictor_scale": 1.414213562297694,
+      "ratio": 0.01319820368647508,
+      "ratio_relative_error": 3.0400126860286036e-12
+    },
+    {
+      "correction_relative": 4.308990767917424e-11,
+      "force_residual": 9.670609643532695e-10,
+      "force_tolerance": 1.7781313583911615e-08,
+      "iterations": 3,
+      "load_N": -6.168407568984698,
+      "predictor_scale": 1.4142135623709453,
+      "ratio": 0.02639640737295016,
+      "ratio_relative_error": 7.88620280189889e-11
+    }
+  ],
+  "frames": 4096,
+  "state_dimension": 29844,
+  "dt_seconds": 0.0005,
+  "solver": {
+    "substeps": 2,
+    "newton_relative_tolerance": 1e-13,
+    "newton_max_iterations": 20,
+    "maximum_chord_iterations": 10,
+    "maximum_bisections": 6,
+    "startup_duration_s": 0.05,
+    "startup_refinement": 32
+  },
+  "final_energy_fraction": 0.2957146254434817,
+  "max_energy_balance_relative": 2.659239827792956e-07,
+  "max_strain": 5.9909050253475076e-06,
+  "max_newton_scaled_residual": 9.996856685737992e-14,
+  "wall_seconds": 1108.3628622,
+  "sha256": "703fd78c1e4470f6915cc2411a1a699b8436ecb3b6d962b68da404ea326f8471",
+  "full_worker_readback": {
+    "frames": 4096,
+    "sha256": "703fd78c1e4470f6915cc2411a1a699b8436ecb3b6d962b68da404ea326f8471",
+    "status": "passed"
+  },
+  "pause_receipt": "runs/naca_campaign_control/pause_20261014.json",
+  "original_interrupted_partial_preserved": true,
+  "qualification_status": "user_waived_independent_qualification",
+  "independent_qualification_performed": false
+}

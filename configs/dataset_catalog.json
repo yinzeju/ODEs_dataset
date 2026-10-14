@@ -1,6 +1,6 @@
 {
   "schema": "dataset.catalog.v1",
-  "updated": "2026-10-11T00:08-07:00",
+  "updated": "2026-10-14T12:12-07:00",
   "project_directory": "ODEs_dataset",
   "naming_policy": "Dataset-N is the active protocol code. Frozen IDs, source capsules, RNG namespaces, historical reports and binary type identities are retained for compatibility.",
   "resources": [
@@ -159,6 +159,42 @@
       ],
       "recorded_status": "passed_numerics_and_transient_design",
       "parent_dataset": "Dataset-2"
+    },
+    {
+      "dataset_code": "Dataset-2.1/FE-NACA-NLC6",
+      "aliases": [
+        "Dataset-2.1",
+        "Dataset21-NLC6",
+        "NACA-NLC6"
+      ],
+      "artifact_root": "data/releases/dataset21_nlc6_f4096_144_v1_r4",
+      "manifest": "data/releases/dataset21_nlc6_f4096_144_v1_r4/release_manifest.json",
+      "manifest_kind": "dataset21_nlc6_release",
+      "manifest_sha256": "614c4fc54c6c1cfdd92afc976d7621bfd47893acb3573653458f77d25afcc9a0",
+      "frozen_release_id": "dataset21_nlc6_f4096_144_v1_r4",
+      "trajectory_count": 144,
+      "split_counts": {
+        "train": 96,
+        "validation": 24,
+        "test": 24
+      },
+      "state_dimensions": [
+        29844
+      ],
+      "snapshot_counts": [
+        4096
+      ],
+      "observation_views": [
+        "clean"
+      ],
+      "storage_bytes": 141023203998,
+      "file_count": 723,
+      "recorded_status": "complete_user_waived_independent_qualification",
+      "qualification_status": "user_waived_independent_qualification",
+      "independent_qualification_count": 0,
+      "integrity_evidence": "reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json",
+      "formal_report": "reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md",
+      "numerical_appendix": "reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md"
     }
   ],
   "notes_without_local_release": [

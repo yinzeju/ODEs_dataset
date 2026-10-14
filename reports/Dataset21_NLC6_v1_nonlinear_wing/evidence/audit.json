@@ -1,11 +1,11 @@
 {
-  "utc": "2026-10-13T07:00:06.742761+00:00",
+  "utc": "2026-10-14T19:16:15.340065+00:00",
   "status": "passed",
   "preserved_source_records": 146,
   "unique_relocated_assets": 120,
   "duplicate_files_merged": 26,
   "duplicate_bytes_reclaimed": 41571995,
-  "offline_links_checked": 100,
+  "offline_links_checked": 103,
   "current_animations": [
     {
       "path": "animations/selected/NLC6_train_006/wing_vibration_6s_10x.gif",
@@ -44,8 +44,8 @@
     }
   ],
   "full_history_metric_rows_checked": 16384,
-  "artifact_count": 137,
-  "artifact_bytes": 93726642,
+  "artifact_count": 142,
+  "artifact_bytes": 95258069,
   "source_trajectory_hashes_verified": 5,
   "simulation_executed": false,
   "independent_qualification_executed": false

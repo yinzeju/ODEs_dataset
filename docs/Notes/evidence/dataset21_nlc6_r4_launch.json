@@ -1,0 +1,66 @@
+{
+  "utc": "2026-10-14T15:17:03.194689+00:00",
+  "status": "resumed_detached_worker_identity_verified",
+  "release_id": "dataset21_nlc6_f4096_144_v1_r4",
+  "parent_release": "dataset21_nlc6_f4096_144_v1_r3",
+  "worker": {
+    "status": "running",
+    "pid": 24828,
+    "process_started_utc": "2026-10-14T15:15:25.9813852Z",
+    "config": "configs/releases/dataset21_nlc6_v1_r4.json",
+    "attempt": "05",
+    "stdout": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\dataset21_nlc6_f4096_144_v1_r4\\worker_05.log",
+    "stderr": "D:\\MyVault\\Projects\\Julia\\ODEs_dataset\\runs\\dataset21_nlc6_f4096_144_v1_r4\\worker_05.err.log"
+  },
+  "parents": [
+    {
+      "pid": 26884,
+      "name": "powershell.exe",
+      "creation_time": 1791990925.6122332
+    },
+    {
+      "pid": 7032,
+      "name": "WmiPrvSE.exe",
+      "creation_time": 1791262215.777537
+    },
+    {
+      "pid": 1728,
+      "name": "svchost.exe",
+      "creation_time": 1791262214.9766376
+    },
+    {
+      "pid": 1484,
+      "name": "services.exe",
+      "creation_time": 1791262214.7035139
+    },
+    {
+      "pid": 1392,
+      "name": "wininit.exe",
+      "creation_time": 1791262214.510911
+    }
+  ],
+  "worker_creation_time_verified": true,
+  "launcher_hashes": {
+    "experiments/data_generation/launch_dataset21_nlc6_detached.ps1": "b3b5ac9a7f97e2f42e724a5e67659d62e4f0815b469f6035302da75078992419",
+    "experiments/data_generation/start_dataset21_nlc6_campaign.ps1": "f1a9e977e2a7a7424688f2843855f96f624e6b0efe102d3a7c342364b2bcf4b7",
+    "experiments/data_generation/supervise_dataset21_nlc6.ps1": "8656a25a838ba17101b173990405ec6e02d809909e8e6dba0a7c3915dedef055"
+  },
+  "parent_launcher_hashes": {
+    "experiments/data_generation/launch_dataset21_nlc6_detached.ps1": "b2569929771510d584783217c079df6e685ad75e81745fffb127a89eb3efda55",
+    "experiments/data_generation/start_dataset21_nlc6_campaign.ps1": "218a6df6557abf9222da36aee6d81e5ba2204c2c643a0da76cf1cad15aa7b9b6",
+    "experiments/data_generation/supervise_dataset21_nlc6.ps1": "0eb223ff8e3d3d27a9a05f35b3eb0a8b4c647dcabd2b57c24e5643af51659566"
+  },
+  "config_sha256": "5fdb28c2d4579060e15c6a7489bc02f4c18b2bf07bdf9043cc4486e1ba38e0bb",
+  "resumption_authorization": "The human explicitly requested continuation of the remaining simulations.",
+  "initial_launcher_failure": {
+    "created_worker": false,
+    "reason": "Native Windows PowerShell read the UTF8 control JSON with the legacy default encoding, corrupting a Chinese note path and causing ConvertFrom-Json to reject an escape sequence.",
+    "repair": "All three launcher/supervisor scripts now explicitly read JSON with -Encoding UTF8. Native PowerShell parsing passed before successful WMI creation."
+  },
+  "accepted_parent_count": 133,
+  "missing_to_integrate": 11,
+  "retained_pause_receipt": "runs/naca_campaign_control/pause_20261014.json",
+  "unchanged_physics_numerics_population_amplitudes_and_gates": true,
+  "qualification_status": "user_waived_independent_qualification",
+  "evidence_boundary": "Parent hashes were reverified; active worker repeats complete readback. Resumption is not completion or independent qualification."
+}
