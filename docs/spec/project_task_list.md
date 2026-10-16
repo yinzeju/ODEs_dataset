@@ -136,3 +136,23 @@ No remote push is part of this wrap-up.
 - Evidence limits: `user_waived_independent_qualification`; no new smoke,time/grid/sampling qualification,ablation or learner Test scoring. Worst final energy balance9.761689157330619e-5,strain0.0006969655975785179,terminal energy fraction0.2975764670814523;these are runtime acceptance diagnostics.
 - Records/navigation: `reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md`; `reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md`; `reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json`; `docs/Notes/File Explanation/dataset21_nlc6_v1_completion.md`; `data/dataset21_active.json` and catalog. Scoped completion publication/remote parity and the separately authorized conditional forced shutdown are tracked in control receipts; no countdown precedes those checks.
 - Focused closeout validation: `docs/Notes/evidence/dataset21_nlc6_closeout_validation_04.json`; 144 numeric rows, 14 report links, 16 Markdown tables and 20 unchanged numerical inputs passed. Presentation audit rechecked 103 offline links, five source hashes and unchanged GIF/relocation evidence; catalog metadata and Python compilation passed.
+
+
+## 2026-10-16T02:32-07:00 — Consolidate structural resources and retire other local populations
+
+- Completed user-requested note-first organization: removed Duffing, documented
+  BASE/TRANSIENT Beam equations, imposed 96/24/24 and 4096 snapshots except BASE 8193;
+  shell/plate physics preserved with population status explicitly pending.
+- Preserved three 144-trajectory current resources at `data/Dataset-2/` and
+  `data/Dataset-2.1/`; generated only exact saved-state prefixes,zero integration.
+  NACA 144 files now each have one NTFS link; old release/extension containers removed.
+- Deleted 1686 authorized old paths, releasing14766849960 unique allocated bytes;
+  preserved original 432 hashes, source capsules,metadata archives and 13 failed/paused
+  NACA prefixes. Archive branch `codex/archive-datasets-before-reorganization-20261016`
+  verified at `000286d`; deleted numerical trajectories are not in Git.
+- Checks: prefix 6/6,naming 11/11, Beam 288 readbacks, source capsule hashes,NACA 144 full
+  integrity, 103 offline links and 5 source hashes. No new numerical qualification,
+  training,shutdown or external learning-project changes.
+- Evidence: `docs/Notes/evidence/dataset_reorganization_20261016.json`;
+  explanation: `docs/Notes/File Explanation/dataset_reorganization_20261016.md`;
+  report/appendix: `reports/Dataset_2_v2_resource_reorganization/`.

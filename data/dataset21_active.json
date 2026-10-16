@@ -1,8 +1,8 @@
 {
   "schema": "dataset21.active.v1",
-  "dataset_code": "Dataset-2.1/FE-NACA-NLC6",
+  "dataset_code": "Dataset-2.1",
   "release_id": "dataset21_nlc6_f4096_144_v1_r4",
-  "manifest": "data/releases/dataset21_nlc6_f4096_144_v1_r4/release_manifest.json",
+  "manifest": "data/Dataset-2.1/release_manifest.json",
   "manifest_sha256": "614c4fc54c6c1cfdd92afc976d7621bfd47893acb3573653458f77d25afcc9a0",
   "qualification_status": "user_waived_independent_qualification",
   "accepted_trajectories": 144,
@@ -16,5 +16,8 @@
   "dt_seconds": 0.0005,
   "integrity_evidence": "reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json",
   "formal_report": "reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md",
-  "numerical_appendix": "reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md"
+  "numerical_appendix": "reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md",
+  "artifact_root": "data/Dataset-2.1",
+  "historical_dataset_code": "Dataset-2.1/FE-NACA-NLC6",
+  "relocation_evidence": "data/dataset_relocations.json"
 }

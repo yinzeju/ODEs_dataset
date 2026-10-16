@@ -5,8 +5,8 @@ import JSON
 
 const ROOT = abspath(get(ENV,"SKDM9_DATASET_PROJECT_ROOT",normpath(joinpath(@__DIR__,"..",".."))))
 const BASE_BINDING = "add4a54bd864922b9c3c7cc3374ffe9ca6611d74bed638e54061fc1244938ba8"
-const BASE_SOURCE = joinpath(ROOT,"data","releases","testsub2_nv_20261004","TestSub2",
-    "audit_only","source_snapshots",BASE_BINDING)
+const BASE_SOURCE = joinpath(ROOT,"artifacts","source_capsules","Dataset-2",
+    "testsub2_nv_20261004",BASE_BINDING)
 file_sha(path) = bytes2hex(sha256(read(path)))
 
 function verify_base_source()

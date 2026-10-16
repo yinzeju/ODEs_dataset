@@ -178,7 +178,9 @@ def main():
             raise RuntimeError(f"Selected case has no accepted current or unchanged-parent receipt: {case}")
         source_release, row = match
         print("ANALYZE", row["id"], flush=True)
-        summary, curves = analyze(ROOT/"data/releases"/source_release/row["relative_path"], row, cfg, reference, args.out)
+        active = read_json(ROOT / "data/dataset21_active.json")
+        source_root = (ROOT / active["manifest"]).parent if active["release_id"] == source_release else ROOT / "data/releases" / source_release
+        summary, curves = analyze(source_root/row["relative_path"], row, cfg, reference, args.out)
         summaries.append(summary); series.append(curves)
     fig, axes = plt.subplots(4, 3, figsize=(15, 12), layout="constrained")
     for i, (summary, (t, q, v, energy)) in enumerate(zip(summaries, series)):

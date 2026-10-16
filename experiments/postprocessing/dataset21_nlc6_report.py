@@ -20,6 +20,24 @@ def write_json(path, value):
     path.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
 
 
+def resolve_source(relative):
+    """Resolve historical dataset references without rewriting frozen evidence."""
+    path = (ROOT / relative).resolve()
+    if not path.is_relative_to(ROOT):
+        raise ValueError("Source path escapes project")
+    if path.is_file():
+        return path
+    relocation = read_json(ROOT / "data/dataset_relocations.json")
+    parent = relocation["retired_parent_links"].get(Path(relative).as_posix())
+    if parent:
+        return ROOT / parent["retained_path"]
+    for row in relocation["moves"]:
+        old = ROOT / row["old_root"]
+        if path.is_relative_to(old):
+            return ROOT / row["new_root"] / path.relative_to(old)
+    raise FileNotFoundError(relative)
+
+
 def section_path(report, section, kind, case=None):
     path = Path(report) / section / kind
     if case:
@@ -44,7 +62,7 @@ def build_dashboard(report=REPORT_ROOT):
         max_strain=r["max_strain"], max_energy_balance_relative=r["max_energy_balance_relative"],
         displacement_relative_L2=r["translation_displacement_L2_difference_from_linear"],
         velocity_relative_L2=r["translation_velocity_L2_difference_from_linear"],
-        source=r["source"], source_sha256=r["source_sha256"]) for r in rows]
+        source=resolve_source(r["source"]).relative_to(ROOT).as_posix(), source_sha256=r["source_sha256"]) for r in rows]
     if trial:
         records.append(dict(id=CONFIG["trial_id"], scope="separate_exploratory_trial",
             modes=str(trial_ic["modes"]), connector_energy_ratio=trial_ic["connector_energy_ratio"],

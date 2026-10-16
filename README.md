@@ -1,249 +1,57 @@
 # ODEs_dataset
 
-Julia generation and qualification of Dataset-1 autonomous ODE data and Dataset-2 nonlinear structural dynamics data.
+Julia structural dataset generation, numerical evidence, and data-only access.
+Current local dataset codes are **Dataset-2** and **Dataset-2.1**. The 2026-10-16
+organization retains three 144-trajectory resources; no new dynamics were integrated.
 
+| Dataset / object | State dimension | Train / Val / Test | Saved snapshots, including initial state | Current root |
+|---|---:|---|---:|---|
+| Dataset-2 / VK-BEAM-CC / BASE | 66 | 96 / 24 / 24 | 8193 | `data/Dataset-2/VK-BEAM-CC/BASE` |
+| Dataset-2 / VK-BEAM-CC / TRANSIENT | 66 | 96 / 24 / 24 | 4096 | `data/Dataset-2/VK-BEAM-CC/TRANSIENT` |
+| Dataset-2.1 / FE-NACA-NLC6 | 29844 | 96 / 24 / 24 | 4096 | `data/Dataset-2.1` |
 
-## Dataset Catalog And Naming
+Use [the catalog](configs/dataset_catalog.json), [Dataset-2 pointer](data/dataset2_active.json),
+[Dataset-2.1 pointer](data/dataset21_active.json), and [inventory](docs/Notes/dataset_inventory.md).
+A record with M snapshots has M-1 time intervals. BASE retains the complete original
+SKDM9 history. TRANSIENT is an exact 4096-frame prefix of the original 4097-frame
+SKDM9.6 record; original 144 files, certificates and source metadata remain in its
+`provenance/source_release/`. Existing source IDs remain immutable lineage.
 
-The active protocol codes are **Dataset-1**, **Dataset-2**, and **Dataset-2.1/FE-NACA-NLC6**. Their 2026-10-11
-inventory, including both Beam extensions, is in
-[dataset inventory](docs/Notes/dataset_inventory.md); machine-readable paths,
-manifest hashes and legacy aliases are in [dataset catalog](configs/dataset_catalog.json).
-Dataset-3 and Dataset-3.1 currently have protocol notes but no local data release.
+The Dataset-2 protocol also retains shallow-shell NR/IR12 and square-plate FE200
+models, each targeting 96/24/24 and4096 snapshots. Their former small populations
+were deleted, and no new population has been generated. OSC-DUFFING8 is removed
+from the active protocol. Formal generation remains unauthorized.
 
-The project directory and Git repository remain `ODEs_dataset`. Frozen release IDs,
-source-capsule paths, JLD2 type names, RNG namespaces, historical reports and old
-entry points retain their original identities. This is a naming migration, not
-regeneration or a numerical version change. Legacy active pointers remain valid.
-Use `data/dataset1_active.json` and `data/dataset2_active.json` for canonical naming.
-The current Dataset-2 note has ODE/FE-only scope; its archived note snapshots still
-record the protocol that actually produced the published data.
+Dataset-1 numerical files and the original TestSub_2 small populations were
+explicitly retired locally. Their source, configurations, reports and metadata
+remain historical; an archive branch preserves the pre-operation checkout:
+`codex/archive-datasets-before-reorganization-20261016` at `000286d`.
+The archive branch does not contain deleted numerical trajectories.
 
-For the current Julia API, include `src/data/dataset1/Dataset1.jl` or
-`src/data/dataset2_nv/Dataset2NV.jl`. These names alias the original modules so
-existing serialized models and consumers remain compatible.
+NACA's144 files are consolidated with one NTFS link per file. `data/releases/`
+and `data/extensions/` are removed. Historical paths resolve through
+[data/dataset_relocations.json](data/dataset_relocations.json). Failure/paused
+prefixes, original worker receipts and source capsules remain evidence. All original
+NACA runtime gates and `user_waived_independent_qualification` remain unchanged.
 
-```powershell
-python -X utf8 experiments/data_generation/audit_dataset_catalog.py --verify-data
-```
-
-## Dataset-2.1: NACA-NLC6 Complete Population
-
-The complete release is **`dataset21_nlc6_f4096_144_v1_r4`**, with **144 accepted unique
-trajectories (96/24/24)**, 29,844 physical states, 4096 Float64 frames and a
-0.5 ms output interval. The active pointer is [data/dataset21_active.json](data/dataset21_active.json).
-All files passed the original runtime convergence, strain and energy gates,
-complete state/port readback and final SHA256 verification. The final manifest
-SHA256 is `614c4fc54c6c1cfdd92afc976d7621bfd47893acb3573653458f77d25afcc9a0`.
-
-The model is a clamped nonlinear wing plus six passive cubic spring and smooth
-velocity-dependent patch dampers, including a stationary support fixture.
-Full-state Radau IIA5 uses FP64 GPU shell forces and CPU sparse solves. Five
-physical-admissibility failures use recorded 0.8 displacement scales; five
-separate energy failures use exactly the original initial states and four
-internal substeps instead of two. Static initialization uses a nonzero-branch
-continuation predictor with unchanged equilibrium gates. The user pause and
-all failed partial files, parent source capsules and immutable reuse lineage
-remain preserved. The final r4 worker exited0; do not restart parent releases.
-
-Independent temporal/spatial/sampling qualification was waived. The required
-status is **`user_waived_independent_qualification`**, never fully qualified.
-See the [Chinese formal report](reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md),
-[numerical appendix](reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md), [final integrity evidence](reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json)
-and [population guide](docs/Notes/code%20explanation/dataset21_nlc6_population.md).
-The single [offline summary](reports/Dataset21_NLC6_v1_nonlinear_wing/tables/index.html) keeps illustrative
-examples separate from the full-population result. The exploratory trial is
-excluded from the144. Large local HDF5/model/mesh/log artifacts are not uploaded
-by the source/report publication.
-
-Read-only re-verification, using a new output filename:
+Read-only checks, without integration:
 
 ```powershell
-python -X utf8 experiments/postprocessing/audit_dataset21_nlc6_release.py --config configs/releases/dataset21_nlc6_v1_r4.json --worker-receipt runs/dataset21_nlc6_f4096_144_v1_r4/worker_05.json --output runs/naca_campaign_control/repeated_integrity_audit.json
+python -X utf8 experiments/data_generation/audit_dataset_catalog.py
+julia --startup-file=no --threads=1 --project=configs/environments/testsub2_nv experiments/data_generation/verify_dataset2.jl
 ```
 
-Old NACA/QUAL numerical outputs were retired by user request and must not be
-regenerated. Historical sources remain on `codex/abolish-naca-pre-nlc6-20261012`;
-see the [retirement receipt](docs/Notes/evidence/dataset21_naca_retirement_20261012.json).
+The maintained `Dataset2NV` API aliases the original `TestSub2NV` module to retain
+JLD2 compatibility. Each current Beam configuration has a `manifests/learner_manifest.json`;
+`load_learner_view` admits only indexed clean trajectory files. Published base source
+capsules remain at `artifacts/source_capsules/Dataset-2/testsub2_nv_20261004/`.
+Legacy generators and frozen configurations are historical and must not be used to
+recreate retired releases without a new explicit generation request.
 
-## Dataset-2: Nonlinear Structural Dynamics
-
-The clean-only release is configured in `configs/releases/testsub2_nv_20261004.json`.
-Its mathematical source is the user-supplied **Dataset-2-Nonlinear Structural Dynamics**
-note, frozen with each release. All states are complete Float64 mechanical states
-in physical coordinates, stored as `state_component × time`, with all displacements
-followed by all velocities. Each trajectory starts at release, has zero initial
-velocity and zero dynamic forcing, and contains 4,097 snapshots over 32 reference
-periods at an output interval of `P*/128`.
-
-| Configuration | Displacement DOFs | Train | Validation | Test |
-| --- | ---: | ---: | ---: | ---: |
-| OSC-DUFFING8 / BASE | 8 | 12 | 4 | 4 |
-| VK-BEAM-CC / FE12 | 33 | 3 | 1 | 2 |
-| VK-SHELL-SHALLOW / NR | 1320 | 3 | 1 | 2 |
-| VK-SHELL-SHALLOW / IR12 | 1320 | 9 | 3 | 3 |
-| VK-PLATE-SQUARE / FE200 | 606 | 9 | 3 | 3 |
-
-See the [compact data report](reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration.md)
-and its [numerical appendix](reports/TestSub_2_nonlinear_vibration/2_numerical_appendix.md)
-for the completed release, storage breakdown, qualification results and solver adjustments.
-
-```powershell
-./experiments/data_generation/run_dataset2.ps1
-```
-
-The wrapper assembles and validates the complete models, generates the formal
-population, and performs complete readback before publishing
-`data/dataset2_active.json`. The dataset root is
-`data/releases/testsub2_nv_20261004/TestSub2/`. A missing active pointer means that
-the complete release has not yet passed its final verification. Individual model
-generation can be selected with `-Models beam,shell_nr,shell_ir12,plate`.
-
-The CPU environment is `configs/environments/testsub2_nv/`; the CUDA environment
-is `configs/environments/testsub2_nv_gpu/`. ODE and beam trajectories use sparse,
-full-state Rodas5P integration with an analytic Jacobian. Shell and plate trajectories
-use ninth-order Vern9 integration on the GPU in a scaled, invertible basis containing
-every mechanical mode, with Float64 nonlinear element forces. This is a coordinate
-change for the complete equations; the stored states use the original physical DOFs.
-Small batches use checked Float64 CUDA dot-product kernels for the full basis
-transforms; larger batches use cuBLAS. Neither path removes mechanical modes.
-Every canonical trajectory has a baseline/fine comparison with tighter tolerances and
-half the maximum internal step. Independent QUAL initial conditions are separate
-from the canonical population. State differences and energy-balance errors must
-both be at most `1e-7`. Source identities, physical matrices, modes, initialization
-parameters and energy records are evaluator-only artifacts.
-
-The GPU implementation is checked against CPU forces, accelerations, damping power,
-and the published FE linear matrices. Fixed-step ETDRK4 remains available only as
-an integration comparison candidate; its coarse candidates failed qualification
-and are not released as training data. GPU element-force accumulation uses Float64
-atomics, so regeneration is numerically reproducible rather than guaranteed to be
-bitwise identical. Published files are immutable and individually checksummed.
-The GPU tolerance pair is selected using independent QUAL data and remains subject
-to the same `1e-7` full-state and energy gates for every released trajectory. The
-direct physical-coordinate GPU solver is retained as a comparison implementation;
-its tight-tolerance runs stalled and did not produce released data.
-
-The beam uses `C=(1e6/E)K`. The shell and plate reproduce the published
-[SSMLearn FE examples](https://github.com/haller-group/SSMLearn/tree/305581114f62239b70c1fe44bce69cbf939326ea/examples)
-and the Allman element in
-[YetAnotherFEcode v1.1](https://github.com/jain-shobhit/YetAnotherFEcode/tree/50bc5c5ba75f2b5b32c5753dedcbd60612444f0d).
-The source's nonlinear in-plane shear terms and element mass convention are
-preserved. The shell geometry is translated vertically so its supported edges
-lie at zero height; this does not change its mechanical matrices. Published state
-matrices provide an independent assembly check. The CAN amplitudes and random
-mixtures are explicit project choices; these resources are not strict replays of
-the original paper's individual trajectories. No continuum mesh-convergence claim
-is made for this fixed-discretization release.
-
-`Dataset2NV.load_learner_view(abspath(configuration_folder), trajectory_id)` reads only
-allowlisted canonical state/time files. Per-channel units and the physical state
-ordering are also declared in each learner manifest. Train-only channel means and population
-standard deviations are stored in `can/train_normalizer.jld2`; raw physical states
-are not standardized. Test initialization, matrices and modes remain under
-`audit_only/`. The current Dataset-2 protocol contains only MECH-ODE and MECH-FE.
-HV is outside its current scope. This release creates no additional noise views.
-
-Focused checks can be run with:
-
-```powershell
-julia --project=configs/environments/testsub2_nv test/unit/test_testsub2_nv.jl
-julia --project=configs/environments/testsub2_nv_gpu test/unit/test_testsub2_nv_gpu.jl
-julia --project=configs/environments/testsub2_nv experiments/data_generation/verify_dataset2.jl
-```
-
-The retired Structural Spectral v3 implementation, its formerly uncommitted
-changes, frozen protocol and release evidence are preserved on local branch
-`codex/abolish-structural-spectral-v3-20261004`, commit `5c6d43b`.
-Its `structural_spectral_v3_20260921_r2` numerical data, old run directory and active
-pointer were deleted at the user's request. The retirement inventory and result
-are in `runs/testsub2_nv/retirement/`; the full inventory is also preserved in the
-archive commit. Standard ODE v2 remains a separate release.
-
-## Dataset-1: Autonomous ODE Release
-
-Dataset-1 uses the frozen `Standard_ODEs_v2` implementation and replaces the retired `lowdim_nonlinear_v1` resource. The qualified
-release is `data/releases/standard_odes_v2_20260916/`; `data/dataset1_active.json`
-points to its manifest.
-
-- 10 equation families, 11 CAN configurations, and 6 COND families with independent Split-I and Split-C resources.
-- 23 resources, 119 condition shards, 34,432 trajectories, and 63,559,296 state vectors.
-- Clean, 5 dB, and 15 dB views: 357 JLD2 files, 10.04 GiB.
-- Float64 integration, Float32 storage, `trajectory × time × state_component` axes.
-- Shared condition-balanced clean-Train noise reference for each resource; clean targets remain shared references.
-- Independent numerical probes, full-population energy/support checks, file hashes, and complete readback validation.
-
-```powershell
-julia --threads=12 --project=. experiments/smoke_tests/run_standard_odes_v2_smoke.jl
-julia --threads=12 --project=. experiments/data_generation/generate_standard_odes_v2_dataset.jl
-julia --project=. experiments/data_generation/verify_dataset1.jl
-julia --project=. experiments/data_generation/audit_standard_odes_v2_metadata.jl
-```
-
-The formal generator uses the full registered population. A changed source,
-dependency manifest, configuration, or protocol note requires a new release identity;
-the generator refuses to overwrite an existing release with a different hash.
-
-See [the generation guide](docs/Notes/file%20explanation/standard_odes_v2_file_explanation.md),
-[the frozen mathematical protocol](docs/Notes/mathematical%20explanation/standard_odes_v2_math.md),
-and [the Chinese qualification report](reports/TestSub_1_standard_odes_v2/TestSub_1_standard_odes_v2.md).
-
-## Archived Resources
-
-The September cleanup retained Standard ODE v2 and its generation, validation,
-and reproduction materials. Legacy code, configurations, tests, notes, reports,
-and the nine previously uncommitted legacy changes are preserved under `abolish/`
-on the local branch:
-
-```text
-archive/abolish-pre-standard-odes-v2-20260916
-```
-
-Archive commit: `db6bc0a88a6d230fb1d4bf94b717658ee60f1566`.
-Other numerical datasets and temporary smoke data were deleted at the user's
-request, reclaiming 5,819,595,100 bytes (5.42 GiB). Numerical data is not backed up
-in the archive branch; regeneration requires the archived generators.
-
-```powershell
-git show archive/abolish-pre-standard-odes-v2-20260916:abolish/ARCHIVE_README.md
-git ls-tree -r --name-only archive/abolish-pre-standard-odes-v2-20260916 -- abolish
-```
-
-See [the cleanup record](docs/Notes/file%20explanation/standard_odes_v2_cleanup.md).
-The original dependency lock remains frozen to preserve the qualified release's
-configuration identity. Running the smoke command creates fresh temporary smoke
-data; the historical smoke certificate and logs are retained with the report.
-
-Downstream normalizers must be fitted on the applicable training split outside the
-raw dataset. Numerical qualification statistics and noise reference powers are not
-state normalization transforms.
-
-## Project Navigation
-
-Reusable code lives in `src/`, declarations in `configs/`, entry points in
-`experiments/`, generated data in `data/`, and disposable logs in `runs/`.
-`docs/spec/project_task_list.md` records completed operations; historical entries
-refer to content now held by the archive branch. The active checkout is `main`.
-
-## NLC6 runtime gate repair (2026-10-12)
-
-Historical repair: NLC6_train_022 exceeded the unchanged 0.001 strain threshold.
-The r1 driver added immediate closed quarantine; the authorized r2 plan changed
-only five failed family-3 displacements by0.8 (energy ratios by0.64). All five
-replacements were accepted and their immutable files remain in the final r4
-population. See `docs/Notes/evidence/dataset21_nlc6_amplitude_revision_02.json`
-and the formal report for the subsequent numerical/static repairs. The original
-r1 interrupted partial file, stale lock and receipts remain evidence.
-
-## NLC6 visualization summary
-
-Open [the offline summary](reports/Dataset21_NLC6_v1_nonlinear_wing/tables/index.html)
-for the four selected population trajectories, separate exploratory trial, current
-10x/six-second GIFs, full-history figures and numeric downloads. The report guide
-is [here](reports/Dataset21_NLC6_v1_nonlinear_wing/README.md).
-Figures, animations, tables and historical renderings are organized in that one
-report folder; large local media remain excluded from Git. Maintained CPU-only
-postprocessing entry points are in `experiments/postprocessing/`, with shared paths
-and selection in `configs/visualizations/dataset21_nlc6_report.json`.
-The summary links the completed formal report and full-population audit; its
-selected visualization examples remain illustrative.
+The NACA [offline visualization](reports/Dataset21_NLC6_v1_nonlinear_wing/tables/index.html)
+retains its four formal examples and separate exploratory trial. Its
+[formal report](reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md)
+and numerical appendix describe the original completed campaign. Organization evidence
+and the current scope are in the
+[reorganization report](reports/Dataset_2_v2_resource_reorganization/Dataset_2_v2_resource_reorganization.md).
+Large numerical data and local archives remain outside Git.

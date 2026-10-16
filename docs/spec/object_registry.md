@@ -164,3 +164,35 @@ The report evidence separately records the time of its read-only integrity audit
 - Entry points: `experiments/postprocessing/audit_dataset21_nlc6_release.py`, `dataset21_nlc6_report.py`, `audit_dataset21_nlc6_report.py`; config `configs/visualizations/dataset21_nlc6_report.json`.
 - Capability: read-only final full-population SHA/state/port/lineage audit plus evidence-bound dashboard. No numerical simulation or new qualification. `tables/index.html` remains the single summary; formal Chinese report and NLC6 appendix share the same root.
 - Artifact/evidence: `reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json`, `campaign_completion_04.json`,fresh cloud Exp2 retrieval record,updated presentation audit and preserved relocation map. Existing images/GIFs/source receipts retain original hashes and local-only storage.
+
+
+## Current structural resources v2 and local retirements
+
+- Updated: `2026-10-16T02:32-07:00`. This entry supersedes the active-data claims of the earlier
+  Dataset-1, original TestSub2 CAN and SKDM extension registrations above; their
+  producing identities remain historical evidence.
+- Stable objects: `Dataset-2/VK-BEAM-CC/BASE` and `Dataset-2/VK-BEAM-CC/TRANSIENT`;
+  type: complete current clean full-state populations, v2 organization. Each has
+  144 mothers, 96/24/24, 66 states. BASE keeps 8193 snapshots; TRANSIENT has 4096 exact
+  prefix snapshots, with original 4097-frame source files retained as provenance.
+- Implementation/entries: `src/data/dataset2_nv/Dataset2NV.jl` retains TestSub2NV
+  serialization identity; `experiments/postprocessing/copy_dataset2_prefix.jl`;
+  `experiments/data_generation/verify_dataset2.jl`. Configuration/catalog:
+  `configs/releases/dataset2_structural_v2.json`, `configs/dataset_catalog.json`.
+  Artifacts: `data/Dataset-2/`; pointer: `data/dataset2_active.json`.
+- Dataset-2.1/FE-NACA-NLC6 retains its original completed v1_r4 scientific identity,
+ 144 trajectories, 29844 states and 4096 frames, now solely at `data/Dataset-2.1/`.
+  All 144 have one NTFS link. Frozen sources/manifest/runtime gates and the independent
+  qualification waiver remain unchanged. Old parent metadata and 13 failed/paused
+  prefixes remain lineage; `data/dataset_relocations.json` records retired links.
+- Retired locally: Dataset-1 numerical data and old TestSub2 small CAN/QUAL/model
+  outputs, with active pointers removed. OSC-DUFFING8 is outside the current protocol.
+  Shell NR/IR12 and plate FE200 remain registered physics; new 144-mother populations
+  are planned, not generated. Formal generation is unauthorized.
+- Producing task: `Dataset_2_v2_resource_reorganization`; consumers must use the new
+  active pointers. External InvSub historical configs were inspected but not edited.
+- Validation/evidence: prefix 6/6,naming 11/11; 288 Beam readbacks; 432 original SHA;
+  NACA 144 complete state/port/initial/hash/runtime checks; 103 visualization links.
+  `docs/Notes/evidence/dataset_reorganization_20261016.json`;
+  `reports/Dataset_2_v2_resource_reorganization/`; file explanation:
+  `docs/Notes/File Explanation/dataset_reorganization_20261016.md`.

@@ -50,7 +50,8 @@ def main():
     cfg = load(ROOT / args.config)
     release_id = cfg["release_id"]
     run = ROOT / "runs" / release_id
-    data = ROOT / "data/releases" / release_id
+    active = load(ROOT / "data/dataset21_active.json")
+    data = (ROOT / active["manifest"]).parent if active["release_id"] == release_id else ROOT / "data/releases" / release_id
     status = load(run / "campaign_status.json")
     worker = load(ROOT / args.worker_receipt)
     require(status["status"] == "complete" and status["completed"] == 144
@@ -165,8 +166,16 @@ def main():
         origin = row.get("reused_from")
         if origin:
             parent = ROOT / "data/releases" / origin["release"] / origin["relative_path"]
-            require(origin["sha256"] == row["sha256"] and path.samefile(parent),
-                    f"Immutable parent hardlink: {row['id']}")
+            require(origin["sha256"] == row["sha256"], f"Parent SHA binding: {row['id']}")
+            if parent.exists():
+                require(path.samefile(parent), f"Immutable parent hardlink: {row['id']}")
+            else:
+                relocation = load(ROOT / "data/dataset_relocations.json")
+                evidence = relocation["retired_parent_links"].get(parent.relative_to(ROOT).as_posix())
+                require(evidence is not None and evidence["sha256"] == row["sha256"]
+                        and ROOT / evidence["retained_path"] == path
+                        and evidence["parent_identity"] == evidence["retained_identity"],
+                        f"Verified historical hardlink retirement: {row['id']}")
         audited.append({**row, "ordinal": ordinal, "initial_condition": initial,
                         "runtime": receipt, "file_bytes": path.stat().st_size,
                         "full_state_readback_passed": True,

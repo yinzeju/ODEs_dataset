@@ -1,5 +1,10 @@
 # Dataset-2.1 NACA-NLC6 visualization workspace
 
+Current local data root after the 2026-10-16 organization is `data/Dataset-2.1/`.
+All144 accepted trajectory files have one NTFS link each. Historical release
+paths in frozen evidence resolve through `data/dataset_relocations.json`; parent
+metadata and all13 failed/paused prefixes remain under `artifacts/lineage/`.
+
 Open [tables/index.html](tables/index.html) for the complete visualization summary.
 It combines four accepted population examples and the separate exploratory trial.
 The formal144-trajectory population is complete and passed final full-state/SHA verification.

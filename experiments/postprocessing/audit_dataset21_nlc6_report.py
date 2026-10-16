@@ -8,7 +8,7 @@ from urllib.parse import unquote, urlsplit
 
 from PIL import Image
 import numpy as np
-from dataset21_nlc6_report import ROOT, REPORT_ROOT, CONFIG, read_json, write_json
+from dataset21_nlc6_report import ROOT, REPORT_ROOT, CONFIG, read_json, write_json, resolve_source
 
 
 def sha256(path):
@@ -84,7 +84,7 @@ def audit(report=REPORT_ROOT):
         assert np.isclose(metrics["strain_max"].max(), row["max_strain"])
         assert np.isclose(metrics["energy_balance_relative"].max(), row["max_energy_balance_relative"])
         assert read_json(folder / "analysis.json") == row
-        source = ROOT / row["source"]
+        source = resolve_source(row["source"])
         assert source.is_file() and read_json(source.with_name("readback.json"))["sha256"] == row["source_sha256"]
         assert sha256(source) == row["source_sha256"]
     trial = read_json(report / "tables/trial/analysis.json")

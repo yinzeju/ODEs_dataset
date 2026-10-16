@@ -1,0 +1,129 @@
+{
+  "protocol": "Dataset-2",
+  "version": 2,
+  "scope": [
+    "MECH-FE"
+  ],
+  "formal_generation_authorized": false,
+  "counts_per_configuration": {
+    "train": 96,
+    "val": 24,
+    "test": 24
+  },
+  "snapshot_policy": "Includes the initial state; interval_count=snapshot_count-1",
+  "active_configurations": [
+    {
+      "object_id": "VK-BEAM-CC",
+      "configuration_id": "BASE",
+      "relative_root": "VK-BEAM-CC/BASE",
+      "trajectory_count": 144,
+      "split_counts": {
+        "train": 96,
+        "val": 24,
+        "test": 24
+      },
+      "state_dimension": 66,
+      "snapshot_count": 8193,
+      "interval_count": 8192,
+      "dt_output": 3.7316110134480264e-05,
+      "learner_manifest_sha256": "a3a24cabc6264b18983273874712eb6a78743dcb554648ff7ffa15a938b2bd2c",
+      "source_release_id": "skdm9_beam_h512_v1",
+      "source_completion": {
+        "binding": "85d8d171156a72597a8e83391a3f9b0de6fc993e99ea81ad60ce943d1bdf97d8",
+        "completed_utc": "2026-10-04T15:37:17.975",
+        "elapsed_seconds": 1178.523999929428,
+        "manifest_sha256": "bc5a9b8cc971da3b3459412d02b0a6f83150231c4fdbc7fdf447613327bcf46e",
+        "maximum_energy_error": 2.1969606742827447e-12,
+        "maximum_scaled_state_error": 2.2150035506378005e-11,
+        "smoke_only": false,
+        "status": "passed",
+        "trajectories": 144
+      },
+      "initial_condition_family": "static midpoint transverse displacement; zero initial velocity",
+      "amplitude_interval_m": [
+        0.0015,
+        0.0025
+      ],
+      "damping_factor": 1.0,
+      "mode2_transverse_amplitude_fraction": 0
+    },
+    {
+      "object_id": "VK-BEAM-CC",
+      "configuration_id": "TRANSIENT",
+      "relative_root": "VK-BEAM-CC/TRANSIENT",
+      "trajectory_count": 144,
+      "split_counts": {
+        "train": 96,
+        "val": 24,
+        "test": 24
+      },
+      "state_dimension": 66,
+      "snapshot_count": 4096,
+      "interval_count": 4095,
+      "dt_output": 3.7316110134480264e-05,
+      "learner_manifest_sha256": "16c9524b73ec1cab22caf26314f60abc0755bae745b0b2278581f547a791dcfe",
+      "source_release_id": "skdm96_beam_transient_h2048_v1",
+      "source_completion": {
+        "binding": "e97ce5ad700e90f83c869860b80e291cb54eca1d351d21a8f5d916f8767d691f",
+        "completed_utc": "2026-10-09T17:45:42.704",
+        "design_only": false,
+        "elapsed_seconds": 1482.3889999389648,
+        "manifest_sha256": "9642b59859887e0348d57ecaf7d264330ed0f24c3063d35e4675f06341475e1c",
+        "maximum_energy_error": 6.589052342545405e-12,
+        "maximum_scaled_state_error": 1.0812213617120557e-10,
+        "status": "passed_numerics_and_transient_design",
+        "trajectories": 144
+      },
+      "initial_condition_family": "nonlinear static midpoint release plus signed second bending eigenmode; zero velocities",
+      "amplitude_interval_m": [
+        0.006,
+        0.01
+      ],
+      "damping_factor": 0.75,
+      "mode2_transverse_amplitude_fraction": 0.25
+    }
+  ],
+  "planned_configurations": [
+    {
+      "object_id": "VK-SHELL-SHALLOW",
+      "configuration_id": "NR",
+      "state_dimension": 2640,
+      "counts": {
+        "train": 96,
+        "val": 24,
+        "test": 24
+      },
+      "snapshot_count": 4096,
+      "status": "planned_no_local_trajectories"
+    },
+    {
+      "object_id": "VK-SHELL-SHALLOW",
+      "configuration_id": "IR12",
+      "state_dimension": 2640,
+      "counts": {
+        "train": 96,
+        "val": 24,
+        "test": 24
+      },
+      "snapshot_count": 4096,
+      "status": "planned_no_local_trajectories"
+    },
+    {
+      "object_id": "VK-PLATE-SQUARE",
+      "configuration_id": "FE200",
+      "state_dimension": 1212,
+      "counts": {
+        "train": 96,
+        "val": 24,
+        "test": 24
+      },
+      "snapshot_count": 4096,
+      "status": "planned_no_local_trajectories"
+    }
+  ],
+  "removed_objects": [
+    "OSC-DUFFING8"
+  ],
+  "protocol_note": "D:\\MyVault\\Document\\Obsidian\\Notebook\\系统辨识和模型学习\\Koopman Space\\Part 0 Evaluation & Benchmark\\Dataset-2-Nonlinear Structural Dynamics.md",
+  "protocol_note_sha256": "9f4e9f7208f7cc10005a172c88dd0f02c0feb26bb58c5d12fb0cc7269001ce00"
+}

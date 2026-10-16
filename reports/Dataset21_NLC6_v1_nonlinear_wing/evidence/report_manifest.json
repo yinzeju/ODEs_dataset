@@ -730,8 +730,8 @@
     },
     {
       "path": "tables/summary.csv",
-      "bytes": 1819,
-      "sha256": "147c4e37a5459a3345334252411fae60f1cf1621c10466767ea18baa60934c5a"
+      "bytes": 1707,
+      "sha256": "f0fc7a696b83bed8912c8510e8cd17ea77cd3c427c685103dc344e595e003fe8"
     },
     {
       "path": "tables/trial/analysis.json",

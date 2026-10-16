@@ -1,4 +1,14 @@
-# Generation complete — final closeout only (2026-10-14T12:12-07:00)
+# Current data organization — 2026-10-16
+
+The completed144-trajectory NACA resource now lives only in `data/Dataset-2.1/`.
+Read `data/dataset21_active.json` and `data/dataset_relocations.json` for current
+paths. Superseded accepted parent hardlinks were explicitly retired after full
+SHA verification; parent metadata and failed/paused prefixes remain under
+`artifacts/lineage/Dataset-2.1/parent_releases/`. Original sources and physics
+remain frozen. The old shutdown authorization was consumed on2026-10-14; do not
+schedule another shutdown or restart a campaign from these historical notes.
+
+# Historical completion — 2026-10-14T12:12-07:00
 
 All144 unique r4 trajectories passed runtime gates, worker complete readback and
 the final external all-state/port/SHA integrity audit. The worker exited0 at
