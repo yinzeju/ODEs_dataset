@@ -1,6 +1,6 @@
 {
   "report_identity": "Dataset21_NLC6_v1_nonlinear_wing",
-  "report_root": "reports/Dataset21_NLC6_v1_nonlinear_wing",
+  "report_root": "reports/Dataset-2.1",
   "dashboard": "tables/index.html",
   "selected_ids": [
     "NLC6_train_006",

@@ -8,7 +8,7 @@ from urllib.parse import unquote, urlsplit
 
 from PIL import Image
 import numpy as np
-from dataset21_nlc6_report import ROOT, REPORT_ROOT, CONFIG, read_json, write_json, resolve_source
+from dataset21_nlc6_report import ROOT, REPORT_ROOT, CONFIG, read_json, write_json, resolve_source, resolve_report_path
 
 
 def sha256(path):
@@ -35,12 +35,12 @@ def audit(report=REPORT_ROOT):
         write_json(report / "evidence/report_manifest.json", {"status": "audit_in_progress"})
     relocation = read_json(report / "evidence/relocation.json")
     for record in relocation["files"]:
-        path = ROOT / record["destination"]
+        path = resolve_report_path(record["destination"])
         assert path.is_relative_to(report) and path.is_file()
         assert sha256(path) == record["sha256"], path
         assert not (ROOT / record["source"]).exists(), record["source"]
     for record in relocation["source_entry_points"]:
-        assert sha256(ROOT / record["frozen_copy"]) == record["sha256"]
+        assert sha256(resolve_report_path(record["frozen_copy"])) == record["sha256"]
         assert (ROOT / record["maintained_destination"]).is_file()
     linked = 0
     for name in ["tables/index.html", "archive/index.html"]:

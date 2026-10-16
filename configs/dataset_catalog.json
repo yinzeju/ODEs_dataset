@@ -12,7 +12,9 @@
       "sha256": "1259318ca6452e784a19177ec930bcdeb70fdc4033f4c668c453d7c24b9698a9",
       "available_configurations": 2,
       "planned_configurations": 3,
-      "accepted_trajectories": 288
+      "accepted_trajectories": 288,
+      "formal_report": "reports/Dataset-2/Dataset_2_v2_nonlinear_beams.md",
+      "numerical_appendix": "reports/Dataset-2/2_numerical_appendix.md"
     },
     "Dataset-2.1": {
       "schema": "dataset21.active.v1",
@@ -30,9 +32,9 @@
       "frames": 4096,
       "state_dimension": 29844,
       "dt_seconds": 0.0005,
-      "integrity_evidence": "reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json",
-      "formal_report": "reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md",
-      "numerical_appendix": "reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md",
+      "integrity_evidence": "reports/Dataset-2.1/evidence/campaign_integrity_04.json",
+      "formal_report": "reports/Dataset-2.1/Dataset21_NLC6_v1_nonlinear_wing.md",
+      "numerical_appendix": "reports/Dataset-2.1/NLC6_numerical_appendix.md",
       "artifact_root": "data/Dataset-2.1",
       "historical_dataset_code": "Dataset-2.1/FE-NACA-NLC6",
       "relocation_evidence": "data/dataset_relocations.json"
@@ -67,7 +69,9 @@
       "recorded_status": "complete_preserved_source_numerics",
       "parent_dataset": "Dataset-2",
       "current_protocol_note": "D:\\MyVault\\Document\\Obsidian\\Notebook\\系统辨识和模型学习\\Koopman Space\\Part 0 Evaluation & Benchmark\\Dataset-2-Nonlinear Structural Dynamics.md",
-      "current_protocol_note_sha256": "9f4e9f7208f7cc10005a172c88dd0f02c0feb26bb58c5d12fb0cc7269001ce00"
+      "current_protocol_note_sha256": "9f4e9f7208f7cc10005a172c88dd0f02c0feb26bb58c5d12fb0cc7269001ce00",
+      "formal_report": "reports/Dataset-2/Dataset_2_v2_nonlinear_beams.md",
+      "numerical_appendix": "reports/Dataset-2/2_numerical_appendix.md"
     },
     {
       "dataset_code": "Dataset-2/VK-BEAM-CC/TRANSIENT",
@@ -97,7 +101,9 @@
       "recorded_status": "complete_preserved_source_numerics",
       "parent_dataset": "Dataset-2",
       "current_protocol_note": "D:\\MyVault\\Document\\Obsidian\\Notebook\\系统辨识和模型学习\\Koopman Space\\Part 0 Evaluation & Benchmark\\Dataset-2-Nonlinear Structural Dynamics.md",
-      "current_protocol_note_sha256": "9f4e9f7208f7cc10005a172c88dd0f02c0feb26bb58c5d12fb0cc7269001ce00"
+      "current_protocol_note_sha256": "9f4e9f7208f7cc10005a172c88dd0f02c0feb26bb58c5d12fb0cc7269001ce00",
+      "formal_report": "reports/Dataset-2/Dataset_2_v2_nonlinear_beams.md",
+      "numerical_appendix": "reports/Dataset-2/2_numerical_appendix.md"
     },
     {
       "dataset_code": "Dataset-2.1/FE-NACA-NLC6",
@@ -129,9 +135,9 @@
       "recorded_status": "complete_user_waived_independent_qualification",
       "qualification_status": "user_waived_independent_qualification",
       "independent_qualification_count": 0,
-      "integrity_evidence": "reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json",
-      "formal_report": "reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md",
-      "numerical_appendix": "reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md"
+      "integrity_evidence": "reports/Dataset-2.1/evidence/campaign_integrity_04.json",
+      "formal_report": "reports/Dataset-2.1/Dataset21_NLC6_v1_nonlinear_wing.md",
+      "numerical_appendix": "reports/Dataset-2.1/NLC6_numerical_appendix.md"
     }
   ],
   "planned_resources": [

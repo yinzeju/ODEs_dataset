@@ -39,38 +39,33 @@
 !/data/.gitkeep
 !/data/README.md
 
-# Curated TestSub2 wrap-up documents and compact evidence only.
-!/reports/
-/reports/**
-!/reports/TestSub_2_nonlinear_vibration/
-!/reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration.md
-!/reports/TestSub_2_nonlinear_vibration/2_numerical_appendix.md
-!/reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration_evidence.json
-
-# NLC6 report navigation and compact evidence; media, raw metrics and archives stay local.
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/README.md
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/tables/
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/tables/index.html
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/tables/summary.csv
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/organization_summary.json
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/relocation.json
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/report_manifest.json
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/audit.json
-
-# Final NLC6 release definition, formal reports and compact integrity evidence.
+# Current Dataset-2 and Dataset-2.1 reports; binary media and raw tables stay local.
 !/data/dataset21_active.json
 !/data/dataset2_active.json
 !/data/dataset_relocations.json
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_completion_04.json
-!/reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/report_protocol_20261014.json
+!/reports/
+/reports/**
+!/reports/README.md
+!/reports/Dataset-2/
+!/reports/Dataset-2/*.md
+!/reports/Dataset-2/evidence/
+!/reports/Dataset-2/evidence/*.json
+!/reports/Dataset-2.1/
+!/reports/Dataset-2.1/*.md
+!/reports/Dataset-2.1/tables/
+!/reports/Dataset-2.1/tables/index.html
+!/reports/Dataset-2.1/tables/summary.csv
+!/reports/Dataset-2.1/evidence/
+!/reports/Dataset-2.1/evidence/organization_summary.json
+!/reports/Dataset-2.1/evidence/relocation.json
+!/reports/Dataset-2.1/evidence/report_manifest.json
+!/reports/Dataset-2.1/evidence/audit.json
+!/reports/Dataset-2.1/evidence/campaign_integrity_04.json
+!/reports/Dataset-2.1/evidence/campaign_completion_04.json
+!/reports/Dataset-2.1/evidence/report_protocol_20261014.json
 
-# Structural-resource reorganization reports and compact migration evidence.
-!/reports/Dataset_2_v2_resource_reorganization/
-!/reports/Dataset_2_v2_resource_reorganization/*.md
-!/reports/Dataset_2_v2_resource_reorganization/evidence/
-!/reports/Dataset_2_v2_resource_reorganization/evidence/*.json
+# Report-archive navigation/receipt only; formerly tracked reports retain Git history.
+!/abolish/
+!/abolish/reports_20261016/
+!/abolish/reports_20261016/README.md
+!/abolish/reports_20261016/manifest.json

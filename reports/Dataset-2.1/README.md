@@ -1,6 +1,6 @@
 # Dataset-2.1 NACA-NLC6 visualization workspace
 
-Current local data root after the 2026-10-16 organization is `data/Dataset-2.1/`.
+Current local data root after the 2026-10-16 data organization is `data/Dataset-2.1/`.
 All144 accepted trajectory files have one NTFS link each. Historical release
 paths in frozen evidence resolve through `data/dataset_relocations.json`; parent
 metadata and all13 failed/paused prefixes remain under `artifacts/lineage/`.
@@ -65,3 +65,7 @@ population-wide behavior. The analytic same-initial-condition linear reference
 includes phase accumulation in its differences and is not a direct percentage
 measure of nonlinearity. The formal report and appendix now document the complete population.
 The visual examples remain illustrative and separate from the population audit.
+
+This report packet is now under `reports/Dataset-2.1/`. Historical report paths
+resolve through `configs/report_catalog.json`; media and original scientific
+report/evidence bytes are preserved.

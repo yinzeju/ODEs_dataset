@@ -14,7 +14,7 @@ All144 unique r4 trajectories passed runtime gates, worker complete readback and
 the final external all-state/port/SHA integrity audit. The worker exited0 at
 2026-10-14T19:00:25Z. Do not launch or restart any campaign. State.json is authoritative
 for final report, publication, remote-parity and forced-shutdown receipts.
-Chinese report: reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md; appendix: reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md; audit: reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json.
+Chinese report: reports/Dataset-2.1/Dataset21_NLC6_v1_nonlinear_wing.md; appendix: reports/Dataset-2.1/NLC6_numerical_appendix.md; audit: reports/Dataset-2.1/evidence/campaign_integrity_04.json.
 Qualification remains user_waived_independent_qualification. Preserve all data,
 failure/paused partials, locks and source capsules. Finish scoped publication and
 verify remote parity, then recheck unrelated active experiments before the explicitly
@@ -127,7 +127,7 @@ Use the state and queued config for the current complete repair list.
 
 ## Organized visualization workspace
 
-The current report root is reports/Dataset21_NLC6_v1_nonlinear_wing. Its single
+The current report root is reports/Dataset-2.1. Its single
 summary is tables/index.html. Figures, current 10x/six-second animations, numeric
 tables, source/hash evidence and historical renders are in plots/, animations/,
 tables/, evidence/ and archive/. Maintained plotting entry points are now under

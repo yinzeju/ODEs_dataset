@@ -20,6 +20,21 @@ def write_json(path, value):
     path.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
 
 
+def resolve_report_path(relative):
+    """Resolve historical report namespaces while preserving original receipts."""
+    path = (ROOT / relative).resolve()
+    if not path.is_relative_to(ROOT):
+        raise ValueError("Report path escapes project")
+    if path.exists():
+        return path
+    catalog = read_json(ROOT / "configs/report_catalog.json")
+    for row in catalog["relocations"]:
+        old = ROOT / row["old_root"]
+        if path == old or path.is_relative_to(old):
+            return ROOT / row["new_root"] / path.relative_to(old)
+    raise FileNotFoundError(relative)
+
+
 def resolve_source(relative):
     """Resolve historical dataset references without rewriting frozen evidence."""
     path = (ROOT / relative).resolve()

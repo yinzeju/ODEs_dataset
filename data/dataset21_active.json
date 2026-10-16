@@ -14,9 +14,9 @@
   "frames": 4096,
   "state_dimension": 29844,
   "dt_seconds": 0.0005,
-  "integrity_evidence": "reports/Dataset21_NLC6_v1_nonlinear_wing/evidence/campaign_integrity_04.json",
-  "formal_report": "reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md",
-  "numerical_appendix": "reports/Dataset21_NLC6_v1_nonlinear_wing/NLC6_numerical_appendix.md",
+  "integrity_evidence": "reports/Dataset-2.1/evidence/campaign_integrity_04.json",
+  "formal_report": "reports/Dataset-2.1/Dataset21_NLC6_v1_nonlinear_wing.md",
+  "numerical_appendix": "reports/Dataset-2.1/NLC6_numerical_appendix.md",
   "artifact_root": "data/Dataset-2.1",
   "historical_dataset_code": "Dataset-2.1/FE-NACA-NLC6",
   "relocation_evidence": "data/dataset_relocations.json"

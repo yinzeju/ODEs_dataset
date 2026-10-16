@@ -1,0 +1,174 @@
+{
+  "utc": "2026-10-16T09:41:23.844603+00:00",
+  "status": "passed",
+  "files_preserved": 168,
+  "bytes_preserved": 95939312,
+  "archived_files": 23,
+  "archived_bytes": 649818,
+  "files_deleted": 0,
+  "archive_branch": "codex/archive-reports-before-abolish-20261016",
+  "archive_commit": "95a10435c94a1fb9fdb8c260b730e1c198db507e",
+  "files": [
+    {
+      "source": "reports/Dataset_2_v2_resource_reorganization/2_numerical_appendix.md",
+      "destination": "abolish/reports_20261016/reports/Dataset_2_v2_resource_reorganization/2_numerical_appendix.md",
+      "bytes": 4670,
+      "sha256": "9d54da289226b785e616c803051ca2d36ac9b011978d47edb38cd58d3ea6fc5b",
+      "tracked": true
+    },
+    {
+      "source": "reports/Dataset_2_v2_resource_reorganization/Dataset_2_v2_resource_reorganization.md",
+      "destination": "abolish/reports_20261016/reports/Dataset_2_v2_resource_reorganization/Dataset_2_v2_resource_reorganization.md",
+      "bytes": 5448,
+      "sha256": "94eb027769cf11a6a5eaebcdde2153dcad726b61730653228667de980f2bed80",
+      "tracked": true
+    },
+    {
+      "source": "reports/Dataset_2_v2_resource_reorganization/evidence/reorganization.json",
+      "destination": "abolish/reports_20261016/reports/Dataset_2_v2_resource_reorganization/evidence/reorganization.json",
+      "bytes": 4092,
+      "sha256": "cf5a61ac057bc8f8abda1607723f4c6c2ee77d484628aeed8d9471b5abf8151d",
+      "tracked": true
+    },
+    {
+      "source": "reports/Dataset_2_v2_resource_reorganization/evidence/report_protocol.json",
+      "destination": "abolish/reports_20261016/reports/Dataset_2_v2_resource_reorganization/evidence/report_protocol.json",
+      "bytes": 574,
+      "sha256": "58e9a5ea8ccc386d1ec684a7ce0d9590549975afd1a0bb275d9144569e72bbc7",
+      "tracked": true
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/TestSub_1_standard_odes_v2.md",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/TestSub_1_standard_odes_v2.md",
+      "bytes": 18163,
+      "sha256": "61e65a7df66c52db7a86362f405862c926838f9720713796cabd52b97cf92d7c",
+      "tracked": true
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/cleanup/completion.json",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/cleanup/completion.json",
+      "bytes": 281,
+      "sha256": "cbb4f267776440d24ef395fef429377ccd267101a4ae75a38e525bb4bf9de428",
+      "tracked": false
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/cleanup/focused_tests_after_cleanup.log",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/cleanup/focused_tests_after_cleanup.log",
+      "bytes": 140,
+      "sha256": "93831b49493f431df853b4b07c118ce70e8f989ee39bb9997c1f0f9bce851bb2",
+      "tracked": false
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/cleanup/inventory.json",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/cleanup/inventory.json",
+      "bytes": 527450,
+      "sha256": "5053c117e6013e6604a17d7e8ba3d0e2dc8d70bc5bb7919095f618160bbd10a4",
+      "tracked": true
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/cleanup/metadata_after_cleanup.json",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/cleanup/metadata_after_cleanup.json",
+      "bytes": 161,
+      "sha256": "8d11420a4f508ec29230162ea2cfc84fc3fbb29808e7cdaa88f7d7f91b2f0cbd",
+      "tracked": true
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/cleanup/metadata_after_cleanup.log",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/cleanup/metadata_after_cleanup.log",
+      "bytes": 138,
+      "sha256": "e8879cd0800edd17fe19194c51a8f19f48befc1019606d418bf6926b7ec5d581",
+      "tracked": false
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/cleanup/result.json",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/cleanup/result.json",
+      "bytes": 623,
+      "sha256": "7e01a92635772b0c62fe04483896770e1d7a1c2f2c8b4a41b6f9877a45241600",
+      "tracked": true
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/cleanup/smoke_verification_before_cleanup.json",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/cleanup/smoke_verification_before_cleanup.json",
+      "bytes": 302,
+      "sha256": "145e0cef16287db1cedef181397647e606329ac61163cd0800d6f8d6c7b43337",
+      "tracked": true
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/cleanup/verification_after_cleanup.json",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/cleanup/verification_after_cleanup.json",
+      "bytes": 309,
+      "sha256": "79c736d64cfe80b5b52b49d23197dc6d574b2742a469bfc305ef88e8563d5229",
+      "tracked": true
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/cleanup/verification_after_cleanup.log",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/cleanup/verification_after_cleanup.log",
+      "bytes": 274,
+      "sha256": "ca2c8740906621714f4079c3bfc83852a9d7e405f0e943b1c255f09a8c641c8c",
+      "tracked": false
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/logs/TestSub_1_standard_odes_v2_formal.log",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/logs/TestSub_1_standard_odes_v2_formal.log",
+      "bytes": 15394,
+      "sha256": "214ebecfc232f0dadd6d1b028da6eb8abf0a3a0c64840534bb746e2cef8921cc",
+      "tracked": false
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/logs/TestSub_1_standard_odes_v2_metadata_audit.log",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/logs/TestSub_1_standard_odes_v2_metadata_audit.log",
+      "bytes": 138,
+      "sha256": "e8879cd0800edd17fe19194c51a8f19f48befc1019606d418bf6926b7ec5d581",
+      "tracked": false
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/logs/TestSub_1_standard_odes_v2_smoke.log",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/logs/TestSub_1_standard_odes_v2_smoke.log",
+      "bytes": 15518,
+      "sha256": "502ce00318673d40cfeac397594d00c857b847b0ea04313ed8debb65a5adbbb2",
+      "tracked": false
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/tables/metadata_audit.json",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/tables/metadata_audit.json",
+      "bytes": 161,
+      "sha256": "8d11420a4f508ec29230162ea2cfc84fc3fbb29808e7cdaa88f7d7f91b2f0cbd",
+      "tracked": true
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/tables/resource_results.json",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/tables/resource_results.json",
+      "bytes": 7011,
+      "sha256": "bd36f5fd61f7dd14f17d77918fec56eba6ba7e91676006bc19850fede21d16b9",
+      "tracked": true
+    },
+    {
+      "source": "reports/TestSub_1_standard_odes_v2/tables/verification.json",
+      "destination": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2/tables/verification.json",
+      "bytes": 309,
+      "sha256": "b1bd0de089a1cc8784bc50e95ba94d9740cbc1485048cd94c6918ef30a0b9a84",
+      "tracked": true
+    },
+    {
+      "source": "reports/TestSub_2_nonlinear_vibration/2_numerical_appendix.md",
+      "destination": "abolish/reports_20261016/reports/TestSub_2_nonlinear_vibration/2_numerical_appendix.md",
+      "bytes": 15587,
+      "sha256": "44ca3653a13c02b1131bbf7dba1371c8ca242f58b777e76b6282da9fb2f96318",
+      "tracked": true
+    },
+    {
+      "source": "reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration.md",
+      "destination": "abolish/reports_20261016/reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration.md",
+      "bytes": 7123,
+      "sha256": "494de07b71288a5c359c08667b20150f09b6bb92284036fc7ba83349fba33460",
+      "tracked": true
+    },
+    {
+      "source": "reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration_evidence.json",
+      "destination": "abolish/reports_20261016/reports/TestSub_2_nonlinear_vibration/TestSub_2_nonlinear_vibration_evidence.json",
+      "bytes": 25952,
+      "sha256": "2fff553bbaacfaaf33d369d0fb2697b9c53352c3e9ecdcd27d27b84046bc2767",
+      "tracked": true
+    }
+  ]
+}

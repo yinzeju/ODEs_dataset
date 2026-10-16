@@ -27,8 +27,8 @@ Current roots are `data/Dataset-2/` and `data/Dataset-2.1/`. The former release 
 extension containers were removed. Dataset-1 and the TestSub_2 small CAN/QUAL
 populations are locally retired; their old active pointers are removed. Frozen source
 capsules, original metadata, reports and failed/paused NACA prefixes remain identifiable.
-See [relocations](../../data/dataset_relocations.json) and the
-[organization report](../../reports/Dataset_2_v2_resource_reorganization/Dataset_2_v2_resource_reorganization.md).
+See [relocations](../../data/dataset_relocations.json) and the archived
+[organization report](../../abolish/reports_20261016/reports/Dataset_2_v2_resource_reorganization/Dataset_2_v2_resource_reorganization.md).
 
 Dataset-3 and Dataset-3.1 remain note-only. Previous Structural Spectral v3 and
 pre-NLC6 NACA numerical releases remain retired and were not recreated.

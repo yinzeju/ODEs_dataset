@@ -156,3 +156,23 @@ No remote push is part of this wrap-up.
 - Evidence: `docs/Notes/evidence/dataset_reorganization_20261016.json`;
   explanation: `docs/Notes/File Explanation/dataset_reorganization_20261016.md`;
   report/appendix: `reports/Dataset_2_v2_resource_reorganization/`.
+
+
+## 2026-10-16T02:50-07:00 — Retain only Dataset-2 and Dataset-2.1 data reports
+
+- Completed report-only organization: consolidated the two Beam datasets into
+  `reports/Dataset-2/`, moved the intact NACA packet to `reports/Dataset-2.1/`,
+  and archived old Dataset-1, original TestSub_2 and operation reports under
+  `abolish/reports_20261016/`. All 168 original files were moved byte-for-byte;
+  23 archived files remain identical. No report or numerical file was deleted.
+- Updated report catalog, current pointers, dashboard resolution, README and inventory;
+  added the paired Chinese Beam data report/appendix grounded in frozen source results.
+  Numerical datasets, source capsules and NACA qualification waiver are unchanged.
+- Checks: 39 active Markdown links, 103 offline dashboard links,
+  five source hashes, preserved GIFs and three unchanged data-manifest bindings.
+  No new simulation, training, independent qualification or package-wide tests.
+- Archive branch: `codex/archive-reports-before-abolish-20261016` at `95a1043`.
+  Evidence: `docs/Notes/evidence/reports_organization_20261016.json`; file explanation:
+  `docs/Notes/File Explanation/reports_organization_20261016.md`.
+- User requested scoped completion commit/push; publication and remote-parity receipt
+  is maintained locally under `runs/reports_organization_20261016/`.

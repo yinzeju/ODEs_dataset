@@ -1,0 +1,40 @@
+{
+  "schema": "dataset.report_catalog.v1",
+  "active": {
+    "Dataset-2": {
+      "root": "reports/Dataset-2",
+      "main_report": "reports/Dataset-2/Dataset_2_v2_nonlinear_beams.md",
+      "numerical_appendix": "reports/Dataset-2/2_numerical_appendix.md"
+    },
+    "Dataset-2.1": {
+      "root": "reports/Dataset-2.1",
+      "main_report": "reports/Dataset-2.1/Dataset21_NLC6_v1_nonlinear_wing.md",
+      "numerical_appendix": "reports/Dataset-2.1/NLC6_numerical_appendix.md",
+      "dashboard": "reports/Dataset-2.1/tables/index.html"
+    }
+  },
+  "relocations": [
+    {
+      "old_root": "reports/Dataset21_NLC6_v1_nonlinear_wing",
+      "new_root": "reports/Dataset-2.1"
+    },
+    {
+      "old_root": "reports/Dataset_2_v2_resource_reorganization",
+      "new_root": "abolish/reports_20261016/reports/Dataset_2_v2_resource_reorganization"
+    },
+    {
+      "old_root": "reports/TestSub_1_standard_odes_v2",
+      "new_root": "abolish/reports_20261016/reports/TestSub_1_standard_odes_v2"
+    },
+    {
+      "old_root": "reports/TestSub_2_nonlinear_vibration",
+      "new_root": "abolish/reports_20261016/reports/TestSub_2_nonlinear_vibration"
+    },
+    {
+      "old_root": "reports/skdm_9_TestSub2NV_beam_extension/evidence.json",
+      "new_root": "reports/Dataset-2/evidence/source_skdm9_beam_extension.json"
+    }
+  ],
+  "archive": "abolish/reports_20261016",
+  "evidence": "docs/Notes/evidence/reports_organization_20261016.json"
+}

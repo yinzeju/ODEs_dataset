@@ -196,3 +196,28 @@ The report evidence separately records the time of its read-only integrity audit
   `docs/Notes/evidence/dataset_reorganization_20261016.json`;
   `reports/Dataset_2_v2_resource_reorganization/`; file explanation:
   `docs/Notes/File Explanation/dataset_reorganization_20261016.md`.
+
+
+## Current Dataset-2 / Dataset-2.1 data reports
+
+- Updated: `2026-10-16T02:50-07:00`. Stable report groups: `Dataset-2` and `Dataset-2.1`;
+  type: current data-report catalog and reusable read-only report validation.
+  This navigation supersedes earlier active report-root paths while preserving
+  historical producing identities, scientific reports and original evidence.
+- Dataset-2: `reports/Dataset-2/Dataset_2_v2_nonlinear_beams.md` and
+  `2_numerical_appendix.md`; covers BASE144/8193 snapshots and TRANSIENT144/4096
+  snapshots with original numerical evidence and exact-prefix boundaries.
+  Shell/plate populations remain planned, not generated.
+- Dataset-2.1: `reports/Dataset-2.1/`; original NACA formal report/appendix,
+  144-member integrity evidence and illustrative dashboard/media are preserved.
+  Independent qualification remains user-waived.
+- Implementation: `configs/report_catalog.json`, current dataset/report pointers,
+  `experiments/postprocessing/audit_report_catalog.py`, `dataset21_nlc6_report.py`
+  and `audit_dataset21_nlc6_report.py`; producing task `reports_organization_20261016`.
+- Retired report packets: Dataset-1, original TestSub_2 and the resource-organization
+  report now at `abolish/reports_20261016/`; 23 original files preserved by SHA.
+  Historical SKDM9 Beam evidence remains part of the current Dataset-2 report.
+- Validation: 168 byte-preserving moves, 39 active Markdown links,
+  103 NACA offline links, five source hashes, three unchanged data-manifest bindings.
+  `docs/Notes/evidence/reports_organization_20261016.json`; explanation:
+  `docs/Notes/File Explanation/reports_organization_20261016.md`.

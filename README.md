@@ -48,10 +48,8 @@ capsules remain at `artifacts/source_capsules/Dataset-2/testsub2_nv_20261004/`.
 Legacy generators and frozen configurations are historical and must not be used to
 recreate retired releases without a new explicit generation request.
 
-The NACA [offline visualization](reports/Dataset21_NLC6_v1_nonlinear_wing/tables/index.html)
+The NACA [offline visualization](reports/Dataset-2.1/tables/index.html)
 retains its four formal examples and separate exploratory trial. Its
-[formal report](reports/Dataset21_NLC6_v1_nonlinear_wing/Dataset21_NLC6_v1_nonlinear_wing.md)
-and numerical appendix describe the original completed campaign. Organization evidence
-and the current scope are in the
-[reorganization report](reports/Dataset_2_v2_resource_reorganization/Dataset_2_v2_resource_reorganization.md).
+[formal report](reports/Dataset-2.1/Dataset21_NLC6_v1_nonlinear_wing.md)
+and numerical appendix describe the original completed campaign. Current data reports are indexed in [reports/README.md](reports/README.md).
 Large numerical data and local archives remain outside Git.

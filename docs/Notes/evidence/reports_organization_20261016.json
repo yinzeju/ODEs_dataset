@@ -1,0 +1,47 @@
+{
+  "schema": "report.organization.v1",
+  "status": "passed",
+  "updated": "2026-10-16T02:50-07:00",
+  "active_report_roots": [
+    "reports/Dataset-2",
+    "reports/Dataset-2.1"
+  ],
+  "archive_root": "abolish/reports_20261016",
+  "original_files_moved": 168,
+  "original_bytes_moved": 95939312,
+  "archived_files": 23,
+  "archived_bytes": 649818,
+  "files_deleted": 0,
+  "unchanged_file_hashes_after_navigation_updates": 165,
+  "updated_navigation_files": [
+    "reports/Dataset-2.1/README.md",
+    "reports/Dataset-2.1/evidence/audit.json",
+    "reports/Dataset-2.1/evidence/report_manifest.json"
+  ],
+  "source_movement_receipt": "runs/reports_organization_20261016/movement_receipt.json",
+  "archive_manifest": "abolish/reports_20261016/manifest.json",
+  "archive_manifest_sha256": "c281531f2cf378c0e5af9c4ef76484c6d27a7d57abe1222e2dbefeae377a7a32",
+  "archive_branch": "codex/archive-reports-before-abolish-20261016",
+  "archive_commit": "95a10435c94a1fb9fdb8c260b730e1c198db507e",
+  "report_catalog": "configs/report_catalog.json",
+  "validation": {
+    "status": "passed",
+    "active_report_groups": 2,
+    "markdown_links_checked": 39,
+    "archived_files_sha_verified": 23,
+    "dataset_manifests_verified": 3,
+    "current_beam_trajectories": 288,
+    "simulation_executed": false
+  },
+  "naca_presentation_offline_links": 103,
+  "naca_source_hashes_checked": 5,
+  "dataset2_current_trajectory_count": 288,
+  "dataset21_current_trajectory_count": 144,
+  "new_simulation_executed": false,
+  "numerical_dataset_modified": false,
+  "scientific_reports_preserved": [
+    "reports/Dataset-2.1/Dataset21_NLC6_v1_nonlinear_wing.md",
+    "reports/Dataset-2.1/NLC6_numerical_appendix.md"
+  ],
+  "publication_scope": "Formerly tracked reports, current reports, code, config and compact evidence; no raw data or binary media."
+}
